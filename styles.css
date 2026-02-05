@@ -1918,6 +1918,10 @@ strong {
   }
 }
 
+body.menu-open {
+  overflow: hidden;
+}
+
 
 /* ============================================================
    25. MISCELLANEOUS DECORATIVE ELEMENTS

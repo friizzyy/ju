@@ -406,20 +406,24 @@
   ---------------------------------------------------------- */
   const MobileMenu = {
     toggle: null,
+    overlay: null,
 
     init() {
-      this.toggle = document.querySelector('.menu-toggle');
-      if (!this.toggle) return;
+      this.toggle = document.querySelector('.mobile-menu-toggle');
+      this.overlay = document.querySelector('.mobile-menu-overlay');
+      if (!this.toggle || !this.overlay) return;
 
       this.toggle.addEventListener('click', (e) => {
         e.stopPropagation();
+        this.toggle.classList.toggle('active');
+        this.overlay.classList.toggle('active');
         document.body.classList.toggle('menu-open');
       });
 
       // Close on nav link click
-      document.querySelectorAll('.mobile-nav a, .nav-menu a').forEach((link) => {
+      this.overlay.querySelectorAll('a').forEach((link) => {
         link.addEventListener('click', () => {
-          document.body.classList.remove('menu-open');
+          this.close();
         });
       });
 
@@ -427,9 +431,16 @@
       document.addEventListener('click', (e) => {
         if (
           document.body.classList.contains('menu-open') &&
-          !e.target.closest('.nav-menu, .mobile-nav, .menu-toggle')
+          !e.target.closest('.mobile-menu-overlay, .mobile-menu-toggle')
         ) {
-          document.body.classList.remove('menu-open');
+          this.close();
+        }
+      });
+
+      // Close on escape key
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && document.body.classList.contains('menu-open')) {
+          this.close();
         }
       });
 
@@ -437,11 +448,17 @@
       document.addEventListener('touchmove', (e) => {
         if (
           document.body.classList.contains('menu-open') &&
-          !e.target.closest('.nav-menu, .mobile-nav')
+          !e.target.closest('.mobile-menu-overlay')
         ) {
           e.preventDefault();
         }
       }, { passive: false });
+    },
+
+    close() {
+      if (this.toggle) this.toggle.classList.remove('active');
+      if (this.overlay) this.overlay.classList.remove('active');
+      document.body.classList.remove('menu-open');
     }
   };
 
