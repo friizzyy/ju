@@ -467,18 +467,28 @@
   ---------------------------------------------------------- */
   const PageTransition = {
     init() {
-      // Initial load animation
-      requestAnimationFrame(() => {
-        setTimeout(() => {
+      // Wait for fonts, then reveal page
+      const reveal = () => {
+        requestAnimationFrame(() => {
           document.body.classList.add('page-loaded');
-        }, 100);
+        });
 
         // Stagger section reveals
         const sections = document.querySelectorAll('section');
         sections.forEach((section, i) => {
           section.style.transitionDelay = `${0.1 + i * 0.12}s`;
         });
-      });
+      };
+
+      // Use font loading API if available, fallback to load event
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(reveal);
+      } else {
+        window.addEventListener('load', reveal);
+      }
+
+      // Safety net: reveal after 1.2s no matter what
+      setTimeout(reveal, 1200);
     }
   };
 
