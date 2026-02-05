@@ -1,0 +1,1443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ALGX Case Study | JU. | Digital Architect</title>
+<meta name="description" content="Deep dive into the ALGX precision agriculture platform. A full-stack data system connecting satellite imagery, IoT sensors, and ML-driven analytics.">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@300;400;500&family=Unbounded:wght@700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+/* ============================================================
+   Case Study Page - ALGX (Emerald Theme)
+   ============================================================ */
+
+/* ---- Emerald Accent Overrides ---- */
+.cs-emerald { --accent: #10b981; --accent-light: #34d399; --accent-a10: rgba(16, 185, 129, .10); --accent-a15: rgba(16, 185, 129, .15); --accent-a20: rgba(16, 185, 129, .20); --accent-a06: rgba(16, 185, 129, .06); }
+
+
+/* ---- Back Link ---- */
+
+.cs-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--fg3);
+  transition: color var(--transition-base), gap var(--transition-base);
+  margin-bottom: 40px;
+}
+
+.cs-back:hover {
+  color: var(--accent-light);
+  gap: 12px;
+}
+
+.cs-back svg {
+  width: 14px;
+  height: 14px;
+  transition: transform var(--transition-base);
+}
+
+.cs-back:hover svg {
+  transform: translateX(-3px);
+}
+
+
+/* ---- Case Study Hero ---- */
+
+.cs-hero {
+  position: relative;
+  z-index: var(--z-base);
+  padding: 160px 0 0;
+}
+
+.cs-hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: .10em;
+  text-transform: uppercase;
+  color: var(--accent-light);
+  background: var(--accent-a10);
+  border: 1px solid var(--accent-a15);
+  border-radius: var(--radius-full);
+  padding: 8px 20px;
+  margin-bottom: 28px;
+}
+
+.cs-hero-tag .tag-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent-light);
+  animation: pulseDot 2s ease-in-out infinite;
+}
+
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%      { opacity: .4; transform: scale(.75); }
+}
+
+.cs-hero-title {
+  font-family: var(--display);
+  font-size: clamp(72px, 12vw, 160px);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: .9;
+  margin-bottom: 28px;
+  background: linear-gradient(180deg, #fff 0%, rgba(238, 238, 242, .4) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.cs-hero-subtitle {
+  font-size: 18px;
+  line-height: 1.7;
+  color: var(--fg2);
+  font-weight: 300;
+  max-width: 620px;
+  margin-bottom: 40px;
+}
+
+.cs-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 32px;
+  padding: 24px 0;
+  border-top: 1px solid var(--fg4);
+  border-bottom: 1px solid var(--fg4);
+  margin-bottom: 56px;
+}
+
+.cs-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cs-meta-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: .10em;
+  text-transform: uppercase;
+  color: var(--fg3);
+}
+
+.cs-meta-value {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--fg);
+}
+
+.cs-meta-divider {
+  width: 1px;
+  height: 20px;
+  background: var(--fg4);
+  display: none;
+}
+
+@media (min-width: 641px) {
+  .cs-meta-divider { display: block; }
+}
+
+
+/* ---- Hero Visual ---- */
+
+.cs-hero-visual {
+  position: relative;
+  width: 100%;
+  height: 420px;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  border: 1px solid var(--fg4);
+  background: var(--bg2);
+  margin-bottom: 0;
+}
+
+.cs-hero-visual-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 25% 40%, rgba(16, 185, 129, .18) 0%, transparent 55%),
+    radial-gradient(ellipse at 75% 30%, rgba(16, 185, 129, .10) 0%, transparent 50%),
+    radial-gradient(circle at 50% 85%, rgba(6, 182, 212, .08) 0%, transparent 45%),
+    radial-gradient(ellipse at 60% 60%, rgba(16, 185, 129, .06) 0%, transparent 60%),
+    linear-gradient(160deg, var(--bg2) 0%, var(--bg) 100%);
+  animation: heroShift 12s ease-in-out infinite alternate;
+}
+
+@keyframes heroShift {
+  0%   { transform: scale(1) translate(0, 0); }
+  100% { transform: scale(1.05) translate(-1%, -1%); }
+}
+
+.cs-hero-visual .visual-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(238, 238, 242, .025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(238, 238, 242, .025) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+.cs-hero-visual .visual-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(70px);
+  opacity: .3;
+}
+
+.cs-hero-visual .visual-orb--1 {
+  width: 260px;
+  height: 260px;
+  top: 15%;
+  left: 20%;
+  background: var(--emerald);
+  animation: orbFloat 10s ease-in-out infinite;
+}
+
+.cs-hero-visual .visual-orb--2 {
+  width: 180px;
+  height: 180px;
+  bottom: 15%;
+  right: 20%;
+  background: var(--cyan);
+  animation: orbFloat 12s ease-in-out infinite reverse;
+}
+
+.cs-hero-visual .visual-orb--3 {
+  width: 120px;
+  height: 120px;
+  top: 50%;
+  left: 55%;
+  background: var(--emerald);
+  opacity: .2;
+  animation: orbFloat 8s ease-in-out infinite 2s;
+}
+
+@keyframes orbFloat {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25%      { transform: translate(15px, -20px) scale(1.05); }
+  50%      { transform: translate(-10px, -35px) scale(.95); }
+  75%      { transform: translate(-20px, -12px) scale(1.03); }
+}
+
+.cs-hero-visual .visual-label {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--display);
+  font-size: clamp(80px, 10vw, 140px);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  color: var(--emerald);
+  opacity: .07;
+  user-select: none;
+}
+
+.cs-hero-visual .visual-line {
+  position: absolute;
+  background: rgba(16, 185, 129, .06);
+}
+
+.cs-hero-visual .visual-line--h {
+  width: 100%;
+  height: 1px;
+  top: 40%;
+  transform: rotate(-3deg);
+}
+
+.cs-hero-visual .visual-line--v {
+  width: 1px;
+  height: 100%;
+  left: 35%;
+  transform: rotate(5deg);
+}
+
+/* Floating data nodes */
+.cs-hero-visual .data-node {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--emerald);
+  opacity: .3;
+  animation: nodeFloat 6s ease-in-out infinite;
+}
+
+.cs-hero-visual .data-node:nth-child(7) { top: 20%; left: 15%; animation-delay: 0s; }
+.cs-hero-visual .data-node:nth-child(8) { top: 65%; left: 30%; animation-delay: 1s; }
+.cs-hero-visual .data-node:nth-child(9) { top: 35%; right: 25%; animation-delay: 2s; }
+.cs-hero-visual .data-node:nth-child(10) { bottom: 25%; right: 15%; animation-delay: 3s; }
+.cs-hero-visual .data-node:nth-child(11) { top: 50%; left: 70%; animation-delay: 1.5s; }
+
+@keyframes nodeFloat {
+  0%, 100% { transform: translateY(0); opacity: .3; }
+  50%      { transform: translateY(-12px); opacity: .6; }
+}
+
+
+/* ---- Overview Section ---- */
+
+.cs-overview {
+  position: relative;
+  z-index: var(--z-base);
+  padding: 120px 0;
+}
+
+.cs-overview-grid {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 64px;
+  align-items: start;
+}
+
+.cs-overview-label {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--accent-light);
+  padding-top: 6px;
+  position: sticky;
+  top: 100px;
+}
+
+.cs-overview-content {
+  font-size: 18px;
+  line-height: 1.8;
+  color: var(--fg2);
+  font-weight: 300;
+  max-width: 700px;
+}
+
+
+/* ---- Challenge Section ---- */
+
+.cs-challenge {
+  position: relative;
+  z-index: var(--z-base);
+  padding: 0 0 120px;
+}
+
+.cs-section-heading {
+  font-family: var(--sans);
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1.05;
+  color: var(--fg);
+  margin-bottom: 56px;
+}
+
+.cs-challenge-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.cs-challenge-card {
+  position: relative;
+  background: var(--bg-card);
+  border: 1px solid var(--fg4);
+  border-radius: var(--radius-lg);
+  padding: 40px 32px;
+  backdrop-filter: blur(20px) saturate(1.3);
+  -webkit-backdrop-filter: blur(20px) saturate(1.3);
+  overflow: hidden;
+  transition: border-color var(--transition-base),
+              box-shadow var(--transition-smooth),
+              transform var(--transition-base);
+}
+
+.cs-challenge-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent-light), transparent);
+  opacity: 0;
+  transition: opacity var(--transition-base);
+}
+
+.cs-challenge-card:hover {
+  border-color: var(--accent-a15);
+  box-shadow: 0 8px 48px rgba(16, 185, 129, .06),
+              0 0 80px rgba(16, 185, 129, .03);
+  transform: translateY(-4px);
+}
+
+.cs-challenge-card:hover::before {
+  opacity: 1;
+}
+
+.cs-challenge-card .card-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  background: var(--accent-a10);
+  border: 1px solid var(--accent-a15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  color: var(--accent-light);
+}
+
+.cs-challenge-card .card-icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.cs-challenge-card h3 {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--fg);
+  margin-bottom: 12px;
+}
+
+.cs-challenge-card p {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--fg2);
+  font-weight: 300;
+}
+
+
+/* ---- Approach Section ---- */
+
+.cs-approach {
+  position: relative;
+  z-index: var(--z-base);
+  padding: 0 0 120px;
+}
+
+.cs-approach-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.cs-approach-item {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 40px;
+  padding: 48px 0;
+  border-bottom: 1px solid var(--fg4);
+  align-items: start;
+  transition: border-color var(--transition-base);
+}
+
+.cs-approach-item:first-child {
+  border-top: 1px solid var(--fg4);
+}
+
+.cs-approach-item:hover {
+  border-color: var(--accent-a15);
+}
+
+.cs-approach-num {
+  font-family: var(--display);
+  font-size: 48px;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  background: linear-gradient(180deg, var(--accent-light), rgba(16, 185, 129, .2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.cs-approach-content h3 {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--fg);
+  margin-bottom: 12px;
+}
+
+.cs-approach-content p {
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--fg2);
+  font-weight: 300;
+  max-width: 640px;
+}
+
+
+/* ---- Results / Impact Section ---- */
+
+.cs-results {
+  position: relative;
+  z-index: var(--z-base);
+  padding: 0 0 120px;
+}
+
+.cs-results-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.cs-stat-card {
+  position: relative;
+  background: var(--bg-card);
+  border: 1px solid var(--fg4);
+  border-radius: var(--radius-lg);
+  padding: 44px 28px;
+  backdrop-filter: blur(16px) saturate(1.2);
+  -webkit-backdrop-filter: blur(16px) saturate(1.2);
+  text-align: center;
+  transition: border-color var(--transition-base),
+              box-shadow var(--transition-smooth),
+              transform var(--transition-base);
+  overflow: hidden;
+}
+
+.cs-stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent-light), transparent);
+  opacity: 0;
+  transition: opacity var(--transition-base);
+}
+
+.cs-stat-card:hover {
+  border-color: var(--accent-a15);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 48px rgba(16, 185, 129, .06);
+}
+
+.cs-stat-card:hover::before {
+  opacity: 1;
+}
+
+.cs-stat-number {
+  font-family: var(--display);
+  font-size: clamp(36px, 4vw, 56px);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  margin-bottom: 12px;
+  background: linear-gradient(135deg, var(--accent-light), var(--cyan));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.cs-stat-label {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--fg3);
+  line-height: 1.4;
+}
+
+
+/* ---- Tech Stack Section ---- */
+
+.cs-tech {
+  position: relative;
+  z-index: var(--z-base);
+  padding: 0 0 120px;
+}
+
+.cs-tech-card {
+  position: relative;
+  background: var(--bg-card);
+  border: 1px solid var(--fg4);
+  border-radius: var(--radius-xl);
+  padding: 56px 48px;
+  backdrop-filter: blur(20px) saturate(1.3);
+  -webkit-backdrop-filter: blur(20px) saturate(1.3);
+  overflow: hidden;
+}
+
+.cs-tech-card .tech-grid-bg {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(238, 238, 242, .015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(238, 238, 242, .015) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+}
+
+.cs-tech-group {
+  margin-bottom: 28px;
+}
+
+.cs-tech-group:last-child {
+  margin-bottom: 0;
+}
+
+.cs-tech-group-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--fg3);
+  margin-bottom: 12px;
+}
+
+.cs-tech-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.cs-tech-pill {
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: .04em;
+  color: var(--fg2);
+  background: var(--fg4);
+  border: 1px solid var(--fg4);
+  border-radius: var(--radius-full);
+  padding: 8px 18px;
+  transition: all var(--transition-base);
+  white-space: nowrap;
+}
+
+.cs-tech-pill:hover {
+  border-color: var(--accent-a15);
+  color: var(--accent-light);
+  background: var(--accent-a06);
+}
+
+
+/* ---- Testimonial Section ---- */
+
+.cs-testimonial {
+  position: relative;
+  z-index: var(--z-base);
+  padding: 0 0 120px;
+}
+
+.cs-testimonial-card {
+  position: relative;
+  background: var(--bg-card);
+  border: 1px solid var(--fg4);
+  border-radius: var(--radius-xl);
+  padding: 72px 64px;
+  backdrop-filter: blur(20px) saturate(1.3);
+  -webkit-backdrop-filter: blur(20px) saturate(1.3);
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.cs-testimonial-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent-light), transparent);
+}
+
+.cs-quote-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-md);
+  background: var(--accent-a10);
+  border: 1px solid var(--accent-a15);
+  color: var(--accent-light);
+  margin-bottom: 32px;
+}
+
+.cs-quote-icon svg {
+  width: 28px;
+  height: 28px;
+}
+
+.cs-quote-text {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(18px, 2.2vw, 24px);
+  line-height: 1.7;
+  color: var(--fg);
+  font-weight: 400;
+  margin-bottom: 28px;
+}
+
+.cs-quote-attr {
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: .04em;
+  color: var(--fg3);
+}
+
+
+/* ---- Next Project CTA ---- */
+
+.cs-next {
+  position: relative;
+  z-index: var(--z-base);
+  padding: 0 0 120px;
+}
+
+.cs-next-label {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--fg3);
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.cs-next-label::before {
+  content: '';
+  display: block;
+  width: 24px;
+  height: 1px;
+  background: var(--fg3);
+}
+
+.cs-next-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  background: var(--bg-card);
+  border: 1px solid var(--fg4);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  transition: border-color var(--transition-base),
+              box-shadow var(--transition-smooth),
+              transform var(--transition-base);
+  margin-bottom: 40px;
+}
+
+.cs-next-card:hover {
+  border-color: rgba(139, 92, 246, .25);
+  box-shadow: 0 12px 60px rgba(139, 92, 246, .08);
+  transform: translateY(-4px);
+}
+
+.cs-next-info {
+  padding: 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+}
+
+.cs-next-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  border: 1px solid;
+  color: var(--violet);
+  background: rgba(139, 92, 246, .08);
+  border-color: rgba(139, 92, 246, .15);
+}
+
+.cs-next-title {
+  font-family: var(--sans);
+  font-size: clamp(28px, 3.5vw, 42px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  color: var(--fg);
+}
+
+.cs-next-desc {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--fg2);
+  font-weight: 300;
+}
+
+.cs-next-visual {
+  position: relative;
+  min-height: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.cs-next-visual-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 30% 50%, rgba(139, 92, 246, .15) 0%, transparent 60%),
+    radial-gradient(ellipse at 70% 30%, rgba(139, 92, 246, .08) 0%, transparent 50%),
+    radial-gradient(circle at 50% 80%, rgba(236, 72, 153, .06) 0%, transparent 50%),
+    linear-gradient(160deg, var(--bg2) 0%, var(--bg) 100%);
+  transition: opacity .5s var(--ease-smooth);
+}
+
+.cs-next-card:hover .cs-next-visual-bg {
+  opacity: .9;
+}
+
+.cs-next-visual .visual-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(238, 238, 242, .02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(238, 238, 242, .02) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.cs-next-visual .next-label {
+  position: relative;
+  z-index: 2;
+  font-family: var(--display);
+  font-size: clamp(48px, 5vw, 72px);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  color: var(--violet);
+  opacity: .12;
+  user-select: none;
+  transition: opacity .5s var(--ease-smooth);
+}
+
+.cs-next-card:hover .next-label {
+  opacity: .2;
+}
+
+.cs-next-cta {
+  text-align: center;
+}
+
+
+/* ---- Divider with emerald glow ---- */
+
+.cs-divider {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--fg3) 15%,
+    rgba(16, 185, 129, .4) 50%,
+    var(--fg3) 85%,
+    transparent
+  );
+  border: none;
+  margin: 0 0 120px;
+  position: relative;
+}
+
+.cs-divider::after {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 16px;
+  background: radial-gradient(ellipse, rgba(16, 185, 129, .2), transparent);
+  pointer-events: none;
+}
+
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+
+@media (max-width: 1024px) {
+  .cs-overview-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .cs-overview-label {
+    position: static;
+  }
+
+  .cs-challenge-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .cs-results-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .cs-approach-item {
+    grid-template-columns: 60px 1fr;
+    gap: 24px;
+  }
+
+  .cs-next-card {
+    grid-template-columns: 1fr;
+  }
+
+  .cs-next-visual {
+    min-height: 240px;
+    order: -1;
+  }
+
+  .cs-hero {
+    padding: 140px 0 0;
+  }
+
+  .cs-testimonial-card {
+    padding: 48px 36px;
+  }
+
+  .cs-tech-card {
+    padding: 40px 32px;
+  }
+}
+
+@media (max-width: 640px) {
+  .cs-hero {
+    padding: 120px 0 0;
+  }
+
+  .cs-hero-visual {
+    height: 280px;
+    border-radius: var(--radius-lg);
+  }
+
+  .cs-results-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .cs-stat-card {
+    padding: 32px 20px;
+  }
+
+  .cs-approach-item {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 32px 0;
+  }
+
+  .cs-approach-num {
+    font-size: 32px;
+  }
+
+  .cs-meta {
+    gap: 12px 20px;
+  }
+
+  .cs-meta-divider {
+    display: none;
+  }
+
+  .cs-next-info {
+    padding: 32px 24px;
+  }
+
+  .cs-testimonial-card {
+    padding: 40px 24px;
+  }
+
+  .cs-tech-card {
+    padding: 32px 24px;
+  }
+}
+</style>
+</head>
+<body data-page="work" class="cs-emerald">
+
+<!-- Custom Cursor -->
+<div class="cursor" id="cur"></div>
+<div class="cursor-glow" id="glow"></div>
+
+<!-- Overlays -->
+<div class="grain-overlay"></div>
+<div class="vignette-overlay"></div>
+
+<!-- Particles Background -->
+<canvas id="particles" style="position:fixed;inset:0;z-index:0;pointer-events:none;"></canvas>
+
+
+<!-- ============================================================
+     HEADER
+     ============================================================ -->
+<header class="header">
+  <a href="index.html" class="header-logo">JU<span>.</span></a>
+  <nav class="header-nav">
+    <a href="work.html" class="active">Work</a>
+    <a href="about.html">About</a>
+    <a href="process.html">Process</a>
+    <a href="contact.html" class="header-cta">Get in Touch</a>
+  </nav>
+</header>
+
+
+<!-- ============================================================
+     CASE STUDY HERO
+     ============================================================ -->
+<section class="cs-hero">
+  <div class="container-wide">
+
+    <div class="reveal">
+      <a href="work.html" class="cs-back">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M13 8H3M7 4l-4 4 4 4"/>
+        </svg>
+        Back to Work
+      </a>
+    </div>
+
+    <div class="reveal delay-1">
+      <span class="cs-hero-tag">
+        <span class="tag-dot"></span>
+        AgTech
+      </span>
+    </div>
+
+    <h1 class="cs-hero-title reveal delay-2">ALGX</h1>
+
+    <p class="cs-hero-subtitle reveal delay-3">
+      Precision agriculture data platform connecting satellite imagery, IoT sensor networks, and ML-driven crop analytics.
+    </p>
+
+    <div class="cs-meta reveal delay-4">
+      <div class="cs-meta-item">
+        <span class="cs-meta-label">Client</span>
+        <span class="cs-meta-value">ALGX Inc.</span>
+      </div>
+      <div class="cs-meta-divider"></div>
+      <div class="cs-meta-item">
+        <span class="cs-meta-label">Role</span>
+        <span class="cs-meta-value">Lead Architect</span>
+      </div>
+      <div class="cs-meta-divider"></div>
+      <div class="cs-meta-item">
+        <span class="cs-meta-label">Year</span>
+        <span class="cs-meta-value">2024</span>
+      </div>
+      <div class="cs-meta-divider"></div>
+      <div class="cs-meta-item">
+        <span class="cs-meta-label">Status</span>
+        <span class="cs-meta-value">Live</span>
+      </div>
+    </div>
+
+    <!-- Hero Visual -->
+    <div class="cs-hero-visual reveal-scale delay-5">
+      <div class="cs-hero-visual-bg"></div>
+      <div class="visual-grid"></div>
+      <div class="visual-orb visual-orb--1"></div>
+      <div class="visual-orb visual-orb--2"></div>
+      <div class="visual-orb visual-orb--3"></div>
+      <div class="visual-line visual-line--h"></div>
+      <div class="visual-line visual-line--v"></div>
+      <span class="visual-label">ALGX</span>
+      <div class="data-node"></div>
+      <div class="data-node"></div>
+      <div class="data-node"></div>
+      <div class="data-node"></div>
+      <div class="data-node"></div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ============================================================
+     OVERVIEW
+     ============================================================ -->
+<section class="cs-overview">
+  <div class="container">
+    <div class="cs-overview-grid">
+      <div class="cs-overview-label reveal">Overview</div>
+      <div class="cs-overview-content reveal delay-1">
+        ALGX needed a unified platform to aggregate data from multiple agricultural data sources (satellite imagery, ground-based IoT sensors, weather APIs, and historical crop databases) into a single command center that enables precision farming decisions at scale. The challenge: processing terabytes of geospatial data in real-time while maintaining a clean, intuitive interface accessible to agronomists with varying technical expertise.
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     DIVIDER
+     ============================================================ -->
+<div class="container">
+  <hr class="cs-divider">
+</div>
+
+
+<!-- ============================================================
+     THE CHALLENGE
+     ============================================================ -->
+<section class="cs-challenge">
+  <div class="container">
+    <h2 class="cs-section-heading reveal">The Challenge</h2>
+
+    <div class="cs-challenge-grid">
+
+      <!-- Card 1 -->
+      <div class="cs-challenge-card reveal delay-1">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+            <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+            <line x1="12" y1="22.08" x2="12" y2="12"/>
+          </svg>
+        </div>
+        <h3>Data Scale</h3>
+        <p>Processing 50TB+ of satellite and sensor data daily with sub-second query response times across global farm operations.</p>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="cs-challenge-card reveal delay-2">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+            <circle cx="9" cy="7" r="4"/>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+          </svg>
+        </div>
+        <h3>User Diversity</h3>
+        <p>Designing for agronomists, farm managers, and data scientists with fundamentally different technical backgrounds and workflow needs.</p>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="cs-challenge-card reveal delay-3">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+          </svg>
+        </div>
+        <h3>Real-Time Requirements</h3>
+        <p>Delivering live IoT sensor feeds, weather alerts, and anomaly detection with less than 200ms latency to field devices.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     DIVIDER
+     ============================================================ -->
+<div class="container">
+  <hr class="cs-divider">
+</div>
+
+
+<!-- ============================================================
+     THE APPROACH
+     ============================================================ -->
+<section class="cs-approach">
+  <div class="container">
+    <h2 class="cs-section-heading reveal">The Approach</h2>
+
+    <div class="cs-approach-list">
+
+      <div class="cs-approach-item reveal">
+        <div class="cs-approach-num">01</div>
+        <div class="cs-approach-content">
+          <h3>Data Architecture</h3>
+          <p>Designed a multi-tier data pipeline using Apache Kafka for stream processing, TimescaleDB for time-series sensor data, and PostGIS for geospatial queries. The architecture handles burst ingestion of 100K+ events per second.</p>
+        </div>
+      </div>
+
+      <div class="cs-approach-item reveal delay-1">
+        <div class="cs-approach-num">02</div>
+        <div class="cs-approach-content">
+          <h3>Interface Design</h3>
+          <p>Created a map-centric interface with progressive disclosure. Simple overview dashboards that drill down into granular field-level analytics. Every visualization was tested with real agronomists.</p>
+        </div>
+      </div>
+
+      <div class="cs-approach-item reveal delay-2">
+        <div class="cs-approach-num">03</div>
+        <div class="cs-approach-content">
+          <h3>ML Integration</h3>
+          <p>Built custom crop health prediction models using TensorFlow, trained on 5 years of historical NDVI data. The system now predicts yield anomalies 3 weeks before visible symptoms.</p>
+        </div>
+      </div>
+
+      <div class="cs-approach-item reveal delay-3">
+        <div class="cs-approach-num">04</div>
+        <div class="cs-approach-content">
+          <h3>Performance</h3>
+          <p>Implemented edge computing on farm gateways for local processing, reducing cloud dependency by 60% and enabling offline-first capability for remote operations.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     DIVIDER
+     ============================================================ -->
+<div class="container">
+  <hr class="cs-divider">
+</div>
+
+
+<!-- ============================================================
+     THE IMPACT
+     ============================================================ -->
+<section class="cs-results">
+  <div class="container">
+    <h2 class="cs-section-heading reveal">The Impact</h2>
+
+    <div class="cs-results-grid">
+
+      <div class="cs-stat-card reveal">
+        <div class="cs-stat-number">
+          <span class="counter" data-target="340" data-suffix="%">0</span>
+        </div>
+        <div class="cs-stat-label">Increase in data processing efficiency</div>
+      </div>
+
+      <div class="cs-stat-card reveal delay-1">
+        <div class="cs-stat-number">
+          <span class="counter" data-target="2.3" data-suffix="s" data-decimals="1">0</span>
+        </div>
+        <div class="cs-stat-label">Avg dashboard load time (from 12s)</div>
+      </div>
+
+      <div class="cs-stat-card reveal delay-2">
+        <div class="cs-stat-number">
+          <span class="counter" data-target="94" data-suffix="%">0</span>
+        </div>
+        <div class="cs-stat-label">User adoption rate in first quarter</div>
+      </div>
+
+      <div class="cs-stat-card reveal delay-3">
+        <div class="cs-stat-number">
+          <span class="counter" data-target="47" data-suffix="%">0</span>
+        </div>
+        <div class="cs-stat-label">Reduction in crop loss via early detection</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     DIVIDER
+     ============================================================ -->
+<div class="container">
+  <hr class="cs-divider">
+</div>
+
+
+<!-- ============================================================
+     TECHNOLOGY STACK
+     ============================================================ -->
+<section class="cs-tech">
+  <div class="container">
+    <h2 class="cs-section-heading reveal">Technology Stack</h2>
+
+    <div class="cs-tech-card reveal delay-1">
+      <div class="tech-grid-bg"></div>
+
+      <div class="cs-tech-group">
+        <div class="cs-tech-group-label">Frontend</div>
+        <div class="cs-tech-pills">
+          <span class="cs-tech-pill">Next.js 14</span>
+          <span class="cs-tech-pill">React</span>
+          <span class="cs-tech-pill">TypeScript</span>
+          <span class="cs-tech-pill">Mapbox GL</span>
+          <span class="cs-tech-pill">D3.js</span>
+          <span class="cs-tech-pill">TanStack Query</span>
+        </div>
+      </div>
+
+      <div class="cs-tech-group">
+        <div class="cs-tech-group-label">Backend</div>
+        <div class="cs-tech-pills">
+          <span class="cs-tech-pill">Python</span>
+          <span class="cs-tech-pill">FastAPI</span>
+          <span class="cs-tech-pill">Apache Kafka</span>
+          <span class="cs-tech-pill">Celery</span>
+        </div>
+      </div>
+
+      <div class="cs-tech-group">
+        <div class="cs-tech-group-label">Data</div>
+        <div class="cs-tech-pills">
+          <span class="cs-tech-pill">PostgreSQL</span>
+          <span class="cs-tech-pill">PostGIS</span>
+          <span class="cs-tech-pill">TimescaleDB</span>
+          <span class="cs-tech-pill">Redis</span>
+        </div>
+      </div>
+
+      <div class="cs-tech-group">
+        <div class="cs-tech-group-label">Machine Learning</div>
+        <div class="cs-tech-pills">
+          <span class="cs-tech-pill">TensorFlow</span>
+          <span class="cs-tech-pill">scikit-learn</span>
+          <span class="cs-tech-pill">NDVI Processing Pipeline</span>
+        </div>
+      </div>
+
+      <div class="cs-tech-group">
+        <div class="cs-tech-group-label">Infrastructure</div>
+        <div class="cs-tech-pills">
+          <span class="cs-tech-pill">AWS (ECS, S3, Lambda)</span>
+          <span class="cs-tech-pill">CloudFront</span>
+          <span class="cs-tech-pill">GitHub Actions</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     DIVIDER
+     ============================================================ -->
+<div class="container">
+  <hr class="cs-divider">
+</div>
+
+
+<!-- ============================================================
+     TESTIMONIAL
+     ============================================================ -->
+<section class="cs-testimonial">
+  <div class="container">
+
+    <div class="cs-testimonial-card reveal">
+
+      <div class="cs-quote-icon">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311C9.591 11.69 11 13.182 11 15c0 1.933-1.567 3.5-3.5 3.5-1.202 0-2.325-.586-2.917-1.179zM16.583 17.321C15.553 16.227 15 15 15 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311C21.591 11.69 23 13.182 23 15c0 1.933-1.567 3.5-3.5 3.5-1.202 0-2.325-.586-2.917-1.179z"/>
+        </svg>
+      </div>
+
+      <p class="cs-quote-text">
+        JU. transformed our fragmented data systems into a unified platform that our entire team actually wants to use. The precision of the engineering and the elegance of the interface exceeded every expectation.
+      </p>
+
+      <p class="cs-quote-attr">Dr. Sarah Chen, CTO, ALGX Inc.</p>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ============================================================
+     DIVIDER
+     ============================================================ -->
+<div class="container">
+  <hr class="cs-divider">
+</div>
+
+
+<!-- ============================================================
+     NEXT PROJECT
+     ============================================================ -->
+<section class="cs-next">
+  <div class="container-wide">
+
+    <div class="cs-next-label reveal">Next Project</div>
+
+    <a href="case-study-ea.html" class="cs-next-card reveal delay-1">
+      <div class="cs-next-info">
+        <span class="cs-next-tag">Bio-Longevity</span>
+        <h3 class="cs-next-title">Engineered<br>Adherence</h3>
+        <p class="cs-next-desc">Premium peptide therapeutics wellness platform with physician-grade protocols and real-time biomarker tracking.</p>
+      </div>
+      <div class="cs-next-visual">
+        <div class="cs-next-visual-bg"></div>
+        <div class="visual-grid"></div>
+        <span class="next-label">EA</span>
+      </div>
+    </a>
+
+    <div class="cs-next-cta reveal delay-2">
+      <a href="work.html" class="btn btn-secondary">
+        View All Projects
+        <svg class="btn-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 8h10M9 4l4 4-4 4"/>
+        </svg>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-main">
+      <div class="footer-brand">
+        <a href="index.html" class="header-logo">JU<span>.</span></a>
+        <p>Engineering premium digital products.</p>
+      </div>
+      <div class="footer-social">
+        <a href="mailto:juliuswilliams97@gmail.com" aria-label="Email">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13 2 4"/></svg>
+        </a>
+        <a href="https://github.com/friizzyy" target="_blank" rel="noopener" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+        </a>
+        <a href="https://x.com/0xFrizzy" target="_blank" rel="noopener" aria-label="X / Twitter">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l7.07 8.51L4 20h2l5.39-5.74L15.5 20H21l-7.41-8.9L20 4h-2l-4.95 5.27L9.5 4H4z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <span>&copy; 2025 JU. All rights reserved.</span>
+    </div>
+  </div>
+</footer>
+
+
+<!-- Main JS -->
+<script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,1107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Process | JU. | Digital Architect</title>
+<meta name="description" content="A systematic, engineered approach to transforming ambitious ideas into polished digital products. Discover the proven 5-phase framework behind every successful launch.">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@300;400;500&family=Unbounded:wght@700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+/* ============================================================
+   Process Page - Specific Styles
+   ============================================================ */
+
+/* ---- Page Hero ---- */
+
+.process-hero {
+  position: relative;
+  z-index: var(--z-base);
+  padding: 180px 0 100px;
+  text-align: center;
+}
+
+.process-hero .caption-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 20px;
+  border-radius: var(--radius-full);
+  background: var(--cyan-a10);
+  border: 1px solid rgba(6, 182, 212, .15);
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  margin-bottom: 32px;
+}
+
+.process-hero .hero-title {
+  margin-bottom: 32px;
+}
+
+.process-hero .hero-title .line-white {
+  display: block;
+  background: linear-gradient(180deg, #ffffff 0%, rgba(238, 238, 242, .7) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.process-hero .hero-title .line-gradient {
+  display: block;
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  background: linear-gradient(135deg, var(--cyan), var(--violet), var(--pink));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.process-hero .hero-body {
+  max-width: 740px;
+  margin: 0 auto;
+  font-size: 18px;
+  line-height: 1.75;
+  color: var(--fg2);
+  font-weight: 300;
+}
+
+
+/* ---- Timeline Section ---- */
+
+.timeline-section {
+  position: relative;
+  z-index: var(--z-base);
+  padding: 80px 0 120px;
+}
+
+.timeline {
+  position: relative;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+/* Vertical connecting line */
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 48px;
+  width: 1px;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    var(--fg4) 5%,
+    var(--cyan-a20) 30%,
+    var(--violet-a20) 60%,
+    var(--fg4) 95%,
+    transparent 100%
+  );
+}
+
+/* Glow on the line */
+.timeline::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 46px;
+  width: 5px;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(6, 182, 212, .08) 20%,
+    rgba(139, 92, 246, .06) 50%,
+    rgba(244, 63, 94, .06) 80%,
+    transparent 100%
+  );
+  filter: blur(4px);
+  pointer-events: none;
+}
+
+
+/* ---- Phase Item ---- */
+
+.phase-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 96px 1fr;
+  gap: 40px;
+  padding-bottom: 64px;
+}
+
+.phase-item:last-child {
+  padding-bottom: 0;
+}
+
+/* ---- Phase Number (Left) ---- */
+
+.phase-number-wrap {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.phase-number {
+  font-family: var(--display);
+  font-size: 48px;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  position: relative;
+  z-index: 2;
+}
+
+/* Node dot on the timeline */
+.phase-node {
+  position: absolute;
+  top: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid currentColor;
+  background: var(--bg);
+  z-index: 3;
+  box-shadow: 0 0 16px currentColor;
+}
+
+.phase-node::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+/* Phase accent colors */
+.phase-item.accent-cyan .phase-number    { background: linear-gradient(135deg, var(--cyan), #67e8f9); }
+.phase-item.accent-violet .phase-number  { background: linear-gradient(135deg, var(--violet), #c4b5fd); }
+.phase-item.accent-blue .phase-number    { background: linear-gradient(135deg, var(--blue), #93c5fd); }
+.phase-item.accent-rose .phase-number    { background: linear-gradient(135deg, var(--rose), #fda4af); }
+.phase-item.accent-amber .phase-number   { background: linear-gradient(135deg, var(--amber), #fcd34d); }
+
+.phase-item.accent-cyan .phase-node      { color: var(--cyan); }
+.phase-item.accent-violet .phase-node    { color: var(--violet); }
+.phase-item.accent-blue .phase-node      { color: var(--blue); }
+.phase-item.accent-rose .phase-node      { color: var(--rose); }
+.phase-item.accent-amber .phase-node     { color: var(--amber); }
+
+
+/* ---- Phase Card (Right) ---- */
+
+.phase-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.phase-card .card-accent-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+.phase-item.accent-cyan .card-accent-bar    { background: linear-gradient(90deg, var(--cyan), transparent); }
+.phase-item.accent-violet .card-accent-bar  { background: linear-gradient(90deg, var(--violet), transparent); }
+.phase-item.accent-blue .card-accent-bar    { background: linear-gradient(90deg, var(--blue), transparent); }
+.phase-item.accent-rose .card-accent-bar    { background: linear-gradient(90deg, var(--rose), transparent); }
+.phase-item.accent-amber .card-accent-bar   { background: linear-gradient(90deg, var(--amber), transparent); }
+
+.phase-card .phase-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.phase-card .phase-title {
+  font-family: var(--sans);
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--fg);
+}
+
+.phase-card .phase-duration {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  padding: 5px 14px;
+  border-radius: var(--radius-full);
+  background: var(--fg4);
+  border: 1px solid var(--fg4);
+  white-space: nowrap;
+}
+
+.phase-item.accent-cyan .phase-duration    { color: var(--cyan); }
+.phase-item.accent-violet .phase-duration  { color: var(--violet); }
+.phase-item.accent-blue .phase-duration    { color: var(--blue); }
+.phase-item.accent-rose .phase-duration    { color: var(--rose); }
+.phase-item.accent-amber .phase-duration   { color: var(--amber); }
+
+.phase-card .phase-desc {
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--fg2);
+  font-weight: 300;
+  margin-bottom: 28px;
+}
+
+.phase-card .deliverables-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--fg3);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.phase-card .deliverables-label::before {
+  content: '';
+  display: block;
+  width: 12px;
+  height: 1px;
+}
+
+.phase-item.accent-cyan .deliverables-label::before    { background: var(--cyan); }
+.phase-item.accent-violet .deliverables-label::before  { background: var(--violet); }
+.phase-item.accent-blue .deliverables-label::before    { background: var(--blue); }
+.phase-item.accent-rose .deliverables-label::before    { background: var(--rose); }
+.phase-item.accent-amber .deliverables-label::before   { background: var(--amber); }
+
+.phase-card .deliverables-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.phase-card .deliverables-list .deliverable-tag {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: .03em;
+  color: var(--fg2);
+  background: var(--fg4);
+  border: 1px solid rgba(238, 238, 242, .04);
+  border-radius: var(--radius-full);
+  padding: 6px 14px;
+  transition: all var(--transition-base);
+}
+
+.phase-card .deliverables-list .deliverable-tag:hover {
+  border-color: var(--fg3);
+  color: var(--fg);
+  background: rgba(238, 238, 242, .06);
+  transform: translateY(-1px);
+}
+
+/* Per-accent hover glow on phase cards */
+.phase-item.accent-cyan .phase-card:hover    { box-shadow: 0 8px 40px rgba(6, 182, 212, .08), 0 0 60px rgba(6, 182, 212, .03); }
+.phase-item.accent-violet .phase-card:hover  { box-shadow: 0 8px 40px rgba(139, 92, 246, .08), 0 0 60px rgba(139, 92, 246, .03); }
+.phase-item.accent-blue .phase-card:hover    { box-shadow: 0 8px 40px rgba(59, 130, 246, .08), 0 0 60px rgba(59, 130, 246, .03); }
+.phase-item.accent-rose .phase-card:hover    { box-shadow: 0 8px 40px rgba(244, 63, 94, .08), 0 0 60px rgba(244, 63, 94, .03); }
+.phase-item.accent-amber .phase-card:hover   { box-shadow: 0 8px 40px rgba(245, 158, 11, .08), 0 0 60px rgba(245, 158, 11, .03); }
+
+
+/* ---- Principles Section ---- */
+
+.principles-section {
+  position: relative;
+  z-index: var(--z-base);
+  padding: 120px 0;
+}
+
+.principles-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.principle-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.principle-card .card-accent-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, var(--cyan-a40), transparent);
+}
+
+.principle-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  background: var(--cyan-a10);
+  color: var(--cyan);
+}
+
+.principle-card h3 {
+  font-family: var(--sans);
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--fg);
+  margin-bottom: 12px;
+}
+
+.principle-card p {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--fg2);
+  font-weight: 300;
+}
+
+
+/* ---- FAQ Section ---- */
+
+.faq-section {
+  position: relative;
+  z-index: var(--z-base);
+  padding: 120px 0;
+}
+
+.faq-list {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.faq-item {
+  border-bottom: 1px solid var(--fg4);
+}
+
+.faq-item:first-child {
+  border-top: 1px solid var(--fg4);
+}
+
+.faq-question {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  width: 100%;
+  padding: 28px 0;
+  font-family: var(--sans);
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--fg);
+  text-align: left;
+  cursor: none;
+  transition: color var(--transition-base);
+  background: none;
+  border: none;
+}
+
+.faq-question:hover {
+  color: var(--cyan);
+}
+
+.faq-question .faq-icon {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1px solid var(--fg4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-base);
+  position: relative;
+}
+
+.faq-question .faq-icon::before,
+.faq-question .faq-icon::after {
+  content: '';
+  position: absolute;
+  background: var(--fg2);
+  border-radius: 1px;
+  transition: all .3s var(--ease);
+}
+
+.faq-question .faq-icon::before {
+  width: 10px;
+  height: 1.5px;
+}
+
+.faq-question .faq-icon::after {
+  width: 1.5px;
+  height: 10px;
+}
+
+.faq-item.active .faq-question .faq-icon {
+  border-color: var(--cyan);
+  background: var(--cyan-a10);
+  transform: rotate(45deg);
+}
+
+.faq-item.active .faq-question .faq-icon::before,
+.faq-item.active .faq-question .faq-icon::after {
+  background: var(--cyan);
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .5s var(--ease-smooth),
+              padding .5s var(--ease-smooth);
+}
+
+.faq-answer-inner {
+  padding: 0 0 28px;
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--fg2);
+  font-weight: 300;
+  max-width: 680px;
+}
+
+.faq-item.active .faq-answer {
+  max-height: 300px;
+}
+
+
+/* ---- CTA Section ---- */
+
+.process-cta-section {
+  position: relative;
+  z-index: var(--z-base);
+  padding: 120px 0 140px;
+  text-align: center;
+}
+
+.process-cta-section .cta-heading {
+  margin-bottom: 16px;
+}
+
+.process-cta-section .cta-sub {
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--fg2);
+  font-weight: 300;
+  max-width: 520px;
+  margin: 0 auto 48px;
+}
+
+
+/* ---- Responsive ---- */
+
+@media (max-width: 1024px) {
+  .principles-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .process-hero {
+    padding: 140px 0 60px;
+  }
+}
+
+@media (max-width: 768px) {
+  .principles-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .phase-item {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding-left: 32px;
+  }
+
+  .timeline::before {
+    left: 12px;
+  }
+
+  .timeline::after {
+    left: 10px;
+  }
+
+  .phase-number-wrap {
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .phase-node {
+    position: absolute;
+    top: 50%;
+    left: -20px;
+    transform: translateY(-50%);
+  }
+
+  .phase-number {
+    font-size: 36px;
+  }
+
+  .phase-card .phase-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .faq-question {
+    font-size: 15px;
+    padding: 22px 0;
+  }
+
+  .process-hero {
+    padding: 120px 0 40px;
+  }
+
+  .process-hero .hero-body {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .process-hero {
+    padding: 100px 0 32px;
+  }
+
+  .phase-item {
+    padding-left: 24px;
+  }
+
+  .timeline::before {
+    left: 6px;
+  }
+
+  .timeline::after {
+    left: 4px;
+  }
+
+  .phase-node {
+    width: 10px;
+    height: 10px;
+    left: -18px;
+  }
+}
+</style>
+</head>
+<body data-page="process">
+
+<!-- Custom Cursor -->
+<div class="cursor" id="cur"></div>
+<div class="cursor-glow" id="glow"></div>
+
+<!-- Overlays -->
+<div class="grain-overlay"></div>
+<div class="vignette-overlay"></div>
+
+<!-- Particles Background -->
+<canvas id="particles" style="position:fixed;inset:0;z-index:0;pointer-events:none;"></canvas>
+
+
+<!-- ============================================================
+     HEADER
+     ============================================================ -->
+<header class="header">
+  <a href="index.html" class="header-logo">JU<span>.</span></a>
+  <nav class="header-nav">
+    <a href="work.html">Work</a>
+    <a href="about.html">About</a>
+    <a href="process.html" class="active">Process</a>
+    <a href="contact.html" class="header-cta">Get in Touch</a>
+  </nav>
+</header>
+
+
+<!-- ============================================================
+     PAGE HERO
+     ============================================================ -->
+<section class="process-hero">
+  <div class="container">
+    <div class="reveal">
+      <div class="caption-pill">
+        <span class="pulse-dot"></span>
+        How I Work
+      </div>
+    </div>
+    <h1 class="heading-xl hero-title reveal delay-1">
+      <span class="line-white">Engineered</span>
+      <span class="line-gradient">Process.</span>
+    </h1>
+    <p class="hero-body reveal delay-2">
+      A systematic approach to transforming ambitious ideas into polished digital
+      products. No guesswork, just a proven framework refined across dozens
+      of successful launches.
+    </p>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     DIVIDER
+     ============================================================ -->
+<div class="container">
+  <hr class="divider-glow">
+</div>
+
+
+<!-- ============================================================
+     PROCESS TIMELINE
+     ============================================================ -->
+<section class="timeline-section">
+  <div class="container">
+    <div class="section-header section-header--center reveal">
+      <p class="caption mb-lg" style="justify-content:center;">The Framework</p>
+      <h2 class="heading-lg">
+        Five Phases to
+        <span class="serif-italic text-gradient-multi">Excellence.</span>
+      </h2>
+    </div>
+
+    <div class="timeline">
+
+      <!-- ======== Phase 01 - Discovery & Strategy ======== -->
+      <div class="phase-item accent-cyan reveal">
+        <div class="phase-number-wrap">
+          <span class="phase-number">01</span>
+          <span class="phase-node"></span>
+        </div>
+        <div class="glass-card phase-card">
+          <div class="card-accent-bar"></div>
+          <div class="phase-header">
+            <h3 class="phase-title">Discovery &amp; Strategy</h3>
+            <span class="phase-duration">Week 1-2</span>
+          </div>
+          <p class="phase-desc">
+            Every exceptional product begins with deep understanding. I immerse myself
+            in your business, market, and users to uncover the insights that drive
+            meaningful design decisions.
+          </p>
+          <div class="deliverables-label">Deliverables</div>
+          <div class="deliverables-list">
+            <span class="deliverable-tag">Stakeholder interviews</span>
+            <span class="deliverable-tag">Competitive analysis</span>
+            <span class="deliverable-tag">User persona mapping</span>
+            <span class="deliverable-tag">Technical feasibility audit</span>
+            <span class="deliverable-tag">Strategic roadmap</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ======== Phase 02 - Architecture & Design ======== -->
+      <div class="phase-item accent-violet reveal delay-1">
+        <div class="phase-number-wrap">
+          <span class="phase-number">02</span>
+          <span class="phase-node"></span>
+        </div>
+        <div class="glass-card phase-card">
+          <div class="card-accent-bar"></div>
+          <div class="phase-header">
+            <h3 class="phase-title">Architecture &amp; Design</h3>
+            <span class="phase-duration">Week 2-4</span>
+          </div>
+          <p class="phase-desc">
+            With strategy locked, I architect the system from information
+            architecture and user flows to high-fidelity interface design. Every screen
+            is prototyped and stress-tested before a single line of code is written.
+          </p>
+          <div class="deliverables-label">Deliverables</div>
+          <div class="deliverables-list">
+            <span class="deliverable-tag">Information architecture</span>
+            <span class="deliverable-tag">Wireframes &amp; user flows</span>
+            <span class="deliverable-tag">High-fidelity UI design</span>
+            <span class="deliverable-tag">Interactive prototypes</span>
+            <span class="deliverable-tag">Design system foundation</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ======== Phase 03 - Engineering & Development ======== -->
+      <div class="phase-item accent-blue reveal delay-2">
+        <div class="phase-number-wrap">
+          <span class="phase-number">03</span>
+          <span class="phase-node"></span>
+        </div>
+        <div class="glass-card phase-card">
+          <div class="card-accent-bar"></div>
+          <div class="phase-header">
+            <h3 class="phase-title">Engineering &amp; Development</h3>
+            <span class="phase-duration">Week 4-8</span>
+          </div>
+          <p class="phase-desc">
+            This is where precision meets performance. Clean, modular code built on
+            modern frameworks, optimized for speed, accessibility, and long-term
+            maintainability. Every component is crafted, not copied.
+          </p>
+          <div class="deliverables-label">Deliverables</div>
+          <div class="deliverables-list">
+            <span class="deliverable-tag">Frontend development</span>
+            <span class="deliverable-tag">Backend API architecture</span>
+            <span class="deliverable-tag">Database design &amp; optimization</span>
+            <span class="deliverable-tag">Third-party integrations</span>
+            <span class="deliverable-tag">Performance benchmarking</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ======== Phase 04 - Testing & Refinement ======== -->
+      <div class="phase-item accent-rose reveal delay-3">
+        <div class="phase-number-wrap">
+          <span class="phase-number">04</span>
+          <span class="phase-node"></span>
+        </div>
+        <div class="glass-card phase-card">
+          <div class="card-accent-bar"></div>
+          <div class="phase-header">
+            <h3 class="phase-title">Testing &amp; Refinement</h3>
+            <span class="phase-duration">Week 8-9</span>
+          </div>
+          <p class="phase-desc">
+            Rigorous quality assurance across devices, browsers, and edge cases. I sweat
+            the details others miss, from micro-animation timing to load-state
+            choreography.
+          </p>
+          <div class="deliverables-label">Deliverables</div>
+          <div class="deliverables-list">
+            <span class="deliverable-tag">Cross-browser testing</span>
+            <span class="deliverable-tag">Performance optimization</span>
+            <span class="deliverable-tag">Accessibility audit (WCAG)</span>
+            <span class="deliverable-tag">Security review</span>
+            <span class="deliverable-tag">User acceptance testing</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ======== Phase 05 - Launch & Scale ======== -->
+      <div class="phase-item accent-amber reveal delay-4">
+        <div class="phase-number-wrap">
+          <span class="phase-number">05</span>
+          <span class="phase-node"></span>
+        </div>
+        <div class="glass-card phase-card">
+          <div class="card-accent-bar"></div>
+          <div class="phase-header">
+            <h3 class="phase-title">Launch &amp; Scale</h3>
+            <span class="phase-duration">Week 9-10+</span>
+          </div>
+          <p class="phase-desc">
+            A flawless launch is just the beginning. I set up monitoring, analytics,
+            and growth infrastructure, then stay on as your technical partner to
+            iterate based on real-world data.
+          </p>
+          <div class="deliverables-label">Deliverables</div>
+          <div class="deliverables-list">
+            <span class="deliverable-tag">Deployment &amp; DevOps</span>
+            <span class="deliverable-tag">Analytics integration</span>
+            <span class="deliverable-tag">Performance monitoring</span>
+            <span class="deliverable-tag">Growth optimization</span>
+            <span class="deliverable-tag">Ongoing technical partnership</span>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /.timeline -->
+  </div>
+</section>
+
+
+<!-- ============================================================
+     DIVIDER
+     ============================================================ -->
+<div class="container">
+  <hr class="divider-glow">
+</div>
+
+
+<!-- ============================================================
+     PRINCIPLES
+     ============================================================ -->
+<section class="principles-section">
+  <div class="container">
+    <div class="section-header section-header--center reveal">
+      <p class="caption mb-lg" style="justify-content:center;">Principles</p>
+      <h2 class="heading-lg">
+        How I
+        <span class="serif-italic text-gradient-multi">Operate.</span>
+      </h2>
+    </div>
+
+    <div class="principles-grid">
+
+      <!-- Zero Compromise -->
+      <div class="glass-card principle-card reveal">
+        <div class="card-accent-top"></div>
+        <div class="principle-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/>
+            <path d="M9 12l2 2 4-4"/>
+          </svg>
+        </div>
+        <h3>Zero Compromise</h3>
+        <p>Every pixel, every interaction, every line of code meets the highest standard. Period.</p>
+      </div>
+
+      <!-- Async Communication -->
+      <div class="glass-card principle-card reveal delay-1">
+        <div class="card-accent-top"></div>
+        <div class="principle-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+            <path d="M8 9h8M8 13h4"/>
+          </svg>
+        </div>
+        <h3>Async Communication</h3>
+        <p>Detailed written updates, Loom walkthroughs, and structured check-ins. No unnecessary meetings.</p>
+      </div>
+
+      <!-- Full Transparency -->
+      <div class="glass-card principle-card reveal delay-2">
+        <div class="card-accent-top"></div>
+        <div class="principle-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+            <circle cx="12" cy="12" r="3"/>
+          </svg>
+        </div>
+        <h3>Full Transparency</h3>
+        <p>Real-time access to code repos, staging environments, and project boards from day one.</p>
+      </div>
+
+      <!-- Owned Outcomes -->
+      <div class="glass-card principle-card reveal delay-3">
+        <div class="card-accent-top"></div>
+        <div class="principle-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+            <path d="M2 17l10 5 10-5"/>
+            <path d="M2 12l10 5 10-5"/>
+          </svg>
+        </div>
+        <h3>Owned Outcomes</h3>
+        <p>I don't just build features. I take ownership of results and iterate until the metrics prove success.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     DIVIDER
+     ============================================================ -->
+<div class="container">
+  <hr class="divider">
+</div>
+
+
+<!-- ============================================================
+     FAQ
+     ============================================================ -->
+<section class="faq-section">
+  <div class="container">
+    <div class="section-header section-header--center reveal">
+      <p class="caption mb-lg" style="justify-content:center;">FAQ</p>
+      <h2 class="heading-lg">
+        Common
+        <span class="serif-italic text-gradient-multi">Questions.</span>
+      </h2>
+    </div>
+
+    <div class="faq-list">
+
+      <!-- FAQ 1 -->
+      <div class="faq-item reveal">
+        <button class="faq-question" aria-expanded="false">
+          <span>What types of projects do you take on?</span>
+          <span class="faq-icon"></span>
+        </button>
+        <div class="faq-answer" role="region">
+          <div class="faq-answer-inner">
+            I specialize in premium web applications, SaaS platforms, AI-powered
+            products, and complex data dashboards. I work with ambitious startups
+            and established brands who need engineering excellence, not just a developer.
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ 3 -->
+      <div class="faq-item reveal delay-2">
+        <button class="faq-question" aria-expanded="false">
+          <span>How do you handle communication?</span>
+          <span class="faq-icon"></span>
+        </button>
+        <div class="faq-answer" role="region">
+          <div class="faq-answer-inner">
+            I provide detailed async updates via Slack or email, weekly Loom video
+            walkthroughs, and structured milestone reviews. No scattered Zoom calls
+            and every interaction is intentional and documented.
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ 4 -->
+      <div class="faq-item reveal delay-3">
+        <button class="faq-question" aria-expanded="false">
+          <span>Do you work with existing teams?</span>
+          <span class="faq-icon"></span>
+        </button>
+        <div class="faq-answer" role="region">
+          <div class="faq-answer-inner">
+            Absolutely. I integrate seamlessly with in-house teams, following your
+            existing workflows, contributing to your codebase standards, and mentoring
+            junior developers when needed.
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ 5 -->
+      <div class="faq-item reveal delay-4">
+        <button class="faq-question" aria-expanded="false">
+          <span>What happens after launch?</span>
+          <span class="faq-icon"></span>
+        </button>
+        <div class="faq-answer" role="region">
+          <div class="faq-answer-inner">
+            I offer ongoing technical partnership packages for maintenance,
+            optimization, and feature development. Most clients continue working
+            with me long after the initial launch.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     DIVIDER
+     ============================================================ -->
+<div class="container">
+  <hr class="divider-glow">
+</div>
+
+
+<!-- ============================================================
+     CTA
+     ============================================================ -->
+<section class="process-cta-section">
+  <div class="container">
+    <div class="reveal">
+      <p class="caption mb-lg" style="justify-content:center;">
+        <span style="display:inline-block;width:24px;height:1px;background:var(--cyan);margin-right:12px;vertical-align:middle;"></span>
+        Next Steps
+      </p>
+    </div>
+    <h2 class="heading-lg cta-heading reveal delay-1">
+      Ready to start your project?
+    </h2>
+    <p class="cta-sub reveal delay-2">
+      Let's discuss your vision and build something remarkable.
+    </p>
+    <div class="reveal delay-3">
+      <a href="contact.html" class="btn btn-primary btn-lg magnetic">
+        Book a Discovery Call
+        <svg class="btn-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 8h10M9 4l4 4-4 4"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-main">
+      <div class="footer-brand">
+        <a href="index.html" class="header-logo">JU<span>.</span></a>
+        <p>Engineering premium digital products.</p>
+      </div>
+      <div class="footer-social">
+        <a href="mailto:juliuswilliams97@gmail.com" aria-label="Email">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13 2 4"/></svg>
+        </a>
+        <a href="https://github.com/friizzyy" target="_blank" rel="noopener" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+        </a>
+        <a href="https://x.com/0xFrizzy" target="_blank" rel="noopener" aria-label="X / Twitter">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l7.07 8.51L4 20h2l5.39-5.74L15.5 20H21l-7.41-8.9L20 4h-2l-4.95 5.27L9.5 4H4z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <span>&copy; 2025 JU. All rights reserved.</span>
+    </div>
+  </div>
+</footer>
+
+
+<!-- Main JS -->
+<script src="main.js"></script>
+
+<!-- FAQ Accordion Script -->
+<script>
+(function() {
+  const faqItems = document.querySelectorAll('.faq-item');
+
+  faqItems.forEach(function(item) {
+    const question = item.querySelector('.faq-question');
+    const answer = item.querySelector('.faq-answer');
+    const inner = item.querySelector('.faq-answer-inner');
+
+    question.addEventListener('click', function() {
+      const isActive = item.classList.contains('active');
+
+      // Close all other items
+      faqItems.forEach(function(other) {
+        if (other !== item && other.classList.contains('active')) {
+          other.classList.remove('active');
+          other.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+          other.querySelector('.faq-answer').style.maxHeight = '0';
+        }
+      });
+
+      // Toggle current item
+      if (isActive) {
+        item.classList.remove('active');
+        question.setAttribute('aria-expanded', 'false');
+        answer.style.maxHeight = '0';
+      } else {
+        item.classList.add('active');
+        question.setAttribute('aria-expanded', 'true');
+        answer.style.maxHeight = inner.scrollHeight + 40 + 'px';
+      }
+    });
+  });
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Work | JU. | Digital Architect</title>
+<meta name="description" content="Selected projects by JU. A curated collection of digital products, platforms, and experiences built at the intersection of design and engineering.">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@300;400;500&family=Unbounded:wght@700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+/* ============================================================
+   Work Page - Specific Styles
+   ============================================================ */
+
+/* ---- Page Hero ---- */
+
+.work-hero {
+  position: relative;
+  z-index: var(--z-base);
+  padding: 180px 0 100px;
+  text-align: center;
+}
+
+.work-hero .caption-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 20px;
+  border-radius: var(--radius-full);
+  background: var(--cyan-a10);
+  border: 1px solid rgba(6, 182, 212, .15);
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  margin-bottom: 32px;
+}
+
+.caption-pill .pulse-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--cyan);
+  animation: pulseDot 2s ease-in-out infinite;
+}
+
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%      { opacity: .4; transform: scale(.75); }
+}
+
+.work-hero .hero-title {
+  margin-bottom: 24px;
+}
+
+.work-hero .hero-subtitle {
+  max-width: 640px;
+  margin: 0 auto;
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--fg2);
+  font-weight: 300;
+}
+
+
+/* ---- Project Cards ---- */
+
+.projects-section {
+  position: relative;
+  z-index: var(--z-base);
+  padding: 40px 0 120px;
+}
+
+.project-card {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  background: var(--bg-card);
+  border: 1px solid var(--fg4);
+  border-radius: var(--radius-xl);
+  backdrop-filter: blur(20px) saturate(1.3);
+  -webkit-backdrop-filter: blur(20px) saturate(1.3);
+  overflow: hidden;
+  transition: border-color .5s var(--ease-smooth),
+              box-shadow .5s var(--ease-smooth),
+              transform .5s var(--ease-smooth);
+  transform-style: preserve-3d;
+  margin-bottom: 48px;
+}
+
+.project-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    135deg,
+    rgba(238, 238, 242, .06),
+    transparent 50%,
+    rgba(6, 182, 212, .04)
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity .5s var(--ease-smooth);
+}
+
+.project-card:hover::before {
+  opacity: 1;
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+}
+
+/* Color-specific hover glows */
+.project-card.card--emerald:hover {
+  border-color: rgba(16, 185, 129, .25);
+  box-shadow: 0 16px 80px rgba(16, 185, 129, .08),
+              0 0 100px rgba(16, 185, 129, .04);
+}
+
+.project-card.card--violet:hover {
+  border-color: rgba(139, 92, 246, .25);
+  box-shadow: 0 16px 80px rgba(139, 92, 246, .08),
+              0 0 100px rgba(139, 92, 246, .04);
+}
+
+.project-card.card--blue:hover {
+  border-color: rgba(59, 130, 246, .25);
+  box-shadow: 0 16px 80px rgba(59, 130, 246, .08),
+              0 0 100px rgba(59, 130, 246, .04);
+}
+
+.project-card.card--rose:hover {
+  border-color: rgba(244, 63, 94, .25);
+  box-shadow: 0 16px 80px rgba(244, 63, 94, .08),
+              0 0 100px rgba(244, 63, 94, .04);
+}
+
+.project-card.card--amber:hover {
+  border-color: rgba(245, 158, 11, .25);
+  box-shadow: 0 16px 80px rgba(245, 158, 11, .08),
+              0 0 100px rgba(245, 158, 11, .04);
+}
+
+.project-card.card--slate:hover {
+  border-color: rgba(122, 120, 116, .25);
+  box-shadow: 0 16px 80px rgba(122, 120, 116, .08),
+              0 0 100px rgba(122, 120, 116, .04);
+}
+
+/* ---- Project Info (left side) ---- */
+
+.project-info {
+  padding: 56px 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 24px;
+}
+
+.project-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  border: 1px solid;
+}
+
+.card--emerald .project-tag {
+  color: var(--emerald);
+  background: rgba(16, 185, 129, .08);
+  border-color: rgba(16, 185, 129, .15);
+}
+
+.card--violet .project-tag {
+  color: var(--violet);
+  background: rgba(139, 92, 246, .08);
+  border-color: rgba(139, 92, 246, .15);
+}
+
+.card--blue .project-tag {
+  color: var(--blue);
+  background: rgba(59, 130, 246, .08);
+  border-color: rgba(59, 130, 246, .15);
+}
+
+.card--rose .project-tag {
+  color: var(--rose);
+  background: rgba(244, 63, 94, .08);
+  border-color: rgba(244, 63, 94, .15);
+}
+
+.card--amber .project-tag {
+  color: var(--amber);
+  background: rgba(245, 158, 11, .08);
+  border-color: rgba(245, 158, 11, .15);
+}
+
+.card--slate .project-tag {
+  color: rgba(160, 154, 148, .85);
+  background: rgba(122, 120, 116, .1);
+  border-color: rgba(122, 120, 116, .15);
+}
+
+.project-title {
+  font-family: var(--sans);
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  color: var(--fg);
+}
+
+.project-description {
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--fg2);
+  font-weight: 300;
+  max-width: 480px;
+}
+
+.project-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.project-meta .tech-pill {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--fg3);
+  background: var(--fg4);
+  border: 1px solid var(--fg4);
+  border-radius: var(--radius-full);
+  padding: 5px 12px;
+  transition: all var(--transition-base);
+}
+
+.project-card:hover .tech-pill {
+  border-color: var(--fg3);
+  color: var(--fg2);
+}
+
+.project-footer {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-top: 8px;
+  padding-top: 20px;
+  border-top: 1px solid var(--fg4);
+}
+
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: .03em;
+  text-transform: uppercase;
+  color: var(--fg);
+  transition: gap .4s var(--ease-smooth), color .3s var(--ease);
+}
+
+.project-link:hover {
+  gap: 12px;
+}
+
+.card--emerald .project-link:hover { color: var(--emerald); }
+.card--violet .project-link:hover  { color: var(--violet); }
+.card--blue .project-link:hover    { color: var(--blue); }
+.card--rose .project-link:hover    { color: var(--rose); }
+.card--amber .project-link:hover   { color: var(--amber); }
+.card--slate .project-link:hover   { color: rgba(160, 154, 148, .85); }
+
+.project-link .arrow-icon {
+  width: 16px;
+  height: 16px;
+  transition: transform .3s var(--ease);
+}
+
+.project-link:hover .arrow-icon {
+  transform: translateX(3px);
+}
+
+.project-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--fg3);
+}
+
+.project-status .status-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  animation: pulseDot 2.5s ease-in-out infinite;
+}
+
+.card--emerald .status-dot { background: var(--emerald); }
+.card--violet .status-dot  { background: var(--violet); }
+.card--blue .status-dot    { background: var(--blue); }
+.card--rose .status-dot    { background: var(--rose); }
+.card--amber .status-dot   { background: var(--amber); }
+.card--slate .status-dot   { background: rgba(160, 154, 148, .85); }
+
+
+/* ---- Project Visual (right side) ---- */
+
+.project-visual {
+  position: relative;
+  min-height: 420px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.project-visual-bg {
+  position: absolute;
+  inset: 0;
+  opacity: .6;
+  transition: opacity .5s var(--ease-smooth),
+              transform .8s var(--ease-smooth);
+}
+
+.project-card:hover .project-visual-bg {
+  opacity: .85;
+  transform: scale(1.03);
+}
+
+/* ---- Live Site Preview (iframe in visual) ---- */
+.site-preview {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  overflow: hidden;
+}
+
+.site-preview iframe {
+  width: 1440px;
+  height: 900px;
+  border: none;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%) scale(0.47);
+  transform-origin: top center;
+  opacity: 0;
+  transition: opacity .8s ease;
+  clip-path: inset(0 0 0 0);
+}
+
+.site-preview iframe.loaded {
+  opacity: 1;
+}
+
+/* Screenshot fallback (Ulixes Corp) */
+.site-preview--img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity .8s ease;
+}
+.site-preview--img img.loaded { opacity: 1; }
+.project-card:hover .site-preview--img img { transform: scale(1.03); transition: opacity .8s ease, transform .8s var(--ease-smooth); }
+
+.card--emerald .project-visual-bg {
+  background:
+    radial-gradient(ellipse at 30% 50%, rgba(16, 185, 129, .15) 0%, transparent 60%),
+    radial-gradient(ellipse at 70% 30%, rgba(16, 185, 129, .08) 0%, transparent 50%),
+    radial-gradient(circle at 50% 80%, rgba(6, 182, 212, .06) 0%, transparent 50%),
+    linear-gradient(160deg, var(--bg2) 0%, var(--bg) 100%);
+}
+
+.card--violet .project-visual-bg {
+  background:
+    radial-gradient(ellipse at 30% 50%, rgba(139, 92, 246, .15) 0%, transparent 60%),
+    radial-gradient(ellipse at 70% 30%, rgba(139, 92, 246, .08) 0%, transparent 50%),
+    radial-gradient(circle at 50% 80%, rgba(236, 72, 153, .06) 0%, transparent 50%),
+    linear-gradient(160deg, var(--bg2) 0%, var(--bg) 100%);
+}
+
+.card--blue .project-visual-bg {
+  background:
+    radial-gradient(ellipse at 30% 50%, rgba(59, 130, 246, .15) 0%, transparent 60%),
+    radial-gradient(ellipse at 70% 30%, rgba(59, 130, 246, .08) 0%, transparent 50%),
+    radial-gradient(circle at 50% 80%, rgba(6, 182, 212, .06) 0%, transparent 50%),
+    linear-gradient(160deg, var(--bg2) 0%, var(--bg) 100%);
+}
+
+.card--rose .project-visual-bg {
+  background:
+    radial-gradient(ellipse at 30% 50%, rgba(244, 63, 94, .15) 0%, transparent 60%),
+    radial-gradient(ellipse at 70% 30%, rgba(244, 63, 94, .08) 0%, transparent 50%),
+    radial-gradient(circle at 50% 80%, rgba(245, 158, 11, .06) 0%, transparent 50%),
+    linear-gradient(160deg, var(--bg2) 0%, var(--bg) 100%);
+}
+
+.card--amber .project-visual-bg {
+  background:
+    radial-gradient(ellipse at 30% 50%, rgba(245, 158, 11, .15) 0%, transparent 60%),
+    radial-gradient(ellipse at 70% 30%, rgba(245, 158, 11, .08) 0%, transparent 50%),
+    radial-gradient(circle at 50% 80%, rgba(244, 63, 94, .06) 0%, transparent 50%),
+    linear-gradient(160deg, var(--bg2) 0%, var(--bg) 100%);
+}
+
+.card--slate .project-visual-bg {
+  background:
+    radial-gradient(ellipse at 30% 50%, rgba(122, 120, 116, .12) 0%, transparent 60%),
+    radial-gradient(ellipse at 70% 30%, rgba(90, 88, 84, .08) 0%, transparent 50%),
+    radial-gradient(circle at 50% 80%, rgba(160, 154, 148, .05) 0%, transparent 50%),
+    linear-gradient(160deg, #0a0a09 0%, #141412 40%, #1c1c20 100%);
+}
+
+/* Decorative elements inside visual */
+.project-visual .visual-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(238, 238, 242, .02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(238, 238, 242, .02) 1px, transparent 1px);
+  background-size: 40px 40px;
+  opacity: .5;
+}
+
+.project-visual .visual-label {
+  position: relative;
+  z-index: 2;
+  font-family: var(--display);
+  font-size: clamp(48px, 5vw, 72px);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  opacity: .12;
+  user-select: none;
+}
+
+.project-card:hover .visual-label {
+  opacity: .2;
+  transition: opacity .5s var(--ease-smooth);
+}
+
+.card--emerald .visual-label { color: var(--emerald); }
+.card--violet .visual-label  { color: var(--violet); }
+.card--blue .visual-label    { color: var(--blue); }
+.card--rose .visual-label    { color: var(--rose); }
+.card--amber .visual-label   { color: var(--amber); }
+.card--slate .visual-label   { color: rgba(160, 154, 148, .85); }
+
+/* Floating orb decoration */
+.project-visual .visual-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: .35;
+  animation: orbFloat 8s ease-in-out infinite;
+}
+
+.project-visual .visual-orb--primary {
+  width: 200px;
+  height: 200px;
+  top: 20%;
+  right: 15%;
+}
+
+.project-visual .visual-orb--secondary {
+  width: 120px;
+  height: 120px;
+  bottom: 20%;
+  left: 20%;
+  animation-delay: -3s;
+  animation-duration: 10s;
+}
+
+.card--emerald .visual-orb--primary   { background: var(--emerald); }
+.card--emerald .visual-orb--secondary { background: var(--cyan); }
+.card--violet .visual-orb--primary    { background: var(--violet); }
+.card--violet .visual-orb--secondary  { background: var(--pink); }
+.card--blue .visual-orb--primary      { background: var(--blue); }
+.card--blue .visual-orb--secondary    { background: var(--cyan); }
+.card--rose .visual-orb--primary      { background: var(--rose); }
+.card--rose .visual-orb--secondary    { background: var(--amber); }
+.card--amber .visual-orb--primary     { background: var(--amber); }
+.card--amber .visual-orb--secondary   { background: var(--rose); }
+.card--slate .visual-orb--primary     { background: rgba(122, 120, 116, .6); }
+.card--slate .visual-orb--secondary   { background: rgba(160, 154, 148, .4); }
+
+@keyframes orbFloat {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25%      { transform: translate(10px, -15px) scale(1.05); }
+  50%      { transform: translate(-5px, -25px) scale(.95); }
+  75%      { transform: translate(-15px, -10px) scale(1.02); }
+}
+
+/* Line decoration */
+.project-visual .visual-lines {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.project-visual .visual-lines::before,
+.project-visual .visual-lines::after {
+  content: '';
+  position: absolute;
+  background: currentColor;
+  opacity: .06;
+}
+
+.project-visual .visual-lines::before {
+  width: 1px;
+  height: 120%;
+  top: -10%;
+  left: 35%;
+  transform: rotate(15deg);
+}
+
+.project-visual .visual-lines::after {
+  width: 120%;
+  height: 1px;
+  top: 65%;
+  left: -10%;
+  transform: rotate(-8deg);
+}
+
+.card--emerald .visual-lines { color: var(--emerald); }
+.card--violet .visual-lines  { color: var(--violet); }
+.card--blue .visual-lines    { color: var(--blue); }
+.card--rose .visual-lines    { color: var(--rose); }
+.card--amber .visual-lines   { color: var(--amber); }
+.card--slate .visual-lines   { color: rgba(122, 120, 116, .6); }
+
+
+/* ---- Alternating Layout ---- */
+
+.project-card:nth-child(even) {
+  direction: rtl;
+}
+
+.project-card:nth-child(even) > * {
+  direction: ltr;
+}
+
+
+/* ---- Stats Section ---- */
+
+.stats-section {
+  position: relative;
+  z-index: var(--z-base);
+  padding: 60px 0 120px;
+}
+
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.stat-card {
+  position: relative;
+  background: var(--bg-card);
+  border: 1px solid var(--fg4);
+  border-radius: var(--radius-lg);
+  padding: 40px 32px;
+  backdrop-filter: blur(16px) saturate(1.2);
+  -webkit-backdrop-filter: blur(16px) saturate(1.2);
+  text-align: center;
+  transition: border-color var(--transition-base),
+              box-shadow var(--transition-smooth),
+              transform var(--transition-base);
+  overflow: hidden;
+}
+
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--cyan-a40), transparent);
+  opacity: 0;
+  transition: opacity var(--transition-base);
+}
+
+.stat-card:hover {
+  border-color: var(--fg3);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 40px rgba(6, 182, 212, .06);
+}
+
+.stat-card:hover::before {
+  opacity: 1;
+}
+
+.stat-number {
+  font-family: var(--display);
+  font-size: clamp(36px, 4vw, 52px);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  margin-bottom: 12px;
+}
+
+.stat-number .text-gradient-multi {
+  background: linear-gradient(135deg, var(--cyan), var(--violet), var(--pink));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.stat-label {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--fg3);
+}
+
+
+/* ---- CTA Section ---- */
+
+.cta-section {
+  position: relative;
+  z-index: var(--z-base);
+  padding: 120px 0 140px;
+  text-align: center;
+}
+
+.cta-section .cta-heading {
+  margin-bottom: 16px;
+}
+
+.cta-section .cta-sub {
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--fg2);
+  font-weight: 300;
+  max-width: 480px;
+  margin: 0 auto 40px;
+}
+
+
+/* ---- Responsive ---- */
+
+@media (max-width: 1024px) {
+  .project-card {
+    grid-template-columns: 1fr;
+  }
+
+  .project-card:nth-child(even) {
+    direction: ltr;
+  }
+
+  .project-visual {
+    min-height: 320px;
+    order: -1;
+  }
+
+  .project-info {
+    padding: 40px 36px;
+  }
+
+  .stats-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .work-hero {
+    padding: 140px 0 60px;
+  }
+}
+
+@media (max-width: 640px) {
+  .project-info {
+    padding: 32px 24px;
+  }
+
+  .project-visual {
+    min-height: 240px;
+  }
+
+  .stats-row {
+    grid-template-columns: 1fr;
+  }
+
+  .stat-card {
+    padding: 32px 24px;
+  }
+
+  .work-hero {
+    padding: 120px 0 40px;
+  }
+
+  .project-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+}
+</style>
+</head>
+<body data-page="work">
+
+<!-- Custom Cursor -->
+<div class="cursor" id="cur"></div>
+<div class="cursor-glow" id="glow"></div>
+
+<!-- Overlays -->
+<div class="grain-overlay"></div>
+<div class="vignette-overlay"></div>
+
+<!-- Particles Background -->
+<canvas id="particles" style="position:fixed;inset:0;z-index:0;pointer-events:none;"></canvas>
+
+
+<!-- ============================================================
+     HEADER
+     ============================================================ -->
+<header class="header">
+  <a href="index.html" class="header-logo">JU<span>.</span></a>
+  <nav class="header-nav">
+    <a href="work.html" class="active">Work</a>
+    <a href="about.html">About</a>
+    <a href="process.html">Process</a>
+    <a href="contact.html" class="header-cta">Get in Touch</a>
+  </nav>
+</header>
+
+
+<!-- ============================================================
+     PAGE HERO
+     ============================================================ -->
+<section class="work-hero">
+  <div class="container">
+    <div class="reveal">
+      <div class="caption-pill">
+        <span class="pulse-dot"></span>
+        Selected Projects
+      </div>
+    </div>
+    <h1 class="heading-xl hero-title reveal delay-1">
+      Crafted with
+      <span class="serif-italic text-gradient-multi">Precision.</span>
+    </h1>
+    <p class="hero-subtitle reveal delay-2">
+      A curated collection of digital products, platforms, and experiences
+      built at the intersection of design and engineering.
+    </p>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     PROJECTS
+     ============================================================ -->
+<section class="projects-section">
+  <div class="container-wide">
+
+    <!-- ---- Project 1: ALGX ---- -->
+    <div class="project-card card--emerald tilt-card reveal">
+      <div class="project-info">
+        <span class="project-tag">AgTech</span>
+        <h2 class="project-title">ALGX</h2>
+        <p class="project-description">
+          Full-stack precision agriculture data platform connecting satellite imagery,
+          IoT sensor networks, and ML-driven crop analytics into a unified command
+          center for modern farming operations.
+        </p>
+        <div class="project-meta">
+          <span class="tech-pill">Next.js</span>
+          <span class="tech-pill">Python</span>
+          <span class="tech-pill">TensorFlow</span>
+          <span class="tech-pill">AWS</span>
+          <span class="tech-pill">PostgreSQL</span>
+        </div>
+        <div class="project-footer">
+          <a href="https://algx.ai" target="_blank" rel="noopener" class="project-link">
+            View Project
+            <svg class="arrow-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 8h10M9 4l4 4-4 4"/>
+            </svg>
+          </a>
+          <span class="project-status">
+            <span class="status-dot"></span>
+            Live / Scaling
+          </span>
+        </div>
+      </div>
+      <div class="project-visual">
+        <div class="project-visual-bg"></div>
+        <div class="visual-grid"></div>
+        <div class="visual-orb visual-orb--primary"></div>
+        <div class="visual-orb visual-orb--secondary"></div>
+        <div class="site-preview">
+          <iframe src="https://algx.ai" loading="lazy" sandbox="allow-scripts allow-same-origin" onload="this.classList.add('loaded')"></iframe>
+        </div>
+      </div>
+    </div>
+
+    <!-- ---- Project 2: Engineered Adherence ---- -->
+    <div class="project-card card--slate tilt-card reveal delay-1">
+      <div class="project-info">
+        <span class="project-tag">Bio-Longevity</span>
+        <h2 class="project-title">Engineered<br>Adherence</h2>
+        <p class="project-description">
+          Premium peptide therapeutics wellness platform with physician-grade protocols,
+          real-time biomarker tracking, and personalized longevity roadmaps backed
+          by clinical research.
+        </p>
+        <div class="project-meta">
+          <span class="tech-pill">Next.js</span>
+          <span class="tech-pill">Supabase</span>
+          <span class="tech-pill">Stripe</span>
+          <span class="tech-pill">Vercel</span>
+        </div>
+        <div class="project-footer">
+          <a href="https://engineered-adherence.vercel.app" target="_blank" rel="noopener" class="project-link">
+            View Project
+            <svg class="arrow-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 8h10M9 4l4 4-4 4"/>
+            </svg>
+          </a>
+          <span class="project-status">
+            <span class="status-dot"></span>
+            Live / Active
+          </span>
+        </div>
+      </div>
+      <div class="project-visual">
+        <div class="project-visual-bg"></div>
+        <div class="visual-grid"></div>
+        <div class="visual-orb visual-orb--primary"></div>
+        <div class="visual-orb visual-orb--secondary"></div>
+        <div class="site-preview">
+          <iframe src="https://engineered-adherence.vercel.app" loading="lazy" sandbox="allow-scripts allow-same-origin" onload="this.classList.add('loaded')"></iframe>
+        </div>
+      </div>
+    </div>
+
+    <!-- ---- Project 3: Ulixes Corp ---- -->
+    <div class="project-card card--violet tilt-card reveal delay-1">
+      <div class="project-info">
+        <span class="project-tag">Capital Markets</span>
+        <h2 class="project-title">Ulixes Corp</h2>
+        <p class="project-description">
+          Institutional-grade financial architecture powering hedge fund infrastructure,
+          real-time portfolio analytics, and sophisticated risk management dashboards
+          for alternative investments.
+        </p>
+        <div class="project-meta">
+          <span class="tech-pill">React</span>
+          <span class="tech-pill">Node.js</span>
+          <span class="tech-pill">D3.js</span>
+          <span class="tech-pill">WebSocket</span>
+          <span class="tech-pill">MongoDB</span>
+        </div>
+        <div class="project-footer">
+          <a href="https://ulixes-corp.vercel.app" target="_blank" rel="noopener" class="project-link">
+            View Project
+            <svg class="arrow-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 8h10M9 4l4 4-4 4"/>
+            </svg>
+          </a>
+          <span class="project-status">
+            <span class="status-dot"></span>
+            Live / Active
+          </span>
+        </div>
+      </div>
+      <div class="project-visual">
+        <div class="project-visual-bg"></div>
+        <div class="visual-grid"></div>
+        <div class="visual-orb visual-orb--primary"></div>
+        <div class="visual-orb visual-orb--secondary"></div>
+        <div class="site-preview site-preview--img">
+          <img src="https://api.microlink.io/?url=https://ulixes-corp.vercel.app&screenshot=true&meta=false&embed=screenshot.url" alt="Ulixes Corp" loading="lazy" onload="this.classList.add('loaded')">
+        </div>
+      </div>
+    </div>
+
+    <!-- ---- Project 4: GrantsByAi ---- -->
+    <div class="project-card card--emerald tilt-card reveal delay-1">
+      <div class="project-info">
+        <span class="project-tag">SaaS / AI</span>
+        <h2 class="project-title">GrantsByAi</h2>
+        <p class="project-description">
+          AI-powered grants discovery engine using NLP to match organizations with
+          funding opportunities, automate application drafts, and track submission
+          pipelines in real-time.
+        </p>
+        <div class="project-meta">
+          <span class="tech-pill">Next.js</span>
+          <span class="tech-pill">OpenAI</span>
+          <span class="tech-pill">Pinecone</span>
+          <span class="tech-pill">Prisma</span>
+          <span class="tech-pill">Vercel</span>
+        </div>
+        <div class="project-footer">
+          <a href="https://grantsby.ai" target="_blank" rel="noopener" class="project-link">
+            View Project
+            <svg class="arrow-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 8h10M9 4l4 4-4 4"/>
+            </svg>
+          </a>
+          <span class="project-status">
+            <span class="status-dot"></span>
+            Live / Beta
+          </span>
+        </div>
+      </div>
+      <div class="project-visual">
+        <div class="project-visual-bg"></div>
+        <div class="visual-grid"></div>
+        <div class="visual-orb visual-orb--primary"></div>
+        <div class="visual-orb visual-orb--secondary"></div>
+        <div class="site-preview">
+          <iframe src="https://grantsby.ai" loading="lazy" sandbox="allow-scripts allow-same-origin" onload="this.classList.add('loaded')"></iframe>
+        </div>
+      </div>
+    </div>
+
+    <!-- ---- Project 5: CrewLink ---- -->
+    <div class="project-card card--blue tilt-card reveal delay-1">
+      <div class="project-info">
+        <span class="project-tag">Marketplace</span>
+        <h2 class="project-title">CrewLink</h2>
+        <p class="project-description">
+          Two-sided local hiring marketplace connecting skilled tradespeople with
+          homeowners and businesses, featuring real-time scheduling, verified reviews,
+          and instant booking.
+        </p>
+        <div class="project-meta">
+          <span class="tech-pill">Next.js</span>
+          <span class="tech-pill">Firebase</span>
+          <span class="tech-pill">Stripe Connect</span>
+          <span class="tech-pill">Maps API</span>
+        </div>
+        <div class="project-footer">
+          <a href="https://crewlink-pied.vercel.app" target="_blank" rel="noopener" class="project-link">
+            View Project
+            <svg class="arrow-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 8h10M9 4l4 4-4 4"/>
+            </svg>
+          </a>
+          <span class="project-status">
+            <span class="status-dot"></span>
+            Live / Scaling
+          </span>
+        </div>
+      </div>
+      <div class="project-visual">
+        <div class="project-visual-bg"></div>
+        <div class="visual-grid"></div>
+        <div class="visual-orb visual-orb--primary"></div>
+        <div class="visual-orb visual-orb--secondary"></div>
+        <div class="site-preview">
+          <iframe src="https://crewlink-pied.vercel.app" loading="lazy" sandbox="allow-scripts allow-same-origin" onload="this.classList.add('loaded')"></iframe>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ============================================================
+     DIVIDER
+     ============================================================ -->
+<div class="container">
+  <hr class="divider-glow">
+</div>
+
+
+<!-- ============================================================
+     STATS
+     ============================================================ -->
+<section class="stats-section">
+  <div class="container">
+    <div class="stats-row">
+      <div class="stat-card reveal">
+        <div class="stat-number">
+          <span class="text-gradient-multi counter" data-target="5">0</span>
+        </div>
+        <div class="stat-label">Live Projects</div>
+      </div>
+      <div class="stat-card reveal delay-1">
+        <div class="stat-number">
+          <span class="text-gradient-multi counter" data-target="4">0</span>
+        </div>
+        <div class="stat-label">Industries Served</div>
+      </div>
+      <div class="stat-card reveal delay-2">
+        <div class="stat-number">
+          <span class="text-gradient-multi counter" data-target="100" data-suffix="%">0</span>
+        </div>
+        <div class="stat-label">Client Satisfaction</div>
+      </div>
+      <div class="stat-card reveal delay-3">
+        <div class="stat-number">
+          <span class="text-gradient-multi counter" data-target="2024">0</span>
+        </div>
+        <div class="stat-label">Year Established</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     CTA
+     ============================================================ -->
+<section class="cta-section">
+  <div class="container">
+    <div class="reveal">
+      <p class="caption mb-lg" style="justify-content:center;">
+        <span style="display:inline-block;width:24px;height:1px;background:var(--cyan);margin-right:12px;vertical-align:middle;"></span>
+        Next Steps
+      </p>
+    </div>
+    <h2 class="heading-lg cta-heading reveal delay-1">
+      Have a project in mind?
+    </h2>
+    <p class="cta-sub reveal delay-2">
+      Let's build something extraordinary together.
+    </p>
+    <div class="reveal delay-3">
+      <a href="contact.html" class="btn btn-primary btn-lg magnetic">
+        Start a Conversation
+        <svg class="btn-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 8h10M9 4l4 4-4 4"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-main">
+      <div class="footer-brand">
+        <a href="index.html" class="header-logo">JU<span>.</span></a>
+        <p>Engineering premium digital products.</p>
+      </div>
+      <div class="footer-social">
+        <a href="mailto:juliuswilliams97@gmail.com" aria-label="Email">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13 2 4"/></svg>
+        </a>
+        <a href="https://github.com/friizzyy" target="_blank" rel="noopener" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+        </a>
+        <a href="https://x.com/0xFrizzy" target="_blank" rel="noopener" aria-label="X / Twitter">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l7.07 8.51L4 20h2l5.39-5.74L15.5 20H21l-7.41-8.9L20 4h-2l-4.95 5.27L9.5 4H4z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <span>&copy; 2025 JU. All rights reserved.</span>
+    </div>
+  </div>
+</footer>
+
+
+<!-- Main JS -->
+<script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About | JU. | Digital Architect</title>
+<meta name="description" content="I'm a digital architect specializing in engineering premium web experiences for ambitious brands and startups. Code meets craft, technology serves purpose.">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@300;400;500&family=Unbounded:wght@700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+/* ============================================================
+   About Page - Specific Styles
+   ============================================================ */
+
+/* ---- Page Hero ---- */
+
+.about-hero {
+  position: relative;
+  z-index: var(--z-base);
+  padding: 180px 0 100px;
+  text-align: center;
+}
+
+.about-hero .caption-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 20px;
+  border-radius: var(--radius-full);
+  background: var(--cyan-a10);
+  border: 1px solid rgba(6, 182, 212, .15);
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  margin-bottom: 32px;
+}
+
+.about-hero .hero-title {
+  margin-bottom: 32px;
+}
+
+.about-hero .hero-title .line-white {
+  display: block;
+  background: linear-gradient(180deg, #ffffff 0%, rgba(238, 238, 242, .7) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.about-hero .hero-title .line-gradient {
+  display: block;
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  background: linear-gradient(135deg, var(--cyan), var(--violet), var(--pink));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.about-hero .hero-body {
+  max-width: 740px;
+  margin: 0 auto;
+  font-size: 18px;
+  line-height: 1.75;
+  color: var(--fg2);
+  font-weight: 300;
+}
+
+
+/* ---- Philosophy Section ---- */
+
+.philosophy-section {
+  position: relative;
+  z-index: var(--z-base);
+  padding: 80px 0 120px;
+}
+
+.philosophy-grid {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.philosophy-label {
+  position: sticky;
+  top: 120px;
+}
+
+.philosophy-content p {
+  font-size: 17px;
+  line-height: 1.8;
+  color: var(--fg2);
+  font-weight: 300;
+}
+
+.philosophy-content p + p {
+  margin-top: 28px;
+}
+
+
+/* ---- Expertise Section ---- */
+
+.expertise-section {
+  position: relative;
+  z-index: var(--z-base);
+  padding: 120px 0;
+}
+
+.expertise-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.expertise-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.expertise-card .card-accent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  border-radius: 20px 20px 0 0;
+}
+
+.expertise-card.accent-cyan .card-accent    { background: linear-gradient(90deg, var(--cyan), transparent); }
+.expertise-card.accent-violet .card-accent  { background: linear-gradient(90deg, var(--violet), transparent); }
+.expertise-card.accent-pink .card-accent    { background: linear-gradient(90deg, var(--pink), transparent); }
+.expertise-card.accent-emerald .card-accent { background: linear-gradient(90deg, var(--emerald), transparent); }
+.expertise-card.accent-blue .card-accent    { background: linear-gradient(90deg, var(--blue), transparent); }
+.expertise-card.accent-amber .card-accent   { background: linear-gradient(90deg, var(--amber), transparent); }
+
+.expertise-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  position: relative;
+}
+
+.accent-cyan .expertise-icon    { background: rgba(6, 182, 212, .08); color: var(--cyan); }
+.accent-violet .expertise-icon  { background: rgba(139, 92, 246, .08); color: var(--violet); }
+.accent-pink .expertise-icon    { background: rgba(236, 72, 153, .08); color: var(--pink); }
+.accent-emerald .expertise-icon { background: rgba(16, 185, 129, .08); color: var(--emerald); }
+.accent-blue .expertise-icon    { background: rgba(59, 130, 246, .08); color: var(--blue); }
+.accent-amber .expertise-icon   { background: rgba(245, 158, 11, .08); color: var(--amber); }
+
+.expertise-card h3 {
+  font-family: var(--sans);
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--fg);
+  margin-bottom: 12px;
+}
+
+.expertise-card p {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--fg2);
+  font-weight: 300;
+}
+
+/* Hover glow per accent */
+.expertise-card.accent-cyan:hover    { box-shadow: 0 8px 40px rgba(6, 182, 212, .08), 0 0 60px rgba(6, 182, 212, .03); }
+.expertise-card.accent-violet:hover  { box-shadow: 0 8px 40px rgba(139, 92, 246, .08), 0 0 60px rgba(139, 92, 246, .03); }
+.expertise-card.accent-pink:hover    { box-shadow: 0 8px 40px rgba(236, 72, 153, .08), 0 0 60px rgba(236, 72, 153, .03); }
+.expertise-card.accent-emerald:hover { box-shadow: 0 8px 40px rgba(16, 185, 129, .08), 0 0 60px rgba(16, 185, 129, .03); }
+.expertise-card.accent-blue:hover    { box-shadow: 0 8px 40px rgba(59, 130, 246, .08), 0 0 60px rgba(59, 130, 246, .03); }
+.expertise-card.accent-amber:hover   { box-shadow: 0 8px 40px rgba(245, 158, 11, .08), 0 0 60px rgba(245, 158, 11, .03); }
+
+
+/* ---- Tech Stack Section ---- */
+
+.tech-section {
+  position: relative;
+  z-index: var(--z-base);
+  padding: 120px 0;
+}
+
+.tech-categories {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+}
+
+.tech-category {
+  padding: 32px;
+  background: var(--bg-card);
+  border: 1px solid var(--fg4);
+  border-radius: var(--radius-lg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: border-color var(--transition-base), box-shadow var(--transition-base);
+}
+
+.tech-category:hover {
+  border-color: var(--fg3);
+  box-shadow: 0 8px 40px rgba(0, 0, 0, .2);
+}
+
+.tech-category-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--fg4);
+}
+
+.tech-category-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.tech-category-icon.tc-frontend { background: rgba(6, 182, 212, .08); color: var(--cyan); }
+.tech-category-icon.tc-backend  { background: rgba(16, 185, 129, .08); color: var(--emerald); }
+.tech-category-icon.tc-ai       { background: rgba(139, 92, 246, .08); color: var(--violet); }
+.tech-category-icon.tc-infra    { background: rgba(59, 130, 246, .08); color: var(--blue); }
+.tech-category-icon.tc-design   { background: rgba(236, 72, 153, .08); color: var(--pink); }
+
+.tech-category-name {
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--fg);
+}
+
+.tech-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tech-pill {
+  padding: 8px 16px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--fg4);
+  background: transparent;
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--fg2);
+  transition: all var(--transition-base);
+}
+
+.tech-pill:hover {
+  color: var(--fg);
+  border-color: var(--fg3);
+  background: rgba(255, 255, 255, .02);
+}
+
+@media (max-width: 768px) {
+  .tech-categories {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+
+/* ---- Values Section ---- */
+
+.values-section {
+  position: relative;
+  z-index: var(--z-base);
+  padding: 120px 0;
+}
+
+.value-item {
+  display: grid;
+  grid-template-columns: 120px 200px 1fr;
+  gap: 40px;
+  align-items: start;
+  padding: 48px 0;
+  border-bottom: 1px solid var(--fg4);
+}
+
+.value-item:first-child {
+  border-top: 1px solid var(--fg4);
+}
+
+.value-number {
+  font-family: var(--display);
+  font-size: clamp(48px, 5vw, 72px);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  background: linear-gradient(135deg, var(--cyan), var(--violet), var(--pink));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.value-title {
+  font-family: var(--sans);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--fg);
+  padding-top: 8px;
+}
+
+.value-description {
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--fg2);
+  font-weight: 300;
+  max-width: 480px;
+  padding-top: 8px;
+}
+
+
+/* ---- CTA Section ---- */
+
+.about-cta-section {
+  position: relative;
+  z-index: var(--z-base);
+  padding: 120px 0 140px;
+  text-align: center;
+}
+
+.about-cta-section .cta-heading {
+  margin-bottom: 40px;
+}
+
+
+/* ---- Responsive ---- */
+
+@media (max-width: 1024px) {
+  .philosophy-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .philosophy-label {
+    position: static;
+  }
+
+  .expertise-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .value-item {
+    grid-template-columns: 80px 1fr;
+    gap: 24px;
+  }
+
+  .value-title {
+    grid-column: 2;
+  }
+
+  .value-description {
+    grid-column: 2;
+    padding-top: 0;
+  }
+
+  .about-hero {
+    padding: 140px 0 60px;
+  }
+}
+
+@media (max-width: 768px) {
+  .expertise-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .value-item {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 32px 0;
+  }
+
+  .value-number {
+    font-size: 40px;
+  }
+
+  .value-title {
+    grid-column: 1;
+    padding-top: 0;
+  }
+
+  .value-description {
+    grid-column: 1;
+  }
+
+  .about-hero {
+    padding: 120px 0 40px;
+  }
+
+  .about-hero .hero-body {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-hero {
+    padding: 100px 0 32px;
+  }
+}
+</style>
+</head>
+<body data-page="about">
+
+<!-- Custom Cursor -->
+<div class="cursor" id="cur"></div>
+<div class="cursor-glow" id="glow"></div>
+
+<!-- Overlays -->
+<div class="grain-overlay"></div>
+<div class="vignette-overlay"></div>
+
+<!-- Particles Background -->
+<canvas id="particles" style="position:fixed;inset:0;z-index:0;pointer-events:none;"></canvas>
+
+
+<!-- ============================================================
+     HEADER
+     ============================================================ -->
+<header class="header">
+  <a href="index.html" class="header-logo">JU<span>.</span></a>
+  <nav class="header-nav">
+    <a href="work.html">Work</a>
+    <a href="about.html" class="active">About</a>
+    <a href="process.html">Process</a>
+    <a href="contact.html" class="header-cta">Get in Touch</a>
+  </nav>
+</header>
+
+
+<!-- ============================================================
+     PAGE HERO
+     ============================================================ -->
+<section class="about-hero">
+  <div class="container">
+    <div class="reveal">
+      <div class="caption-pill">
+        <span class="pulse-dot"></span>
+        The Architect
+      </div>
+    </div>
+    <h1 class="heading-xl hero-title reveal delay-1">
+      <span class="line-white">Building the</span>
+      <span class="line-gradient">Future.</span>
+    </h1>
+    <p class="hero-body reveal delay-2">
+      I design and build websites for startups and brands that actually care about
+      how their product looks and feels. If you want something that stands out
+      and not another template with a logo swap, we should talk.
+    </p>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     DIVIDER
+     ============================================================ -->
+<div class="container">
+  <hr class="divider-glow">
+</div>
+
+
+<!-- ============================================================
+     PHILOSOPHY
+     ============================================================ -->
+<section class="philosophy-section">
+  <div class="container">
+    <div class="philosophy-grid">
+
+      <!-- Left: Label -->
+      <div class="philosophy-label reveal">
+        <p class="caption" style="display:flex;align-items:center;gap:12px;">
+          <span style="display:inline-block;width:24px;height:1px;background:var(--cyan);"></span>
+          Philosophy
+        </p>
+      </div>
+
+      <!-- Right: Content -->
+      <div class="philosophy-content">
+        <p class="reveal delay-1">
+          Most websites look the same because most people build them the same way.
+          I don't start with a template. I start with what the product actually
+          needs to do, and I build from there. The best work comes from knowing
+          when to keep it simple and when to push it further.
+        </p>
+        <p class="reveal delay-2">
+          I handle both the design and the code, which means nothing gets lost
+          in translation. What I mock up is what gets built. I care about the
+          details that most people skip: the way things move, how fast they load,
+          how they feel to actually use.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     DIVIDER
+     ============================================================ -->
+<div class="container">
+  <hr class="divider">
+</div>
+
+
+<!-- ============================================================
+     EXPERTISE / CORE COMPETENCIES
+     ============================================================ -->
+<section class="expertise-section">
+  <div class="container">
+    <div class="section-header section-header--center reveal">
+      <p class="caption mb-lg" style="justify-content:center;">Core Competencies</p>
+      <h2 class="heading-lg">
+        What I
+        <span class="serif-italic text-gradient-multi">Bring.</span>
+      </h2>
+    </div>
+
+    <div class="expertise-grid">
+
+      <!-- Card 1: Full-Stack Architecture -->
+      <div class="glass-card expertise-card accent-cyan reveal">
+        <div class="card-accent"></div>
+        <div class="expertise-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="3" width="20" height="14" rx="2"/>
+            <path d="M8 21h8M12 17v4"/>
+            <path d="M7 8l3 3-3 3M13 14h4"/>
+          </svg>
+        </div>
+        <h3>Full-Stack Architecture</h3>
+        <p>I build the whole thing. Database, backend, frontend. Next.js, React, Node, Python. I pick whatever makes the most sense for the project, not whatever's trending.</p>
+      </div>
+
+      <!-- Card 2: UI/UX Engineering -->
+      <div class="glass-card expertise-card accent-violet reveal delay-1">
+        <div class="card-accent"></div>
+        <div class="expertise-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="3"/>
+            <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+          </svg>
+        </div>
+        <h3>UI/UX Engineering</h3>
+        <p>I make things that look good and actually make sense to use. Animations, interactions, layouts, all the stuff that makes a site feel polished instead of thrown together.</p>
+      </div>
+
+      <!-- Card 3: AI Integration -->
+      <div class="glass-card expertise-card accent-pink reveal delay-2">
+        <div class="card-accent"></div>
+        <div class="expertise-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2a4 4 0 0 1 4 4c0 1.95-1.4 3.58-3.25 3.93"/>
+            <path d="M8.25 9.93A4 4 0 0 1 12 2"/>
+            <path d="M12 22v-6"/>
+            <path d="M9 18h6"/>
+            <circle cx="12" cy="12" r="2"/>
+            <path d="M17 12h3M4 12h3M12 7V4"/>
+          </svg>
+        </div>
+        <h3>AI Integration</h3>
+        <p>I build AI into products where it actually helps. Search that understands context, content generation, smart recommendations. Not AI for the sake of a buzzword.</p>
+      </div>
+
+      <!-- Card 4: Performance Optimization -->
+      <div class="glass-card expertise-card accent-emerald reveal delay-3">
+        <div class="card-accent"></div>
+        <div class="expertise-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+          </svg>
+        </div>
+        <h3>Performance Optimization</h3>
+        <p>Nobody waits around for a slow site. I make sure everything loads fast, runs smooth, and doesn't choke on real-world traffic.</p>
+      </div>
+
+      <!-- Card 5: Data Visualization -->
+      <div class="glass-card expertise-card accent-blue reveal delay-4">
+        <div class="card-accent"></div>
+        <div class="expertise-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 3v18h18"/>
+            <path d="M7 16l4-8 4 4 5-10"/>
+          </svg>
+        </div>
+        <h3>Data Visualization</h3>
+        <p>Dashboards, charts, real-time data. I turn numbers into something people can actually read and act on. Custom-built, not off-the-shelf widgets.</p>
+      </div>
+
+      <!-- Card 6: Scalable Infrastructure -->
+      <div class="glass-card expertise-card accent-amber reveal delay-5">
+        <div class="card-accent"></div>
+        <div class="expertise-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="8" height="8" rx="1"/>
+            <rect x="14" y="2" width="8" height="8" rx="1"/>
+            <rect x="2" y="14" width="8" height="8" rx="1"/>
+            <rect x="14" y="14" width="8" height="8" rx="1"/>
+            <path d="M10 6h4M6 10v4M18 10v4M10 18h4"/>
+          </svg>
+        </div>
+        <h3>Scalable Infrastructure</h3>
+        <p>I set up the backend so it doesn't fall apart when you start growing. Proper deployments, cloud hosting, and the kind of setup that just works.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     DIVIDER
+     ============================================================ -->
+<div class="container">
+  <hr class="divider-glow">
+</div>
+
+
+<!-- ============================================================
+     TECH STACK / TECHNOLOGY ARSENAL
+     ============================================================ -->
+<section class="tech-section">
+  <div class="container">
+    <div class="section-header section-header--center reveal">
+      <p class="caption mb-lg" style="justify-content:center;">Technology Arsenal</p>
+      <h2 class="heading-lg">
+        Tools of the
+        <span class="serif-italic text-gradient-multi">Trade.</span>
+      </h2>
+    </div>
+
+    <div class="tech-categories">
+
+      <!-- Frontend -->
+      <div class="tech-category reveal">
+        <div class="tech-category-header">
+          <div class="tech-category-icon tc-frontend">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          </div>
+          <span class="tech-category-name">Frontend</span>
+        </div>
+        <div class="tech-pills">
+          <span class="tech-pill">React</span>
+          <span class="tech-pill">Next.js</span>
+          <span class="tech-pill">TypeScript</span>
+          <span class="tech-pill">Tailwind CSS</span>
+          <span class="tech-pill">Framer Motion</span>
+          <span class="tech-pill">Three.js</span>
+        </div>
+      </div>
+
+      <!-- Backend -->
+      <div class="tech-category reveal delay-1">
+        <div class="tech-category-header">
+          <div class="tech-category-icon tc-backend">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7V4h16v3"/><path d="M9 20h6"/><path d="M12 4v16"/><rect x="2" y="7" width="20" height="6" rx="1"/></svg>
+          </div>
+          <span class="tech-category-name">Backend</span>
+        </div>
+        <div class="tech-pills">
+          <span class="tech-pill">Node.js</span>
+          <span class="tech-pill">Python</span>
+          <span class="tech-pill">FastAPI</span>
+          <span class="tech-pill">PostgreSQL</span>
+          <span class="tech-pill">MongoDB</span>
+          <span class="tech-pill">Redis</span>
+        </div>
+      </div>
+
+      <!-- AI -->
+      <div class="tech-category reveal delay-2">
+        <div class="tech-category-header">
+          <div class="tech-category-icon tc-ai">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+          </div>
+          <span class="tech-category-name">AI / ML</span>
+        </div>
+        <div class="tech-pills">
+          <span class="tech-pill">OpenAI</span>
+          <span class="tech-pill">TensorFlow</span>
+          <span class="tech-pill">Pinecone</span>
+          <span class="tech-pill">LangChain</span>
+          <span class="tech-pill">Hugging Face</span>
+        </div>
+      </div>
+
+      <!-- Infrastructure -->
+      <div class="tech-category reveal delay-3">
+        <div class="tech-category-header">
+          <div class="tech-category-icon tc-infra">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12H2"/><path d="M5.45 5.11L2 12v6a2 2 0 002 2h16a2 2 0 002-2v-6l-3.45-6.89A2 2 0 0016.76 4H7.24a2 2 0 00-1.79 1.11z"/><line x1="6" y1="16" x2="6.01" y2="16"/><line x1="10" y1="16" x2="10.01" y2="16"/></svg>
+          </div>
+          <span class="tech-category-name">Infrastructure</span>
+        </div>
+        <div class="tech-pills">
+          <span class="tech-pill">AWS</span>
+          <span class="tech-pill">Vercel</span>
+          <span class="tech-pill">Docker</span>
+          <span class="tech-pill">GitHub Actions</span>
+          <span class="tech-pill">Cloudflare</span>
+        </div>
+      </div>
+
+      <!-- Design -->
+      <div class="tech-category reveal delay-4" style="grid-column: 1 / -1;">
+        <div class="tech-category-header">
+          <div class="tech-category-icon tc-design">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
+          </div>
+          <span class="tech-category-name">Design</span>
+        </div>
+        <div class="tech-pills">
+          <span class="tech-pill">Figma</span>
+          <span class="tech-pill">After Effects</span>
+          <span class="tech-pill">Blender</span>
+          <span class="tech-pill">Spline</span>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ============================================================
+     DIVIDER
+     ============================================================ -->
+<div class="container">
+  <hr class="divider">
+</div>
+
+
+<!-- ============================================================
+     VALUES
+     ============================================================ -->
+<section class="values-section">
+  <div class="container">
+    <div class="section-header section-header--center reveal">
+      <p class="caption mb-lg" style="justify-content:center;">Principles</p>
+      <h2 class="heading-lg">
+        What I Stand
+        <span class="serif-italic text-gradient-multi">For.</span>
+      </h2>
+    </div>
+
+    <!-- Value 01 -->
+    <div class="value-item reveal">
+      <div class="value-number">01</div>
+      <div class="value-title">Precision Over Volume</div>
+      <div class="value-description">
+        I keep my client list small on purpose. I'd rather go deep on a few
+        projects than spread myself thin across a dozen. You get my full attention.
+      </div>
+    </div>
+
+    <!-- Value 02 -->
+    <div class="value-item reveal delay-1">
+      <div class="value-number">02</div>
+      <div class="value-title">Transparency Always</div>
+      <div class="value-description">
+        You'll always know where things stand. No disappearing for two weeks
+        and coming back with something you didn't ask for. Clear communication, every step.
+      </div>
+    </div>
+
+    <!-- Value 03 -->
+    <div class="value-item reveal delay-2">
+      <div class="value-number">03</div>
+      <div class="value-title">Results-Driven</div>
+      <div class="value-description">
+        A good-looking site that doesn't convert is just art. I build things
+        that actually move the needle. More users, more signups, more growth.
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ============================================================
+     CTA
+     ============================================================ -->
+<section class="about-cta-section">
+  <div class="container">
+    <div class="reveal">
+      <p class="caption mb-lg" style="justify-content:center;">
+        <span style="display:inline-block;width:24px;height:1px;background:var(--cyan);margin-right:12px;vertical-align:middle;"></span>
+        Next Steps
+      </p>
+    </div>
+    <h2 class="heading-lg cta-heading reveal delay-1">
+      Interested in working together?
+    </h2>
+    <div class="reveal delay-2">
+      <a href="contact.html" class="btn btn-primary btn-lg magnetic">
+        Let's Talk
+        <svg class="btn-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 8h10M9 4l4 4-4 4"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-main">
+      <div class="footer-brand">
+        <a href="index.html" class="header-logo">JU<span>.</span></a>
+        <p>Engineering premium digital products.</p>
+      </div>
+      <div class="footer-social">
+        <a href="mailto:juliuswilliams97@gmail.com" aria-label="Email">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13 2 4"/></svg>
+        </a>
+        <a href="https://github.com/friizzyy" target="_blank" rel="noopener" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+        </a>
+        <a href="https://x.com/0xFrizzy" target="_blank" rel="noopener" aria-label="X / Twitter">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l7.07 8.51L4 20h2l5.39-5.74L15.5 20H21l-7.41-8.9L20 4h-2l-4.95 5.27L9.5 4H4z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <span>&copy; 2025 JU. All rights reserved.</span>
+    </div>
+  </div>
+</footer>
+
+
+<!-- Main JS -->
+<script src="main.js"></script>
+</body>
+</html>
