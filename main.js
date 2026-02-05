@@ -651,17 +651,28 @@
      INITIALIZATION
   ---------------------------------------------------------- */
   document.addEventListener('DOMContentLoaded', () => {
-    Cursor.init();
-    Reveals.init();
-    SmoothScroll.init();
-    Parallax.init();
-    Magnetic.init();
-    SplitText.init();
-    Counters.init();
+    const touch = isTouchDevice();
+
+    // Always init
     Header.init();
     MobileMenu.init();
+    SmoothScroll.init();
+    Counters.init();
     PageTransition.init();
-    TiltCards.init();
-    Particles.init();
+
+    if (touch) {
+      // Mobile: skip heavy effects, just show content
+      document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale')
+        .forEach((el) => el.classList.add('visible'));
+    } else {
+      // Desktop: full experience
+      Cursor.init();
+      Reveals.init();
+      Parallax.init();
+      Magnetic.init();
+      SplitText.init();
+      TiltCards.init();
+      Particles.init();
+    }
   });
 })();
