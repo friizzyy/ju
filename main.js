@@ -13,22 +13,24 @@
   const clamp = (val, min, max) => Math.min(Math.max(val, min), max);
   const isTouchDevice = () =>
     'ontouchstart' in window || navigator.maxTouchPoints > 0;
+  const prefersReducedMotion = () =>
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* ----------------------------------------------------------
      1. CUSTOM CURSOR SYSTEM
+     Uses transform only. No top/left transitions.
+     Single rAF loop shared with all per-frame work.
   ---------------------------------------------------------- */
   const Cursor = {
     el: null,
     glow: null,
-    mouse: { x: 0, y: 0 },
-    pos: { x: 0, y: 0 },
-    glowPos: { x: 0, y: 0 },
-    velocity: { x: 0, y: 0 },
-    prev: { x: 0, y: 0 },
+    mouse: { x: -100, y: -100 },
+    pos: { x: -100, y: -100 },
+    glowPos: { x: -100, y: -100 },
     hovering: false,
-    raf: null,
-
-    visible: true,
+    hasMoved: false,
+    scrolling: false,
+    scrollTimer: 0,
 
     init() {
       if (isTouchDevice()) return;
@@ -37,77 +39,84 @@
       this.glow = document.querySelector('.cursor-glow');
       if (!this.el) return;
 
+      // Force clean state: no CSS transitions on position, JS handles everything
+      this.el.style.top = '0';
+      this.el.style.left = '0';
+
+      if (this.glow) {
+        this.glow.style.top = '0';
+        this.glow.style.left = '0';
+      }
+
       document.addEventListener('mousemove', (e) => {
         this.mouse.x = e.clientX;
         this.mouse.y = e.clientY;
-      });
 
-      document.addEventListener('mouseleave', () => {
-        this.visible = false;
-        if (this.el) this.el.style.opacity = '0';
-        if (this.glow) this.glow.style.opacity = '0';
-      });
-
-      document.addEventListener('mouseenter', (e) => {
-        this.visible = true;
-        this.mouse.x = e.clientX;
-        this.mouse.y = e.clientY;
-        this.glowPos.x = e.clientX;
-        this.glowPos.y = e.clientY;
-        this.pos.x = e.clientX;
-        this.pos.y = e.clientY;
-        if (this.el) this.el.style.opacity = '1';
-        if (this.glow) this.glow.style.opacity = '1';
-      });
+        // On first mouse move, snap to position (no lerp lag)
+        if (!this.hasMoved) {
+          this.hasMoved = true;
+          this.pos.x = e.clientX;
+          this.pos.y = e.clientY;
+          this.glowPos.x = e.clientX;
+          this.glowPos.y = e.clientY;
+        }
+      }, { passive: true });
 
       const interactiveSelector =
-        'a, button, .card, .glass-card, [data-hover], input, textarea';
+        'a, button, .card, .glass-card, [data-hover], input, textarea, select';
+
+      // Track scroll state to suppress hover flicker during scroll
+      window.addEventListener('scroll', () => {
+        this.scrolling = true;
+        clearTimeout(this.scrollTimer);
+        this.scrollTimer = setTimeout(() => {
+          this.scrolling = false;
+          // Re-check what's under the cursor after scroll ends
+          const hit = document.elementFromPoint(this.mouse.x, this.mouse.y);
+          if (hit && hit.closest(interactiveSelector)) {
+            this.hovering = true;
+            this.el.classList.add('hovering');
+          } else {
+            this.hovering = false;
+            this.el.classList.remove('hovering');
+          }
+        }, 100);
+      }, { passive: true });
 
       document.addEventListener('mouseover', (e) => {
+        if (this.scrolling) return;
         if (e.target.closest(interactiveSelector)) {
           this.hovering = true;
           this.el.classList.add('hovering');
-          if (this.glow) this.glow.classList.add('hovering');
         }
       });
 
       document.addEventListener('mouseout', (e) => {
+        if (this.scrolling) return;
         if (e.target.closest(interactiveSelector)) {
           this.hovering = false;
           this.el.classList.remove('hovering');
-          if (this.glow) this.glow.classList.remove('hovering');
         }
       });
-
-      this.loop();
     },
 
-    loop() {
-      this.velocity.x = this.mouse.x - this.prev.x;
-      this.velocity.y = this.mouse.y - this.prev.y;
-      this.prev.x = this.mouse.x;
-      this.prev.y = this.mouse.y;
+    update() {
+      if (!this.el || !this.hasMoved) return;
 
       this.pos.x = lerp(this.pos.x, this.mouse.x, 0.18);
       this.pos.y = lerp(this.pos.y, this.mouse.y, 0.18);
 
-      if (this.el) {
-        this.el.style.transform =
-          `translate3d(${this.pos.x}px, ${this.pos.y}px, 0)`;
-      }
+      // Offset for dot center (hovering = 24px center, normal = 4px center)
+      const offset = this.hovering ? -24 : -4;
+      this.el.style.transform =
+        `translate3d(${this.pos.x + offset}px, ${this.pos.y + offset}px, 0)`;
 
       if (this.glow) {
-        this.glowPos.x = lerp(this.glowPos.x, this.mouse.x, 0.1);
-        this.glowPos.y = lerp(this.glowPos.y, this.mouse.y, 0.1);
+        this.glowPos.x = lerp(this.glowPos.x, this.mouse.x, 0.08);
+        this.glowPos.y = lerp(this.glowPos.y, this.mouse.y, 0.08);
         this.glow.style.transform =
-          `translate3d(${this.glowPos.x}px, ${this.glowPos.y}px, 0)`;
+          `translate3d(${this.glowPos.x - 250}px, ${this.glowPos.y - 250}px, 0)`;
       }
-
-      this.raf = requestAnimationFrame(() => this.loop());
-    },
-
-    destroy() {
-      if (this.raf) cancelAnimationFrame(this.raf);
     }
   };
 
@@ -141,7 +150,7 @@
             this.observer.unobserve(el);
           });
         },
-        { threshold: 0.15 }
+        { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
       );
 
       targets.forEach((el) => this.observer.observe(el));
@@ -188,12 +197,11 @@
   ---------------------------------------------------------- */
   const Parallax = {
     elements: [],
-    raf: null,
     ticking: false,
 
     init() {
       this.elements = [...document.querySelectorAll('[data-parallax]')];
-      if (!this.elements.length) return;
+      if (!this.elements.length || prefersReducedMotion()) return;
 
       window.addEventListener('scroll', () => {
         if (!this.ticking) {
@@ -206,8 +214,6 @@
     },
 
     update() {
-      const scrollY = window.scrollY;
-
       this.elements.forEach((el) => {
         const rate = parseFloat(el.dataset.parallax) || 0.1;
         const rect = el.getBoundingClientRect();
@@ -234,7 +240,7 @@
       if (!this.elements.length || isTouchDevice()) return;
 
       this.elements.forEach((el) => {
-        el.addEventListener('mousemove', (e) => this.onMove(e, el));
+        el.addEventListener('mousemove', (e) => this.onMove(e, el), { passive: true });
         el.addEventListener('mouseleave', () => this.onLeave(el));
       });
     },
@@ -269,6 +275,8 @@
     observer: null,
 
     init() {
+      if (prefersReducedMotion()) return;
+
       const targets = document.querySelectorAll('.split-text');
       if (!targets.length) return;
 
@@ -331,9 +339,15 @@
     },
 
     animate(el) {
-      const target = parseInt(el.dataset.target, 10);
+      const target = parseFloat(el.dataset.target);
       const suffix = el.dataset.suffix || '';
+      const decimals = parseInt(el.dataset.decimals, 10) || 0;
       const start = performance.now();
+
+      if (prefersReducedMotion()) {
+        el.textContent = (decimals > 0 ? target.toFixed(decimals) : target.toLocaleString()) + suffix;
+        return;
+      }
 
       const easeOutExpo = (t) =>
         t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
@@ -342,9 +356,13 @@
         const elapsed = now - start;
         const progress = Math.min(elapsed / this.duration, 1);
         const eased = easeOutExpo(progress);
-        const current = Math.round(eased * target);
+        const current = eased * target;
 
-        el.textContent = current.toLocaleString() + suffix;
+        if (decimals > 0) {
+          el.textContent = current.toFixed(decimals) + suffix;
+        } else {
+          el.textContent = Math.round(current).toLocaleString() + suffix;
+        }
 
         if (progress < 1) {
           requestAnimationFrame(tick);
@@ -369,7 +387,7 @@
     delta: 5,
 
     init() {
-      this.el = document.querySelector('header, .site-header, [data-header]');
+      this.el = document.querySelector('.header');
       if (!this.el) return;
 
       window.addEventListener('scroll', () => this.onScroll(), {
@@ -467,28 +485,40 @@
   ---------------------------------------------------------- */
   const PageTransition = {
     init() {
-      // Wait for fonts, then reveal page
       const reveal = () => {
         requestAnimationFrame(() => {
           document.body.classList.add('page-loaded');
-        });
-
-        // Stagger section reveals
-        const sections = document.querySelectorAll('section');
-        sections.forEach((section, i) => {
-          section.style.transitionDelay = `${0.1 + i * 0.12}s`;
+          // For homepage which uses 'ready' class
+          document.body.classList.add('ready');
         });
       };
 
-      // Use font loading API if available, fallback to load event
       if (document.fonts && document.fonts.ready) {
         document.fonts.ready.then(reveal);
       } else {
         window.addEventListener('load', reveal);
       }
 
-      // Safety net: reveal after 1.2s no matter what
+      // Safety net
       setTimeout(reveal, 1200);
+
+      // After page-load transition ends, remove transform from body.
+      // A CSS transform on body creates a new containing block, which
+      // breaks position:fixed children (cursor) — they scroll with body
+      // instead of staying viewport-fixed.
+      if (!document.body.classList.contains('homepage')) {
+        const clearTransform = () => {
+          document.body.style.transform = 'none';
+        };
+        document.body.addEventListener('transitionend', function handler(e) {
+          if (e.target === document.body && e.propertyName === 'transform') {
+            clearTransform();
+            document.body.removeEventListener('transitionend', handler);
+          }
+        });
+        // Safety net in case transitionend doesn't fire
+        setTimeout(clearTransform, 1800);
+      }
     }
   };
 
@@ -499,11 +529,12 @@
     maxRotation: 8,
 
     init() {
+      if (prefersReducedMotion()) return;
       const cards = document.querySelectorAll('.tilt-card');
       if (!cards.length || isTouchDevice()) return;
 
       cards.forEach((card) => {
-        card.addEventListener('mousemove', (e) => this.onMove(e, card));
+        card.addEventListener('mousemove', (e) => this.onMove(e, card), { passive: true });
         card.addEventListener('mouseleave', () => this.onLeave(card));
       });
     },
@@ -517,14 +548,13 @@
       const rotateX = (0.5 - y) * this.maxRotation * 2;
 
       card.style.transform =
-        `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.03, 1.03, 1.03)`;
+        `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
       card.style.transition = 'transform 0.1s ease-out';
 
-      // Move inner highlight
       const shine = card.querySelector('.tilt-shine');
       if (shine) {
         shine.style.background =
-          `radial-gradient(circle at ${x * 100}% ${y * 100}%, rgba(255,255,255,0.12) 0%, transparent 60%)`;
+          `radial-gradient(circle at ${x * 100}% ${y * 100}%, rgba(255,255,255,0.08) 0%, transparent 60%)`;
       }
     },
 
@@ -541,30 +571,52 @@
 
   /* ----------------------------------------------------------
      12. PARTICLE BACKGROUND
+     Optimized: reduced count, skip connections on mobile,
+     spatial hash for connection checks, throttle on hidden tab.
   ---------------------------------------------------------- */
   const Particles = {
     canvas: null,
     ctx: null,
     particles: [],
-    count: 100,
     mouse: { x: -9999, y: -9999 },
     raf: null,
+    running: false,
+    connectionDistance: 100,
 
     init() {
       this.canvas = document.getElementById('particles');
       if (!this.canvas) return;
+      if (prefersReducedMotion()) return;
 
       this.ctx = this.canvas.getContext('2d');
       this.resize();
 
+      // Adaptive particle count based on screen size
+      const area = window.innerWidth * window.innerHeight;
+      const count = isTouchDevice()
+        ? Math.min(30, Math.floor(area / 30000))
+        : Math.min(70, Math.floor(area / 15000));
+
       window.addEventListener('resize', () => this.resize());
-      window.addEventListener('mousemove', (e) => {
-        this.mouse.x = e.clientX;
-        this.mouse.y = e.clientY;
+
+      if (!isTouchDevice()) {
+        window.addEventListener('mousemove', (e) => {
+          this.mouse.x = e.clientX;
+          this.mouse.y = e.clientY;
+        }, { passive: true });
+      }
+
+      // Pause when tab is hidden
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+          this.stop();
+        } else {
+          this.start();
+        }
       });
 
-      this.spawn();
-      this.loop();
+      this.spawn(count);
+      this.start();
     },
 
     resize() {
@@ -573,44 +625,63 @@
       this.canvas.height = window.innerHeight;
     },
 
-    spawn() {
+    spawn(count) {
       this.particles = [];
-      for (let i = 0; i < this.count; i++) {
+      for (let i = 0; i < count; i++) {
         this.particles.push({
           x: Math.random() * this.canvas.width,
           y: Math.random() * this.canvas.height,
-          vx: (Math.random() - 0.5) * 0.3,
-          vy: (Math.random() - 0.5) * 0.3,
-          radius: Math.random() * 2 + 0.5,
-          alpha: Math.random() * 0.4 + 0.1
+          vx: (Math.random() - 0.5) * 0.25,
+          vy: (Math.random() - 0.5) * 0.25,
+          radius: Math.random() * 1.8 + 0.4,
+          alpha: Math.random() * 0.35 + 0.08
         });
       }
     },
 
+    start() {
+      if (this.running) return;
+      this.running = true;
+      this.loop();
+    },
+
+    stop() {
+      this.running = false;
+      if (this.raf) cancelAnimationFrame(this.raf);
+    },
+
     loop() {
-      if (!this.ctx) return;
+      if (!this.running || !this.ctx) return;
       const { width, height } = this.canvas;
       this.ctx.clearRect(0, 0, width, height);
 
-      this.particles.forEach((p) => {
-        // Mouse repulsion
-        const dx = p.x - this.mouse.x;
-        const dy = p.y - this.mouse.y;
-        const dist = Math.sqrt(dx * dx + dy * dy);
+      const particles = this.particles;
+      const len = particles.length;
 
-        if (dist < 120) {
-          const force = (120 - dist) / 120;
-          p.vx += (dx / dist) * force * 0.15;
-          p.vy += (dy / dist) * force * 0.15;
+      for (let i = 0; i < len; i++) {
+        const p = particles[i];
+
+        // Mouse repulsion (only on desktop)
+        if (!isTouchDevice()) {
+          const dx = p.x - this.mouse.x;
+          const dy = p.y - this.mouse.y;
+          const distSq = dx * dx + dy * dy;
+
+          if (distSq < 14400) { // 120^2
+            const dist = Math.sqrt(distSq);
+            const force = (120 - dist) / 120;
+            p.vx += (dx / dist) * force * 0.12;
+            p.vy += (dy / dist) * force * 0.12;
+          }
         }
 
         // Damping
-        p.vx *= 0.98;
-        p.vy *= 0.98;
+        p.vx *= 0.985;
+        p.vy *= 0.985;
 
         // Base drift
-        p.vx += (Math.random() - 0.5) * 0.01;
-        p.vy += (Math.random() - 0.5) * 0.01;
+        p.vx += (Math.random() - 0.5) * 0.008;
+        p.vy += (Math.random() - 0.5) * 0.008;
 
         p.x += p.vx;
         p.y += p.vy;
@@ -621,30 +692,35 @@
         if (p.y < 0) p.y = height;
         if (p.y > height) p.y = 0;
 
-        // Draw
+        // Draw particle
         this.ctx.beginPath();
         this.ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
         this.ctx.fillStyle = `rgba(255, 255, 255, ${p.alpha})`;
         this.ctx.fill();
-      });
+      }
 
-      // Draw connections
-      for (let i = 0; i < this.particles.length; i++) {
-        for (let j = i + 1; j < this.particles.length; j++) {
-          const a = this.particles[i];
-          const b = this.particles[j];
-          const dx = a.x - b.x;
-          const dy = a.y - b.y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
+      // Draw connections (skip on touch devices for performance)
+      if (!isTouchDevice() && len < 80) {
+        const cd = this.connectionDistance;
+        const cdSq = cd * cd;
+        for (let i = 0; i < len; i++) {
+          for (let j = i + 1; j < len; j++) {
+            const a = particles[i];
+            const b = particles[j];
+            const dx = a.x - b.x;
+            const dy = a.y - b.y;
+            const distSq = dx * dx + dy * dy;
 
-          if (dist < 100) {
-            const alpha = (1 - dist / 100) * 0.12;
-            this.ctx.beginPath();
-            this.ctx.moveTo(a.x, a.y);
-            this.ctx.lineTo(b.x, b.y);
-            this.ctx.strokeStyle = `rgba(255, 255, 255, ${alpha})`;
-            this.ctx.lineWidth = 0.5;
-            this.ctx.stroke();
+            if (distSq < cdSq) {
+              const dist = Math.sqrt(distSq);
+              const alpha = (1 - dist / cd) * 0.1;
+              this.ctx.beginPath();
+              this.ctx.moveTo(a.x, a.y);
+              this.ctx.lineTo(b.x, b.y);
+              this.ctx.strokeStyle = `rgba(255, 255, 255, ${alpha})`;
+              this.ctx.lineWidth = 0.5;
+              this.ctx.stroke();
+            }
           }
         }
       }
@@ -653,9 +729,26 @@
     },
 
     destroy() {
-      if (this.raf) cancelAnimationFrame(this.raf);
+      this.stop();
     }
   };
+
+  /* ----------------------------------------------------------
+     SHARED RAF LOOP
+     Single requestAnimationFrame for all per-frame updates.
+     This prevents multiple rAF loops competing.
+  ---------------------------------------------------------- */
+  let rafRunning = false;
+  function startSharedLoop() {
+    if (rafRunning) return;
+    rafRunning = true;
+
+    function tick() {
+      Cursor.update();
+      requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
 
   /* ----------------------------------------------------------
      INITIALIZATION
@@ -677,6 +770,7 @@
     } else {
       // Desktop: full experience
       Cursor.init();
+      startSharedLoop();
       Reveals.init();
       Parallax.init();
       Magnetic.init();

@@ -4,7 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>JU. | Digital Architect</title>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@300;400;500&family=Unbounded:wght@700;800;900&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@300;400;500&family=Unbounded:wght@700;800;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@300;400;500&family=Unbounded:wght@700;800;900&display=swap" rel="stylesheet"></noscript>
 <link rel="stylesheet" href="styles.css">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
@@ -36,18 +39,18 @@ body.ready { opacity: 1; }
 ::selection { background: rgba(6,182,212,.2); }
 
 .cursor {
-  position: fixed; top: -4px; left: -4px; width: 8px; height: 8px; border-radius: 50%;
+  position: fixed; top: 0; left: 0; width: 8px; height: 8px; border-radius: 50%;
   background: var(--fg); pointer-events: none; z-index: 10000; will-change: transform;
-  transition: width .25s var(--ease), height .25s var(--ease), background .25s var(--ease), opacity .25s var(--ease), top .25s var(--ease), left .25s var(--ease);
-  mix-blend-mode: difference;
+  transition: width .25s var(--ease), height .25s var(--ease), background .25s var(--ease), border .25s var(--ease);
+  transform: translate3d(-100px, -100px, 0);
 }
-.cursor.hovering { top: -24px; left: -24px; width: 48px; height: 48px; background: rgba(238,238,242,.08); border: 1px solid rgba(238,238,242,.25); mix-blend-mode: normal; }
+.cursor.hovering { width: 48px; height: 48px; background: rgba(238,238,242,.12); border: 1px solid rgba(238,238,242,.4); }
 
 .cursor-glow {
-  position: fixed; top: -250px; left: -250px; width: 500px; height: 500px; border-radius: 50%;
+  position: fixed; top: 0; left: 0; width: 500px; height: 500px; border-radius: 50%;
   background: radial-gradient(circle, rgba(6,182,212,.08) 0%, rgba(139,92,246,.04) 30%, transparent 70%);
   pointer-events: none; z-index: 1; will-change: transform;
-  filter: blur(2px);
+  filter: blur(2px); transform: translate3d(-600px, -600px, 0);
 }
 
 .plasma { position: fixed; inset: 0; z-index: 0; overflow: hidden; }
@@ -236,15 +239,6 @@ h1 {
 .thumb-preview {
   position: absolute; inset: 0; z-index: 2; overflow: hidden;
 }
-.thumb-preview iframe {
-  width: 1280px; height: 900px;
-  transform: scale(0.175); transform-origin: top left;
-  border: none; pointer-events: none;
-  position: absolute; top: 0; left: 0;
-  opacity: 0; transition: opacity .5s ease;
-  clip-path: inset(0 0 0 0);
-}
-.thumb-preview iframe.loaded { opacity: 1; }
 .thumb-preview img {
   width: 100%; height: 100%; object-fit: cover; object-position: top center;
   position: absolute; inset: 0; transition: transform .6s var(--ease), filter .4s, opacity .5s ease;
@@ -418,15 +412,15 @@ h1 {
 </div>
 
 <div class="dock" id="dock">
-  <div class="card" data-color="emerald" data-url="https://grantsby.ai"><div class="ci"><div class="thumb"><span class="live">Live</span><span class="status">Beta</span><div class="thumb-scene"></div><div class="thumb-preview"><iframe src="https://grantsby.ai" loading="lazy" sandbox="allow-scripts allow-same-origin" onload="this.classList.add('loaded')"></iframe></div></div><div class="nfo"><span class="tag">SaaS / AI</span><h3 class="cn">GrantsByAi</h3><p class="cd">AI-powered grants discovery engine</p><span class="cu"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M8 5v6M5 8h6"/></svg>grantsby.ai</span></div></div></div>
+  <div class="card" data-color="emerald" data-url="https://grantsby.ai"><div class="ci"><div class="thumb"><span class="live">Live</span><span class="status">Beta</span><div class="thumb-scene"></div><div class="thumb-preview"><img src="https://api.microlink.io/?url=https://grantsby.ai&screenshot=true&meta=false&embed=screenshot.url" alt="GrantsByAi" loading="lazy" onload="this.classList.add('loaded')"></div></div><div class="nfo"><span class="tag">SaaS / AI</span><h3 class="cn">GrantsByAi</h3><p class="cd">AI-powered grants discovery engine</p><span class="cu"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M8 5v6M5 8h6"/></svg>grantsby.ai</span></div></div></div>
 
-  <div class="card" data-color="slate" data-url="https://engineered-adherence.vercel.app"><div class="ci"><div class="thumb"><span class="live">Live</span><span class="status">Active</span><div class="thumb-scene"></div><div class="thumb-preview"><iframe src="https://engineered-adherence.vercel.app" loading="lazy" sandbox="allow-scripts allow-same-origin" onload="this.classList.add('loaded')"></iframe></div></div><div class="nfo"><span class="tag">Bio-Longevity</span><h3 class="cn">Engineered Adherence</h3><p class="cd">Peptide therapeutics wellness platform</p><span class="cu"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M8 5v6M5 8h6"/></svg>engineered-adherence.vercel.app</span></div></div></div>
+  <div class="card" data-color="slate" data-url="https://engineered-adherence.vercel.app"><div class="ci"><div class="thumb"><span class="live">Live</span><span class="status">Active</span><div class="thumb-scene"></div><div class="thumb-preview"><img src="https://api.microlink.io/?url=https://engineered-adherence.vercel.app&screenshot=true&meta=false&embed=screenshot.url" alt="Engineered Adherence" loading="lazy" onload="this.classList.add('loaded')"></div></div><div class="nfo"><span class="tag">Bio-Longevity</span><h3 class="cn">Engineered Adherence</h3><p class="cd">Peptide therapeutics wellness platform</p><span class="cu"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M8 5v6M5 8h6"/></svg>engineered-adherence.vercel.app</span></div></div></div>
 
-  <div class="card" data-color="emerald" data-url="https://algx.ai"><div class="ci"><div class="thumb"><span class="live">Live</span><span class="status">Scaling</span><div class="thumb-scene"></div><div class="thumb-preview"><iframe src="https://algx.ai" loading="lazy" sandbox="allow-scripts allow-same-origin" onload="this.classList.add('loaded')"></iframe></div></div><div class="nfo"><span class="tag">AgTech</span><h3 class="cn">ALGX</h3><p class="cd">Precision agriculture data platform</p><span class="cu"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M8 5v6M5 8h6"/></svg>algx.ai</span></div></div></div>
+  <div class="card" data-color="emerald" data-url="https://algx.ai"><div class="ci"><div class="thumb"><span class="live">Live</span><span class="status">Scaling</span><div class="thumb-scene"></div><div class="thumb-preview"><img src="https://api.microlink.io/?url=https://algx.ai&screenshot=true&meta=false&embed=screenshot.url" alt="ALGX" loading="lazy" onload="this.classList.add('loaded')"></div></div><div class="nfo"><span class="tag">AgTech</span><h3 class="cn">ALGX</h3><p class="cd">Precision agriculture data platform</p><span class="cu"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M8 5v6M5 8h6"/></svg>algx.ai</span></div></div></div>
 
   <div class="card" data-color="violet" data-url="https://ulixes-corp.vercel.app"><div class="ci"><div class="thumb"><span class="live">Live</span><span class="status">Active</span><div class="thumb-scene"></div><div class="thumb-preview"><img src="https://api.microlink.io/?url=https://ulixes-corp.vercel.app&screenshot=true&meta=false&embed=screenshot.url" alt="Ulixes Corp" loading="lazy" onload="this.classList.add('loaded')"></div></div><div class="nfo"><span class="tag">Capital Markets</span><h3 class="cn">Ulixes Corp</h3><p class="cd">Financial architecture & hedge fund infra</p><span class="cu"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M8 5v6M5 8h6"/></svg>ulixes-corp.vercel.app</span></div></div></div>
 
-  <div class="card" data-color="blue" data-url="https://crewlink-pied.vercel.app"><div class="ci"><div class="thumb"><span class="live">Live</span><span class="status">Scaling</span><div class="thumb-scene"></div><div class="thumb-preview"><iframe src="https://crewlink-pied.vercel.app" loading="lazy" sandbox="allow-scripts allow-same-origin" onload="this.classList.add('loaded')"></iframe></div></div><div class="nfo"><span class="tag">Marketplace</span><h3 class="cn">CrewLink</h3><p class="cd">Two-sided local hiring marketplace</p><span class="cu"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M8 5v6M5 8h6"/></svg>crewlink-pied.vercel.app</span></div></div></div>
+  <div class="card" data-color="blue" data-url="https://crewlink-pied.vercel.app"><div class="ci"><div class="thumb"><span class="live">Live</span><span class="status">Scaling</span><div class="thumb-scene"></div><div class="thumb-preview"><img src="https://api.microlink.io/?url=https://crewlink-pied.vercel.app&screenshot=true&meta=false&embed=screenshot.url" alt="CrewLink" loading="lazy" onload="this.classList.add('loaded')"></div></div><div class="nfo"><span class="tag">Marketplace</span><h3 class="cn">CrewLink</h3><p class="cd">Two-sided local hiring marketplace</p><span class="cu"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M8 5v6M5 8h6"/></svg>crewlink-pied.vercel.app</span></div></div></div>
 </div>
 
 <div class="copy">&copy; 2025</div>
@@ -436,9 +430,7 @@ h1 {
 (() => {
   const cards = document.querySelectorAll('.card');
   const heroTitle = document.getElementById('heroTitle');
-  let mx = 0, my = 0;
-
-  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+  const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
   // Card click handlers
   cards.forEach(card => {
@@ -448,55 +440,73 @@ h1 {
     });
   });
 
-  // Card 3D tilt
-  cards.forEach(c => {
-    c.addEventListener('mousemove', e => {
-      const r = c.getBoundingClientRect();
-      const x = (e.clientX - r.left) / r.width - .5;
-      const y = (e.clientY - r.top) / r.height - .5;
-      c.querySelector('.ci').style.transform = `perspective(600px) rotateY(${x * 7}deg) rotateX(${-y * 5}deg)`;
+  if (!isTouch) {
+    // Card 3D tilt (uses per-card mousemove, no rAF needed)
+    cards.forEach(c => {
+      c.addEventListener('mousemove', e => {
+        const r = c.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width - .5;
+        const y = (e.clientY - r.top) / r.height - .5;
+        c.querySelector('.ci').style.transform = `perspective(600px) rotateY(${x * 7}deg) rotateX(${-y * 5}deg)`;
+      }, { passive: true });
+      c.addEventListener('mouseleave', () => { c.querySelector('.ci').style.transform = ''; });
     });
-    c.addEventListener('mouseleave', () => { c.querySelector('.ci').style.transform = ''; });
-  });
 
-  // Magnetic attraction for cards
-  function magneticCards() {
-    cards.forEach(card => {
-      const r = card.getBoundingClientRect();
-      const ccx = r.left + r.width / 2, ccy = r.top + r.height / 2;
-      const dx = mx - ccx, dy = my - ccy, dist = Math.sqrt(dx * dx + dy * dy);
-      if (dist < 280 && !card.matches(':hover')) {
-        const f = (1 - dist / 280) * 8, a = Math.atan2(dy, dx);
-        card.style.transform = `translate(${Math.cos(a) * f}px,${Math.sin(a) * f}px)`;
-      } else if (!card.matches(':hover')) {
-        card.style.transform = '';
+    // Hook into the shared rAF loop from main.js via a global callback.
+    // main.js Cursor system already tracks mouse position; we read it from the cursor.
+    let mx = 0, my = 0;
+    // Reuse the cursor's mousemove instead of adding a new listener.
+    // The cursor module in main.js already listens; we piggyback off the same event.
+    document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; }, { passive: true });
+
+    function magneticCards() {
+      for (let i = 0; i < cards.length; i++) {
+        const card = cards[i];
+        const r = card.getBoundingClientRect();
+        const ccx = r.left + r.width / 2, ccy = r.top + r.height / 2;
+        const dx = mx - ccx, dy = my - ccy;
+        const distSq = dx * dx + dy * dy;
+        if (distSq < 78400 && !card.matches(':hover')) { // 280^2
+          const dist = Math.sqrt(distSq);
+          const f = (1 - dist / 280) * 8, a = Math.atan2(dy, dx);
+          card.style.transform = `translate(${Math.cos(a) * f}px,${Math.sin(a) * f}px)`;
+        } else if (!card.matches(':hover')) {
+          card.style.transform = '';
+        }
+      }
+    }
+
+    function heroMouseReact() {
+      if (!heroTitle) return;
+      const dx = (mx - window.innerWidth / 2) / (window.innerWidth / 2);
+      const dy = (my - window.innerHeight / 2) / (window.innerHeight / 2);
+      heroTitle.style.transform = `translate(${dx * 3}px,${dy * 2}px)`;
+    }
+
+    // Single rAF loop for homepage-specific effects
+    // This does NOT duplicate the cursor loop from main.js
+    let running = true;
+    function tick() {
+      if (!running) return;
+      magneticCards();
+      heroMouseReact();
+      requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+
+    // Pause when tab is hidden
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        running = false;
+      } else {
+        running = true;
+        requestAnimationFrame(tick);
       }
     });
   }
 
-  // Hero parallax on mouse
-  function heroMouseReact() {
-    if (!heroTitle) return;
-    const dx = (mx - window.innerWidth / 2) / (window.innerWidth / 2);
-    const dy = (my - window.innerHeight / 2) / (window.innerHeight / 2);
-    heroTitle.style.transform = `translate(${dx * 3}px,${dy * 2}px)`;
-  }
-
-  function animate() {
-    magneticCards();
-    heroMouseReact();
-    requestAnimationFrame(animate);
-  }
-  animate();
-
-  // Clean load-in: wait for fonts then reveal
-  function reveal() { document.body.classList.add('ready'); }
-  if (document.fonts && document.fonts.ready) {
-    document.fonts.ready.then(() => requestAnimationFrame(reveal));
-  } else {
-    window.addEventListener('load', reveal);
-  }
-
+  // Page reveal is handled by main.js PageTransition.init()
+  // No duplicate reveal logic needed here.
 })();
 </script>
 </body>

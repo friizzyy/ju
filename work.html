@@ -5,7 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Work | JU. | Digital Architect</title>
 <meta name="description" content="Selected projects by JU. A curated collection of digital products, platforms, and experiences built at the intersection of design and engineering.">
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@300;400;500&family=Unbounded:wght@700;800;900&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@300;400;500&family=Unbounded:wght@700;800;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@300;400;500&family=Unbounded:wght@700;800;900&display=swap" rel="stylesheet"></noscript>
 <link rel="stylesheet" href="styles.css">
 <style>
 /* ============================================================
@@ -363,26 +366,6 @@
   overflow: hidden;
 }
 
-.site-preview iframe {
-  width: 1440px;
-  height: 900px;
-  border: none;
-  pointer-events: none;
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%) scale(0.47);
-  transform-origin: top center;
-  opacity: 0;
-  transition: opacity .8s ease;
-  clip-path: inset(0 0 0 0);
-}
-
-.site-preview iframe.loaded {
-  opacity: 1;
-}
-
-/* Screenshot fallback (Ulixes Corp) */
 .site-preview--img img {
   width: 100%;
   height: 100%;
@@ -835,8 +818,8 @@
         <div class="visual-grid"></div>
         <div class="visual-orb visual-orb--primary"></div>
         <div class="visual-orb visual-orb--secondary"></div>
-        <div class="site-preview">
-          <iframe src="https://algx.ai" loading="lazy" sandbox="allow-scripts allow-same-origin" onload="this.classList.add('loaded')"></iframe>
+        <div class="site-preview site-preview--img">
+          <img src="https://api.microlink.io/?url=https://algx.ai&screenshot=true&meta=false&embed=screenshot.url" alt="ALGX" loading="lazy" onload="this.classList.add('loaded')">
         </div>
       </div>
     </div>
@@ -875,8 +858,8 @@
         <div class="visual-grid"></div>
         <div class="visual-orb visual-orb--primary"></div>
         <div class="visual-orb visual-orb--secondary"></div>
-        <div class="site-preview">
-          <iframe src="https://engineered-adherence.vercel.app" loading="lazy" sandbox="allow-scripts allow-same-origin" onload="this.classList.add('loaded')"></iframe>
+        <div class="site-preview site-preview--img">
+          <img src="https://api.microlink.io/?url=https://engineered-adherence.vercel.app&screenshot=true&meta=false&embed=screenshot.url" alt="Engineered Adherence" loading="lazy" onload="this.classList.add('loaded')">
         </div>
       </div>
     </div>
@@ -957,8 +940,8 @@
         <div class="visual-grid"></div>
         <div class="visual-orb visual-orb--primary"></div>
         <div class="visual-orb visual-orb--secondary"></div>
-        <div class="site-preview">
-          <iframe src="https://grantsby.ai" loading="lazy" sandbox="allow-scripts allow-same-origin" onload="this.classList.add('loaded')"></iframe>
+        <div class="site-preview site-preview--img">
+          <img src="https://api.microlink.io/?url=https://grantsby.ai&screenshot=true&meta=false&embed=screenshot.url" alt="GrantsByAi" loading="lazy" onload="this.classList.add('loaded')">
         </div>
       </div>
     </div>
@@ -997,8 +980,8 @@
         <div class="visual-grid"></div>
         <div class="visual-orb visual-orb--primary"></div>
         <div class="visual-orb visual-orb--secondary"></div>
-        <div class="site-preview">
-          <iframe src="https://crewlink-pied.vercel.app" loading="lazy" sandbox="allow-scripts allow-same-origin" onload="this.classList.add('loaded')"></iframe>
+        <div class="site-preview site-preview--img">
+          <img src="https://api.microlink.io/?url=https://crewlink-pied.vercel.app&screenshot=true&meta=false&embed=screenshot.url" alt="CrewLink" loading="lazy" onload="this.classList.add('loaded')">
         </div>
       </div>
     </div>
