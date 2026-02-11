@@ -425,6 +425,7 @@
   const MobileMenu = {
     toggle: null,
     overlay: null,
+    savedScrollY: 0,
 
     init() {
       this.toggle = document.querySelector('.mobile-menu-toggle');
@@ -433,9 +434,12 @@
 
       this.toggle.addEventListener('click', (e) => {
         e.stopPropagation();
-        this.toggle.classList.toggle('active');
-        this.overlay.classList.toggle('active');
-        document.body.classList.toggle('menu-open');
+        const isOpen = document.body.classList.contains('menu-open');
+        if (isOpen) {
+          this.close();
+        } else {
+          this.open();
+        }
       });
 
       // Close on nav link click
@@ -473,10 +477,20 @@
       }, { passive: false });
     },
 
+    open() {
+      this.savedScrollY = window.scrollY;
+      document.body.style.top = `-${this.savedScrollY}px`;
+      this.toggle.classList.add('active');
+      this.overlay.classList.add('active');
+      document.body.classList.add('menu-open');
+    },
+
     close() {
       if (this.toggle) this.toggle.classList.remove('active');
       if (this.overlay) this.overlay.classList.remove('active');
       document.body.classList.remove('menu-open');
+      document.body.style.top = '';
+      window.scrollTo(0, this.savedScrollY);
     }
   };
 

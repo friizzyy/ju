@@ -534,12 +534,27 @@
 @media (max-width: 768px) {
   .principles-grid {
     grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .principle-card h3 {
+    font-size: 16px;
+  }
+
+  .principle-card p {
+    font-size: 13px;
+    line-height: 1.65;
+  }
+
+  .principle-icon {
+    margin-bottom: 20px;
   }
 
   .phase-item {
     grid-template-columns: 1fr;
     gap: 16px;
     padding-left: 32px;
+    padding-bottom: 48px;
   }
 
   .timeline::before {
@@ -570,11 +585,37 @@
   .phase-card .phase-header {
     flex-direction: column;
     align-items: flex-start;
+    gap: 8px;
+  }
+
+  .phase-card .phase-title {
+    font-size: 20px;
+  }
+
+  .phase-card .phase-desc {
+    font-size: 14px;
+    line-height: 1.7;
+    margin-bottom: 24px;
+  }
+
+  .phase-card .deliverable-tag {
+    font-size: 10px;
+    padding: 5px 12px;
   }
 
   .faq-question {
     font-size: 15px;
     padding: 22px 0;
+    min-height: 48px;
+  }
+
+  .faq-question:active {
+    color: var(--cyan);
+  }
+
+  .faq-answer-inner {
+    font-size: 14px;
+    line-height: 1.7;
   }
 
   .process-hero {
@@ -582,7 +623,25 @@
   }
 
   .process-hero .hero-body {
-    font-size: 16px;
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  .timeline-section {
+    padding: 60px 0 80px;
+  }
+
+  .principles-section,
+  .faq-section {
+    padding: 80px 0;
+  }
+
+  .process-cta-section {
+    padding: 80px 0 100px;
+  }
+
+  .process-cta-section .cta-sub {
+    font-size: 15px;
   }
 }
 
@@ -593,6 +652,7 @@
 
   .phase-item {
     padding-left: 24px;
+    padding-bottom: 40px;
   }
 
   .timeline::before {
@@ -607,6 +667,14 @@
     width: 10px;
     height: 10px;
     left: -18px;
+  }
+
+  .phase-card .phase-title {
+    font-size: 18px;
+  }
+
+  .faq-question {
+    font-size: 14px;
   }
 }
 </style>

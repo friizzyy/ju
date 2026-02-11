@@ -1619,14 +1619,21 @@ strong {
   .heading-xl {
     font-size: clamp(36px, 8vw, 56px);
     letter-spacing: -0.03em;
+    line-height: 1.02;
   }
 
   .heading-lg {
     font-size: clamp(28px, 6vw, 44px);
+    line-height: 1.08;
   }
 
   .heading-md {
     font-size: clamp(24px, 5vw, 36px);
+    line-height: 1.12;
+  }
+
+  .heading-sm {
+    line-height: 1.2;
   }
 
   .header {
@@ -1647,8 +1654,22 @@ strong {
     margin-bottom: 40px;
   }
 
+  .section-header p {
+    font-size: 15px;
+  }
+
   .glass-card {
     padding: 24px;
+  }
+
+  /* Mobile footer cleanup */
+  .footer {
+    padding: 48px 0 0;
+  }
+
+  .footer-main {
+    gap: 24px;
+    padding-bottom: 32px;
   }
 
   .footer-copyright {
@@ -1662,13 +1683,73 @@ strong {
     gap: 16px;
   }
 
+  /* Body text breathing room */
+  .body-lg {
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  .body {
+    line-height: 1.7;
+  }
+
+  .body-sm {
+    line-height: 1.65;
+  }
+
+  /* Better touch targets for tags */
+  .tag {
+    padding: 8px 14px;
+    font-size: 10px;
+    min-height: 32px;
+  }
+
+  /* Buttons: touch-friendly sizing + active states */
+  .btn {
+    min-height: 48px;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+
+  .btn:active {
+    transform: scale(.97);
+    opacity: .9;
+  }
+
+  .btn-primary:active {
+    transform: scale(.97);
+    box-shadow: 0 2px 16px rgba(6, 182, 212, .15);
+  }
+
+  .btn-secondary:active {
+    transform: scale(.97);
+    background: var(--fg4);
+  }
+
+  .btn-lg {
+    padding: 16px 32px;
+    font-size: 14px;
+  }
+
+  /* Links need active states on mobile */
+  .link-arrow:active {
+    color: var(--cyan);
+    gap: 10px;
+  }
+
+  /* Glass cards: subtle active state instead of hover */
+  .glass-card:active {
+    border-color: var(--fg3);
+    transform: scale(.99);
+  }
+
   /* Hide custom cursor on touch devices */
   .cursor,
   .cursor-glow {
     display: none !important;
   }
 
-  html, body, a, button {
+  html, body, a, button, input, textarea, select {
     cursor: auto;
   }
 
@@ -1713,6 +1794,22 @@ strong {
   .cursor, .cursor-glow, [data-parallax] {
     will-change: auto;
   }
+
+  /* Prevent horizontal overflow at system level */
+  .divider-glow::after {
+    width: 120px;
+  }
+
+  /* Social footer icons: bigger tap targets */
+  .footer-social a {
+    width: 44px;
+    height: 44px;
+  }
+
+  .footer-social a svg {
+    width: 18px;
+    height: 18px;
+  }
 }
 
 /* ---- Small Mobile (480px) ---- */
@@ -1721,7 +1818,7 @@ strong {
   .container,
   .container-wide,
   .container-narrow {
-    padding: 0 16px;
+    padding: 0 20px;
   }
 
   .section {
@@ -1731,18 +1828,22 @@ strong {
   .heading-xl {
     font-size: 32px;
     letter-spacing: -0.02em;
+    line-height: 1.05;
   }
 
   .heading-lg {
     font-size: 26px;
+    line-height: 1.1;
   }
 
   .heading-md {
     font-size: 22px;
+    line-height: 1.15;
   }
 
   .heading-sm {
     font-size: 18px;
+    line-height: 1.2;
   }
 
   .body-lg {
@@ -1755,22 +1856,23 @@ strong {
   }
 
   .btn {
-    font-size: 12px;
-    padding: 12px 24px;
+    font-size: 13px;
+    padding: 14px 28px;
+    min-height: 48px;
   }
 
   .btn-lg {
-    font-size: 13px;
-    padding: 14px 28px;
+    font-size: 14px;
+    padding: 16px 32px;
   }
 
   .tag {
     font-size: 10px;
-    padding: 5px 10px;
+    padding: 6px 12px;
   }
 
   .header {
-    padding: 0 16px;
+    padding: 0 20px;
     height: 56px;
   }
 
@@ -1780,6 +1882,16 @@ strong {
 
   .footer {
     padding: 40px 0 0;
+  }
+
+  .section-header {
+    margin-bottom: 32px;
+  }
+
+  /* Caption labels: tighter on small screens */
+  .caption {
+    font-size: 10px;
+    letter-spacing: 0.1em;
   }
 }
 
@@ -2006,6 +2118,11 @@ strong {
 
 body.menu-open {
   overflow: hidden;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
 }
 
 
@@ -2095,6 +2212,131 @@ body.menu-open {
   border-radius: 50%;
   background: var(--emerald);
   animation: pulse-glow 2s infinite;
+}
+
+
+/* ============================================================
+   26. MOBILE-SPECIFIC PREMIUM REFINEMENTS
+   ============================================================ */
+
+/* ---- Safe-area inset support for notched devices ---- */
+
+@supports (padding: max(0px)) {
+  @media (max-width: 768px) {
+    .header {
+      padding-left: max(24px, env(safe-area-inset-left));
+      padding-right: max(24px, env(safe-area-inset-right));
+    }
+
+    .container,
+    .container-wide,
+    .container-narrow {
+      padding-left: max(24px, env(safe-area-inset-left));
+      padding-right: max(24px, env(safe-area-inset-right));
+    }
+
+    .footer-copyright {
+      padding-bottom: max(20px, env(safe-area-inset-bottom));
+    }
+
+    .mobile-menu-overlay {
+      padding-bottom: max(36px, env(safe-area-inset-bottom));
+    }
+  }
+
+  @media (max-width: 480px) {
+    .header {
+      padding-left: max(20px, env(safe-area-inset-left));
+      padding-right: max(20px, env(safe-area-inset-right));
+    }
+
+    .container,
+    .container-wide,
+    .container-narrow {
+      padding-left: max(20px, env(safe-area-inset-left));
+      padding-right: max(20px, env(safe-area-inset-right));
+    }
+  }
+}
+
+/* ---- Mobile menu premium refinements ---- */
+
+@media (max-width: 768px) {
+  .mobile-menu-overlay {
+    padding-top: 100px;
+    gap: 8px;
+  }
+
+  .mobile-menu-overlay a {
+    font-size: 28px;
+    font-weight: 600;
+    padding: 12px 24px;
+    border-radius: var(--radius-md);
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+
+  .mobile-menu-overlay a:active {
+    background: rgba(6, 182, 212, .06);
+  }
+
+  .mobile-menu-overlay a.active {
+    color: var(--cyan);
+    position: relative;
+  }
+
+  .mobile-menu-overlay a.active::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3px;
+    height: 24px;
+    background: var(--cyan);
+    border-radius: 2px;
+  }
+
+  /* Touch-optimized tap highlight removal */
+  a, button, input, textarea, select, [role="button"] {
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+
+  /* Prevent text selection on interactive elements during touch */
+  .btn, .tag, .mobile-menu-toggle, .mobile-menu-overlay a,
+  .header-logo, .footer-social a {
+    -webkit-user-select: none;
+    user-select: none;
+  }
+}
+
+/* ---- Improved form inputs for mobile (prevent iOS zoom) ---- */
+
+@media (max-width: 768px) {
+  .form-input,
+  .form-textarea,
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="url"],
+  input[type="search"],
+  select,
+  textarea {
+    font-size: 16px;
+  }
+}
+
+/* ---- Mobile orb performance — reduce blur on small screens ---- */
+
+@media (max-width: 768px) {
+  .orb {
+    filter: blur(50px);
+    opacity: .1;
+  }
 }
 
 

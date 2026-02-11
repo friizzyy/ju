@@ -933,14 +933,82 @@
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .cs-hero {
     padding: 120px 0 0;
   }
 
+  .cs-hero-subtitle {
+    font-size: 16px;
+    line-height: 1.65;
+  }
+
   .cs-hero-visual {
-    height: 280px;
+    height: 300px;
     border-radius: var(--radius-lg);
+  }
+
+  .cs-hero-visual .visual-orb {
+    filter: blur(40px);
+    animation: none;
+  }
+
+  .cs-hero-visual-bg {
+    animation: none;
+  }
+
+  .cs-overview {
+    padding: 80px 0;
+  }
+
+  .cs-overview-content {
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  .cs-section-heading {
+    margin-bottom: 40px;
+  }
+
+  .cs-challenge {
+    padding: 0 0 80px;
+  }
+
+  .cs-challenge-card {
+    padding: 32px 24px;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  .cs-challenge-card:active {
+    border-color: var(--accent-a15);
+    background: rgba(16, 185, 129, .03);
+  }
+
+  .cs-challenge-card h3 {
+    font-size: 17px;
+  }
+
+  .cs-challenge-card p {
+    font-size: 13px;
+    line-height: 1.65;
+  }
+
+  .cs-approach {
+    padding: 0 0 80px;
+  }
+
+  .cs-approach-content h3 {
+    font-size: 19px;
+  }
+
+  .cs-approach-content p {
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  .cs-results {
+    padding: 0 0 80px;
   }
 
   .cs-results-grid {
@@ -950,6 +1018,83 @@
 
   .cs-stat-card {
     padding: 32px 20px;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  .cs-stat-card:active {
+    border-color: var(--accent-a15);
+  }
+
+  .cs-stat-label {
+    font-size: 10px;
+  }
+
+  .cs-tech {
+    padding: 0 0 80px;
+  }
+
+  .cs-tech-card {
+    padding: 32px 24px;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  .cs-tech-pill {
+    font-size: 11px;
+    padding: 6px 14px;
+  }
+
+  .cs-testimonial {
+    padding: 0 0 80px;
+  }
+
+  .cs-testimonial-card {
+    padding: 48px 28px;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  .cs-quote-text {
+    font-size: 17px;
+    line-height: 1.65;
+  }
+
+  .cs-next {
+    padding: 0 0 80px;
+  }
+
+  .cs-next-info {
+    padding: 32px 24px;
+  }
+
+  .cs-next-title {
+    font-size: 28px;
+  }
+
+  .cs-next-desc {
+    font-size: 14px;
+  }
+
+  .cs-next-visual {
+    min-height: 200px;
+  }
+
+  .cs-divider {
+    margin: 0 0 80px;
+  }
+
+  .cs-back {
+    margin-bottom: 28px;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+}
+
+@media (max-width: 640px) {
+  .cs-hero-visual {
+    height: 240px;
   }
 
   .cs-approach-item {
@@ -970,16 +1115,105 @@
     display: none;
   }
 
-  .cs-next-info {
-    padding: 32px 24px;
-  }
-
   .cs-testimonial-card {
     padding: 40px 24px;
   }
+}
+
+@media (max-width: 480px) {
+  .cs-hero {
+    padding: 100px 0 0;
+  }
+
+  .cs-hero-subtitle {
+    font-size: 15px;
+  }
+
+  .cs-hero-visual {
+    height: 200px;
+  }
+
+  .cs-hero-visual .visual-label {
+    font-size: clamp(60px, 8vw, 100px);
+  }
+
+  .cs-overview {
+    padding: 60px 0;
+  }
+
+  .cs-overview-content {
+    font-size: 15px;
+  }
+
+  .cs-challenge {
+    padding: 0 0 60px;
+  }
+
+  .cs-approach {
+    padding: 0 0 60px;
+  }
+
+  .cs-approach-content h3 {
+    font-size: 17px;
+  }
+
+  .cs-approach-content p {
+    font-size: 13px;
+  }
+
+  .cs-results {
+    padding: 0 0 60px;
+  }
+
+  .cs-tech {
+    padding: 0 0 60px;
+  }
 
   .cs-tech-card {
-    padding: 32px 24px;
+    padding: 24px 20px;
+  }
+
+  .cs-testimonial {
+    padding: 0 0 60px;
+  }
+
+  .cs-testimonial-card {
+    padding: 36px 20px;
+  }
+
+  .cs-quote-text {
+    font-size: 16px;
+  }
+
+  .cs-next {
+    padding: 0 0 60px;
+  }
+
+  .cs-next-info {
+    padding: 28px 20px;
+  }
+
+  .cs-next-title {
+    font-size: 24px;
+  }
+
+  .cs-divider {
+    margin: 0 0 60px;
+  }
+}
+
+@media (max-width: 360px) {
+  .cs-hero {
+    padding: 96px 0 0;
+  }
+
+  .cs-hero-tag {
+    font-size: 10px;
+    padding: 6px 14px;
+  }
+
+  .cs-results-grid {
+    grid-template-columns: 1fr;
   }
 }
 </style>
