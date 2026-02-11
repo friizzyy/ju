@@ -1662,9 +1662,10 @@ strong {
     padding: 24px;
   }
 
-  /* Mobile footer cleanup */
+  /* Mobile footer cleanup + brighter contrast */
   .footer {
     padding: 48px 0 0;
+    border-top-color: rgba(238, 238, 242, .12);
   }
 
   .footer-main {
@@ -1672,10 +1673,26 @@ strong {
     padding-bottom: 32px;
   }
 
+  .footer-brand p {
+    color: rgba(238, 238, 242, .40);
+  }
+
+  .footer-social a {
+    color: rgba(238, 238, 242, .45);
+    border-color: rgba(238, 238, 242, .18);
+  }
+
+  .footer-social a:active {
+    color: var(--cyan);
+    border-color: var(--cyan);
+  }
+
   .footer-copyright {
     flex-direction: column;
     gap: 8px;
     text-align: center;
+    color: rgba(238, 238, 242, .35);
+    border-top-color: rgba(238, 238, 242, .12);
   }
 
   .flex-between {
@@ -2225,7 +2242,7 @@ body.menu-open {
   .mobile-stars {
     position: fixed;
     inset: 0;
-    z-index: 0;
+    z-index: calc(var(--z-overlay) + 1);
     pointer-events: none;
     overflow: hidden;
   }
@@ -2242,56 +2259,67 @@ body.menu-open {
     will-change: transform;
   }
 
-  /* Layer 1 — small faint stars */
+  /* Layer 1 — small stars */
   .mobile-stars::before {
     background-image:
-      radial-gradient(1px 1px at  47px  83px, rgba(238,238,242,.45) 50%, transparent 50%),
-      radial-gradient(1px 1px at 203px  19px, rgba(238,238,242,.35) 50%, transparent 50%),
-      radial-gradient(1px 1px at 107px 147px, rgba(238,238,242,.40) 50%, transparent 50%),
-      radial-gradient(1px 1px at 311px  67px, rgba(238,238,242,.30) 50%, transparent 50%),
-      radial-gradient(1px 1px at  73px 239px, rgba(238,238,242,.50) 50%, transparent 50%),
-      radial-gradient(1px 1px at 419px 131px, rgba(238,238,242,.25) 50%, transparent 50%),
-      radial-gradient(1px 1px at 167px 311px, rgba(238,238,242,.45) 50%, transparent 50%),
-      radial-gradient(1px 1px at 283px 203px, rgba(238,238,242,.35) 50%, transparent 50%),
-      radial-gradient(1px 1px at  31px 371px, rgba(238,238,242,.30) 50%, transparent 50%),
-      radial-gradient(1px 1px at 359px 287px, rgba(238,238,242,.40) 50%, transparent 50%),
-      radial-gradient(1px 1px at 131px  47px, rgba(238,238,242,.35) 50%, transparent 50%),
-      radial-gradient(1px 1px at 463px 359px, rgba(238,238,242,.25) 50%, transparent 50%),
-      radial-gradient(1px 1px at 239px 419px, rgba(238,238,242,.45) 50%, transparent 50%),
-      radial-gradient(1px 1px at  89px 463px, rgba(238,238,242,.30) 50%, transparent 50%),
-      radial-gradient(1px 1px at 347px  11px, rgba(238,238,242,.40) 50%, transparent 50%);
+      radial-gradient(1.2px 1.2px at  47px  83px, rgba(238,238,242,.7) 50%, transparent 50%),
+      radial-gradient(1px   1px   at 203px  19px, rgba(238,238,242,.5) 50%, transparent 50%),
+      radial-gradient(1.2px 1.2px at 107px 147px, rgba(238,238,242,.6) 50%, transparent 50%),
+      radial-gradient(1px   1px   at 311px  67px, rgba(238,238,242,.5) 50%, transparent 50%),
+      radial-gradient(1.2px 1.2px at  73px 239px, rgba(238,238,242,.7) 50%, transparent 50%),
+      radial-gradient(1px   1px   at 419px 131px, rgba(238,238,242,.4) 50%, transparent 50%),
+      radial-gradient(1.2px 1.2px at 167px 311px, rgba(238,238,242,.6) 50%, transparent 50%),
+      radial-gradient(1px   1px   at 283px 203px, rgba(238,238,242,.5) 50%, transparent 50%),
+      radial-gradient(1.2px 1.2px at  31px 371px, rgba(238,238,242,.6) 50%, transparent 50%),
+      radial-gradient(1px   1px   at 359px 287px, rgba(238,238,242,.5) 50%, transparent 50%),
+      radial-gradient(1.2px 1.2px at 131px  47px, rgba(238,238,242,.7) 50%, transparent 50%),
+      radial-gradient(1px   1px   at 463px 359px, rgba(238,238,242,.4) 50%, transparent 50%),
+      radial-gradient(1.2px 1.2px at 239px 419px, rgba(238,238,242,.6) 50%, transparent 50%),
+      radial-gradient(1px   1px   at  89px 463px, rgba(238,238,242,.5) 50%, transparent 50%),
+      radial-gradient(1.2px 1.2px at 347px  11px, rgba(238,238,242,.7) 50%, transparent 50%),
+      radial-gradient(1px   1px   at 191px 127px, rgba(238,238,242,.5) 50%, transparent 50%),
+      radial-gradient(1.2px 1.2px at 401px  71px, rgba(238,238,242,.6) 50%, transparent 50%),
+      radial-gradient(1px   1px   at  23px 191px, rgba(238,238,242,.4) 50%, transparent 50%),
+      radial-gradient(1.2px 1.2px at 317px 439px, rgba(238,238,242,.7) 50%, transparent 50%),
+      radial-gradient(1px   1px   at 149px 263px, rgba(238,238,242,.5) 50%, transparent 50%);
     background-size: 500px 500px;
     animation: starDrift 120s linear infinite;
-    opacity: .6;
+    opacity: .8;
   }
 
   /* Layer 2 — medium brighter stars */
   .mobile-stars::after {
     background-image:
-      radial-gradient(1.5px 1.5px at  79px 163px, rgba(238,238,242,.60) 50%, transparent 50%),
-      radial-gradient(1.5px 1.5px at 271px  43px, rgba(238,238,242,.55) 50%, transparent 50%),
-      radial-gradient(1.5px 1.5px at 389px 247px, rgba(238,238,242,.50) 50%, transparent 50%),
-      radial-gradient(1.5px 1.5px at 143px 347px, rgba(238,238,242,.65) 50%, transparent 50%),
-      radial-gradient(1.5px 1.5px at  19px  91px, rgba(238,238,242,.45) 50%, transparent 50%),
-      radial-gradient(1.5px 1.5px at 431px 119px, rgba(238,238,242,.55) 50%, transparent 50%),
-      radial-gradient(1.5px 1.5px at 197px 431px, rgba(238,238,242,.50) 50%, transparent 50%),
-      radial-gradient(1.5px 1.5px at 311px 383px, rgba(238,238,242,.60) 50%, transparent 50%);
+      radial-gradient(1.5px 1.5px at  79px 163px, rgba(238,238,242,.80) 50%, transparent 50%),
+      radial-gradient(1.5px 1.5px at 271px  43px, rgba(238,238,242,.70) 50%, transparent 50%),
+      radial-gradient(1.5px 1.5px at 389px 247px, rgba(238,238,242,.75) 50%, transparent 50%),
+      radial-gradient(1.5px 1.5px at 143px 347px, rgba(238,238,242,.85) 50%, transparent 50%),
+      radial-gradient(1.5px 1.5px at  19px  91px, rgba(238,238,242,.65) 50%, transparent 50%),
+      radial-gradient(1.5px 1.5px at 431px 119px, rgba(238,238,242,.75) 50%, transparent 50%),
+      radial-gradient(1.5px 1.5px at 197px 431px, rgba(238,238,242,.70) 50%, transparent 50%),
+      radial-gradient(1.5px 1.5px at 311px 383px, rgba(238,238,242,.80) 50%, transparent 50%),
+      radial-gradient(1.5px 1.5px at  53px 299px, rgba(238,238,242,.65) 50%, transparent 50%),
+      radial-gradient(1.5px 1.5px at 461px  47px, rgba(238,238,242,.75) 50%, transparent 50%),
+      radial-gradient(1.5px 1.5px at 227px 179px, rgba(238,238,242,.70) 50%, transparent 50%),
+      radial-gradient(1.5px 1.5px at 371px 467px, rgba(238,238,242,.80) 50%, transparent 50%);
     background-size: 470px 470px;
     animation: starDrift 90s linear infinite reverse;
-    opacity: .5;
+    opacity: .7;
   }
 
-  /* Layer 3 — rare bright accent stars */
+  /* Layer 3 — accent colored stars (cyan/emerald) */
   .mobile-stars .stars-layer {
     background-image:
-      radial-gradient(2px 2px at 151px 107px, rgba(6,182,212,.50) 50%, transparent 50%),
-      radial-gradient(2px 2px at 367px 263px, rgba(16,185,129,.40) 50%, transparent 50%),
-      radial-gradient(2px 2px at  59px 389px, rgba(6,182,212,.35) 50%, transparent 50%),
-      radial-gradient(2px 2px at 283px  31px, rgba(238,238,242,.70) 50%, transparent 50%),
-      radial-gradient(2px 2px at 419px 443px, rgba(16,185,129,.30) 50%, transparent 50%);
+      radial-gradient(2px 2px at 151px 107px, rgba(6,182,212,.70) 50%, transparent 50%),
+      radial-gradient(2px 2px at 367px 263px, rgba(16,185,129,.60) 50%, transparent 50%),
+      radial-gradient(2px 2px at  59px 389px, rgba(6,182,212,.55) 50%, transparent 50%),
+      radial-gradient(2.5px 2.5px at 283px  31px, rgba(238,238,242,.90) 50%, transparent 50%),
+      radial-gradient(2px 2px at 419px 443px, rgba(16,185,129,.50) 50%, transparent 50%),
+      radial-gradient(2.5px 2.5px at  97px 467px, rgba(6,182,212,.65) 50%, transparent 50%),
+      radial-gradient(2px 2px at 443px 179px, rgba(238,238,242,.85) 50%, transparent 50%);
     background-size: 490px 490px;
     animation: starDrift 150s linear infinite, starTwinkle 8s ease-in-out infinite alternate;
-    opacity: .45;
+    opacity: .6;
   }
 
   @keyframes starDrift {
@@ -2300,8 +2328,8 @@ body.menu-open {
   }
 
   @keyframes starTwinkle {
-    0%, 100% { opacity: .45; }
-    50%      { opacity: .25; }
+    0%, 100% { opacity: .6; }
+    50%      { opacity: .3; }
   }
 }
 
