@@ -123,9 +123,9 @@ body {
 body:not(.homepage) {
   overflow-y: auto;
   opacity: 0;
-  transform: translateY(6px);
-  transition: opacity .5s var(--ease-smooth),
-              transform .5s var(--ease-smooth);
+  transform: translateY(4px);
+  transition: opacity .25s ease-out,
+              transform .25s ease-out;
 }
 
 body:not(.homepage).page-loaded {
@@ -1797,6 +1797,7 @@ strong {
   }
 
   /* Simplify backdrop-filter for performance */
+  .header,
   .glass-card,
   .quick-info-card,
   .social-link,
@@ -1805,6 +1806,14 @@ strong {
   .mobile-menu-overlay {
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
+  }
+
+  .header {
+    background: rgba(2, 2, 6, .92);
+  }
+
+  .mobile-menu-overlay {
+    background: rgba(2, 2, 6, .98);
   }
 
   /* Remove will-change hints on mobile to free compositor memory */
@@ -2252,11 +2261,9 @@ body.menu-open {
   .mobile-stars .stars-layer {
     content: '';
     position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    will-change: transform;
+    inset: 0;
+    width: 100%;
+    height: 100%;
   }
 
   /* Layer 1 — small stars */
@@ -2283,11 +2290,10 @@ body.menu-open {
       radial-gradient(1.2px 1.2px at 317px 439px, rgba(238,238,242,.7) 50%, transparent 50%),
       radial-gradient(1px   1px   at 149px 263px, rgba(238,238,242,.5) 50%, transparent 50%);
     background-size: 500px 500px;
-    animation: starDrift 120s linear infinite;
-    opacity: .8;
+    opacity: .7;
   }
 
-  /* Layer 2 — medium brighter stars */
+  /* Layer 2 — medium brighter stars (static, no animation) */
   .mobile-stars::after {
     background-image:
       radial-gradient(1.5px 1.5px at  79px 163px, rgba(238,238,242,.80) 50%, transparent 50%),
@@ -2303,11 +2309,10 @@ body.menu-open {
       radial-gradient(1.5px 1.5px at 227px 179px, rgba(238,238,242,.70) 50%, transparent 50%),
       radial-gradient(1.5px 1.5px at 371px 467px, rgba(238,238,242,.80) 50%, transparent 50%);
     background-size: 470px 470px;
-    animation: starDrift 90s linear infinite reverse;
-    opacity: .7;
+    opacity: .6;
   }
 
-  /* Layer 3 — accent colored stars (cyan/emerald) */
+  /* Layer 3 — accent colored stars (static, no animation) */
   .mobile-stars .stars-layer {
     background-image:
       radial-gradient(2px 2px at 151px 107px, rgba(6,182,212,.70) 50%, transparent 50%),
@@ -2318,18 +2323,7 @@ body.menu-open {
       radial-gradient(2.5px 2.5px at  97px 467px, rgba(6,182,212,.65) 50%, transparent 50%),
       radial-gradient(2px 2px at 443px 179px, rgba(238,238,242,.85) 50%, transparent 50%);
     background-size: 490px 490px;
-    animation: starDrift 150s linear infinite, starTwinkle 8s ease-in-out infinite alternate;
-    opacity: .6;
-  }
-
-  @keyframes starDrift {
-    from { transform: translate(0, 0); }
-    to   { transform: translate(-250px, -250px); }
-  }
-
-  @keyframes starTwinkle {
-    0%, 100% { opacity: .6; }
-    50%      { opacity: .3; }
+    opacity: .55;
   }
 }
 

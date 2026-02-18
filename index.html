@@ -6,8 +6,8 @@
 <title>JU. | Digital Architect</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@300;400;500&family=Unbounded:wght@700;800;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-<noscript><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@300;400;500&family=Unbounded:wght@700;800;900&display=swap" rel="stylesheet"></noscript>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500&family=Unbounded:wght@700;800;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500&family=Unbounded:wght@700;800;900&display=swap" rel="stylesheet"></noscript>
 <link rel="stylesheet" href="styles.css">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
@@ -33,7 +33,7 @@ html, body {
   font-family: var(--sans); background: var(--bg); color: var(--fg);
   cursor: none; -webkit-font-smoothing: antialiased;
 }
-body { opacity: 0; transition: opacity .4s ease; }
+body { opacity: 0; transition: opacity .25s ease; }
 body.ready { opacity: 1; }
 
 ::selection { background: rgba(6,182,212,.2); }
@@ -101,7 +101,7 @@ body.ready { opacity: 1; }
 
 .hero {
   position: fixed; top: 50%; left: 50%; transform: translate(-50%, -60%);
-  z-index: 10; text-align: center; animation: heroIn .85s var(--ease-smooth) .35s both;
+  z-index: 10; text-align: center; animation: heroIn .5s var(--ease-smooth) .1s both;
 }
 @keyframes heroIn {
   from { opacity: 0; transform: translate(-50%, -56%) scale(.97); }
@@ -150,13 +150,13 @@ h1 {
 .card {
   position: relative; width: 224px; border-radius: 14px; overflow: visible;
   cursor: none; transition: all .55s var(--ease); transform-origin: bottom center;
-  opacity: 0; animation: cardUp .7s var(--ease) both;
+  opacity: 0; animation: cardUp .45s var(--ease) both;
 }
-.card:nth-child(1) { animation-delay: .85s; }
-.card:nth-child(2) { animation-delay: .95s; }
-.card:nth-child(3) { animation-delay: 1.05s; }
-.card:nth-child(4) { animation-delay: 1.15s; }
-.card:nth-child(5) { animation-delay: 1.25s; }
+.card:nth-child(1) { animation-delay: .25s; }
+.card:nth-child(2) { animation-delay: .32s; }
+.card:nth-child(3) { animation-delay: .39s; }
+.card:nth-child(4) { animation-delay: .46s; }
+.card:nth-child(5) { animation-delay: .53s; }
 @keyframes cardUp {
   from { opacity: 0; transform: translateY(80px) scale(.96); }
   to { opacity: 1; transform: translateY(0) scale(1); }
@@ -301,7 +301,7 @@ h1 {
   display: flex; align-items: baseline; gap: 6px;
   font-family: var(--mono); font-size: 10px; color: rgba(255,255,255,.12);
   letter-spacing: 1.5px; text-transform: uppercase;
-  opacity: 0; animation: fadeIn .7s ease 1.6s both;
+  opacity: 0; animation: fadeIn .5s ease .6s both;
 }
 .met-count { font-family: var(--sans); font-weight: 700; font-size: 14px; color: rgba(255,255,255,.25); letter-spacing: -0.5px; margin-right: 2px; }
 .met-sep { color: rgba(255,255,255,.06); margin: 0 10px; }
@@ -312,7 +312,7 @@ h1 {
 .copy {
   position: fixed; bottom: 28px; right: 52px; z-index: 20;
   font-family: var(--mono); font-size: 10px; color: rgba(255,255,255,.08);
-  letter-spacing: 1px; opacity: 0; animation: fadeIn .7s ease 1.6s both;
+  letter-spacing: 1px; opacity: 0; animation: fadeIn .5s ease .6s both;
 }
 
 /* ---- Mobile Responsive ---- */
@@ -382,12 +382,17 @@ h1 {
 
   .ci { backdrop-filter: none; -webkit-backdrop-filter: none; }
 
+  .live, .status { backdrop-filter: none; -webkit-backdrop-filter: none; }
+
   .metrics { display: none; }
   .copy { display: none; }
-  .plasma { opacity: .4; }
+  .plasma { opacity: .35; }
+  .core { filter: blur(50px); }
+  .core-inner { filter: blur(35px); }
+  .core-accent { filter: blur(30px); }
   .core, .core-inner, .core-accent { animation: none; }
 
-  /* Reduce particle density on mobile */
+  /* Reduce grain overlay on mobile */
   .grain { opacity: .012; }
 }
 
@@ -461,15 +466,15 @@ h1 {
 </div>
 
 <div class="dock" id="dock">
-  <div class="card" data-color="emerald" data-url="https://grantsby.ai"><div class="ci"><div class="thumb"><span class="live">Live</span><span class="status">Beta</span><div class="thumb-scene"></div><div class="thumb-preview"><img src="https://api.microlink.io/?url=https://grantsby.ai&screenshot=true&meta=false&embed=screenshot.url" alt="GrantsByAi" loading="lazy" onload="this.classList.add('loaded')"></div></div><div class="nfo"><span class="tag">SaaS / AI</span><h3 class="cn">GrantsByAi</h3><p class="cd">AI-powered grants discovery engine</p><span class="cu"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M8 5v6M5 8h6"/></svg>grantsby.ai</span></div></div></div>
+  <div class="card" data-color="emerald" data-url="https://grantsby.ai"><div class="ci"><div class="thumb"><span class="live">Live</span><span class="status">Beta</span><div class="thumb-scene"></div><div class="thumb-preview"><img src="https://api.microlink.io/?url=https://grantsby.ai&screenshot=true&meta=false&embed=screenshot.url" alt="GrantsByAi" loading="lazy" decoding="async" fetchpriority="low" onload="this.classList.add('loaded')"></div></div><div class="nfo"><span class="tag">SaaS / AI</span><h3 class="cn">GrantsByAi</h3><p class="cd">AI-powered grants discovery engine</p><span class="cu"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M8 5v6M5 8h6"/></svg>grantsby.ai</span></div></div></div>
 
-  <div class="card" data-color="slate" data-url="https://engineered-adherence.vercel.app"><div class="ci"><div class="thumb"><span class="live">Live</span><span class="status">Active</span><div class="thumb-scene"></div><div class="thumb-preview"><img src="https://api.microlink.io/?url=https://engineered-adherence.vercel.app&screenshot=true&meta=false&embed=screenshot.url" alt="Engineered Adherence" loading="lazy" onload="this.classList.add('loaded')"></div></div><div class="nfo"><span class="tag">Bio-Longevity</span><h3 class="cn">Engineered Adherence</h3><p class="cd">Peptide therapeutics wellness platform</p><span class="cu"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M8 5v6M5 8h6"/></svg>engineered-adherence.vercel.app</span></div></div></div>
+  <div class="card" data-color="slate" data-url="https://engineered-adherence.vercel.app"><div class="ci"><div class="thumb"><span class="live">Live</span><span class="status">Active</span><div class="thumb-scene"></div><div class="thumb-preview"><img src="https://api.microlink.io/?url=https://engineered-adherence.vercel.app&screenshot=true&meta=false&embed=screenshot.url" alt="Engineered Adherence" loading="lazy" decoding="async" fetchpriority="low" onload="this.classList.add('loaded')"></div></div><div class="nfo"><span class="tag">Bio-Longevity</span><h3 class="cn">Engineered Adherence</h3><p class="cd">Peptide therapeutics wellness platform</p><span class="cu"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M8 5v6M5 8h6"/></svg>engineered-adherence.vercel.app</span></div></div></div>
 
-  <div class="card" data-color="emerald" data-url="https://algx.ai"><div class="ci"><div class="thumb"><span class="live">Live</span><span class="status">Scaling</span><div class="thumb-scene"></div><div class="thumb-preview"><img src="https://api.microlink.io/?url=https://algx.ai&screenshot=true&meta=false&embed=screenshot.url" alt="ALGX" loading="lazy" onload="this.classList.add('loaded')"></div></div><div class="nfo"><span class="tag">AgTech</span><h3 class="cn">ALGX</h3><p class="cd">Precision agriculture data platform</p><span class="cu"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M8 5v6M5 8h6"/></svg>algx.ai</span></div></div></div>
+  <div class="card" data-color="emerald" data-url="https://algx.ai"><div class="ci"><div class="thumb"><span class="live">Live</span><span class="status">Scaling</span><div class="thumb-scene"></div><div class="thumb-preview"><img src="https://api.microlink.io/?url=https://algx.ai&screenshot=true&meta=false&embed=screenshot.url" alt="ALGX" loading="lazy" decoding="async" fetchpriority="low" onload="this.classList.add('loaded')"></div></div><div class="nfo"><span class="tag">AgTech</span><h3 class="cn">ALGX</h3><p class="cd">Precision agriculture data platform</p><span class="cu"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M8 5v6M5 8h6"/></svg>algx.ai</span></div></div></div>
 
-  <div class="card" data-color="violet" data-url="https://ulixes-corp.vercel.app"><div class="ci"><div class="thumb"><span class="live">Live</span><span class="status">Active</span><div class="thumb-scene"></div><div class="thumb-preview"><img src="https://api.microlink.io/?url=https://ulixes-corp.vercel.app&screenshot=true&meta=false&embed=screenshot.url" alt="Ulixes Corp" loading="lazy" onload="this.classList.add('loaded')"></div></div><div class="nfo"><span class="tag">Capital Markets</span><h3 class="cn">Ulixes Corp</h3><p class="cd">Financial architecture & hedge fund infra</p><span class="cu"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M8 5v6M5 8h6"/></svg>ulixes-corp.vercel.app</span></div></div></div>
+  <div class="card" data-color="violet" data-url="https://ulixes-corp.vercel.app"><div class="ci"><div class="thumb"><span class="live">Live</span><span class="status">Active</span><div class="thumb-scene"></div><div class="thumb-preview"><img src="https://api.microlink.io/?url=https://ulixes-corp.vercel.app&screenshot=true&meta=false&embed=screenshot.url" alt="Ulixes Corp" loading="lazy" decoding="async" fetchpriority="low" onload="this.classList.add('loaded')"></div></div><div class="nfo"><span class="tag">Capital Markets</span><h3 class="cn">Ulixes Corp</h3><p class="cd">Financial architecture & hedge fund infra</p><span class="cu"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M8 5v6M5 8h6"/></svg>ulixes-corp.vercel.app</span></div></div></div>
 
-  <div class="card" data-color="blue" data-url="https://crewlink-pied.vercel.app"><div class="ci"><div class="thumb"><span class="live">Live</span><span class="status">Scaling</span><div class="thumb-scene"></div><div class="thumb-preview"><img src="https://api.microlink.io/?url=https://crewlink-pied.vercel.app&screenshot=true&meta=false&embed=screenshot.url" alt="CrewLink" loading="lazy" onload="this.classList.add('loaded')"></div></div><div class="nfo"><span class="tag">Marketplace</span><h3 class="cn">CrewLink</h3><p class="cd">Two-sided local hiring marketplace</p><span class="cu"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M8 5v6M5 8h6"/></svg>crewlink-pied.vercel.app</span></div></div></div>
+  <div class="card" data-color="blue" data-url="https://crewlink-pied.vercel.app"><div class="ci"><div class="thumb"><span class="live">Live</span><span class="status">Scaling</span><div class="thumb-scene"></div><div class="thumb-preview"><img src="https://api.microlink.io/?url=https://crewlink-pied.vercel.app&screenshot=true&meta=false&embed=screenshot.url" alt="CrewLink" loading="lazy" decoding="async" fetchpriority="low" onload="this.classList.add('loaded')"></div></div><div class="nfo"><span class="tag">Marketplace</span><h3 class="cn">CrewLink</h3><p class="cd">Two-sided local hiring marketplace</p><span class="cu"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M8 5v6M5 8h6"/></svg>crewlink-pied.vercel.app</span></div></div></div>
 </div>
 
 <div class="copy">&copy; 2025</div>

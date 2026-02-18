@@ -499,7 +499,10 @@
   ---------------------------------------------------------- */
   const PageTransition = {
     init() {
+      let revealed = false;
       const reveal = () => {
+        if (revealed) return;
+        revealed = true;
         requestAnimationFrame(() => {
           document.body.classList.add('page-loaded');
           // For homepage which uses 'ready' class
@@ -507,14 +510,13 @@
         });
       };
 
-      if (document.fonts && document.fonts.ready) {
-        document.fonts.ready.then(reveal);
-      } else {
-        window.addEventListener('load', reveal);
-      }
+      // Show content immediately on DOMContentLoaded — don't wait for fonts.
+      // Fonts load async via media="print" trick so system fonts show first,
+      // then swap in seamlessly. No reason to block render.
+      reveal();
 
-      // Safety net
-      setTimeout(reveal, 1200);
+      // Keep safety net for edge cases (reduced from 1200ms)
+      setTimeout(reveal, 300);
 
       // After page-load transition ends, remove transform from body.
       // A CSS transform on body creates a new containing block, which
@@ -531,7 +533,7 @@
           }
         });
         // Safety net in case transitionend doesn't fire
-        setTimeout(clearTransform, 1800);
+        setTimeout(clearTransform, 600);
       }
     }
   };
@@ -596,24 +598,26 @@
     raf: null,
     running: false,
     connectionDistance: 100,
+    isTouch: false,
 
     init() {
       this.canvas = document.getElementById('particles');
       if (!this.canvas) return;
       if (prefersReducedMotion()) return;
 
+      this.isTouch = isTouchDevice();
       this.ctx = this.canvas.getContext('2d');
       this.resize();
 
       // Adaptive particle count based on screen size
       const area = window.innerWidth * window.innerHeight;
-      const count = isTouchDevice()
+      const count = this.isTouch
         ? Math.min(30, Math.floor(area / 30000))
         : Math.min(70, Math.floor(area / 15000));
 
       window.addEventListener('resize', () => this.resize());
 
-      if (!isTouchDevice()) {
+      if (!this.isTouch) {
         window.addEventListener('mousemove', (e) => {
           this.mouse.x = e.clientX;
           this.mouse.y = e.clientY;
@@ -676,7 +680,7 @@
         const p = particles[i];
 
         // Mouse repulsion (only on desktop)
-        if (!isTouchDevice()) {
+        if (!this.isTouch) {
           const dx = p.x - this.mouse.x;
           const dy = p.y - this.mouse.y;
           const distSq = dx * dx + dy * dy;
@@ -714,7 +718,7 @@
       }
 
       // Draw connections (skip on touch devices for performance)
-      if (!isTouchDevice() && len < 80) {
+      if (!this.isTouch && len < 80) {
         const cd = this.connectionDistance;
         const cdSq = cd * cd;
         for (let i = 0; i < len; i++) {
