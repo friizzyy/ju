@@ -13,5 +13,13 @@ nul
 # Dependencies
 node_modules/
 
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Vercel
+.vercel/
+
 # Misc
 *.log

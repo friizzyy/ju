@@ -3,12 +3,47 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="JU.">
+<meta name="theme-color" content="#020206">
 <title>Contact | JU. | Digital Architect</title>
 <meta name="description" content="Start a conversation about your next project. Get in touch with JU, Digital Architect, for premium web experiences, SaaS platforms, and AI-powered products.">
+<link rel="canonical" href="https://ju-sand.vercel.app/contact.html">
+<meta property="og:title" content="Contact | JU. | Digital Architect">
+<meta property="og:description" content="Start a conversation about your next project. Get in touch with JU, Digital Architect, for premium web experiences and AI-powered products.">
+<meta property="og:url" content="https://ju-sand.vercel.app/contact.html">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://ju-sand.vercel.app/og-image.png">
+<meta property="og:site_name" content="JU. | Digital Architect">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Contact | JU. | Digital Architect">
+<meta name="twitter:description" content="Start a conversation about your next project. Get in touch with JU, Digital Architect.">
+<meta name="twitter:image" content="https://ju-sand.vercel.app/og-image.png">
+<meta name="twitter:creator" content="@0xFrizzy">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "name": "Contact | JU. | Digital Architect",
+  "description": "Start a conversation about your next project.",
+  "url": "https://ju-sand.vercel.app/contact.html",
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "JU. | Digital Architect",
+    "url": "https://ju-sand.vercel.app"
+  },
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://ju-sand.vercel.app/" },
+      { "@type": "ListItem", "position": 2, "name": "Contact" }
+    ]
+  }
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500&family=Unbounded:wght@700;800;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-<noscript><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500&family=Unbounded:wght@700;800;900&display=swap" rel="stylesheet"></noscript>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500&family=Unbounded:wght@700;800;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500&family=Unbounded:wght@700;800;900&display=swap" rel="stylesheet"></noscript>
 <link rel="stylesheet" href="styles.css">
 <style>
 /* ============================================================
@@ -37,22 +72,6 @@
   top: 140px;
 }
 
-.contact-info .caption-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 8px 20px;
-  border-radius: var(--radius-full);
-  background: var(--cyan-a10);
-  border: 1px solid rgba(6, 182, 212, .15);
-  font-family: var(--mono);
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  color: var(--cyan);
-  margin-bottom: 32px;
-}
 
 .contact-info .contact-title {
   margin-bottom: 28px;
@@ -152,8 +171,8 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 28px;
-  height: 28px;
+  width: 44px;
+  height: 44px;
   border-radius: 6px;
   background: transparent;
   border: 1px solid rgba(255, 255, 255, .08);
@@ -305,6 +324,19 @@
   margin-bottom: 10px;
 }
 
+.required-mark {
+  color: var(--cyan);
+  margin-left: 2px;
+}
+
+.error-message {
+  display: block;
+  font-size: 12px;
+  color: #ef4444;
+  margin-top: 6px;
+  min-height: 18px;
+}
+
 .form-group input,
 .form-group select,
 .form-group textarea {
@@ -326,7 +358,7 @@
 
 .form-group input::placeholder,
 .form-group textarea::placeholder {
-  color: rgba(238, 238, 242, .2);
+  color: rgba(238, 238, 242, .45);
 }
 
 .form-group input:focus,
@@ -370,7 +402,7 @@
 .form-group select {
   padding-right: 44px;
   cursor: pointer;
-  color: rgba(238, 238, 242, .2);
+  color: rgba(238, 238, 242, .45);
 }
 
 .form-group select.has-value {
@@ -722,19 +754,20 @@
 </style>
 </head>
 <body data-page="contact">
+<a href="#main-content" class="skip-link">Skip to main content</a>
 
 
 <!-- Custom Cursor -->
-<div class="cursor" id="cur"></div>
-<div class="cursor-glow" id="glow"></div>
+<div class="cursor" id="cur" aria-hidden="true"></div>
+<div class="cursor-glow" id="glow" aria-hidden="true"></div>
 
 <!-- Overlays -->
-<div class="grain-overlay"></div>
-<div class="vignette-overlay"></div>
-<div class="mobile-stars"><div class="stars-layer"></div></div>
+<div class="grain-overlay" aria-hidden="true"></div>
+<div class="vignette-overlay" aria-hidden="true"></div>
+<div class="mobile-stars" aria-hidden="true"><div class="stars-layer"></div></div>
 
 <!-- Particles Background -->
-<canvas id="particles" style="position:fixed;inset:0;z-index:0;pointer-events:none;"></canvas>
+<canvas id="particles" aria-hidden="true"></canvas>
 
 
 <!-- ============================================================
@@ -742,28 +775,29 @@
      ============================================================ -->
 <header class="header">
   <a href="index.html" class="header-logo">JU<span>.</span></a>
-  <nav class="header-nav">
+  <nav class="header-nav" aria-label="Main navigation">
     <a href="work.html">Work</a>
     <a href="about.html">About</a>
     <a href="process.html">Process</a>
-    <a href="contact.html" class="header-cta active">Get in Touch</a>
+    <a href="contact.html" class="header-cta active" aria-current="page">Get in Touch</a>
   </nav>
-  <button class="mobile-menu-toggle" aria-label="Menu">
+  <button class="mobile-menu-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu">
     <span></span><span></span><span></span>
   </button>
 </header>
 
-<div class="mobile-menu-overlay">
+<nav class="mobile-menu-overlay" id="mobile-menu" aria-label="Mobile navigation" aria-hidden="true">
   <a href="work.html">Work</a>
   <a href="about.html">About</a>
   <a href="process.html">Process</a>
-  <a href="contact.html" class="active">Get in Touch</a>
-</div>
+  <a href="contact.html" class="active" aria-current="page">Get in Touch</a>
+</nav>
 
 
 <!-- ============================================================
      CONTACT SECTION
      ============================================================ -->
+<main id="main-content">
 <section class="contact-section">
   <div class="container">
     <div class="contact-grid">
@@ -869,13 +903,13 @@
             </svg>
           </a>
           <!-- GitHub -->
-          <a href="https://github.com/friizzyy" target="_blank" rel="noopener" class="social-link magnetic" aria-label="GitHub">
+          <a href="https://github.com/friizzyy" target="_blank" rel="noopener noreferrer" class="social-link magnetic" aria-label="GitHub">
             <svg viewBox="0 0 24 24" fill="currentColor">
               <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
             </svg>
           </a>
           <!-- Twitter/X -->
-          <a href="https://x.com/0xFrizzy" target="_blank" rel="noopener" class="social-link magnetic" aria-label="X / Twitter">
+          <a href="https://x.com/0xFrizzy" target="_blank" rel="noopener noreferrer" class="social-link magnetic" aria-label="X / Twitter">
             <svg viewBox="0 0 24 24" fill="currentColor">
               <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
             </svg>
@@ -896,12 +930,14 @@
             <!-- Name & Email Row -->
             <div class="form-row">
               <div class="form-group">
-                <label for="name">Name</label>
-                <input type="text" id="name" name="name" placeholder="Your name" required>
+                <label for="name">Name <span class="required-mark" aria-hidden="true">*</span></label>
+                <input type="text" id="name" name="name" placeholder="Your name" required aria-required="true" autocomplete="name" aria-describedby="name-error">
+                <span id="name-error" class="error-message" role="alert" aria-live="polite"></span>
               </div>
               <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" placeholder="your@email.com" required>
+                <label for="email">Email <span class="required-mark" aria-hidden="true">*</span></label>
+                <input type="email" id="email" name="email" placeholder="your@email.com" required aria-required="true" autocomplete="email" aria-describedby="email-error">
+                <span id="email-error" class="error-message" role="alert" aria-live="polite"></span>
               </div>
             </div>
 
@@ -909,7 +945,7 @@
             <div class="form-row">
               <div class="form-group">
                 <label for="company">Company</label>
-                <input type="text" id="company" name="company" placeholder="Company name (optional)">
+                <input type="text" id="company" name="company" placeholder="Company name (optional)" autocomplete="organization">
               </div>
               <div class="form-group">
                 <label for="projectType">Project Type</label>
@@ -984,7 +1020,7 @@
           </form>
 
           <!-- Success State -->
-          <div class="form-success" id="formSuccess">
+          <div class="form-success" id="formSuccess" role="alert" aria-live="polite" aria-atomic="true" tabindex="-1">
             <div class="success-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M20 6L9 17l-5-5"/>
@@ -1002,6 +1038,7 @@
     </div>
   </div>
 </section>
+</main>
 
 
 <!-- ============================================================
@@ -1018,10 +1055,10 @@
         <a href="mailto:juliuswilliams97@gmail.com" aria-label="Email">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13 2 4"/></svg>
         </a>
-        <a href="https://github.com/friizzyy" target="_blank" rel="noopener" aria-label="GitHub">
+        <a href="https://github.com/friizzyy" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
         </a>
-        <a href="https://x.com/0xFrizzy" target="_blank" rel="noopener" aria-label="X / Twitter">
+        <a href="https://x.com/0xFrizzy" target="_blank" rel="noopener noreferrer" aria-label="X / Twitter">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l7.07 8.51L4 20h2l5.39-5.74L15.5 20H21l-7.41-8.9L20 4h-2l-4.95 5.27L9.5 4H4z"/></svg>
         </a>
       </div>
@@ -1034,7 +1071,7 @@
 
 
 <!-- Main JS -->
-<script src="main.js"></script>
+<script defer src="main.js"></script>
 
 <!-- Contact Page JS -->
 <script>
@@ -1052,35 +1089,50 @@
       // Validate required fields
       const name = form.querySelector('#name');
       const email = form.querySelector('#email');
+      const nameError = form.querySelector('#name-error');
+      const emailError = form.querySelector('#email-error');
       let valid = true;
 
-      [name, email].forEach(function(field) {
-        if (!field.value.trim()) {
-          field.style.borderColor = 'rgba(239, 68, 68, .5)';
-          field.style.boxShadow = '0 0 0 3px rgba(239, 68, 68, .08)';
-          valid = false;
-        }
-      });
+      // Clear previous errors
+      nameError.textContent = '';
+      emailError.textContent = '';
+      name.removeAttribute('aria-invalid');
+      email.removeAttribute('aria-invalid');
 
-      // Basic email validation
-      if (email.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
+      if (!name.value.trim()) {
+        name.style.borderColor = 'rgba(239, 68, 68, .5)';
+        name.style.boxShadow = '0 0 0 3px rgba(239, 68, 68, .08)';
+        name.setAttribute('aria-invalid', 'true');
+        nameError.textContent = 'Name is required';
+        valid = false;
+      }
+
+      if (!email.value.trim()) {
         email.style.borderColor = 'rgba(239, 68, 68, .5)';
         email.style.boxShadow = '0 0 0 3px rgba(239, 68, 68, .08)';
+        email.setAttribute('aria-invalid', 'true');
+        emailError.textContent = 'Email is required';
+        valid = false;
+      } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
+        email.style.borderColor = 'rgba(239, 68, 68, .5)';
+        email.style.boxShadow = '0 0 0 3px rgba(239, 68, 68, .08)';
+        email.setAttribute('aria-invalid', 'true');
+        emailError.textContent = 'Please enter a valid email address';
         valid = false;
       }
 
       if (!valid) return;
 
       // Build mailto link with form data so the submission actually goes somewhere
-      var nameVal = name.value.trim();
-      var emailVal = email.value.trim();
-      var projectType = (form.querySelector('#projectType') || {}).value || '';
-      var budget = (form.querySelector('#budget') || {}).value || '';
-      var timeline = (form.querySelector('#timeline') || {}).value || '';
-      var details = (form.querySelector('#details') || {}).value || '';
+      const nameVal = name.value.trim();
+      const emailVal = email.value.trim();
+      const projectType = (form.querySelector('#projectType') || {}).value || '';
+      const budget = (form.querySelector('#budget') || {}).value || '';
+      const timeline = (form.querySelector('#timeline') || {}).value || '';
+      const details = (form.querySelector('#details') || {}).value || '';
 
-      var subject = encodeURIComponent('New Project Inquiry from ' + nameVal);
-      var body = encodeURIComponent(
+      const subject = encodeURIComponent('New Project Inquiry from ' + nameVal);
+      const body = encodeURIComponent(
         'Name: ' + nameVal + '\n' +
         'Email: ' + emailVal + '\n' +
         'Project Type: ' + projectType + '\n' +
@@ -1099,6 +1151,7 @@
       setTimeout(function() {
         form.style.display = 'none';
         successEl.classList.add('active');
+        successEl.focus();
       }, 400);
     });
 
@@ -1107,6 +1160,9 @@
       field.addEventListener('focus', function() {
         this.style.borderColor = '';
         this.style.boxShadow = '';
+        this.removeAttribute('aria-invalid');
+        var errorEl = document.getElementById(this.id + '-error');
+        if (errorEl) errorEl.textContent = '';
       });
     });
   }
@@ -1123,11 +1179,11 @@
   });
 
   // ---- Copy Email to Clipboard ----
-  var copyBtn = document.getElementById('copyEmail');
+  const copyBtn = document.getElementById('copyEmail');
   if (copyBtn) {
     copyBtn.addEventListener('click', function() {
-      var email = 'juliuswilliams97@gmail.com';
-      var btn = this;
+      const email = 'juliuswilliams97@gmail.com';
+      const btn = this;
 
       if (navigator.clipboard && navigator.clipboard.writeText) {
         navigator.clipboard.writeText(email).then(function() {
@@ -1135,7 +1191,7 @@
         });
       } else {
         // Fallback
-        var temp = document.createElement('textarea');
+        const temp = document.createElement('textarea');
         temp.value = email;
         temp.style.position = 'fixed';
         temp.style.opacity = '0';
@@ -1160,8 +1216,8 @@
 
   // ---- Form Field Focus/Blur Animations ----
   document.querySelectorAll('.form-group input, .form-group select, .form-group textarea').forEach(function(field) {
-    var group = field.closest('.form-group');
-    var label = group ? group.querySelector('label') : null;
+    const group = field.closest('.form-group');
+    const label = group ? group.querySelector('label') : null;
 
     field.addEventListener('focus', function() {
       if (group) group.style.transform = 'translateY(-2px)';

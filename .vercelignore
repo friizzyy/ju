@@ -1,0 +1,6 @@
+audit-prompts/
+.git/
+.gitignore
+.DS_Store
+*.md
+*.log

@@ -3,12 +3,58 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="JU.">
+<meta name="theme-color" content="#020206">
 <title>ALGX Case Study | JU. | Digital Architect</title>
 <meta name="description" content="Deep dive into the ALGX precision agriculture platform. A full-stack data system connecting satellite imagery, IoT sensors, and ML-driven analytics.">
+<link rel="canonical" href="https://ju-sand.vercel.app/case-study.html">
+<meta property="og:title" content="ALGX Case Study | JU. | Digital Architect">
+<meta property="og:description" content="Deep dive into the ALGX precision agriculture platform. A full-stack data system connecting satellite imagery, IoT sensors, and ML-driven analytics.">
+<meta property="og:url" content="https://ju-sand.vercel.app/case-study.html">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://ju-sand.vercel.app/og-image.png">
+<meta property="og:site_name" content="JU. | Digital Architect">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ALGX Case Study | JU. | Digital Architect">
+<meta name="twitter:description" content="Deep dive into the ALGX precision agriculture platform. Satellite imagery, IoT sensors, and ML-driven analytics.">
+<meta name="twitter:image" content="https://ju-sand.vercel.app/og-image.png">
+<meta name="twitter:creator" content="@0xFrizzy">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "ALGX — Precision Agriculture Data Platform",
+  "description": "Deep dive into the ALGX precision agriculture platform. A full-stack data system connecting satellite imagery, IoT sensors, and ML-driven analytics.",
+  "url": "https://ju-sand.vercel.app/case-study.html",
+  "author": {
+    "@type": "Person",
+    "name": "JU.",
+    "url": "https://ju-sand.vercel.app"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "JU.",
+    "url": "https://ju-sand.vercel.app"
+  },
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "JU. | Digital Architect",
+    "url": "https://ju-sand.vercel.app"
+  },
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://ju-sand.vercel.app/" },
+      { "@type": "ListItem", "position": 2, "name": "Work", "item": "https://ju-sand.vercel.app/work.html" },
+      { "@type": "ListItem", "position": 3, "name": "ALGX Case Study" }
+    ]
+  }
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500&family=Unbounded:wght@700;800;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-<noscript><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500&family=Unbounded:wght@700;800;900&display=swap" rel="stylesheet"></noscript>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500&family=Unbounded:wght@700;800;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500&family=Unbounded:wght@700;800;900&display=swap" rel="stylesheet"></noscript>
 <link rel="stylesheet" href="styles.css">
 <style>
 /* ============================================================
@@ -85,10 +131,6 @@
   animation: pulseDot 2s ease-in-out infinite;
 }
 
-@keyframes pulseDot {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50%      { opacity: .4; transform: scale(.75); }
-}
 
 .cs-hero-title {
   font-family: var(--display);
@@ -1219,19 +1261,20 @@
 </style>
 </head>
 <body data-page="work" class="cs-emerald">
+<a href="#main-content" class="skip-link">Skip to main content</a>
 
 
 <!-- Custom Cursor -->
-<div class="cursor" id="cur"></div>
-<div class="cursor-glow" id="glow"></div>
+<div class="cursor" id="cur" aria-hidden="true"></div>
+<div class="cursor-glow" id="glow" aria-hidden="true"></div>
 
 <!-- Overlays -->
-<div class="grain-overlay"></div>
-<div class="vignette-overlay"></div>
-<div class="mobile-stars"><div class="stars-layer"></div></div>
+<div class="grain-overlay" aria-hidden="true"></div>
+<div class="vignette-overlay" aria-hidden="true"></div>
+<div class="mobile-stars" aria-hidden="true"><div class="stars-layer"></div></div>
 
 <!-- Particles Background -->
-<canvas id="particles" style="position:fixed;inset:0;z-index:0;pointer-events:none;"></canvas>
+<canvas id="particles" aria-hidden="true"></canvas>
 
 
 <!-- ============================================================
@@ -1239,28 +1282,29 @@
      ============================================================ -->
 <header class="header">
   <a href="index.html" class="header-logo">JU<span>.</span></a>
-  <nav class="header-nav">
-    <a href="work.html" class="active">Work</a>
+  <nav class="header-nav" aria-label="Main navigation">
+    <a href="work.html" class="active" aria-current="page">Work</a>
     <a href="about.html">About</a>
     <a href="process.html">Process</a>
     <a href="contact.html" class="header-cta">Get in Touch</a>
   </nav>
-  <button class="mobile-menu-toggle" aria-label="Menu">
+  <button class="mobile-menu-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu">
     <span></span><span></span><span></span>
   </button>
 </header>
 
-<div class="mobile-menu-overlay">
-  <a href="work.html" class="active">Work</a>
+<nav class="mobile-menu-overlay" id="mobile-menu" aria-label="Mobile navigation" aria-hidden="true">
+  <a href="work.html" class="active" aria-current="page">Work</a>
   <a href="about.html">About</a>
   <a href="process.html">Process</a>
   <a href="contact.html">Get in Touch</a>
-</div>
+</nav>
 
 
 <!-- ============================================================
      CASE STUDY HERO
      ============================================================ -->
+<main id="main-content"><article>
 <section class="cs-hero">
   <div class="container-wide">
 
@@ -1311,18 +1355,18 @@
     <!-- Hero Visual -->
     <div class="cs-hero-visual reveal-scale delay-5">
       <div class="cs-hero-visual-bg"></div>
-      <div class="visual-grid"></div>
-      <div class="visual-orb visual-orb--1"></div>
-      <div class="visual-orb visual-orb--2"></div>
-      <div class="visual-orb visual-orb--3"></div>
-      <div class="visual-line visual-line--h"></div>
-      <div class="visual-line visual-line--v"></div>
-      <span class="visual-label">ALGX</span>
-      <div class="data-node"></div>
-      <div class="data-node"></div>
-      <div class="data-node"></div>
-      <div class="data-node"></div>
-      <div class="data-node"></div>
+      <div class="visual-grid" aria-hidden="true"></div>
+      <div class="visual-orb visual-orb--1" aria-hidden="true"></div>
+      <div class="visual-orb visual-orb--2" aria-hidden="true"></div>
+      <div class="visual-orb visual-orb--3" aria-hidden="true"></div>
+      <div class="visual-line visual-line--h" aria-hidden="true"></div>
+      <div class="visual-line visual-line--v" aria-hidden="true"></div>
+      <span class="visual-label" aria-hidden="true">ALGX</span>
+      <div class="data-node" aria-hidden="true"></div>
+      <div class="data-node" aria-hidden="true"></div>
+      <div class="data-node" aria-hidden="true"></div>
+      <div class="data-node" aria-hidden="true"></div>
+      <div class="data-node" aria-hidden="true"></div>
     </div>
 
   </div>
@@ -1603,11 +1647,11 @@
         </svg>
       </div>
 
-      <p class="cs-quote-text">
+      <blockquote class="cs-quote-text"><p>
         JU. transformed our fragmented data systems into a unified platform that our entire team actually wants to use. The precision of the engineering and the elegance of the interface exceeded every expectation.
-      </p>
+      </p></blockquote>
 
-      <p class="cs-quote-attr">Dr. Sarah Chen, CTO, ALGX Inc.</p>
+      <footer class="cs-quote-attr"><cite>Dr. Sarah Chen, CTO, ALGX Inc.</cite></footer>
 
     </div>
 
@@ -1660,6 +1704,7 @@
 <!-- ============================================================
      FOOTER
      ============================================================ -->
+</article></main>
 <footer class="footer">
   <div class="container">
     <div class="footer-main">
@@ -1671,10 +1716,10 @@
         <a href="mailto:juliuswilliams97@gmail.com" aria-label="Email">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13 2 4"/></svg>
         </a>
-        <a href="https://github.com/friizzyy" target="_blank" rel="noopener" aria-label="GitHub">
+        <a href="https://github.com/friizzyy" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
         </a>
-        <a href="https://x.com/0xFrizzy" target="_blank" rel="noopener" aria-label="X / Twitter">
+        <a href="https://x.com/0xFrizzy" target="_blank" rel="noopener noreferrer" aria-label="X / Twitter">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l7.07 8.51L4 20h2l5.39-5.74L15.5 20H21l-7.41-8.9L20 4h-2l-4.95 5.27L9.5 4H4z"/></svg>
         </a>
       </div>
@@ -1687,6 +1732,6 @@
 
 
 <!-- Main JS -->
-<script src="main.js"></script>
+<script defer src="main.js"></script>
 </body>
 </html>

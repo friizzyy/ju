@@ -3,12 +3,47 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="JU.">
+<meta name="theme-color" content="#020206">
 <title>Process | JU. | Digital Architect</title>
 <meta name="description" content="A systematic, engineered approach to transforming ambitious ideas into polished digital products. Discover the proven 5-phase framework behind every successful launch.">
+<link rel="canonical" href="https://ju-sand.vercel.app/process.html">
+<meta property="og:title" content="Process | JU. | Digital Architect">
+<meta property="og:description" content="A systematic, engineered approach to transforming ambitious ideas into polished digital products. Discover the proven 5-phase framework.">
+<meta property="og:url" content="https://ju-sand.vercel.app/process.html">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://ju-sand.vercel.app/og-image.png">
+<meta property="og:site_name" content="JU. | Digital Architect">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Process | JU. | Digital Architect">
+<meta name="twitter:description" content="A systematic, engineered approach to transforming ambitious ideas into polished digital products.">
+<meta name="twitter:image" content="https://ju-sand.vercel.app/og-image.png">
+<meta name="twitter:creator" content="@0xFrizzy">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Process | JU. | Digital Architect",
+  "description": "A systematic, engineered approach to transforming ambitious ideas into polished digital products.",
+  "url": "https://ju-sand.vercel.app/process.html",
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "JU. | Digital Architect",
+    "url": "https://ju-sand.vercel.app"
+  },
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://ju-sand.vercel.app/" },
+      { "@type": "ListItem", "position": 2, "name": "Process" }
+    ]
+  }
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500&family=Unbounded:wght@700;800;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-<noscript><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500&family=Unbounded:wght@700;800;900&display=swap" rel="stylesheet"></noscript>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500&family=Unbounded:wght@700;800;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500&family=Unbounded:wght@700;800;900&display=swap" rel="stylesheet"></noscript>
 <link rel="stylesheet" href="styles.css">
 <style>
 /* ============================================================
@@ -24,22 +59,6 @@
   text-align: center;
 }
 
-.process-hero .caption-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 8px 20px;
-  border-radius: var(--radius-full);
-  background: var(--cyan-a10);
-  border: 1px solid rgba(6, 182, 212, .15);
-  font-family: var(--mono);
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  color: var(--cyan);
-  margin-bottom: 32px;
-}
 
 .process-hero .hero-title {
   margin-bottom: 32px;
@@ -680,19 +699,20 @@
 </style>
 </head>
 <body data-page="process">
+<a href="#main-content" class="skip-link">Skip to main content</a>
 
 
 <!-- Custom Cursor -->
-<div class="cursor" id="cur"></div>
-<div class="cursor-glow" id="glow"></div>
+<div class="cursor" id="cur" aria-hidden="true"></div>
+<div class="cursor-glow" id="glow" aria-hidden="true"></div>
 
 <!-- Overlays -->
-<div class="grain-overlay"></div>
-<div class="vignette-overlay"></div>
-<div class="mobile-stars"><div class="stars-layer"></div></div>
+<div class="grain-overlay" aria-hidden="true"></div>
+<div class="vignette-overlay" aria-hidden="true"></div>
+<div class="mobile-stars" aria-hidden="true"><div class="stars-layer"></div></div>
 
 <!-- Particles Background -->
-<canvas id="particles" style="position:fixed;inset:0;z-index:0;pointer-events:none;"></canvas>
+<canvas id="particles" aria-hidden="true"></canvas>
 
 
 <!-- ============================================================
@@ -700,24 +720,26 @@
      ============================================================ -->
 <header class="header">
   <a href="index.html" class="header-logo">JU<span>.</span></a>
-  <nav class="header-nav">
+  <nav class="header-nav" aria-label="Main navigation">
     <a href="work.html">Work</a>
     <a href="about.html">About</a>
-    <a href="process.html" class="active">Process</a>
+    <a href="process.html" class="active" aria-current="page">Process</a>
     <a href="contact.html" class="header-cta">Get in Touch</a>
   </nav>
-  <button class="mobile-menu-toggle" aria-label="Menu">
+  <button class="mobile-menu-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu">
     <span></span><span></span><span></span>
   </button>
 </header>
 
-<div class="mobile-menu-overlay">
+<nav class="mobile-menu-overlay" id="mobile-menu" aria-label="Mobile navigation" aria-hidden="true">
   <a href="work.html">Work</a>
   <a href="about.html">About</a>
-  <a href="process.html" class="active">Process</a>
+  <a href="process.html" class="active" aria-current="page">Process</a>
   <a href="contact.html">Get in Touch</a>
-</div>
+</nav>
 
+
+<main id="main-content">
 
 <!-- ============================================================
      PAGE HERO
@@ -757,7 +779,7 @@
 <section class="timeline-section">
   <div class="container">
     <div class="section-header section-header--center reveal">
-      <p class="caption mb-lg" style="justify-content:center;">The Framework</p>
+      <p class="caption mb-lg">The Framework</p>
       <h2 class="heading-lg">
         Five Phases to
         <span class="serif-italic text-gradient-multi">Excellence.</span>
@@ -925,7 +947,7 @@
 <section class="principles-section">
   <div class="container">
     <div class="section-header section-header--center reveal">
-      <p class="caption mb-lg" style="justify-content:center;">Principles</p>
+      <p class="caption mb-lg">Principles</p>
       <h2 class="heading-lg">
         How I
         <span class="serif-italic text-gradient-multi">Operate.</span>
@@ -938,7 +960,7 @@
       <div class="glass-card principle-card reveal">
         <div class="card-accent-top"></div>
         <div class="principle-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/>
             <path d="M9 12l2 2 4-4"/>
           </svg>
@@ -951,7 +973,7 @@
       <div class="glass-card principle-card reveal delay-1">
         <div class="card-accent-top"></div>
         <div class="principle-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
             <path d="M8 9h8M8 13h4"/>
           </svg>
@@ -964,7 +986,7 @@
       <div class="glass-card principle-card reveal delay-2">
         <div class="card-accent-top"></div>
         <div class="principle-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
             <circle cx="12" cy="12" r="3"/>
           </svg>
@@ -977,7 +999,7 @@
       <div class="glass-card principle-card reveal delay-3">
         <div class="card-accent-top"></div>
         <div class="principle-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M12 2L2 7l10 5 10-5-10-5z"/>
             <path d="M2 17l10 5 10-5"/>
             <path d="M2 12l10 5 10-5"/>
@@ -1006,7 +1028,7 @@
 <section class="faq-section">
   <div class="container">
     <div class="section-header section-header--center reveal">
-      <p class="caption mb-lg" style="justify-content:center;">FAQ</p>
+      <p class="caption mb-lg">FAQ</p>
       <h2 class="heading-lg">
         Common
         <span class="serif-italic text-gradient-multi">Questions.</span>
@@ -1017,11 +1039,11 @@
 
       <!-- FAQ 1 -->
       <div class="faq-item reveal">
-        <button class="faq-question" aria-expanded="false">
-          <span>What types of projects do you take on?</span>
+        <button class="faq-question" aria-expanded="false" aria-controls="faq-a1">
+          <span id="faq-q1">What types of projects do you take on?</span>
           <span class="faq-icon"></span>
         </button>
-        <div class="faq-answer" role="region">
+        <div class="faq-answer" role="region" id="faq-a1" aria-labelledby="faq-q1">
           <div class="faq-answer-inner">
             I specialize in premium web applications, SaaS platforms, AI-powered
             products, and complex data dashboards. I work with ambitious startups
@@ -1032,11 +1054,11 @@
 
       <!-- FAQ 3 -->
       <div class="faq-item reveal delay-2">
-        <button class="faq-question" aria-expanded="false">
-          <span>How do you handle communication?</span>
+        <button class="faq-question" aria-expanded="false" aria-controls="faq-a2">
+          <span id="faq-q2">How do you handle communication?</span>
           <span class="faq-icon"></span>
         </button>
-        <div class="faq-answer" role="region">
+        <div class="faq-answer" role="region" id="faq-a2" aria-labelledby="faq-q2">
           <div class="faq-answer-inner">
             I provide detailed async updates via Slack or email, weekly Loom video
             walkthroughs, and structured milestone reviews. No scattered Zoom calls
@@ -1047,11 +1069,11 @@
 
       <!-- FAQ 4 -->
       <div class="faq-item reveal delay-3">
-        <button class="faq-question" aria-expanded="false">
-          <span>Do you work with existing teams?</span>
+        <button class="faq-question" aria-expanded="false" aria-controls="faq-a3">
+          <span id="faq-q3">Do you work with existing teams?</span>
           <span class="faq-icon"></span>
         </button>
-        <div class="faq-answer" role="region">
+        <div class="faq-answer" role="region" id="faq-a3" aria-labelledby="faq-q3">
           <div class="faq-answer-inner">
             Absolutely. I integrate seamlessly with in-house teams, following your
             existing workflows, contributing to your codebase standards, and mentoring
@@ -1062,11 +1084,11 @@
 
       <!-- FAQ 5 -->
       <div class="faq-item reveal delay-4">
-        <button class="faq-question" aria-expanded="false">
-          <span>What happens after launch?</span>
+        <button class="faq-question" aria-expanded="false" aria-controls="faq-a4">
+          <span id="faq-q4">What happens after launch?</span>
           <span class="faq-icon"></span>
         </button>
-        <div class="faq-answer" role="region">
+        <div class="faq-answer" role="region" id="faq-a4" aria-labelledby="faq-q4">
           <div class="faq-answer-inner">
             I offer ongoing technical partnership packages for maintenance,
             optimization, and feature development. Most clients continue working
@@ -1094,8 +1116,8 @@
 <section class="process-cta-section">
   <div class="container">
     <div class="reveal">
-      <p class="caption mb-lg" style="justify-content:center;">
-        <span style="display:inline-block;width:24px;height:1px;background:var(--cyan);margin-right:12px;vertical-align:middle;"></span>
+      <p class="caption mb-lg">
+        <span></span>
         Next Steps
       </p>
     </div>
@@ -1117,6 +1139,8 @@
 </section>
 
 
+</main>
+
 <!-- ============================================================
      FOOTER
      ============================================================ -->
@@ -1131,10 +1155,10 @@
         <a href="mailto:juliuswilliams97@gmail.com" aria-label="Email">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13 2 4"/></svg>
         </a>
-        <a href="https://github.com/friizzyy" target="_blank" rel="noopener" aria-label="GitHub">
+        <a href="https://github.com/friizzyy" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
         </a>
-        <a href="https://x.com/0xFrizzy" target="_blank" rel="noopener" aria-label="X / Twitter">
+        <a href="https://x.com/0xFrizzy" target="_blank" rel="noopener noreferrer" aria-label="X / Twitter">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l7.07 8.51L4 20h2l5.39-5.74L15.5 20H21l-7.41-8.9L20 4h-2l-4.95 5.27L9.5 4H4z"/></svg>
         </a>
       </div>
@@ -1147,7 +1171,7 @@
 
 
 <!-- Main JS -->
-<script src="main.js"></script>
+<script defer src="main.js"></script>
 
 <!-- FAQ Accordion Script -->
 <script>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>404 — Page Not Found | JU.</title>
+<meta name="description" content="The page you're looking for doesn't exist. Return to JU. Digital Architect portfolio.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&family=Instrument+Serif:ital@1&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+html, body {
+  height: 100%;
+  overflow: hidden;
+}
+
+.error-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  text-align: center;
+  padding: 24px;
+  position: relative;
+  z-index: var(--z-base);
+}
+
+.error-code {
+  font-family: var(--display);
+  font-size: clamp(100px, 20vw, 200px);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  background: linear-gradient(135deg, var(--cyan), var(--violet), var(--pink));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 16px;
+}
+
+.error-title {
+  font-size: clamp(20px, 3vw, 28px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--fg);
+  margin-bottom: 12px;
+}
+
+.error-text {
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--fg2);
+  font-weight: 400;
+  max-width: 400px;
+  margin-bottom: 40px;
+}
+
+.error-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--cyan);
+  transition: gap .3s var(--ease);
+}
+
+.error-link:hover {
+  gap: 12px;
+}
+
+.error-link svg {
+  width: 16px;
+  height: 16px;
+}
+</style>
+</head>
+<body>
+
+<div class="grain-overlay" aria-hidden="true"></div>
+<div class="vignette-overlay" aria-hidden="true"></div>
+
+<main class="error-page">
+  <div class="error-code">404</div>
+  <h1 class="error-title">Page not found.</h1>
+  <p class="error-text">The page you're looking for doesn't exist or has been moved.</p>
+  <a href="index.html" class="error-link">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M13 8H3M7 4l-4 4 4 4"/>
+    </svg>
+    Back to Homepage
+  </a>
+</main>
+
+</body>
+</html>

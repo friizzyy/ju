@@ -14,8 +14,8 @@
   --bg3:      #0c0c18;
   --bg-card:  rgba(12, 12, 24, .55);
   --fg:       #eeeef2;
-  --fg2:      rgba(238, 238, 242, .45);
-  --fg3:      rgba(238, 238, 242, .18);
+  --fg2:      rgba(238, 238, 242, .65);
+  --fg3:      rgba(238, 238, 242, .55);
   --fg4:      rgba(238, 238, 242, .06);
 
   /* ---- Accent Colors ---- */
@@ -28,13 +28,26 @@
   --amber:    #f59e0b;
 
   /* ---- Accent Alphas ---- */
-  --cyan-a10:   rgba(6, 182, 212, .10);
-  --cyan-a20:   rgba(6, 182, 212, .20);
-  --cyan-a40:   rgba(6, 182, 212, .40);
-  --violet-a10: rgba(139, 92, 246, .10);
-  --violet-a20: rgba(139, 92, 246, .20);
-  --pink-a10:   rgba(236, 72, 153, .10);
-  --pink-a20:   rgba(236, 72, 153, .20);
+  --cyan-a10:    rgba(6, 182, 212, .10);
+  --cyan-a20:    rgba(6, 182, 212, .20);
+  --cyan-a40:    rgba(6, 182, 212, .40);
+  --violet-a10:  rgba(139, 92, 246, .10);
+  --violet-a20:  rgba(139, 92, 246, .20);
+  --pink-a10:    rgba(236, 72, 153, .10);
+  --pink-a20:    rgba(236, 72, 153, .20);
+  --emerald-a10: rgba(16, 185, 129, .10);
+  --emerald-a20: rgba(16, 185, 129, .20);
+  --blue-a10:    rgba(59, 130, 246, .10);
+  --blue-a20:    rgba(59, 130, 246, .20);
+  --rose-a10:    rgba(244, 63, 94, .10);
+  --rose-a20:    rgba(244, 63, 94, .20);
+  --amber-a10:   rgba(245, 158, 11, .10);
+  --amber-a20:   rgba(245, 158, 11, .20);
+
+  /* ---- Gradient Tints ---- */
+  --cyan-light:   #67e8f9;
+  --violet-light: #c4b5fd;
+  --pink-light:   #f9a8d4;
 
   /* ---- Typography ---- */
   --sans:    'Manrope', system-ui, -apple-system, sans-serif;
@@ -74,9 +87,13 @@
   --transition-slow:   .8s var(--ease-out-expo);
 
   /* ---- Shadows & Glows ---- */
-  --glow-cyan:   0 0 40px rgba(6, 182, 212, .15), 0 0 80px rgba(6, 182, 212, .05);
-  --glow-violet: 0 0 40px rgba(139, 92, 246, .15), 0 0 80px rgba(139, 92, 246, .05);
-  --glow-pink:   0 0 40px rgba(236, 72, 153, .15), 0 0 80px rgba(236, 72, 153, .05);
+  --glow-cyan:    0 0 40px rgba(6, 182, 212, .15), 0 0 80px rgba(6, 182, 212, .05);
+  --glow-violet:  0 0 40px rgba(139, 92, 246, .15), 0 0 80px rgba(139, 92, 246, .05);
+  --glow-pink:    0 0 40px rgba(236, 72, 153, .15), 0 0 80px rgba(236, 72, 153, .05);
+  --glow-emerald: 0 0 40px rgba(16, 185, 129, .15), 0 0 80px rgba(16, 185, 129, .05);
+  --glow-blue:    0 0 40px rgba(59, 130, 246, .15), 0 0 80px rgba(59, 130, 246, .05);
+  --glow-rose:    0 0 40px rgba(244, 63, 94, .15), 0 0 80px rgba(244, 63, 94, .05);
+  --glow-amber:   0 0 40px rgba(245, 158, 11, .15), 0 0 80px rgba(245, 158, 11, .05);
 
   /* ---- Z-index Scale ---- */
   --z-base:    1;
@@ -109,7 +126,7 @@ html {
 body {
   font-family: var(--sans);
   font-weight: 400;
-  font-size: 15px;
+  font-size: 16px;
   line-height: 1.65;
   color: var(--fg);
   background: var(--bg);
@@ -198,6 +215,26 @@ strong {
 
 
 /* ============================================================
+   3b. FOCUS INDICATORS (a11y)
+   ============================================================ */
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 2px;
+}
+
+.btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--cyan-a20),
+              0 0 0 6px var(--cyan-a10);
+}
+
+
+/* ============================================================
    4. CUSTOM CURSOR
    ============================================================ */
 
@@ -273,6 +310,34 @@ strong {
     transparent 50%,
     rgba(2, 2, 6, .65) 100%
   );
+}
+
+/* ---- Particles Canvas ---- */
+#particles {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ---- Skip Link (a11y) ---- */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 16px;
+  z-index: 100000;
+  padding: 12px 24px;
+  background: var(--cyan);
+  color: var(--bg);
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: top .2s ease;
+}
+.skip-link:focus {
+  top: 16px;
 }
 
 
@@ -607,6 +672,38 @@ strong {
   color: var(--fg2);
 }
 
+/* ---- Caption Pill ---- */
+
+.caption-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 20px;
+  border-radius: var(--radius-full);
+  background: var(--cyan-a10);
+  border: 1px solid var(--cyan-a20);
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  margin-bottom: 32px;
+}
+
+.caption-pill .pulse-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--cyan);
+  animation: pulseDot 2s ease-in-out infinite;
+}
+
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%      { opacity: .4; transform: scale(.75); }
+}
+
 /* ---- Serif Italic ---- */
 
 .serif-italic {
@@ -634,21 +731,21 @@ strong {
 /* ---- Gradient Text Utilities ---- */
 
 .text-gradient-cyan {
-  background: linear-gradient(135deg, var(--cyan), #67e8f9);
+  background: linear-gradient(135deg, var(--cyan), var(--cyan-light));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .text-gradient-violet {
-  background: linear-gradient(135deg, var(--violet), #c4b5fd);
+  background: linear-gradient(135deg, var(--violet), var(--violet-light));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .text-gradient-pink {
-  background: linear-gradient(135deg, var(--pink), #f9a8d4);
+  background: linear-gradient(135deg, var(--pink), var(--pink-light));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -1191,8 +1288,8 @@ strong {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 36px;
-  height: 36px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   border: 1px solid var(--fg4);
   color: var(--fg3);
@@ -1510,7 +1607,7 @@ strong {
 .form-textarea {
   width: 100%;
   padding: 14px 18px;
-  font-size: 15px;
+  font-size: 16px;
   color: var(--fg);
   background: var(--fg4);
   border: 1px solid var(--fg4);
@@ -1949,6 +2046,24 @@ strong {
     opacity: 1;
     transform: none;
   }
+
+  #particles {
+    display: none !important;
+  }
+}
+
+/* ---- Visually Hidden (screen-reader only) ---- */
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
 }
 
 

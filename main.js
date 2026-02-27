@@ -103,8 +103,20 @@
     update() {
       if (!this.el || !this.hasMoved) return;
 
-      this.pos.x = lerp(this.pos.x, this.mouse.x, 0.18);
-      this.pos.y = lerp(this.pos.y, this.mouse.y, 0.18);
+      // Snap directly when reduced motion is preferred (no lerp lag)
+      if (prefersReducedMotion()) {
+        this.pos.x = this.mouse.x;
+        this.pos.y = this.mouse.y;
+        this.glowPos.x = this.mouse.x;
+        this.glowPos.y = this.mouse.y;
+      } else {
+        this.pos.x = lerp(this.pos.x, this.mouse.x, 0.18);
+        this.pos.y = lerp(this.pos.y, this.mouse.y, 0.18);
+        if (this.glow) {
+          this.glowPos.x = lerp(this.glowPos.x, this.mouse.x, 0.08);
+          this.glowPos.y = lerp(this.glowPos.y, this.mouse.y, 0.08);
+        }
+      }
 
       // Offset for dot center (hovering = 24px center, normal = 4px center)
       const offset = this.hovering ? -24 : -4;
@@ -112,8 +124,6 @@
         `translate3d(${this.pos.x + offset}px, ${this.pos.y + offset}px, 0)`;
 
       if (this.glow) {
-        this.glowPos.x = lerp(this.glowPos.x, this.mouse.x, 0.08);
-        this.glowPos.y = lerp(this.glowPos.y, this.mouse.y, 0.08);
         this.glow.style.transform =
           `translate3d(${this.glowPos.x - 250}px, ${this.glowPos.y - 250}px, 0)`;
       }
@@ -131,6 +141,11 @@
         '.reveal, .reveal-left, .reveal-right, .reveal-scale'
       );
       if (!targets.length) return;
+
+      if (typeof IntersectionObserver === 'undefined') {
+        targets.forEach((el) => el.classList.add('visible'));
+        return;
+      }
 
       this.observer = new IntersectionObserver(
         (entries) => {
@@ -214,11 +229,17 @@
     },
 
     update() {
+      const vh = window.innerHeight;
+
       this.elements.forEach((el) => {
-        const rate = parseFloat(el.dataset.parallax) || 0.1;
         const rect = el.getBoundingClientRect();
+
+        // Skip off-screen elements
+        if (rect.bottom < 0 || rect.top > vh) return;
+
+        const rate = parseFloat(el.dataset.parallax) || 0.1;
         const center = rect.top + rect.height / 2;
-        const viewCenter = window.innerHeight / 2;
+        const viewCenter = vh / 2;
         const offset = (center - viewCenter) * rate;
 
         el.style.transform = `translate3d(0, ${offset}px, 0)`;
@@ -237,7 +258,7 @@
 
     init() {
       this.elements = [...document.querySelectorAll('.magnetic')];
-      if (!this.elements.length || isTouchDevice()) return;
+      if (!this.elements.length || isTouchDevice() || prefersReducedMotion()) return;
 
       this.elements.forEach((el) => {
         el.addEventListener('mousemove', (e) => this.onMove(e, el), { passive: true });
@@ -294,6 +315,11 @@
         });
       });
 
+      if (typeof IntersectionObserver === 'undefined') {
+        targets.forEach((el) => el.classList.add('visible'));
+        return;
+      }
+
       this.observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
@@ -323,6 +349,11 @@
     init() {
       const targets = document.querySelectorAll('.counter[data-target]');
       if (!targets.length) return;
+
+      if (typeof IntersectionObserver === 'undefined') {
+        targets.forEach((el) => this.animate(el));
+        return;
+      }
 
       this.observer = new IntersectionObserver(
         (entries) => {
@@ -483,14 +514,23 @@
       this.toggle.classList.add('active');
       this.overlay.classList.add('active');
       document.body.classList.add('menu-open');
+      this.toggle.setAttribute('aria-expanded', 'true');
+      this.overlay.setAttribute('aria-hidden', 'false');
     },
 
     close() {
-      if (this.toggle) this.toggle.classList.remove('active');
-      if (this.overlay) this.overlay.classList.remove('active');
+      if (this.toggle) {
+        this.toggle.classList.remove('active');
+        this.toggle.setAttribute('aria-expanded', 'false');
+      }
+      if (this.overlay) {
+        this.overlay.classList.remove('active');
+        this.overlay.setAttribute('aria-hidden', 'true');
+      }
       document.body.classList.remove('menu-open');
       document.body.style.top = '';
       window.scrollTo(0, this.savedScrollY);
+      if (this.toggle) this.toggle.focus();
     }
   };
 
@@ -543,16 +583,26 @@
   ---------------------------------------------------------- */
   const TiltCards = {
     maxRotation: 8,
+    cards: [],
 
     init() {
       if (prefersReducedMotion()) return;
       const cards = document.querySelectorAll('.tilt-card');
       if (!cards.length || isTouchDevice()) return;
 
-      cards.forEach((card) => {
-        card.addEventListener('mousemove', (e) => this.onMove(e, card), { passive: true });
-        card.addEventListener('mouseleave', () => this.onLeave(card));
+      this.cards = [...cards].map((el) => ({
+        el,
+        shine: el.querySelector('.tilt-shine')
+      }));
+
+      this.cards.forEach(({ el }) => {
+        el.addEventListener('mousemove', (e) => this.onMove(e, el), { passive: true });
+        el.addEventListener('mouseleave', () => this.onLeave(el));
       });
+    },
+
+    getRef(card) {
+      return this.cards.find((c) => c.el === card);
     },
 
     onMove(e, card) {
@@ -567,9 +617,9 @@
         `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
       card.style.transition = 'transform 0.1s ease-out';
 
-      const shine = card.querySelector('.tilt-shine');
-      if (shine) {
-        shine.style.background =
+      const ref = this.getRef(card);
+      if (ref && ref.shine) {
+        ref.shine.style.background =
           `radial-gradient(circle at ${x * 100}% ${y * 100}%, rgba(255,255,255,0.08) 0%, transparent 60%)`;
       }
     },
@@ -580,8 +630,8 @@
       card.style.transition =
         'transform 0.6s cubic-bezier(0.23, 1, 0.32, 1)';
 
-      const shine = card.querySelector('.tilt-shine');
-      if (shine) shine.style.background = 'none';
+      const ref = this.getRef(card);
+      if (ref && ref.shine) ref.shine.style.background = 'none';
     }
   };
 
@@ -600,6 +650,8 @@
     connectionDistance: 100,
     isTouch: false,
 
+    resizeTimer: null,
+
     init() {
       this.canvas = document.getElementById('particles');
       if (!this.canvas) return;
@@ -607,6 +659,9 @@
 
       this.isTouch = isTouchDevice();
       this.ctx = this.canvas.getContext('2d');
+      if (!this.ctx) return;
+
+      this.isTouch = isTouchDevice();
       this.resize();
 
       // Adaptive particle count based on screen size
@@ -615,7 +670,10 @@
         ? Math.min(30, Math.floor(area / 30000))
         : Math.min(70, Math.floor(area / 15000));
 
-      window.addEventListener('resize', () => this.resize());
+      window.addEventListener('resize', () => {
+        clearTimeout(this.resizeTimer);
+        this.resizeTimer = setTimeout(() => this.resize(), 150);
+      });
 
       if (!this.isTouch) {
         window.addEventListener('mousemove', (e) => {
@@ -757,16 +815,36 @@
      This prevents multiple rAF loops competing.
   ---------------------------------------------------------- */
   let rafRunning = false;
+  let rafId = null;
+
   function startSharedLoop() {
     if (rafRunning) return;
     rafRunning = true;
 
     function tick() {
+      if (!rafRunning) return;
       Cursor.update();
-      requestAnimationFrame(tick);
+      rafId = requestAnimationFrame(tick);
     }
-    requestAnimationFrame(tick);
+    rafId = requestAnimationFrame(tick);
   }
+
+  function stopSharedLoop() {
+    rafRunning = false;
+    if (rafId) {
+      cancelAnimationFrame(rafId);
+      rafId = null;
+    }
+  }
+
+  // Pause shared loop when tab is hidden to save CPU
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      stopSharedLoop();
+    } else {
+      startSharedLoop();
+    }
+  });
 
   /* ----------------------------------------------------------
      INITIALIZATION
