@@ -3,31 +3,46 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>JU. | Digital Architect</title>
+<meta name="author" content="JU.">
+<meta name="theme-color" content="#020206">
+<title>JU. | Digital Architect — Product Designer & Developer</title>
+<meta name="description" content="JU. is a digital architect specializing in engineering premium web experiences, SaaS platforms, and AI-powered products for ambitious brands and startups.">
+<meta property="og:title" content="JU. | Digital Architect — Product Designer & Developer">
+<meta property="og:description" content="JU. is a digital architect specializing in engineering premium web experiences, SaaS platforms, and AI-powered products for ambitious brands and startups.">
+<meta property="og:url" content="https://ju-sand.vercel.app/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://ju-sand.vercel.app/og-image.png">
+<meta property="og:site_name" content="JU. | Digital Architect">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="JU. | Digital Architect — Product Designer & Developer">
+<meta name="twitter:description" content="JU. is a digital architect specializing in engineering premium web experiences, SaaS platforms, and AI-powered products for ambitious brands and startups.">
+<meta name="twitter:image" content="https://ju-sand.vercel.app/og-image.png">
+<meta name="twitter:creator" content="@0xFrizzy">
+<link rel="canonical" href="https://ju-sand.vercel.app/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  "mainEntity": {
+    "@type": "Person",
+    "name": "JU.",
+    "jobTitle": "Digital Architect",
+    "description": "Product Designer & Developer specializing in engineering premium web experiences, SaaS platforms, and AI-powered products.",
+    "url": "https://ju-sand.vercel.app",
+    "sameAs": [
+      "https://github.com/friizzyy",
+      "https://x.com/0xFrizzy"
+    ]
+  }
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500&family=Unbounded:wght@700;800;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500&family=Unbounded:wght@700;800;900&display=swap" rel="stylesheet"></noscript>
 <link rel="stylesheet" href="styles.css">
 <style>
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-
-:root {
-  --bg: #020206;
-  --fg: #eeeef2;
-  --fg2: rgba(238,238,242,.45);
-  --fg3: rgba(238,238,242,.18);
-  --fg4: rgba(238,238,242,.06);
-  --cyan: #06b6d4;
-  --violet: #8b5cf6;
-  --pink: #ec4899;
-  --sans: 'Manrope', sans-serif;
-  --serif: 'Instrument Serif', Georgia, serif;
-  --mono: 'IBM Plex Mono', monospace;
-  --ease: cubic-bezier(.23, 1, .32, 1);
-  --ease-smooth: cubic-bezier(.16, 1, .3, 1);
-}
-
 html, body {
   width: 100%; height: 100%; overflow: hidden;
   font-family: var(--sans); background: var(--bg); color: var(--fg);
@@ -40,7 +55,7 @@ body.ready { opacity: 1; }
 
 .cursor {
   position: fixed; top: 0; left: 0; width: 8px; height: 8px; border-radius: 50%;
-  background: var(--fg); pointer-events: none; z-index: 10000; will-change: transform;
+  background: var(--fg); pointer-events: none; z-index: var(--z-cursor); will-change: transform;
   transition: width .25s var(--ease), height .25s var(--ease), background .25s var(--ease), border .25s var(--ease);
   transform: translate3d(-100px, -100px, 0);
 }
@@ -112,7 +127,7 @@ body.ready { opacity: 1; }
   padding: 7px 20px; border-radius: 100px;
   border: 1px solid rgba(255,255,255,.05); background: rgba(255,255,255,.015);
   backdrop-filter: blur(24px); font-family: var(--mono);
-  font-size: 11px; color: rgba(255,255,255,.28); letter-spacing: .8px;
+  font-size: 11px; color: rgba(255,255,255,.55); letter-spacing: .8px;
   text-transform: uppercase; margin-bottom: 36px;
 }
 .pdot {
@@ -138,7 +153,7 @@ h1 {
   -webkit-background-clip: text; -webkit-text-fill-color: transparent;
 }
 .sub {
-  margin-top: 26px; font-size: 14px; color: rgba(255,255,255,.22);
+  margin-top: 26px; font-size: 14px; color: rgba(255,255,255,.55);
   line-height: 1.7; font-weight: 400; max-width: 400px;
   margin-left: auto; margin-right: auto; letter-spacing: .15px;
 }
@@ -157,6 +172,7 @@ h1 {
 .card:nth-child(3) { animation-delay: .39s; }
 .card:nth-child(4) { animation-delay: .46s; }
 .card:nth-child(5) { animation-delay: .53s; }
+.card:nth-child(6) { animation-delay: .60s; }
 @keyframes cardUp {
   from { opacity: 0; transform: translateY(80px) scale(.96); }
   to { opacity: 1; transform: translateY(0) scale(1); }
@@ -287,13 +303,13 @@ h1 {
   border: 1px solid rgba(6,182,212,.04); transition: all .4s;
 }
 .cn { font-size: 15px; font-weight: 700; letter-spacing: -.3px; margin-bottom: 3px; }
-.cd { font-size: 11px; color: rgba(255,255,255,.24); line-height: 1.45; font-weight: 400; }
+.cd { font-size: 11px; color: rgba(255,255,255,.55); line-height: 1.45; font-weight: 400; }
 .cu {
   display: flex; align-items: center; gap: 4px; margin-top: 5px;
-  font-family: var(--mono); font-size: 9px; color: rgba(6,182,212,.25);
+  font-family: var(--mono); font-size: 9px; color: rgba(6,182,212,.55);
   letter-spacing: .3px; transition: color .3s;
 }
-.card:hover .cu { color: rgba(6,182,212,.55); }
+.card:hover .cu { color: rgba(6,182,212,.8); }
 .cu svg { width: 10px; height: 10px; opacity: .4; }
 
 .metrics {
@@ -313,6 +329,13 @@ h1 {
   position: fixed; bottom: 28px; right: 52px; z-index: 20;
   font-family: var(--mono); font-size: 10px; color: rgba(255,255,255,.08);
   letter-spacing: 1px; opacity: 0; animation: fadeIn .5s ease .6s both;
+}
+
+/* ---- Card link reset ---- */
+a.ci {
+  text-decoration: none;
+  color: inherit;
+  display: block;
 }
 
 /* ---- Mobile Responsive ---- */
@@ -427,72 +450,71 @@ h1 {
 </head>
 <body class="homepage" data-page="home">
 
-<div class="cursor" id="cur"></div>
-<div class="cursor-glow" id="glow"></div>
+<a href="#main-content" class="skip-link">Skip to main content</a>
 
-<div class="plasma">
+<div class="cursor" id="cur" aria-hidden="true"></div>
+<div class="cursor-glow" id="glow" aria-hidden="true"></div>
+
+<div class="plasma" aria-hidden="true">
   <div class="core"></div><div class="core-inner"></div><div class="core-accent"></div>
   <div class="ring r1"></div><div class="ring r2"></div><div class="ring r3"></div><div class="ring r4"></div>
   <canvas id="particles"></canvas>
 </div>
-<div class="grain"></div>
-<div class="vig"></div>
-<div class="mobile-stars"><div class="stars-layer"></div></div>
+<div class="grain" aria-hidden="true"></div>
+<div class="vig" aria-hidden="true"></div>
+<div class="mobile-stars" aria-hidden="true"><div class="stars-layer"></div></div>
 
 <header class="header">
   <a href="index.html" class="header-logo">JU<span>.</span></a>
-  <nav class="header-nav">
+  <nav class="header-nav" aria-label="Main navigation">
     <a href="work.html">Work</a>
     <a href="about.html">About</a>
     <a href="process.html">Process</a>
     <a href="contact.html" class="header-cta">Get in Touch</a>
   </nav>
-  <button class="mobile-menu-toggle" aria-label="Menu">
+  <button class="mobile-menu-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu">
     <span></span><span></span><span></span>
   </button>
 </header>
 
-<div class="mobile-menu-overlay">
+<nav class="mobile-menu-overlay" id="mobile-menu" aria-label="Mobile navigation" aria-hidden="true">
   <a href="work.html">Work</a>
   <a href="about.html">About</a>
   <a href="process.html">Process</a>
   <a href="contact.html">Get in Touch</a>
-</div>
+</nav>
 
+<main id="main-content">
 <div class="hero" id="hero">
   <div class="pill"><span class="pdot"></span>Open for new projects</div>
   <h1 id="heroTitle"><span class="t1">Digital</span><span class="t2">Architect.</span></h1>
   <p class="sub">Engineering premium digital products where every pixel is intentional and every interaction tells a story.</p>
 </div>
 
+<h2 class="visually-hidden">Featured Projects</h2>
 <div class="dock" id="dock">
-  <div class="card" data-color="emerald" data-url="https://grantsby.ai"><div class="ci"><div class="thumb"><span class="live">Live</span><span class="status">Beta</span><div class="thumb-scene"></div><div class="thumb-preview"><img src="https://api.microlink.io/?url=https://grantsby.ai&screenshot=true&meta=false&embed=screenshot.url" alt="GrantsByAi" loading="lazy" decoding="async" fetchpriority="low" onload="this.classList.add('loaded')"></div></div><div class="nfo"><span class="tag">SaaS / AI</span><h3 class="cn">GrantsByAi</h3><p class="cd">AI-powered grants discovery engine</p><span class="cu"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M8 5v6M5 8h6"/></svg>grantsby.ai</span></div></div></div>
+  <article class="card" data-color="emerald" data-url="https://grantsby.ai"><a href="https://grantsby.ai" target="_blank" rel="noopener noreferrer" class="ci" tabindex="0"><div class="thumb"><span class="live" aria-hidden="true">Live</span><span class="status" aria-hidden="true">Beta</span><div class="thumb-scene" aria-hidden="true"></div><div class="thumb-preview"><img src="https://api.microlink.io/?url=https://grantsby.ai&screenshot=true&meta=false&embed=screenshot.url" alt="GrantsByAi website preview" loading="lazy" onload="this.classList.add('loaded')"></div></div><div class="nfo"><span class="tag">SaaS / AI</span><h3 class="cn">GrantsByAi</h3><p class="cd">AI-powered grants discovery engine</p><span class="cu" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="8" cy="8" r="6"/><path d="M8 5v6M5 8h6"/></svg>grantsby.ai</span></div></a></article>
 
-  <div class="card" data-color="slate" data-url="https://engineered-adherence.vercel.app"><div class="ci"><div class="thumb"><span class="live">Live</span><span class="status">Active</span><div class="thumb-scene"></div><div class="thumb-preview"><img src="https://api.microlink.io/?url=https://engineered-adherence.vercel.app&screenshot=true&meta=false&embed=screenshot.url" alt="Engineered Adherence" loading="lazy" decoding="async" fetchpriority="low" onload="this.classList.add('loaded')"></div></div><div class="nfo"><span class="tag">Bio-Longevity</span><h3 class="cn">Engineered Adherence</h3><p class="cd">Peptide therapeutics wellness platform</p><span class="cu"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M8 5v6M5 8h6"/></svg>engineered-adherence.vercel.app</span></div></div></div>
+  <article class="card" data-color="slate" data-url="https://engineered-adherence.vercel.app"><a href="https://engineered-adherence.vercel.app" target="_blank" rel="noopener noreferrer" class="ci" tabindex="0"><div class="thumb"><span class="live" aria-hidden="true">Live</span><span class="status" aria-hidden="true">Active</span><div class="thumb-scene" aria-hidden="true"></div><div class="thumb-preview"><img src="https://api.microlink.io/?url=https://engineered-adherence.vercel.app&screenshot=true&meta=false&embed=screenshot.url" alt="Engineered Adherence website preview" loading="lazy" onload="this.classList.add('loaded')"></div></div><div class="nfo"><span class="tag">Bio-Longevity</span><h3 class="cn">Engineered Adherence</h3><p class="cd">Peptide therapeutics wellness platform</p><span class="cu" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="8" cy="8" r="6"/><path d="M8 5v6M5 8h6"/></svg>engineered-adherence.vercel.app</span></div></a></article>
 
-  <div class="card" data-color="emerald" data-url="https://algx.ai"><div class="ci"><div class="thumb"><span class="live">Live</span><span class="status">Scaling</span><div class="thumb-scene"></div><div class="thumb-preview"><img src="https://api.microlink.io/?url=https://algx.ai&screenshot=true&meta=false&embed=screenshot.url" alt="ALGX" loading="lazy" decoding="async" fetchpriority="low" onload="this.classList.add('loaded')"></div></div><div class="nfo"><span class="tag">AgTech</span><h3 class="cn">ALGX</h3><p class="cd">Precision agriculture data platform</p><span class="cu"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M8 5v6M5 8h6"/></svg>algx.ai</span></div></div></div>
+  <article class="card" data-color="emerald" data-url="https://algx.ai"><a href="https://algx.ai" target="_blank" rel="noopener noreferrer" class="ci" tabindex="0"><div class="thumb"><span class="live" aria-hidden="true">Live</span><span class="status" aria-hidden="true">Scaling</span><div class="thumb-scene" aria-hidden="true"></div><div class="thumb-preview"><img src="https://api.microlink.io/?url=https://algx.ai&screenshot=true&meta=false&embed=screenshot.url" alt="ALGX precision agriculture platform preview" loading="lazy" onload="this.classList.add('loaded')"></div></div><div class="nfo"><span class="tag">AgTech</span><h3 class="cn">ALGX</h3><p class="cd">Precision agriculture data platform</p><span class="cu" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="8" cy="8" r="6"/><path d="M8 5v6M5 8h6"/></svg>algx.ai</span></div></a></article>
 
-  <div class="card" data-color="violet" data-url="https://ulixes-corp.vercel.app"><div class="ci"><div class="thumb"><span class="live">Live</span><span class="status">Active</span><div class="thumb-scene"></div><div class="thumb-preview"><img src="https://api.microlink.io/?url=https://ulixes-corp.vercel.app&screenshot=true&meta=false&embed=screenshot.url" alt="Ulixes Corp" loading="lazy" decoding="async" fetchpriority="low" onload="this.classList.add('loaded')"></div></div><div class="nfo"><span class="tag">Capital Markets</span><h3 class="cn">Ulixes Corp</h3><p class="cd">Financial architecture & hedge fund infra</p><span class="cu"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M8 5v6M5 8h6"/></svg>ulixes-corp.vercel.app</span></div></div></div>
+  <article class="card" data-color="violet" data-url="https://ulixes-corp.vercel.app"><a href="https://ulixes-corp.vercel.app" target="_blank" rel="noopener noreferrer" class="ci" tabindex="0"><div class="thumb"><span class="live" aria-hidden="true">Live</span><span class="status" aria-hidden="true">Active</span><div class="thumb-scene" aria-hidden="true"></div><div class="thumb-preview"><img src="https://api.microlink.io/?url=https://ulixes-corp.vercel.app&screenshot=true&meta=false&embed=screenshot.url" alt="Ulixes Corp financial platform preview" loading="lazy" onload="this.classList.add('loaded')"></div></div><div class="nfo"><span class="tag">Capital Markets</span><h3 class="cn">Ulixes Corp</h3><p class="cd">Financial architecture & hedge fund infra</p><span class="cu" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="8" cy="8" r="6"/><path d="M8 5v6M5 8h6"/></svg>ulixes-corp.vercel.app</span></div></a></article>
 
-  <div class="card" data-color="blue" data-url="https://crewlink-pied.vercel.app"><div class="ci"><div class="thumb"><span class="live">Live</span><span class="status">Scaling</span><div class="thumb-scene"></div><div class="thumb-preview"><img src="https://api.microlink.io/?url=https://crewlink-pied.vercel.app&screenshot=true&meta=false&embed=screenshot.url" alt="CrewLink" loading="lazy" decoding="async" fetchpriority="low" onload="this.classList.add('loaded')"></div></div><div class="nfo"><span class="tag">Marketplace</span><h3 class="cn">CrewLink</h3><p class="cd">Two-sided local hiring marketplace</p><span class="cu"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M8 5v6M5 8h6"/></svg>crewlink-pied.vercel.app</span></div></div></div>
+  <article class="card" data-color="blue" data-url="https://crewlink-pied.vercel.app"><a href="https://crewlink-pied.vercel.app" target="_blank" rel="noopener noreferrer" class="ci" tabindex="0"><div class="thumb"><span class="live" aria-hidden="true">Live</span><span class="status" aria-hidden="true">Scaling</span><div class="thumb-scene" aria-hidden="true"></div><div class="thumb-preview"><img src="https://api.microlink.io/?url=https://crewlink-pied.vercel.app&screenshot=true&meta=false&embed=screenshot.url" alt="CrewLink hiring marketplace preview" loading="lazy" onload="this.classList.add('loaded')"></div></div><div class="nfo"><span class="tag">Marketplace</span><h3 class="cn">CrewLink</h3><p class="cd">Two-sided local hiring marketplace</p><span class="cu" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="8" cy="8" r="6"/><path d="M8 5v6M5 8h6"/></svg>crewlink-pied.vercel.app</span></div></a></article>
+
+  <article class="card" data-color="amber" data-url="https://tt-site-nine.vercel.app"><a href="https://tt-site-nine.vercel.app" target="_blank" rel="noopener noreferrer" class="ci" tabindex="0"><div class="thumb"><span class="live" aria-hidden="true">Live</span><span class="status" aria-hidden="true">Active</span><div class="thumb-scene" aria-hidden="true"></div><div class="thumb-preview"><img src="https://api.microlink.io/?url=https://tt-site-nine.vercel.app&screenshot=true&meta=false&embed=screenshot.url" alt="Tristan Thompson executive portfolio preview" loading="lazy" onload="this.classList.add('loaded')"></div></div><div class="nfo"><span class="tag">Executive Brand</span><h3 class="cn">Tristan Thompson</h3><p class="cd">Premium executive portfolio & ventures</p><span class="cu" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="8" cy="8" r="6"/><path d="M8 5v6M5 8h6"/></svg>tt-site-nine.vercel.app</span></div></a></article>
 </div>
+</main>
 
-<div class="copy">&copy; 2025</div>
+<footer class="copy">&copy; 2025 JU.</footer>
 
-<script src="main.js"></script>
+<script defer src="main.js"></script>
 <script>
 (() => {
   const cards = document.querySelectorAll('.card');
   const heroTitle = document.getElementById('heroTitle');
   const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-
-  // Card click handlers
-  cards.forEach(card => {
-    card.addEventListener('click', () => {
-      const u = card.dataset.url;
-      if (u) window.open(u, '_blank');
-    });
-  });
 
   if (!isTouch) {
     // Card 3D tilt (uses per-card mousemove, no rAF needed)

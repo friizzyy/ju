@@ -3,8 +3,43 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="JU.">
+<meta name="theme-color" content="#020206">
 <title>Work | JU. | Digital Architect</title>
 <meta name="description" content="Selected projects by JU. A curated collection of digital products, platforms, and experiences built at the intersection of design and engineering.">
+<link rel="canonical" href="https://ju-sand.vercel.app/work.html">
+<meta property="og:title" content="Work | JU. | Digital Architect">
+<meta property="og:description" content="Selected projects by JU. A curated collection of digital products, platforms, and experiences built at the intersection of design and engineering.">
+<meta property="og:url" content="https://ju-sand.vercel.app/work.html">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://ju-sand.vercel.app/og-image.png">
+<meta property="og:site_name" content="JU. | Digital Architect">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Work | JU. | Digital Architect">
+<meta name="twitter:description" content="A curated collection of digital products, platforms, and experiences built at the intersection of design and engineering.">
+<meta name="twitter:image" content="https://ju-sand.vercel.app/og-image.png">
+<meta name="twitter:creator" content="@0xFrizzy">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "Work | JU. | Digital Architect",
+  "description": "Selected projects by JU. A curated collection of digital products, platforms, and experiences.",
+  "url": "https://ju-sand.vercel.app/work.html",
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "JU. | Digital Architect",
+    "url": "https://ju-sand.vercel.app"
+  },
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://ju-sand.vercel.app/" },
+      { "@type": "ListItem", "position": 2, "name": "Work" }
+    ]
+  }
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500&family=Unbounded:wght@700;800;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
@@ -24,35 +59,7 @@
   text-align: center;
 }
 
-.work-hero .caption-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 8px 20px;
-  border-radius: var(--radius-full);
-  background: var(--cyan-a10);
-  border: 1px solid rgba(6, 182, 212, .15);
-  font-family: var(--mono);
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  color: var(--cyan);
-  margin-bottom: 32px;
-}
 
-.caption-pill .pulse-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--cyan);
-  animation: pulseDot 2s ease-in-out infinite;
-}
-
-@keyframes pulseDot {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50%      { opacity: .4; transform: scale(.75); }
-}
 
 .work-hero .hero-title {
   margin-bottom: 24px;
@@ -843,18 +850,19 @@
 </style>
 </head>
 <body data-page="work">
+<a href="#main-content" class="skip-link">Skip to main content</a>
 
 <!-- Custom Cursor -->
-<div class="cursor" id="cur"></div>
-<div class="cursor-glow" id="glow"></div>
+<div class="cursor" id="cur" aria-hidden="true"></div>
+<div class="cursor-glow" id="glow" aria-hidden="true"></div>
 
 <!-- Overlays -->
-<div class="grain-overlay"></div>
-<div class="vignette-overlay"></div>
-<div class="mobile-stars"><div class="stars-layer"></div></div>
+<div class="grain-overlay" aria-hidden="true"></div>
+<div class="vignette-overlay" aria-hidden="true"></div>
+<div class="mobile-stars" aria-hidden="true"><div class="stars-layer"></div></div>
 
 <!-- Particles Background -->
-<canvas id="particles" style="position:fixed;inset:0;z-index:0;pointer-events:none;"></canvas>
+<canvas id="particles" aria-hidden="true"></canvas>
 
 
 <!-- ============================================================
@@ -862,28 +870,29 @@
      ============================================================ -->
 <header class="header">
   <a href="index.html" class="header-logo">JU<span>.</span></a>
-  <nav class="header-nav">
-    <a href="work.html" class="active">Work</a>
+  <nav class="header-nav" aria-label="Main navigation">
+    <a href="work.html" class="active" aria-current="page">Work</a>
     <a href="about.html">About</a>
     <a href="process.html">Process</a>
     <a href="contact.html" class="header-cta">Get in Touch</a>
   </nav>
-  <button class="mobile-menu-toggle" aria-label="Menu">
+  <button class="mobile-menu-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu">
     <span></span><span></span><span></span>
   </button>
 </header>
 
-<div class="mobile-menu-overlay">
-  <a href="work.html" class="active">Work</a>
+<nav class="mobile-menu-overlay" id="mobile-menu" aria-label="Mobile navigation" aria-hidden="true">
+  <a href="work.html" class="active" aria-current="page">Work</a>
   <a href="about.html">About</a>
   <a href="process.html">Process</a>
   <a href="contact.html">Get in Touch</a>
-</div>
+</nav>
 
 
 <!-- ============================================================
      PAGE HERO
      ============================================================ -->
+<main id="main-content">
 <section class="work-hero">
   <div class="container">
     <div class="reveal">
@@ -911,7 +920,7 @@
   <div class="container-wide">
 
     <!-- ---- Project 1: ALGX ---- -->
-    <div class="project-card card--emerald tilt-card reveal">
+    <article class="project-card card--emerald tilt-card reveal">
       <div class="project-info">
         <span class="project-tag">AgTech</span>
         <h2 class="project-title">ALGX</h2>
@@ -928,7 +937,7 @@
           <span class="tech-pill">PostgreSQL</span>
         </div>
         <div class="project-footer">
-          <a href="https://algx.ai" target="_blank" rel="noopener" class="project-link">
+          <a href="https://algx.ai" target="_blank" rel="noopener noreferrer" class="project-link">
             View Project
             <svg class="arrow-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
               <path d="M3 8h10M9 4l4 4-4 4"/>
@@ -949,10 +958,10 @@
           <img src="https://api.microlink.io/?url=https://algx.ai&screenshot=true&meta=false&embed=screenshot.url" alt="ALGX" loading="lazy" decoding="async" fetchpriority="low" onload="this.classList.add('loaded')">
         </div>
       </div>
-    </div>
+    </article>
 
     <!-- ---- Project 2: Engineered Adherence ---- -->
-    <div class="project-card card--slate tilt-card reveal delay-1">
+    <article class="project-card card--slate tilt-card reveal delay-1">
       <div class="project-info">
         <span class="project-tag">Bio-Longevity</span>
         <h2 class="project-title">Engineered<br>Adherence</h2>
@@ -968,7 +977,7 @@
           <span class="tech-pill">Vercel</span>
         </div>
         <div class="project-footer">
-          <a href="https://engineered-adherence.vercel.app" target="_blank" rel="noopener" class="project-link">
+          <a href="https://engineered-adherence.vercel.app" target="_blank" rel="noopener noreferrer" class="project-link">
             View Project
             <svg class="arrow-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
               <path d="M3 8h10M9 4l4 4-4 4"/>
@@ -989,10 +998,10 @@
           <img src="https://api.microlink.io/?url=https://engineered-adherence.vercel.app&screenshot=true&meta=false&embed=screenshot.url" alt="Engineered Adherence" loading="lazy" decoding="async" fetchpriority="low" onload="this.classList.add('loaded')">
         </div>
       </div>
-    </div>
+    </article>
 
     <!-- ---- Project 3: Ulixes Corp ---- -->
-    <div class="project-card card--violet tilt-card reveal delay-1">
+    <article class="project-card card--violet tilt-card reveal delay-1">
       <div class="project-info">
         <span class="project-tag">Capital Markets</span>
         <h2 class="project-title">Ulixes Corp</h2>
@@ -1009,7 +1018,7 @@
           <span class="tech-pill">MongoDB</span>
         </div>
         <div class="project-footer">
-          <a href="https://ulixes-corp.vercel.app" target="_blank" rel="noopener" class="project-link">
+          <a href="https://ulixes-corp.vercel.app" target="_blank" rel="noopener noreferrer" class="project-link">
             View Project
             <svg class="arrow-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
               <path d="M3 8h10M9 4l4 4-4 4"/>
@@ -1030,10 +1039,10 @@
           <img src="https://api.microlink.io/?url=https://ulixes-corp.vercel.app&screenshot=true&meta=false&embed=screenshot.url" alt="Ulixes Corp" loading="lazy" decoding="async" fetchpriority="low" onload="this.classList.add('loaded')">
         </div>
       </div>
-    </div>
+    </article>
 
     <!-- ---- Project 4: GrantsByAi ---- -->
-    <div class="project-card card--emerald tilt-card reveal delay-1">
+    <article class="project-card card--emerald tilt-card reveal delay-1">
       <div class="project-info">
         <span class="project-tag">SaaS / AI</span>
         <h2 class="project-title">GrantsByAi</h2>
@@ -1050,7 +1059,7 @@
           <span class="tech-pill">Vercel</span>
         </div>
         <div class="project-footer">
-          <a href="https://grantsby.ai" target="_blank" rel="noopener" class="project-link">
+          <a href="https://grantsby.ai" target="_blank" rel="noopener noreferrer" class="project-link">
             View Project
             <svg class="arrow-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
               <path d="M3 8h10M9 4l4 4-4 4"/>
@@ -1071,10 +1080,10 @@
           <img src="https://api.microlink.io/?url=https://grantsby.ai&screenshot=true&meta=false&embed=screenshot.url" alt="GrantsByAi" loading="lazy" decoding="async" fetchpriority="low" onload="this.classList.add('loaded')">
         </div>
       </div>
-    </div>
+    </article>
 
     <!-- ---- Project 5: CrewLink ---- -->
-    <div class="project-card card--blue tilt-card reveal delay-1">
+    <article class="project-card card--blue tilt-card reveal delay-1">
       <div class="project-info">
         <span class="project-tag">Marketplace</span>
         <h2 class="project-title">CrewLink</h2>
@@ -1090,7 +1099,7 @@
           <span class="tech-pill">Maps API</span>
         </div>
         <div class="project-footer">
-          <a href="https://crewlink-pied.vercel.app" target="_blank" rel="noopener" class="project-link">
+          <a href="https://crewlink-pied.vercel.app" target="_blank" rel="noopener noreferrer" class="project-link">
             View Project
             <svg class="arrow-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
               <path d="M3 8h10M9 4l4 4-4 4"/>
@@ -1111,7 +1120,47 @@
           <img src="https://api.microlink.io/?url=https://crewlink-pied.vercel.app&screenshot=true&meta=false&embed=screenshot.url" alt="CrewLink" loading="lazy" decoding="async" fetchpriority="low" onload="this.classList.add('loaded')">
         </div>
       </div>
-    </div>
+    </article>
+
+    <!-- ---- Project 6: Tristan Thompson ---- -->
+    <article class="project-card card--amber tilt-card reveal delay-1">
+      <div class="project-info">
+        <span class="project-tag">Executive Brand</span>
+        <h2 class="project-title">Tristan<br>Thompson</h2>
+        <p class="project-description">
+          Premium executive portfolio and ventures platform for Tristan Thompson,
+          showcasing strategic investments across AI, blockchain, and global connectivity
+          with a refined, warm-toned editorial design language.
+        </p>
+        <div class="project-meta">
+          <span class="tech-pill">Next.js</span>
+          <span class="tech-pill">Vercel</span>
+          <span class="tech-pill">GSAP</span>
+          <span class="tech-pill">Playfair Display</span>
+        </div>
+        <div class="project-footer">
+          <a href="https://tt-site-nine.vercel.app" target="_blank" rel="noopener noreferrer" class="project-link">
+            View Project
+            <svg class="arrow-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 8h10M9 4l4 4-4 4"/>
+            </svg>
+          </a>
+          <span class="project-status">
+            <span class="status-dot"></span>
+            Live / Active
+          </span>
+        </div>
+      </div>
+      <div class="project-visual">
+        <div class="project-visual-bg"></div>
+        <div class="visual-grid"></div>
+        <div class="visual-orb visual-orb--primary"></div>
+        <div class="visual-orb visual-orb--secondary"></div>
+        <div class="site-preview site-preview--img">
+          <img src="https://api.microlink.io/?url=https://tt-site-nine.vercel.app&screenshot=true&meta=false&embed=screenshot.url" alt="Tristan Thompson executive portfolio" loading="lazy" onload="this.classList.add('loaded')">
+        </div>
+      </div>
+    </article>
 
   </div>
 </section>
@@ -1133,13 +1182,13 @@
     <div class="stats-row">
       <div class="stat-card reveal">
         <div class="stat-number">
-          <span class="text-gradient-multi counter" data-target="5">0</span>
+          <span class="text-gradient-multi counter" data-target="6">0</span>
         </div>
         <div class="stat-label">Live Projects</div>
       </div>
       <div class="stat-card reveal delay-1">
         <div class="stat-number">
-          <span class="text-gradient-multi counter" data-target="4">0</span>
+          <span class="text-gradient-multi counter" data-target="5">0</span>
         </div>
         <div class="stat-label">Industries Served</div>
       </div>
@@ -1166,8 +1215,8 @@
 <section class="cta-section">
   <div class="container">
     <div class="reveal">
-      <p class="caption mb-lg" style="justify-content:center;">
-        <span style="display:inline-block;width:24px;height:1px;background:var(--cyan);margin-right:12px;vertical-align:middle;"></span>
+      <p class="caption mb-lg">
+        <span></span>
         Next Steps
       </p>
     </div>
@@ -1189,6 +1238,8 @@
 </section>
 
 
+</main>
+
 <!-- ============================================================
      FOOTER
      ============================================================ -->
@@ -1203,10 +1254,10 @@
         <a href="mailto:juliuswilliams97@gmail.com" aria-label="Email">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13 2 4"/></svg>
         </a>
-        <a href="https://github.com/friizzyy" target="_blank" rel="noopener" aria-label="GitHub">
+        <a href="https://github.com/friizzyy" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
         </a>
-        <a href="https://x.com/0xFrizzy" target="_blank" rel="noopener" aria-label="X / Twitter">
+        <a href="https://x.com/0xFrizzy" target="_blank" rel="noopener noreferrer" aria-label="X / Twitter">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l7.07 8.51L4 20h2l5.39-5.74L15.5 20H21l-7.41-8.9L20 4h-2l-4.95 5.27L9.5 4H4z"/></svg>
         </a>
       </div>
@@ -1219,6 +1270,6 @@
 
 
 <!-- Main JS -->
-<script src="main.js"></script>
+<script defer src="main.js"></script>
 </body>
 </html>
