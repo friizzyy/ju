@@ -338,14 +338,82 @@ a.ci {
   display: block;
 }
 
-/* ---- Mobile Responsive ---- */
+/* ---- Dock header (hidden on desktop) ---- */
+.dock-header { display: none; }
+
+/* ---- Tablet (iPad) ---- */
+@media (max-width: 1024px) and (min-width: 769px) {
+  html, body { overflow-x: hidden; overflow-y: auto; }
+
+  .hero {
+    position: relative; top: auto; left: auto;
+    transform: none;
+    padding: 120px 40px 0;
+    animation: none; opacity: 1;
+    min-height: auto;
+    text-align: center;
+  }
+  h1 {
+    font-size: clamp(56px, 10vw, 80px);
+    letter-spacing: -3px;
+  }
+  .sub { font-size: 15px; max-width: 380px; margin-left: auto; margin-right: auto; }
+
+  .dock-header {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0 40px; margin-top: 40px;
+  }
+  .dock-label {
+    font-family: var(--mono); font-size: 11px; font-weight: 500;
+    color: rgba(255,255,255,.3); letter-spacing: 1.5px; text-transform: uppercase;
+  }
+  .dock-viewall {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-family: var(--mono); font-size: 11px; font-weight: 500;
+    color: rgba(6,182,212,.5); letter-spacing: .5px; text-decoration: none;
+    transition: color .3s ease;
+  }
+  .dock-viewall:hover { color: rgba(6,182,212,.8); }
+  .dock-viewall svg { width: 14px; height: 14px; transition: transform .3s ease; }
+  .dock-viewall:hover svg { transform: translateX(3px); }
+
+  .dock {
+    position: relative; bottom: auto; left: auto;
+    transform: none;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    padding: 20px 40px 60px;
+    overflow: visible;
+    perspective: none;
+  }
+
+  .card {
+    width: 100%; min-width: 0;
+    animation: none; opacity: 1;
+    cursor: auto;
+    border-radius: 14px;
+  }
+  .card:hover { transform: none !important; }
+
+  .thumb { height: 160px; }
+
+  .metrics { display: none; }
+  .copy { display: none; }
+  .plasma { opacity: .45; }
+  .core { filter: blur(60px); }
+  .core-inner { filter: blur(40px); }
+  .core-accent { filter: blur(35px); }
+}
+
+/* ---- Mobile ---- */
 @media (max-width: 768px) {
   html, body { overflow-x: hidden; overflow-y: auto; }
 
   .hero {
     position: relative; top: auto; left: auto;
     transform: none;
-    padding: 120px 24px 0;
+    padding: 100px 24px 0;
     animation: none; opacity: 1;
     min-height: auto;
     text-align: center;
@@ -358,7 +426,7 @@ a.ci {
   .t2 { letter-spacing: -1.5px; }
   .sub {
     font-size: 15px; max-width: 340px;
-    color: rgba(255,255,255,.32);
+    color: rgba(255,255,255,.4);
     margin-top: 20px;
     line-height: 1.65;
     margin-left: auto; margin-right: auto;
@@ -368,59 +436,98 @@ a.ci {
     backdrop-filter: none;
   }
 
-  /* Dock: horizontal scroll gallery */
+  /* Dock header */
+  .dock-header {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0 24px; margin-top: 32px;
+  }
+  .dock-label {
+    font-family: var(--mono); font-size: 10px; font-weight: 500;
+    color: rgba(255,255,255,.25); letter-spacing: 1.5px; text-transform: uppercase;
+  }
+  .dock-viewall {
+    display: inline-flex; align-items: center; gap: 5px;
+    font-family: var(--mono); font-size: 10px; font-weight: 500;
+    color: rgba(6,182,212,.45); letter-spacing: .5px; text-decoration: none;
+    transition: color .3s ease;
+  }
+  .dock-viewall:hover { color: rgba(6,182,212,.8); }
+  .dock-viewall svg { width: 12px; height: 12px; }
+
+  /* Dock: 2-column grid */
   .dock {
     position: relative; bottom: auto; left: auto;
     transform: none;
-    flex-wrap: nowrap; overflow-x: auto; overflow-y: hidden;
-    gap: 12px; padding: 36px 24px 40px;
-    -webkit-overflow-scrolling: touch;
-    scroll-snap-type: x mandatory;
-    scrollbar-width: none;
-    scroll-padding-left: 24px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    padding: 14px 24px 40px;
+    overflow: visible;
+    perspective: none;
   }
-  .dock::-webkit-scrollbar { display: none; }
 
   .card {
-    width: 220px; min-width: 220px; flex-shrink: 0;
-    scroll-snap-align: start;
+    width: 100%; min-width: 0;
     animation: none; opacity: 1;
     cursor: auto;
     -webkit-tap-highlight-color: transparent;
+    border-radius: 12px;
   }
   .card:hover { transform: none !important; }
   .card:active .ci {
-    border-color: rgba(255,255,255,.08);
-    transition: border-color .15s ease;
+    border-color: rgba(255,255,255,.1);
+    transform: scale(.97);
+    transition: all .15s ease;
   }
 
-  .thumb { height: 140px; }
-  .thumb-preview iframe { pointer-events: none; }
+  .ci {
+    border-radius: 12px;
+    backdrop-filter: none; -webkit-backdrop-filter: none;
+    box-shadow: 0 2px 12px rgba(0,0,0,.25), 0 0 0 1px rgba(255,255,255,.03);
+    transition: transform .15s ease, border-color .15s ease;
+  }
 
-  .nfo { padding: 12px 14px 16px; }
-  .cn { font-size: 14px; margin-bottom: 4px; }
-  .cd { font-size: 11px; line-height: 1.5; color: rgba(255,255,255,.28); }
-  .tag { font-size: 9px; padding: 3px 10px; margin-bottom: 8px; }
-  .cu { font-size: 9px; margin-top: 6px; }
+  .thumb { height: 120px; border-radius: 12px 12px 0 0; }
+  .thumb-preview { aspect-ratio: 16/10; }
+  .thumb-preview img { opacity: 0; transition: opacity .4s ease; width: 100%; height: 100%; object-fit: cover; }
+  .thumb-preview img.loaded { opacity: 1; }
 
-  .ci { backdrop-filter: none; -webkit-backdrop-filter: none; }
+  .nfo { padding: 10px 12px 14px; }
+  .tag {
+    font-size: 8px; padding: 2px 8px; margin-bottom: 5px;
+    border-radius: 6px;
+  }
+  .cn { font-size: 13px; font-weight: 700; margin-bottom: 2px; letter-spacing: -.2px; }
+  .cd { font-size: 10px; line-height: 1.45; color: rgba(255,255,255,.45); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .cu { font-size: 8px; margin-top: 5px; }
 
-  .live, .status { backdrop-filter: none; -webkit-backdrop-filter: none; }
+  .live {
+    top: 6px; right: 6px;
+    padding: 2px 7px; font-size: 7px;
+    backdrop-filter: none; -webkit-backdrop-filter: none;
+  }
+  .status {
+    top: 6px; left: 6px;
+    padding: 2px 7px; font-size: 7px;
+    backdrop-filter: none; -webkit-backdrop-filter: none;
+  }
 
   .metrics { display: none; }
   .copy { display: none; }
-  .plasma { opacity: .35; }
-  .core { filter: blur(50px); }
+
+  /* Refined plasma background for mobile */
+  .plasma { opacity: .4; }
+  .core { filter: blur(50px); width: 65vw; height: 65vw; }
   .core-inner { filter: blur(35px); }
   .core-accent { filter: blur(30px); }
   .core, .core-inner, .core-accent { animation: none; }
-
-  /* Reduce grain overlay on mobile */
   .grain { opacity: .012; }
+  .vig { background: radial-gradient(ellipse 85% 70% at 50% 30%, transparent 30%, rgba(2,2,6,.75) 100%); }
 }
 
+/* ---- Small Mobile (iPhone SE, etc) ---- */
 @media (max-width: 480px) {
-  .hero { padding: 100px 20px 0; }
+  .hero { padding: 88px 20px 0; }
   h1 {
     font-size: clamp(42px, 12vw, 56px);
     letter-spacing: -2px;
@@ -428,23 +535,29 @@ a.ci {
   }
   .sub { font-size: 14px; max-width: 300px; }
   .pill { font-size: 9px; padding: 5px 14px; margin-bottom: 16px; }
-  .dock { padding: 28px 20px 36px; gap: 10px; scroll-padding-left: 20px; }
-  .card { width: 190px; min-width: 190px; }
-  .thumb { height: 120px; }
-  .nfo { padding: 10px 12px 14px; }
-  .cn { font-size: 13px; }
-  .cd { font-size: 10px; }
-  .tag { font-size: 8px; padding: 3px 8px; }
+
+  .dock-header { padding: 0 20px; margin-top: 28px; }
+  .dock { padding: 12px 20px 36px; gap: 10px; }
+  .thumb { height: 105px; }
+  .nfo { padding: 8px 10px 12px; }
+  .cn { font-size: 12px; }
+  .cd { font-size: 9.5px; }
+  .tag { font-size: 7px; padding: 2px 7px; }
+  .cu { font-size: 7.5px; }
 }
 
-/* Tiny screens (320px) */
+/* ---- Tiny screens (iPhone SE 1st gen, 320px) ---- */
 @media (max-width: 360px) {
   .hero { padding: 96px 16px 0; }
   h1 { font-size: 38px; letter-spacing: -1.5px; }
   .sub { font-size: 13px; max-width: 280px; }
-  .dock { padding: 24px 16px 32px; }
-  .card { width: 175px; min-width: 175px; }
-  .thumb { height: 110px; }
+  .dock-header { padding: 0 16px; margin-top: 24px; }
+  .dock-label { font-size: 9px; }
+  .dock-viewall { font-size: 9px; }
+  .dock { padding: 10px 16px 32px; gap: 8px; }
+  .thumb { height: 90px; }
+  .cn { font-size: 11px; }
+  .cd { font-size: 9px; }
 }
 </style>
 </head>
@@ -492,20 +605,24 @@ a.ci {
 </div>
 
 <h2 class="visually-hidden">Featured Projects</h2>
+<div class="dock-header">
+  <span class="dock-label">Featured Work</span>
+  <a href="work.html" class="dock-viewall">View all<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+</div>
 <div class="dock" id="dock">
-  <article class="card" data-color="emerald" data-url="https://grantsby.ai"><a href="https://grantsby.ai" target="_blank" rel="noopener noreferrer" class="ci" tabindex="0"><div class="thumb"><span class="live" aria-hidden="true">Live</span><span class="status" aria-hidden="true">Beta</span><div class="thumb-scene" aria-hidden="true"></div><div class="thumb-preview"><img src="https://api.microlink.io/?url=https://grantsby.ai&screenshot=true&meta=false&embed=screenshot.url" alt="GrantsByAi website preview" loading="lazy" onload="this.classList.add('loaded')"></div></div><div class="nfo"><span class="tag">SaaS / AI</span><h3 class="cn">GrantsByAi</h3><p class="cd">AI-powered grants discovery engine</p><span class="cu" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="8" cy="8" r="6"/><path d="M8 5v6M5 8h6"/></svg>grantsby.ai</span></div></a></article>
+  <article class="card" data-color="emerald" data-url="https://grantsby.ai"><a href="https://grantsby.ai" target="_blank" rel="noopener noreferrer" class="ci" tabindex="0"><div class="thumb"><span class="live" aria-hidden="true">Live</span><span class="status" aria-hidden="true">Beta</span><div class="thumb-scene" aria-hidden="true"></div><div class="thumb-preview"><img src="images/grantsby.png" alt="GrantsByAi website preview" loading="lazy" onload="this.classList.add('loaded')"></div></div><div class="nfo"><span class="tag">SaaS / AI</span><h3 class="cn">GrantsByAi</h3><p class="cd">AI-powered grants discovery engine</p><span class="cu" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="8" cy="8" r="6"/><path d="M8 5v6M5 8h6"/></svg>grantsby.ai</span></div></a></article>
 
-  <article class="card" data-color="slate" data-url="https://engineered-adherence.vercel.app"><a href="https://engineered-adherence.vercel.app" target="_blank" rel="noopener noreferrer" class="ci" tabindex="0"><div class="thumb"><span class="live" aria-hidden="true">Live</span><span class="status" aria-hidden="true">Active</span><div class="thumb-scene" aria-hidden="true"></div><div class="thumb-preview"><img src="https://api.microlink.io/?url=https://engineered-adherence.vercel.app&screenshot=true&meta=false&embed=screenshot.url" alt="Engineered Adherence website preview" loading="lazy" onload="this.classList.add('loaded')"></div></div><div class="nfo"><span class="tag">Bio-Longevity</span><h3 class="cn">Engineered Adherence</h3><p class="cd">Peptide therapeutics wellness platform</p><span class="cu" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="8" cy="8" r="6"/><path d="M8 5v6M5 8h6"/></svg>engineered-adherence.vercel.app</span></div></a></article>
+  <article class="card" data-color="slate" data-url="https://engineered-adherence.vercel.app"><a href="https://engineered-adherence.vercel.app" target="_blank" rel="noopener noreferrer" class="ci" tabindex="0"><div class="thumb"><span class="live" aria-hidden="true">Live</span><span class="status" aria-hidden="true">Active</span><div class="thumb-scene" aria-hidden="true"></div><div class="thumb-preview"><img src="images/engineered-adherence.png" alt="Engineered Adherence website preview" loading="lazy" onload="this.classList.add('loaded')"></div></div><div class="nfo"><span class="tag">Bio-Longevity</span><h3 class="cn">Engineered Adherence</h3><p class="cd">Peptide therapeutics wellness platform</p><span class="cu" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="8" cy="8" r="6"/><path d="M8 5v6M5 8h6"/></svg>engineered-adherence.vercel.app</span></div></a></article>
 
-  <article class="card" data-color="emerald" data-url="https://algx.ai"><a href="https://algx.ai" target="_blank" rel="noopener noreferrer" class="ci" tabindex="0"><div class="thumb"><span class="live" aria-hidden="true">Live</span><span class="status" aria-hidden="true">Scaling</span><div class="thumb-scene" aria-hidden="true"></div><div class="thumb-preview"><img src="https://api.microlink.io/?url=https://algx.ai&screenshot=true&meta=false&embed=screenshot.url" alt="ALGX precision agriculture platform preview" loading="lazy" onload="this.classList.add('loaded')"></div></div><div class="nfo"><span class="tag">AgTech</span><h3 class="cn">ALGX</h3><p class="cd">Precision agriculture data platform</p><span class="cu" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="8" cy="8" r="6"/><path d="M8 5v6M5 8h6"/></svg>algx.ai</span></div></a></article>
+  <article class="card" data-color="emerald" data-url="https://algx.ai"><a href="https://algx.ai" target="_blank" rel="noopener noreferrer" class="ci" tabindex="0"><div class="thumb"><span class="live" aria-hidden="true">Live</span><span class="status" aria-hidden="true">Scaling</span><div class="thumb-scene" aria-hidden="true"></div><div class="thumb-preview"><img src="images/algx.png" alt="ALGX precision agriculture platform preview" loading="lazy" onload="this.classList.add('loaded')"></div></div><div class="nfo"><span class="tag">AgTech</span><h3 class="cn">ALGX</h3><p class="cd">Precision agriculture data platform</p><span class="cu" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="8" cy="8" r="6"/><path d="M8 5v6M5 8h6"/></svg>algx.ai</span></div></a></article>
 
-  <article class="card" data-color="violet" data-url="https://ulixes-corp.vercel.app"><a href="https://ulixes-corp.vercel.app" target="_blank" rel="noopener noreferrer" class="ci" tabindex="0"><div class="thumb"><span class="live" aria-hidden="true">Live</span><span class="status" aria-hidden="true">Active</span><div class="thumb-scene" aria-hidden="true"></div><div class="thumb-preview"><img src="https://api.microlink.io/?url=https://ulixes-corp.vercel.app&screenshot=true&meta=false&embed=screenshot.url" alt="Ulixes Corp financial platform preview" loading="lazy" onload="this.classList.add('loaded')"></div></div><div class="nfo"><span class="tag">Capital Markets</span><h3 class="cn">Ulixes Corp</h3><p class="cd">Financial architecture & hedge fund infra</p><span class="cu" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="8" cy="8" r="6"/><path d="M8 5v6M5 8h6"/></svg>ulixes-corp.vercel.app</span></div></a></article>
+  <article class="card" data-color="violet" data-url="https://ulixes-corp.vercel.app"><a href="https://ulixes-corp.vercel.app" target="_blank" rel="noopener noreferrer" class="ci" tabindex="0"><div class="thumb"><span class="live" aria-hidden="true">Live</span><span class="status" aria-hidden="true">Active</span><div class="thumb-scene" aria-hidden="true"></div><div class="thumb-preview"><img src="images/ulixes.png" alt="Ulixes Corp financial platform preview" loading="lazy" onload="this.classList.add('loaded')"></div></div><div class="nfo"><span class="tag">Capital Markets</span><h3 class="cn">Ulixes Corp</h3><p class="cd">Financial architecture & hedge fund infra</p><span class="cu" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="8" cy="8" r="6"/><path d="M8 5v6M5 8h6"/></svg>ulixes-corp.vercel.app</span></div></a></article>
 
-  <article class="card" data-color="blue" data-url="https://crewlink-pied.vercel.app"><a href="https://crewlink-pied.vercel.app" target="_blank" rel="noopener noreferrer" class="ci" tabindex="0"><div class="thumb"><span class="live" aria-hidden="true">Live</span><span class="status" aria-hidden="true">Scaling</span><div class="thumb-scene" aria-hidden="true"></div><div class="thumb-preview"><img src="https://api.microlink.io/?url=https://crewlink-pied.vercel.app&screenshot=true&meta=false&embed=screenshot.url" alt="CrewLink hiring marketplace preview" loading="lazy" onload="this.classList.add('loaded')"></div></div><div class="nfo"><span class="tag">Marketplace</span><h3 class="cn">CrewLink</h3><p class="cd">Two-sided local hiring marketplace</p><span class="cu" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="8" cy="8" r="6"/><path d="M8 5v6M5 8h6"/></svg>crewlink-pied.vercel.app</span></div></a></article>
+  <article class="card" data-color="blue" data-url="https://crewlink-pied.vercel.app"><a href="https://crewlink-pied.vercel.app" target="_blank" rel="noopener noreferrer" class="ci" tabindex="0"><div class="thumb"><span class="live" aria-hidden="true">Live</span><span class="status" aria-hidden="true">Scaling</span><div class="thumb-scene" aria-hidden="true"></div><div class="thumb-preview"><img src="images/crewlink.png" alt="CrewLink hiring marketplace preview" loading="lazy" onload="this.classList.add('loaded')"></div></div><div class="nfo"><span class="tag">Marketplace</span><h3 class="cn">CrewLink</h3><p class="cd">Two-sided local hiring marketplace</p><span class="cu" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="8" cy="8" r="6"/><path d="M8 5v6M5 8h6"/></svg>crewlink-pied.vercel.app</span></div></a></article>
 
-  <article class="card" data-color="amber" data-url="https://tt-site-nine.vercel.app"><a href="https://tt-site-nine.vercel.app" target="_blank" rel="noopener noreferrer" class="ci" tabindex="0"><div class="thumb"><span class="live" aria-hidden="true">Live</span><span class="status" aria-hidden="true">Active</span><div class="thumb-scene" aria-hidden="true"></div><div class="thumb-preview"><img src="https://api.microlink.io/?url=https://tt-site-nine.vercel.app&screenshot=true&meta=false&embed=screenshot.url" alt="Tristan Thompson executive portfolio preview" loading="lazy" onload="this.classList.add('loaded')"></div></div><div class="nfo"><span class="tag">Executive Brand</span><h3 class="cn">Tristan Thompson</h3><p class="cd">Premium executive portfolio & ventures</p><span class="cu" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="8" cy="8" r="6"/><path d="M8 5v6M5 8h6"/></svg>tt-site-nine.vercel.app</span></div></a></article>
+  <article class="card" data-color="amber" data-url="https://tt-site-nine.vercel.app"><a href="https://tt-site-nine.vercel.app" target="_blank" rel="noopener noreferrer" class="ci" tabindex="0"><div class="thumb"><span class="live" aria-hidden="true">Live</span><span class="status" aria-hidden="true">Active</span><div class="thumb-scene" aria-hidden="true"></div><div class="thumb-preview"><img src="images/tristan-thompson.png" alt="Tristan Thompson executive portfolio preview" loading="lazy" onload="this.classList.add('loaded')"></div></div><div class="nfo"><span class="tag">Executive Brand</span><h3 class="cn">Tristan Thompson</h3><p class="cd">Premium executive portfolio & ventures</p><span class="cu" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="8" cy="8" r="6"/><path d="M8 5v6M5 8h6"/></svg>tt-site-nine.vercel.app</span></div></a></article>
 
-  <article class="card" data-color="rose" data-url="https://frontend-three-pi-72.vercel.app"><a href="https://frontend-three-pi-72.vercel.app" target="_blank" rel="noopener noreferrer" class="ci" tabindex="0"><div class="thumb"><span class="live" aria-hidden="true">Live</span><span class="status" aria-hidden="true">Active</span><div class="thumb-scene" aria-hidden="true"></div><div class="thumb-preview"><img src="https://api.microlink.io/?url=https://frontend-three-pi-72.vercel.app&screenshot=true&meta=false&embed=screenshot.url" alt="Rancho Machete ranch website preview" loading="lazy" onload="this.classList.add('loaded')"></div></div><div class="nfo"><span class="tag">Ranch & Agriculture</span><h3 class="cn">Rancho Machete</h3><p class="cd">Premium grass-fed beef ranch storefront</p><span class="cu" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="8" cy="8" r="6"/><path d="M8 5v6M5 8h6"/></svg>frontend-three-pi-72.vercel.app</span></div></a></article>
+  <article class="card" data-color="rose" data-url="https://frontend-three-pi-72.vercel.app"><a href="https://frontend-three-pi-72.vercel.app" target="_blank" rel="noopener noreferrer" class="ci" tabindex="0"><div class="thumb"><span class="live" aria-hidden="true">Live</span><span class="status" aria-hidden="true">Active</span><div class="thumb-scene" aria-hidden="true"></div><div class="thumb-preview"><img src="images/rancho-machete.png" alt="Rancho Machete ranch website preview" loading="lazy" onload="this.classList.add('loaded')"></div></div><div class="nfo"><span class="tag">Ranch & Agriculture</span><h3 class="cn">Rancho Machete</h3><p class="cd">Premium grass-fed beef ranch storefront</p><span class="cu" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="8" cy="8" r="6"/><path d="M8 5v6M5 8h6"/></svg>frontend-three-pi-72.vercel.app</span></div></a></article>
 </div>
 </main>
 

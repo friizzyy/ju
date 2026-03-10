@@ -1772,6 +1772,7 @@ select:focus-visible {
 
   .footer-brand p {
     color: rgba(238, 238, 242, .40);
+    max-width: none;
   }
 
   .footer-social a {
@@ -1851,10 +1852,22 @@ select:focus-visible {
     gap: 10px;
   }
 
-  /* Glass cards: subtle active state instead of hover */
+  /* Glass cards: subtle active state + shadow replacement for removed backdrop-filter */
+  .glass-card {
+    box-shadow: 0 2px 16px rgba(0,0,0,.25), 0 0 0 1px rgba(255,255,255,.04);
+  }
   .glass-card:active {
     border-color: var(--fg3);
     transform: scale(.99);
+  }
+
+  /* Project cards: shadow replacement for removed backdrop-filter */
+  .project-card {
+    box-shadow: 0 4px 20px rgba(0,0,0,.3), 0 0 0 1px rgba(255,255,255,.03);
+  }
+  .project-card:active {
+    transform: scale(.985);
+    transition: transform .15s ease;
   }
 
   /* Hide custom cursor on touch devices */
@@ -1867,21 +1880,18 @@ select:focus-visible {
     cursor: auto;
   }
 
-  /* Simplify animations on mobile */
+  /* Simplify animations on mobile — set immediately to prevent flash */
   .reveal,
   .reveal-left,
   .reveal-right,
-  .reveal-scale {
-    opacity: 1 !important;
-    transform: none !important;
-  }
-
+  .reveal-scale,
   .reveal.visible,
   .reveal-left.visible,
   .reveal-right.visible,
   .reveal-scale.visible {
     opacity: 1 !important;
     transform: none !important;
+    transition: none !important;
   }
 
   /* Disable heavy effects */
@@ -1918,9 +1928,12 @@ select:focus-visible {
     will-change: auto;
   }
 
-  /* Prevent horizontal overflow at system level */
+  /* Divider: simpler box-shadow instead of pseudo-element on mobile */
   .divider-glow::after {
-    width: 120px;
+    display: none;
+  }
+  .divider-glow {
+    box-shadow: 0 0 12px rgba(6,182,212,.08);
   }
 
   /* Social footer icons: bigger tap targets */
@@ -2369,7 +2382,10 @@ body.menu-open {
     z-index: calc(var(--z-overlay) + 1);
     pointer-events: none;
     overflow: hidden;
+    opacity: 0;
+    animation: starsIn .6s ease .2s forwards;
   }
+  @keyframes starsIn { to { opacity: 1; } }
 
   .mobile-stars::before,
   .mobile-stars::after,
@@ -2503,9 +2519,9 @@ body.menu-open {
   .mobile-menu-overlay a {
     font-size: 28px;
     font-weight: 600;
-    padding: 12px 24px;
+    padding: 16px 24px;
     border-radius: var(--radius-md);
-    min-height: 48px;
+    min-height: 52px;
     display: flex;
     align-items: center;
     -webkit-tap-highlight-color: transparent;
@@ -2519,6 +2535,7 @@ body.menu-open {
   .mobile-menu-overlay a.active {
     color: var(--cyan);
     position: relative;
+    background: rgba(6,182,212,.04);
   }
 
   .mobile-menu-overlay a.active::before {
@@ -2527,8 +2544,8 @@ body.menu-open {
     left: 0;
     top: 50%;
     transform: translateY(-50%);
-    width: 3px;
-    height: 24px;
+    width: 4px;
+    height: 32px;
     background: var(--cyan);
     border-radius: 2px;
   }

@@ -696,7 +696,7 @@
 
 @media (max-width: 768px) {
   .work-hero {
-    padding: 120px 0 40px;
+    padding: 100px 0 40px;
   }
 
   .work-hero .hero-subtitle {
@@ -747,13 +747,23 @@
   }
 
   .project-title {
-    font-size: clamp(26px, 7vw, 36px);
+    font-size: clamp(28px, 7vw, 36px);
     line-height: 1.1;
   }
 
   .project-description {
     font-size: 14px;
     line-height: 1.7;
+    color: rgba(255,255,255,.45);
+  }
+
+  /* Prevent layout shift on image load */
+  .site-preview--img {
+    aspect-ratio: 16/10;
+    overflow: hidden;
+  }
+  .site-preview--img img {
+    width: 100%; height: 100%; object-fit: cover;
   }
 
   .project-meta {
@@ -792,10 +802,12 @@
     padding: 28px 20px;
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
+    box-shadow: 0 2px 12px rgba(0,0,0,.2), 0 0 0 1px rgba(255,255,255,.03);
   }
 
   .stat-card:active {
     transform: scale(.98);
+    transition: transform .15s ease;
   }
 
   .stat-number {
@@ -814,7 +826,7 @@
 
 @media (max-width: 480px) {
   .work-hero {
-    padding: 100px 0 32px;
+    padding: 92px 0 32px;
   }
 
   .project-info {
@@ -822,7 +834,7 @@
   }
 
   .project-title {
-    font-size: 24px;
+    font-size: 26px;
   }
 
   .project-visual {
@@ -955,7 +967,7 @@
         <div class="visual-orb visual-orb--primary"></div>
         <div class="visual-orb visual-orb--secondary"></div>
         <div class="site-preview site-preview--img">
-          <img src="https://api.microlink.io/?url=https://algx.ai&screenshot=true&meta=false&embed=screenshot.url" alt="ALGX" loading="lazy" decoding="async" fetchpriority="low" onload="this.classList.add('loaded')">
+          <img src="images/algx.png" alt="ALGX" loading="lazy" decoding="async" fetchpriority="low" onload="this.classList.add('loaded')">
         </div>
       </div>
     </article>
@@ -995,7 +1007,7 @@
         <div class="visual-orb visual-orb--primary"></div>
         <div class="visual-orb visual-orb--secondary"></div>
         <div class="site-preview site-preview--img">
-          <img src="https://api.microlink.io/?url=https://engineered-adherence.vercel.app&screenshot=true&meta=false&embed=screenshot.url" alt="Engineered Adherence" loading="lazy" decoding="async" fetchpriority="low" onload="this.classList.add('loaded')">
+          <img src="images/engineered-adherence.png" alt="Engineered Adherence" loading="lazy" decoding="async" fetchpriority="low" onload="this.classList.add('loaded')">
         </div>
       </div>
     </article>
@@ -1036,7 +1048,7 @@
         <div class="visual-orb visual-orb--primary"></div>
         <div class="visual-orb visual-orb--secondary"></div>
         <div class="site-preview site-preview--img">
-          <img src="https://api.microlink.io/?url=https://ulixes-corp.vercel.app&screenshot=true&meta=false&embed=screenshot.url" alt="Ulixes Corp" loading="lazy" decoding="async" fetchpriority="low" onload="this.classList.add('loaded')">
+          <img src="images/ulixes.png" alt="Ulixes Corp" loading="lazy" decoding="async" fetchpriority="low" onload="this.classList.add('loaded')">
         </div>
       </div>
     </article>
@@ -1077,7 +1089,7 @@
         <div class="visual-orb visual-orb--primary"></div>
         <div class="visual-orb visual-orb--secondary"></div>
         <div class="site-preview site-preview--img">
-          <img src="https://api.microlink.io/?url=https://grantsby.ai&screenshot=true&meta=false&embed=screenshot.url" alt="GrantsByAi" loading="lazy" decoding="async" fetchpriority="low" onload="this.classList.add('loaded')">
+          <img src="images/grantsby.png" alt="GrantsByAi" loading="lazy" decoding="async" fetchpriority="low" onload="this.classList.add('loaded')">
         </div>
       </div>
     </article>
@@ -1117,7 +1129,7 @@
         <div class="visual-orb visual-orb--primary"></div>
         <div class="visual-orb visual-orb--secondary"></div>
         <div class="site-preview site-preview--img">
-          <img src="https://api.microlink.io/?url=https://crewlink-pied.vercel.app&screenshot=true&meta=false&embed=screenshot.url" alt="CrewLink" loading="lazy" decoding="async" fetchpriority="low" onload="this.classList.add('loaded')">
+          <img src="images/crewlink.png" alt="CrewLink" loading="lazy" decoding="async" fetchpriority="low" onload="this.classList.add('loaded')">
         </div>
       </div>
     </article>
@@ -1157,7 +1169,7 @@
         <div class="visual-orb visual-orb--primary"></div>
         <div class="visual-orb visual-orb--secondary"></div>
         <div class="site-preview site-preview--img">
-          <img src="https://api.microlink.io/?url=https://tt-site-nine.vercel.app&screenshot=true&meta=false&embed=screenshot.url" alt="Tristan Thompson executive portfolio" loading="lazy" onload="this.classList.add('loaded')">
+          <img src="images/tristan-thompson.png" alt="Tristan Thompson executive portfolio" loading="lazy" onload="this.classList.add('loaded')">
         </div>
       </div>
     </article>
@@ -1197,7 +1209,7 @@
         <div class="visual-orb visual-orb--primary"></div>
         <div class="visual-orb visual-orb--secondary"></div>
         <div class="site-preview site-preview--img">
-          <img src="https://api.microlink.io/?url=https://frontend-three-pi-72.vercel.app&screenshot=true&meta=false&embed=screenshot.url" alt="Rancho Machete ranch website" loading="lazy" onload="this.classList.add('loaded')">
+          <img src="images/rancho-machete.png" alt="Rancho Machete ranch website" loading="lazy" onload="this.classList.add('loaded')">
         </div>
       </div>
     </article>

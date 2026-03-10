@@ -441,12 +441,13 @@
   }
 
   .about-hero {
-    padding: 120px 0 40px;
+    padding: 100px 0 40px;
   }
 
   .about-hero .hero-body {
     font-size: 15px;
     line-height: 1.7;
+    max-width: 85%;
   }
 
   .philosophy-content p {
@@ -473,6 +474,11 @@
     padding: 24px;
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
+    box-shadow: 0 2px 12px rgba(0,0,0,.2), 0 0 0 1px rgba(255,255,255,.03);
+  }
+  .tech-category:active {
+    transform: scale(.98);
+    transition: transform .15s ease;
   }
 
   .tech-pill {
@@ -483,7 +489,7 @@
 
 @media (max-width: 480px) {
   .about-hero {
-    padding: 100px 0 32px;
+    padding: 88px 0 32px;
   }
 
   .value-number {
