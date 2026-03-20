@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useState, useEffect } from 'react'
 
 const links = [
-  { href: '/studio', label: 'Studio', activeColor: 'text-accent' },
+  { href: '/studio', label: 'Studio', activeColor: 'text-studio' },
   { href: '/systems', label: 'Systems', activeColor: 'text-zeus' },
   { href: '/about', label: 'About', activeColor: 'text-foreground' },
   { href: '/contact', label: 'Contact', activeColor: 'text-foreground' },

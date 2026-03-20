@@ -74,6 +74,7 @@ export default function ContactPage() {
                   <p className="text-sm text-muted/50 leading-relaxed">
                     I read every email and respond within 24 hours.
                   </p>
+                  <p className="font-mono text-[10px] text-muted/25 mt-4 tracking-wider">RESPONDS WITHIN 24 HOURS</p>
                 </a>
               </ClipReveal>
 
@@ -84,6 +85,7 @@ export default function ContactPage() {
                   <p className="text-sm text-muted/50 leading-relaxed">
                     Working with clients locally and across the country.
                   </p>
+                  <p className="text-xs text-muted/30 mt-2 leading-relaxed">Available for in-person meetings across Nevada County.</p>
                 </div>
               </ClipReveal>
             </div>

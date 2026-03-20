@@ -6,6 +6,7 @@ import CustomCursor from '@/components/CustomCursor'
 import ScrollProgress from '@/components/ScrollProgress'
 import PageTransition from '@/components/PageTransition'
 import AmbientBackground from '@/components/AmbientBackground'
+import Footer from '@/components/Footer'
 import './globals.css'
 
 const jetbrainsMono = JetBrains_Mono({
@@ -54,7 +55,7 @@ export default function RootLayout({
         <main className="relative z-10">
           <PageTransition>{children}</PageTransition>
         </main>
-        <div className="grain" aria-hidden="true" />
+        <Footer />
       </body>
     </html>
   )

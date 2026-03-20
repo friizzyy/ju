@@ -22,7 +22,7 @@ export default function AboutPage() {
             {/* Left: Name */}
             <div className="lg:col-span-7">
               <ClipReveal direction="up">
-                <h1 className="text-6xl sm:text-8xl lg:text-[10rem] font-bold tracking-[-0.06em] leading-[0.82]">
+                <h1 className="text-7xl sm:text-9xl lg:text-[12rem] font-bold tracking-[-0.06em] leading-[0.82]">
                   Julius<br />
                   Williams<span className="text-accent">.</span>
                 </h1>
@@ -36,9 +36,7 @@ export default function AboutPage() {
               </Reveal>
               <Reveal delay={0.5}>
                 <p className="text-muted text-base sm:text-lg leading-relaxed mb-6">
-                  Builder. One-person infrastructure company.
-                  Websites through Studio. AI systems through Systems.
-                  Everything built from scratch.
+                  One person. Two businesses. Everything built from scratch and running while you&apos;re reading this.
                 </p>
               </Reveal>
               <Reveal delay={0.6}>
@@ -74,7 +72,7 @@ export default function AboutPage() {
               </Reveal>
               <Reveal delay={0.2}>
                 <p className="text-foreground/80 text-base sm:text-lg leading-[1.9] mb-8">
-                  Two services. Websites through <Link href="/studio" data-cursor="link" className="hover-line text-accent">JU. Studio</Link>.
+                  Two services. Websites through <Link href="/studio" data-cursor="link" className="hover-line text-studio">JU. Studio</Link>.
                   AI automation through <Link href="/systems" data-cursor="link" className="hover-line text-zeus">JU. Systems</Link>.
                   Both built from scratch. Both designed to keep working after
                   I&apos;m done building.
@@ -99,7 +97,7 @@ export default function AboutPage() {
         <div className="max-w-5xl mx-auto">
           <ClipReveal direction="up">
             <h2 className="text-4xl sm:text-6xl font-bold tracking-[-0.04em] leading-[0.9] mb-24">
-              Systems<span className="text-accent">,</span><br />
+              Systems<span className="text-studio">,</span><br />
               <span className="text-muted/20">not deliverables.</span>
             </h2>
           </ClipReveal>
@@ -112,12 +110,12 @@ export default function AboutPage() {
               { title: 'Results over process', body: 'I don\'t sell discovery phases or strategy decks. I sell working websites and working AI agents. If it doesn\'t ship, it doesn\'t count.' },
             ].map((item, i) => (
               <Reveal key={i} delay={i * 0.08}>
-                <div className="group grid grid-cols-1 lg:grid-cols-12 gap-6 py-12 border-b border-white/[0.04] hover:border-accent/10 transition-colors duration-700">
+                <div className="group grid grid-cols-1 lg:grid-cols-12 gap-6 py-16 border-b border-white/[0.04] hover:border-studio/10 transition-colors duration-700">
                   <div className="lg:col-span-1">
-                    <span className="font-mono text-[11px] text-muted/15 group-hover:text-accent/40 transition-colors duration-500">0{i + 1}</span>
+                    <span className="font-mono text-[11px] text-muted/15 group-hover:text-studio/40 transition-colors duration-500">0{i + 1}</span>
                   </div>
                   <div className="lg:col-span-4">
-                    <h3 className="text-lg sm:text-xl font-bold text-foreground group-hover:text-accent transition-colors duration-500">{item.title}</h3>
+                    <h3 className="text-lg sm:text-xl font-bold text-foreground group-hover:text-studio transition-colors duration-500">{item.title}</h3>
                   </div>
                   <div className="lg:col-span-7">
                     <p className="text-sm text-muted/50 leading-relaxed max-w-lg group-hover:text-muted/70 transition-colors duration-500">{item.body}</p>

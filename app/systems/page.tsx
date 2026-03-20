@@ -55,7 +55,7 @@ export default function SystemsPage() {
                       target="_blank"
                       rel="noopener noreferrer"
                       data-cursor="link"
-                      className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-zeus text-background text-sm font-semibold hover:shadow-[0_0_40px_rgba(99,102,241,0.2)] transition-all duration-500"
+                      className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-zeus text-white text-sm font-semibold hover:shadow-[0_0_40px_rgba(99,102,241,0.2)] transition-all duration-500"
                     >
                       Book a discovery call
                     </Link>
@@ -65,7 +65,7 @@ export default function SystemsPage() {
               </Reveal>
             </div>
 
-            {/* Right: Live stats visual */}
+            {/* Right: Live stats visual — no agent pills */}
             <div className="relative">
               <ClipReveal direction="right" delay={0.3}>
                 <div className="relative p-10 sm:p-14 rounded-3xl border border-zeus/[0.08] bg-zeus/[0.02]">
@@ -89,16 +89,6 @@ export default function SystemsPage() {
                         <p className="text-[10px] font-mono text-muted/30 tracking-wider uppercase mt-2">{s.label}</p>
                       </div>
                     ))}
-                  </div>
-
-                  <div className="relative mt-10 flex items-center gap-3 flex-wrap justify-center">
-                    {agents.slice(0, 4).map(a => (
-                      <div key={a.id} className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/[0.03] border border-white/[0.04]">
-                        <div className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: a.color }} />
-                        <span className="text-[10px] font-mono text-muted/40">{a.name}</span>
-                      </div>
-                    ))}
-                    <span className="text-[10px] font-mono text-muted/20">+{agents.length - 4} more</span>
                   </div>
                 </div>
               </ClipReveal>
@@ -140,12 +130,12 @@ export default function SystemsPage() {
         </div>
       </section>
 
-      {/* Before / After — Dramatic contrast */}
+      {/* Before / After — Dramatic contrast with color coding */}
       <section className="py-16 px-6">
         <div className="max-w-5xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-white/[0.04] rounded-2xl overflow-hidden">
             <ClipReveal direction="left">
-              <div className="bg-background p-8 sm:p-12 h-full">
+              <div className="bg-rose-950/[0.04] p-8 sm:p-12 h-full border border-rose-900/[0.06]">
                 <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-muted/20 mb-8">Before</p>
                 <ul className="space-y-5">
                   {[
@@ -156,7 +146,7 @@ export default function SystemsPage() {
                     'Knowledge locked inside one person\'s head',
                   ].map(item => (
                     <li key={item} className="flex items-start gap-3 text-sm text-muted/40 leading-relaxed">
-                      <span className="w-4 h-px bg-muted/10 mt-2.5 shrink-0" />
+                      <span className="w-4 h-px bg-rose-500/20 mt-2.5 shrink-0" />
                       {item}
                     </li>
                   ))}
@@ -165,7 +155,7 @@ export default function SystemsPage() {
             </ClipReveal>
 
             <ClipReveal direction="right" delay={0.15}>
-              <div className="bg-background p-8 sm:p-12 h-full">
+              <div className="bg-emerald-950/[0.04] p-8 sm:p-12 h-full border border-emerald-900/[0.06]">
                 <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-zeus/40 mb-8">After</p>
                 <ul className="space-y-5">
                   {[
@@ -176,7 +166,7 @@ export default function SystemsPage() {
                     'Processes documented and repeatable by anyone',
                   ].map(item => (
                     <li key={item} className="flex items-start gap-3 text-sm text-foreground/80 leading-relaxed">
-                      <span className="w-4 h-px bg-zeus/30 mt-2.5 shrink-0" />
+                      <span className="w-4 h-px bg-emerald-500/30 mt-2.5 shrink-0" />
                       {item}
                     </li>
                   ))}
@@ -200,7 +190,7 @@ export default function SystemsPage() {
           </ClipReveal>
 
           <div className="relative">
-            <div className="absolute left-[11px] top-2 bottom-2 w-px bg-gradient-to-b from-zeus/20 via-zeus/10 to-transparent" />
+            <div className="absolute left-[11px] top-2 bottom-2 w-px bg-gradient-to-b from-zeus/40 via-zeus/20 to-transparent" />
 
             {[
               { title: 'Discovery call', desc: 'I map your operation. You tell me what hurts, what takes too long, what falls through the cracks.', time: '45 min', detail: 'No prep needed. I ask the right questions.' },
@@ -210,7 +200,7 @@ export default function SystemsPage() {
               <Reveal key={i} delay={i * 0.12}>
                 <div className="relative flex gap-8 mb-20 last:mb-0 group">
                   <div className="relative z-10 mt-2 shrink-0">
-                    <div className="w-[23px] h-[23px] rounded-full border-2 border-zeus/25 bg-background flex items-center justify-center group-hover:border-zeus/50 transition-colors duration-500">
+                    <div className="w-[23px] h-[23px] rounded-full border-2 border-zeus/40 bg-background flex items-center justify-center group-hover:border-zeus/60 transition-colors duration-500">
                       <div className="w-2 h-2 rounded-full bg-zeus/50 group-hover:bg-zeus transition-colors duration-500" />
                     </div>
                   </div>
@@ -286,27 +276,20 @@ export default function SystemsPage() {
       </section>
 
       {/* Bridge to Studio */}
-      <section className="py-16 px-6">
-        <div className="max-w-5xl mx-auto">
-          <Reveal>
-            <Link
-              href="/studio"
-              data-cursor="link"
-              className="group block p-8 sm:p-12 rounded-2xl border border-accent/[0.08] hover:border-accent/[0.15] bg-accent/[0.02] hover:bg-accent/[0.04] transition-all duration-500"
-            >
-              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
-                <div>
-                  <p className="font-mono text-[10px] tracking-[0.25em] uppercase text-accent/30 mb-3">JU. Studio</p>
-                  <h3 className="text-xl sm:text-2xl font-bold text-foreground group-hover:text-accent transition-colors duration-300">
-                    Need the site first? JU. Studio builds it from scratch.
-                  </h3>
-                </div>
-                <svg width="24" height="24" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-accent/30 group-hover:text-accent group-hover:translate-x-1 transition-all duration-300 shrink-0"><path d="M4 12L12 4M12 4H5M12 4v7" /></svg>
-              </div>
-            </Link>
-          </Reveal>
+      <div className="px-6 pb-8">
+        <div className="max-w-4xl mx-auto p-10 rounded-2xl border border-white/[0.04] hover:border-studio/[0.10] transition-colors duration-700 group">
+          <div className="grid sm:grid-cols-12 gap-8 items-center">
+            <div className="sm:col-span-8">
+              <p className="font-mono text-[10px] tracking-[0.25em] uppercase text-studio/30 mb-3">Need the site first?</p>
+              <h3 className="text-2xl sm:text-3xl font-bold mb-3 group-hover:text-studio transition-colors duration-500">JU. Studio builds it from scratch<span className="text-studio">.</span></h3>
+              <p className="text-sm text-muted/50 max-w-lg leading-relaxed">Custom Next.js. No templates. Built to rank, convert, and plug directly into the automation layer when you&apos;re ready.</p>
+            </div>
+            <div className="sm:col-span-4 sm:flex sm:justify-end">
+              <Link href="/studio" data-cursor="link" className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-studio/20 text-sm text-studio hover:bg-studio/[0.05] group-hover:border-studio/40 transition-all duration-500">See JU. Studio &rarr;</Link>
+            </div>
+          </div>
         </div>
-      </section>
+      </div>
 
       {/* Agent marquee */}
       <section className="py-24 relative overflow-hidden">
@@ -346,7 +329,7 @@ export default function SystemsPage() {
                 target="_blank"
                 rel="noopener noreferrer"
                 data-cursor="link"
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-zeus text-background font-semibold text-sm hover:shadow-[0_0_50px_rgba(99,102,241,0.2)] transition-all duration-500"
+                className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-zeus text-white font-semibold text-sm hover:shadow-[0_0_50px_rgba(99,102,241,0.2)] transition-all duration-500"
               >
                 Book a Discovery Call
               </Link>

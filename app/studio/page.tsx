@@ -30,14 +30,14 @@ export default function StudioPage() {
             {/* Left: Typography */}
             <div>
               <Reveal>
-                <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-accent/30 mb-8">JU. Studio</p>
+                <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-studio/30 mb-8">JU. Studio</p>
               </Reveal>
 
               <ClipReveal direction="up">
                 <h1 className="text-5xl sm:text-7xl lg:text-8xl font-bold tracking-[-0.05em] leading-[0.85]">
-                  No templates<span className="text-accent">.</span><br />
-                  No shortcuts<span className="text-accent">.</span><br />
-                  <span className="text-outline-accent">Just code.</span>
+                  No templates<span className="text-studio">.</span><br />
+                  No shortcuts<span className="text-studio">.</span><br />
+                  <span className="text-outline-studio">Just code.</span>
                 </h1>
               </ClipReveal>
 
@@ -56,7 +56,7 @@ export default function StudioPage() {
                       target="_blank"
                       rel="noopener noreferrer"
                       data-cursor="link"
-                      className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-accent text-background text-sm font-semibold hover:shadow-[0_0_40px_rgba(0,212,255,0.2)] transition-all duration-500"
+                      className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-studio text-white text-sm font-semibold hover:shadow-[0_0_40px_rgba(139,92,246,0.2)] transition-all duration-500"
                     >
                       Start a project
                     </Link>
@@ -87,7 +87,7 @@ export default function StudioPage() {
                   />
                 </div>
                 <div className="absolute bottom-0 inset-x-0 p-6 bg-gradient-to-t from-background/90 via-background/40 to-transparent">
-                  <p className="font-mono text-[9px] tracking-[0.2em] uppercase text-accent/40">{projects[0].tag}</p>
+                  <p className="font-mono text-[9px] tracking-[0.2em] uppercase text-studio/40">{projects[0].tag}</p>
                   <p className="text-base font-bold text-foreground mt-1">{projects[0].title}</p>
                 </div>
               </a>
@@ -111,31 +111,31 @@ export default function StudioPage() {
         </div>
       </section>
 
-      {/* How I build — Staggered reveals, not uniform cards */}
+      {/* How I build — Convictions, not feature bullets */}
       <section className="py-32 sm:py-44 px-6 relative overflow-hidden">
         <div className="max-w-5xl mx-auto">
           <ParallaxSection speed={0.1}>
             <ClipReveal direction="left">
               <h2 className="text-5xl sm:text-7xl lg:text-8xl font-bold tracking-[-0.05em] leading-[0.85] mb-24">
                 Not like<br />other<br />
-                <span className="text-outline">agencies</span><span className="text-accent">.</span>
+                <span className="text-outline">agencies</span><span className="text-studio">.</span>
               </h2>
             </ClipReveal>
           </ParallaxSection>
 
           <div className="space-y-0">
             {[
-              { title: 'Custom code', body: 'React, Next.js, Tailwind. Every component built specifically for your brand. No WordPress. No Webflow. No Wix.', num: '01' },
-              { title: 'Fast by default', body: 'Static generation, image optimization, lazy loading. Your site scores 90+ on PageSpeed before we even start optimizing.', num: '02' },
-              { title: 'Built to hand off', body: 'Clean code, CMS integration, documentation. You can update content yourself or hand it to any developer.', num: '03' },
+              { title: 'Custom code only', body: 'Every component built for your brand. If it exists somewhere as a template, I don\'t use it.', num: '01' },
+              { title: 'Fast as a baseline', body: '90+ PageSpeed isn\'t a goal. It\'s the floor. Static generation, image optimization, zero bloat — built in from the start.', num: '02' },
+              { title: 'Yours to own', body: 'Clean code, CMS if you need it, full documentation. Any developer can pick it up after I\'m done.', num: '03' },
             ].map((item, i) => (
               <Reveal key={i} delay={i * 0.1}>
-                <div className="group grid grid-cols-1 lg:grid-cols-12 gap-6 py-12 border-b border-white/[0.04] hover:border-accent/10 transition-colors duration-700">
+                <div className="group grid grid-cols-1 lg:grid-cols-12 gap-6 py-12 border-b border-white/[0.04] hover:border-studio/10 transition-colors duration-700">
                   <div className="lg:col-span-1">
-                    <span className="font-mono text-[11px] text-muted/15 group-hover:text-accent/30 transition-colors duration-500">{item.num}</span>
+                    <span className="font-mono text-[11px] text-muted/15 group-hover:text-studio/30 transition-colors duration-500">{item.num}</span>
                   </div>
                   <div className="lg:col-span-4">
-                    <h3 className="text-xl sm:text-2xl font-bold text-foreground group-hover:text-accent transition-colors duration-500">{item.title}</h3>
+                    <h3 className="text-xl sm:text-2xl font-bold text-foreground group-hover:text-studio transition-colors duration-500">{item.title}</h3>
                   </div>
                   <div className="lg:col-span-7">
                     <p className="text-sm text-muted/50 leading-relaxed max-w-lg group-hover:text-muted/70 transition-colors duration-500">{item.body}</p>
@@ -152,9 +152,9 @@ export default function StudioPage() {
         <div className="max-w-5xl mx-auto">
           <ClipReveal direction="up">
             <div className="mb-20">
-              <p className="font-mono text-[10px] tracking-[0.25em] uppercase text-accent/30 mb-6">Investment</p>
+              <p className="font-mono text-[10px] tracking-[0.25em] uppercase text-studio/30 mb-6">Investment</p>
               <h2 className="text-4xl sm:text-6xl font-bold tracking-[-0.04em] leading-[0.9]">
-                Flat rate<span className="text-accent">.</span><br />
+                Flat rate<span className="text-studio">.</span><br />
                 <span className="text-muted/30">No surprises.</span>
               </h2>
             </div>
@@ -163,11 +163,16 @@ export default function StudioPage() {
           <div className="space-y-0">
             {tiers.map((tier, i) => (
               <Reveal key={tier.name} delay={i * 0.06}>
-                <div className={`group grid grid-cols-1 sm:grid-cols-12 gap-4 sm:gap-8 py-8 sm:py-10 border-b border-white/[0.04] hover:border-accent/10 transition-all duration-500 ${
-                  tier.featured ? 'bg-accent/[0.02] -mx-6 px-6 sm:-mx-8 sm:px-8 rounded-xl border-accent/[0.08]' : ''
+                {tier.featured && (
+                  <div className="pt-6">
+                    <p className="font-mono text-[9px] uppercase text-studio/50 tracking-widest mb-2 pl-6 sm:pl-8">MOST POPULAR</p>
+                  </div>
+                )}
+                <div className={`group grid grid-cols-1 sm:grid-cols-12 gap-4 sm:gap-8 py-8 sm:py-10 border-b border-white/[0.04] hover:border-studio/10 transition-all duration-500 ${
+                  tier.featured ? 'bg-studio/[0.02] -mx-6 px-6 sm:-mx-8 sm:px-8 rounded-xl border-t border-studio/20' : ''
                 }`}>
                   <div className="sm:col-span-3 flex items-center gap-3">
-                    {tier.featured && <span className="w-1.5 h-1.5 rounded-full bg-accent shrink-0" />}
+                    {tier.featured && <span className="w-1.5 h-1.5 rounded-full bg-studio shrink-0" />}
                     <div>
                       <h3 className="text-base font-bold text-foreground">{tier.name}</h3>
                       <p className="text-xs text-muted/30 mt-0.5 sm:hidden">{tier.desc}</p>
@@ -187,7 +192,7 @@ export default function StudioPage() {
                       data-cursor="link"
                       className={`text-sm font-medium transition-all duration-300 ${
                         tier.featured
-                          ? 'text-accent hover:text-foreground'
+                          ? 'text-studio hover:text-foreground'
                           : 'text-muted/30 group-hover:text-foreground'
                       }`}
                     >
@@ -211,21 +216,18 @@ export default function StudioPage() {
       <section className="py-16 px-6">
         <div className="max-w-5xl mx-auto">
           <Reveal>
-            <Link
-              href="/systems"
-              data-cursor="link"
-              className="group block p-8 sm:p-12 rounded-2xl border border-zeus/[0.08] hover:border-zeus/[0.15] bg-zeus/[0.02] hover:bg-zeus/[0.04] transition-all duration-500"
-            >
-              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
-                <div>
-                  <p className="font-mono text-[10px] tracking-[0.25em] uppercase text-zeus/30 mb-3">JU. Systems</p>
-                  <h3 className="text-xl sm:text-2xl font-bold text-foreground group-hover:text-zeus transition-colors duration-300">
-                    Already have the site? Now automate what runs behind it.
-                  </h3>
+            <div className="my-24 p-10 rounded-2xl border border-white/[0.04] hover:border-zeus/[0.10] transition-colors duration-700 group">
+              <div className="grid sm:grid-cols-12 gap-8 items-center">
+                <div className="sm:col-span-8">
+                  <p className="font-mono text-[10px] tracking-[0.25em] uppercase text-zeus/30 mb-3">Already have the site?</p>
+                  <h3 className="text-2xl sm:text-3xl font-bold mb-3 group-hover:text-zeus transition-colors duration-500">Now automate what runs behind it<span className="text-zeus">.</span></h3>
+                  <p className="text-sm text-muted/50 max-w-lg leading-relaxed">JU. Systems audits your business for the workflows costing you time and builds the AI agents that handle them.</p>
                 </div>
-                <svg width="24" height="24" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-zeus/30 group-hover:text-zeus group-hover:translate-x-1 transition-all duration-300 shrink-0"><path d="M4 12L12 4M12 4H5M12 4v7" /></svg>
+                <div className="sm:col-span-4 sm:flex sm:justify-end">
+                  <Link href="/systems" data-cursor="link" className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-zeus/20 text-sm text-zeus hover:bg-zeus/[0.05] group-hover:border-zeus/40 transition-all duration-500">See JU. Systems &rarr;</Link>
+                </div>
               </div>
-            </Link>
+            </div>
           </Reveal>
         </div>
       </section>
@@ -236,7 +238,7 @@ export default function StudioPage() {
         <div className="max-w-2xl mx-auto text-center">
           <ClipReveal direction="up">
             <h2 className="text-4xl sm:text-6xl lg:text-7xl font-bold tracking-[-0.04em] leading-[0.9]">
-              Ready to<br />build<span className="text-accent">?</span>
+              Ready to<br />build<span className="text-studio">?</span>
             </h2>
           </ClipReveal>
           <Reveal delay={0.3}>
@@ -249,7 +251,7 @@ export default function StudioPage() {
                 target="_blank"
                 rel="noopener noreferrer"
                 data-cursor="link"
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-accent text-background font-semibold text-sm hover:shadow-[0_0_50px_rgba(0,212,255,0.25)] transition-all duration-500"
+                className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-studio text-white font-semibold text-sm hover:shadow-[0_0_50px_rgba(139,92,246,0.25)] transition-all duration-500"
               >
                 Book a Call
               </Link>

@@ -7,9 +7,9 @@ import MagneticButton from '@/components/MagneticButton'
 import Counter from '@/components/Counter'
 import ClipReveal from '@/components/ClipReveal'
 import ProjectShowcase from '@/components/ProjectShowcase'
-import ParallaxSection from '@/components/ParallaxSection'
 import { projects } from '@/data/projects'
 import { agents } from '@/data/agents'
+import AgentCard from '@/components/AgentCard'
 
 export default function Home() {
   return (
@@ -22,7 +22,7 @@ export default function Home() {
           <TextReveal
             text="JU."
             tag="h1"
-            className="text-[32vw] sm:text-[24vw] md:text-[18vw] font-bold tracking-[-0.06em] leading-[0.85] text-foreground mix-blend-overlay opacity-40"
+            className="text-[32vw] sm:text-[24vw] md:text-[18vw] font-bold tracking-[-0.06em] leading-[0.85] text-foreground mix-blend-overlay opacity-30"
             stagger={0.15}
           />
 
@@ -73,10 +73,10 @@ export default function Home() {
 
       {/* ═══ MARQUEE ═══ */}
       <section className="py-5 border-y border-white/[0.03]">
-        <Marquee speed={30} className="text-muted/15">
+        <Marquee speed={30} className="text-muted/40">
           {['Custom Websites', 'AI Automation', 'Next.js', 'Autonomous Agents', 'Audit & Strategy', 'Grass Valley CA', 'Systems That Ship'].map(t => (
             <span key={t} className="mx-8 sm:mx-12 text-[13px] font-mono tracking-[0.15em] uppercase whitespace-nowrap flex items-center gap-4">
-              {t} <span className="w-1 h-1 rounded-full bg-accent/20" />
+              {t} <span className="w-1 h-1 rounded-full bg-accent/50" />
             </span>
           ))}
         </Marquee>
@@ -107,96 +107,52 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ═══ THE SPLIT — Services with depth ═══ */}
+      {/* ═══ SERVICES — Two horizontal bands ═══ */}
       <section className="py-32 sm:py-44 px-6 relative overflow-hidden">
-        <div className="max-w-6xl mx-auto">
-          {/* Studio */}
-          <ParallaxSection speed={0.15}>
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start mb-40">
-              <div className="lg:col-span-5">
-                <ClipReveal direction="left">
-                  <p className="text-[8rem] sm:text-[12rem] lg:text-[14rem] font-bold tracking-[-0.06em] leading-[0.75] text-outline select-none" aria-hidden="true">
-                    01
-                  </p>
-                </ClipReveal>
-              </div>
-
-              <div className="lg:col-span-7 lg:pt-12">
-                <Reveal>
-                  <p className="font-mono text-[10px] tracking-[0.25em] uppercase text-accent/40 mb-4">Websites</p>
-                  <h2 className="text-3xl sm:text-5xl font-bold tracking-[-0.03em] leading-[0.95] mb-6">
-                    JU<span className="text-accent">.</span> Studio
-                  </h2>
-                  <p className="text-muted text-base leading-relaxed mb-8 max-w-lg">
-                    Custom websites for businesses that are serious about how they
-                    show up online. Next.js. No templates. No WordPress.
-                  </p>
-                </Reveal>
-                <Reveal delay={0.2}>
-                  <div className="flex items-center gap-8 mb-10">
-                    <div>
-                      <p className="text-3xl font-bold tracking-tight">$750</p>
-                      <p className="text-[10px] font-mono text-muted/30 mt-1">STARTING</p>
+        <div className="max-w-6xl mx-auto space-y-0">
+          {/* Row 1 — Studio */}
+          <Reveal>
+            <div className="group relative border-l-2 border-studio/20 hover:border-studio/60 transition-colors duration-700 pl-8 py-16">
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+                <div className="lg:col-span-2">
+                  <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-studio/40 mb-4">01 — Websites</p>
+                  <h2 className="text-4xl sm:text-6xl font-bold tracking-[-0.04em] leading-[0.9] mb-6">JU<span className="text-studio">.</span> Studio</h2>
+                  <p className="text-muted text-base leading-relaxed max-w-lg mb-8">Custom Next.js sites for businesses serious about how they show up online. No templates. No builders. Flat-rate from $750.</p>
+                  <Link href="/studio" data-cursor="link" className="inline-flex items-center gap-2 text-sm text-studio hover:text-foreground transition-colors group-hover:gap-3 duration-300">View portfolio <span>&rarr;</span></Link>
+                </div>
+                <div className="space-y-3">
+                  {['Custom React & Next.js', 'Mobile-first by default', '90+ PageSpeed baseline', 'CMS & hand-off docs'].map(item => (
+                    <div key={item} className="flex items-center gap-3 text-sm text-muted/50">
+                      <span className="w-3 h-px bg-studio/30" />{item}
                     </div>
-                    <div className="w-12 h-px bg-white/[0.06]" />
-                    <div>
-                      <p className="text-3xl font-bold tracking-tight">$4K</p>
-                      <p className="text-[10px] font-mono text-muted/30 mt-1">PREMIUM</p>
-                    </div>
-                  </div>
-                  <MagneticButton>
-                    <Link href="/studio" data-cursor="link" className="inline-flex items-center gap-3 px-6 py-3 rounded-full border border-accent/20 text-sm text-accent hover:bg-accent/[0.05] transition-all duration-500">
-                      See the portfolio <span>&rarr;</span>
-                    </Link>
-                  </MagneticButton>
-                </Reveal>
+                  ))}
+                  <div className="pt-4 font-mono text-[11px] text-muted/25">$750 — $4,000</div>
+                </div>
               </div>
             </div>
-          </ParallaxSection>
+          </Reveal>
 
-          {/* Systems */}
-          <ParallaxSection speed={0.1}>
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
-              <div className="lg:col-span-7 order-2 lg:order-1 lg:pt-12">
-                <Reveal>
-                  <p className="font-mono text-[10px] tracking-[0.25em] uppercase text-zeus/40 mb-4">AI Automation</p>
-                  <h2 className="text-3xl sm:text-5xl font-bold tracking-[-0.03em] leading-[0.95] mb-6">
-                    JU<span className="text-zeus">.</span> Systems
-                  </h2>
-                  <p className="text-muted text-base leading-relaxed mb-8 max-w-lg">
-                    AI audit and automation for businesses still running on manual
-                    processes. We find what&apos;s costing you. Then we fix it.
-                  </p>
-                </Reveal>
-                <Reveal delay={0.2}>
-                  <div className="flex items-center gap-8 mb-10">
-                    <div>
-                      <p className="text-3xl font-bold tracking-tight">$997</p>
-                      <p className="text-[10px] font-mono text-muted/30 mt-1">AUDIT</p>
+          {/* Row 2 — Systems */}
+          <Reveal delay={0.1}>
+            <div className="group relative border-l-2 border-zeus/20 hover:border-zeus/60 transition-colors duration-700 pl-8 py-16">
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+                <div className="lg:col-span-2">
+                  <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-zeus/40 mb-4">02 — AI Automation</p>
+                  <h2 className="text-4xl sm:text-6xl font-bold tracking-[-0.04em] leading-[0.9] mb-6">JU<span className="text-zeus">.</span> Systems</h2>
+                  <p className="text-muted text-base leading-relaxed max-w-lg mb-8">AI audit and automation for businesses still running on manual processes. We find what&apos;s costing you. Then we fix it.</p>
+                  <Link href="/systems" data-cursor="link" className="inline-flex items-center gap-2 text-sm text-zeus hover:text-foreground transition-colors group-hover:gap-3 duration-300">Learn about audits <span>&rarr;</span></Link>
+                </div>
+                <div className="space-y-3">
+                  {['AI audit & gap analysis', 'Custom agent development', 'Deployed in your tools', 'Weekly optimization'].map(item => (
+                    <div key={item} className="flex items-center gap-3 text-sm text-muted/50">
+                      <span className="w-3 h-px bg-zeus/30" />{item}
                     </div>
-                    <div className="w-12 h-px bg-white/[0.06]" />
-                    <div>
-                      <p className="text-3xl font-bold tracking-tight">$5K<span className="text-sm font-normal text-muted">/mo</span></p>
-                      <p className="text-[10px] font-mono text-muted/30 mt-1">EMBEDDED</p>
-                    </div>
-                  </div>
-                  <MagneticButton>
-                    <Link href="/systems" data-cursor="link" className="inline-flex items-center gap-3 px-6 py-3 rounded-full border border-zeus/20 text-sm text-zeus hover:bg-zeus/[0.05] transition-all duration-500">
-                      Learn about audits <span>&rarr;</span>
-                    </Link>
-                  </MagneticButton>
-                </Reveal>
-              </div>
-
-              <div className="lg:col-span-5 order-1 lg:order-2">
-                <ClipReveal direction="right">
-                  <p className="text-[8rem] sm:text-[12rem] lg:text-[14rem] font-bold tracking-[-0.06em] leading-[0.75] text-outline select-none text-right" aria-hidden="true">
-                    02
-                  </p>
-                </ClipReveal>
+                  ))}
+                  <div className="pt-4 font-mono text-[11px] text-muted/25">$997 — $5K/mo</div>
+                </div>
               </div>
             </div>
-          </ParallaxSection>
+          </Reveal>
         </div>
       </section>
 
@@ -214,7 +170,7 @@ export default function Home() {
                 <Counter value={stat.value} suffix={stat.suffix} />
               </p>
               <p className="text-xs text-muted/40 mt-2 font-mono tracking-wide uppercase">{stat.label}</p>
-              <p className="text-[10px] text-muted/20 mt-1 font-mono">{stat.context}</p>
+              <p className="text-[10px] text-muted/20 mt-1.5 font-mono leading-relaxed">{stat.context}</p>
             </div>
           ))}
         </div>
@@ -237,17 +193,7 @@ export default function Home() {
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-px bg-white/[0.04] rounded-2xl overflow-hidden">
             {agents.map((agent, i) => (
               <Reveal key={agent.id} delay={i * 0.04}>
-                <div className="bg-background/80 p-6 hover:bg-white/[0.02] transition-colors duration-500 group h-full">
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className="relative">
-                      <div className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: agent.color }} />
-                      <div className="absolute inset-0 rounded-full animate-pulse-glow" style={{ backgroundColor: agent.color, filter: 'blur(4px)' }} />
-                    </div>
-                    <span className="font-semibold text-sm text-foreground/90 group-hover:text-foreground transition-colors">{agent.name}</span>
-                  </div>
-                  <p className="text-xs text-muted/50 leading-relaxed">{agent.description}</p>
-                  <p className="font-mono text-[9px] tracking-[0.15em] uppercase text-muted/20 mt-3">{agent.domain}</p>
-                </div>
+                <AgentCard agent={agent} />
               </Reveal>
             ))}
           </div>
@@ -259,12 +205,13 @@ export default function Home() {
         <div className="glow-divider max-w-lg mx-auto mb-20" />
         <div className="max-w-2xl mx-auto text-center">
           <ClipReveal direction="up">
-            <h2 className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-[-0.04em] leading-[0.95]">
-              Let&apos;s build something<span className="text-accent">.</span>
+            <h2 className="text-4xl sm:text-6xl lg:text-7xl font-bold tracking-[-0.04em] leading-[0.9]">
+              Your site ships<br />in <span className="text-accent">2 weeks</span><span className="text-foreground/20">.</span><br />
+              <span className="text-muted/30">Your automation in 4.</span>
             </h2>
           </ClipReveal>
           <Reveal delay={0.3}>
-            <p className="text-muted mt-6 mb-12">No intake forms. No chatbots. Just a real conversation.</p>
+            <p className="text-muted text-sm mt-6 mb-12">No intake forms. No 6-month timelines. Just a real conversation about what you need.</p>
           </Reveal>
           <Reveal delay={0.5}>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -282,14 +229,6 @@ export default function Home() {
           </Reveal>
         </div>
       </section>
-
-      {/* ═══ FOOTER ═══ */}
-      <footer className="px-6 py-8 border-t border-white/[0.03]">
-        <div className="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4 text-[11px] text-muted/25 font-mono tracking-wider">
-          <span>&copy; {new Date().getFullYear()} JU.</span>
-          <span>Grass Valley, CA</span>
-        </div>
-      </footer>
     </>
   )
 }
