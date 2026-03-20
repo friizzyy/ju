@@ -183,35 +183,41 @@ export default function SystemsPage() {
 
         <div className="max-w-4xl mx-auto">
           <ClipReveal direction="up">
-            <h2 className="text-4xl sm:text-6xl font-bold tracking-[-0.04em] leading-[0.9] mb-24">
-              Three steps<span className="text-zeus">.</span><br />
-              <span className="text-muted/20">That&apos;s it.</span>
+            <h2 className="text-5xl sm:text-7xl font-bold tracking-[-0.04em] leading-[0.9] mb-4">
+              Three steps<span className="text-zeus">.</span>
             </h2>
+            <p className="text-muted/25 text-2xl sm:text-4xl font-bold tracking-[-0.03em]">No more.</p>
           </ClipReveal>
 
-          <div className="relative">
-            <div className="absolute left-[11px] top-2 bottom-2 w-px bg-gradient-to-b from-zeus/40 via-zeus/20 to-transparent" />
-
+          <div className="mt-24">
             {[
-              { title: 'Discovery call', desc: 'I map your operation. You tell me what hurts, what takes too long, what falls through the cracks.', time: '45 min', detail: 'No prep needed. I ask the right questions.' },
-              { title: 'Audit report', desc: 'Every gap. Every dollar it costs you. ROI projections for each fix. A prioritized roadmap — not a slide deck.', time: '48 hrs', detail: 'You\'ll know exactly what to fix and in what order.' },
-              { title: 'Build & deploy', desc: 'Custom AI agents deployed into your existing tools. Slack, email, CRM, whatever you use. Running within weeks.', time: '2-4 weeks', detail: 'Not recommendations. Actual automation.' },
+              { num: '01', title: 'Discovery call', time: '45 min', desc: 'I map your operation. You tell me what hurts, what takes too long, what falls through the cracks.', detail: 'No prep needed. I ask the right questions.' },
+              { num: '02', title: 'Audit report', time: '48 hrs', desc: 'Every gap. Every dollar it costs you. ROI projections for each fix. A prioritized roadmap — not a slide deck.', detail: 'You\'ll know exactly what to fix and in what order.' },
+              { num: '03', title: 'Build & deploy', time: '2–4 weeks', desc: 'Custom AI agents deployed into your existing tools. Slack, email, CRM, whatever you use. Running within weeks.', detail: 'Not recommendations. Actual automation.' },
             ].map((step, i) => (
-              <Reveal key={i} delay={i * 0.12}>
-                <div className="relative flex gap-8 mb-20 last:mb-0 group">
-                  <div className="relative z-10 mt-2 shrink-0">
-                    <div className="w-[23px] h-[23px] rounded-full border-2 border-zeus/40 bg-background flex items-center justify-center group-hover:border-zeus/60 transition-colors duration-500">
-                      <div className="w-2 h-2 rounded-full bg-zeus/50 group-hover:bg-zeus transition-colors duration-500" />
-                    </div>
+              <Reveal key={i} delay={i * 0.15}>
+                <div className="group grid grid-cols-12 gap-6 items-start py-16 border-b border-white/[0.04] hover:border-zeus/20 transition-colors duration-700 last:border-0">
+                  <div className="col-span-2 sm:col-span-1">
+                    <span className="text-[4rem] sm:text-[5rem] font-bold tracking-[-0.06em] leading-none text-white/[0.06] group-hover:text-zeus/20 transition-colors duration-700 select-none">
+                      {step.num}
+                    </span>
                   </div>
-
-                  <div className="flex-1">
-                    <div className="flex items-baseline gap-4 mb-3">
-                      <h3 className="text-xl sm:text-2xl font-bold text-foreground group-hover:text-zeus transition-colors duration-500">{step.title}</h3>
-                      <span className="font-mono text-[10px] text-zeus/30 tracking-wider">{step.time}</span>
+                  <div className="col-span-10 sm:col-span-7 pt-3">
+                    <h3 className="text-2xl sm:text-3xl font-bold text-foreground mb-4 group-hover:text-zeus transition-colors duration-500">
+                      {step.title}
+                    </h3>
+                    <p className="text-muted text-sm sm:text-base leading-relaxed mb-3 max-w-lg">
+                      {step.desc}
+                    </p>
+                    <p className="text-muted/30 text-xs italic">{step.detail}</p>
+                  </div>
+                  <div className="hidden sm:flex col-span-4 pt-3 justify-end">
+                    <div className="text-right">
+                      <p className="text-3xl sm:text-4xl font-bold tracking-[-0.04em] text-zeus/20 group-hover:text-zeus/60 transition-colors duration-700">
+                        {step.time}
+                      </p>
+                      <p className="font-mono text-[9px] tracking-[0.2em] uppercase text-muted/20 mt-1">turnaround</p>
                     </div>
-                    <p className="text-sm text-muted leading-relaxed mb-2 max-w-lg">{step.desc}</p>
-                    <p className="text-xs text-muted/25 italic">{step.detail}</p>
                   </div>
                 </div>
               </Reveal>
