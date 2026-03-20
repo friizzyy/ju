@@ -30,7 +30,7 @@ export default function Home() {
           </div>
 
           <Reveal delay={0.6}>
-            <p className="mt-3 text-sm sm:text-base text-muted/50 font-light tracking-[0.05em]">
+            <p className="mt-3 text-xs sm:text-sm md:text-base text-muted/50 font-light tracking-[0.05em] whitespace-nowrap">
               We build the site. Then we build the system behind it.
             </p>
           </Reveal>
