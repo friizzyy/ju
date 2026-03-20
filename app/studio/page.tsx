@@ -160,48 +160,70 @@ export default function StudioPage() {
             </div>
           </ClipReveal>
 
-          <div className="space-y-0">
-            {tiers.map((tier, i) => (
-              <Reveal key={tier.name} delay={i * 0.06}>
-                {tier.featured && (
-                  <div className="pt-6">
-                    <p className="font-mono text-[9px] uppercase text-studio/50 tracking-widest mb-2 pl-6 sm:pl-8">MOST POPULAR</p>
-                  </div>
-                )}
-                <div className={`group grid grid-cols-1 sm:grid-cols-12 gap-4 sm:gap-8 py-8 sm:py-10 border-b border-white/[0.04] hover:border-studio/10 transition-all duration-500 ${
-                  tier.featured ? 'bg-studio/[0.02] -mx-6 px-6 sm:-mx-8 sm:px-8 rounded-xl border-t border-studio/20' : ''
-                }`}>
-                  <div className="sm:col-span-3 flex items-center gap-3">
-                    {tier.featured && <span className="w-1.5 h-1.5 rounded-full bg-studio shrink-0" />}
-                    <div>
-                      <h3 className="text-base font-bold text-foreground">{tier.name}</h3>
-                      <p className="text-xs text-muted/30 mt-0.5 sm:hidden">{tier.desc}</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 lg:gap-5 items-start">
+            {tiers.map((tier, i) => {
+              const tierLabel = i === 0 ? 'Basic' : i === 1 ? 'Growth' : i === 2 ? 'Most popular' : 'Premium'
+              return (
+                <Reveal key={tier.name} delay={i * 0.08}>
+                  <div className={`group relative flex flex-col h-full rounded-2xl p-6 border transition-all duration-700 cursor-pointer ${
+                    tier.featured
+                      ? 'border-studio/30 bg-studio/[0.04] hover:border-studio/60 hover:bg-studio/[0.07] translate-y-0 hover:-translate-y-1'
+                      : 'border-white/[0.06] bg-white/[0.02] hover:border-white/[0.12] hover:bg-white/[0.03]'
+                  }`}>
+                    {tier.featured && (
+                      <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"
+                        style={{ background: 'radial-gradient(ellipse at top, rgba(139,92,246,0.08) 0%, transparent 70%)' }}
+                      />
+                    )}
+
+                    <div className="relative flex items-start justify-between mb-6">
+                      <div>
+                        <p className="font-mono text-[9px] tracking-[0.25em] uppercase text-muted/30 mb-2">
+                          {tierLabel}
+                        </p>
+                        <h3 className={`text-base font-bold ${tier.featured ? 'text-studio' : 'text-foreground'}`}>
+                          {tier.name}
+                        </h3>
+                      </div>
+                      {tier.featured && (
+                        <div className="w-2 h-2 rounded-full bg-studio animate-pulse mt-1" />
+                      )}
                     </div>
-                  </div>
-                  <div className="sm:col-span-2 flex items-center">
-                    <p className="text-2xl font-bold tracking-tight text-foreground">{tier.price}</p>
-                  </div>
-                  <div className="sm:col-span-4 flex items-center">
-                    <p className="text-xs text-muted/40 leading-relaxed">{tier.includes}</p>
-                  </div>
-                  <div className="sm:col-span-3 flex items-center justify-start sm:justify-end">
+
+                    <div className="relative mb-5">
+                      <span className={`text-4xl sm:text-5xl font-bold tracking-[-0.04em] leading-none ${tier.featured ? 'text-studio' : 'text-foreground'}`}>
+                        {tier.price}
+                      </span>
+                      <p className="text-sm text-muted/50 mt-3 leading-relaxed">{tier.desc}</p>
+                    </div>
+
+                    <div className={`h-px mb-5 ${tier.featured ? 'bg-studio/20' : 'bg-white/[0.06]'}`} />
+
+                    <div className="relative flex-1 space-y-2 mb-6">
+                      {tier.includes.split(', ').map((item, j) => (
+                        <div key={j} className="flex items-start gap-2">
+                          <span className={`mt-1.5 w-1 h-1 rounded-full flex-shrink-0 ${tier.featured ? 'bg-studio/60' : 'bg-white/20'}`} />
+                          <span className="text-[11px] text-muted/50 leading-relaxed">{item}</span>
+                        </div>
+                      ))}
+                    </div>
+
                     <Link
                       href="https://calendly.com/julius-systems"
                       target="_blank"
                       rel="noopener noreferrer"
-                      data-cursor="link"
-                      className={`text-sm font-medium transition-all duration-300 ${
+                      className={`relative inline-flex items-center justify-center gap-2 w-full py-3 rounded-xl text-sm font-medium transition-all duration-500 ${
                         tier.featured
-                          ? 'text-studio hover:text-foreground'
-                          : 'text-muted/30 group-hover:text-foreground'
+                          ? 'bg-studio text-white hover:shadow-[0_0_30px_rgba(139,92,246,0.3)]'
+                          : 'border border-white/[0.08] text-muted/60 hover:text-foreground hover:border-white/[0.20]'
                       }`}
                     >
-                      Get started &rarr;
+                      Get started <span>&rarr;</span>
                     </Link>
                   </div>
-                </div>
-              </Reveal>
-            ))}
+                </Reveal>
+              )
+            })}
           </div>
 
           <Reveal delay={0.3}>

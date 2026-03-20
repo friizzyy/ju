@@ -238,42 +238,69 @@ export default function SystemsPage() {
             </div>
           </ClipReveal>
 
-          <div className="space-y-0">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6 items-start">
             {packages.map((pkg, i) => (
-              <Reveal key={pkg.name} delay={i * 0.08}>
-                <div className={`group grid grid-cols-1 sm:grid-cols-12 gap-4 sm:gap-8 py-8 sm:py-10 border-b border-white/[0.04] hover:border-zeus/10 transition-all duration-500 ${
-                  pkg.featured ? 'bg-zeus/[0.02] -mx-6 px-6 sm:-mx-8 sm:px-8 rounded-xl border-zeus/[0.08]' : ''
+              <Reveal key={pkg.name} delay={i * 0.1}>
+                <div className={`group relative flex flex-col h-full rounded-2xl p-8 border transition-all duration-700 cursor-pointer ${
+                  pkg.featured
+                    ? 'border-zeus/30 bg-zeus/[0.04] hover:border-zeus/60 hover:bg-zeus/[0.07] translate-y-0 hover:-translate-y-1'
+                    : 'border-white/[0.06] bg-white/[0.02] hover:border-white/[0.12] hover:bg-white/[0.03]'
                 }`}>
-                  <div className="sm:col-span-3 flex items-center gap-3">
-                    {pkg.featured && <span className="w-1.5 h-1.5 rounded-full bg-zeus shrink-0" />}
+                  {pkg.featured && (
+                    <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"
+                      style={{ background: 'radial-gradient(ellipse at top, rgba(99,102,241,0.08) 0%, transparent 70%)' }}
+                    />
+                  )}
+
+                  <div className="relative flex items-start justify-between mb-8">
                     <div>
-                      <h3 className="text-base font-bold text-foreground">{pkg.name}</h3>
-                      <p className="text-xs text-muted/30 mt-0.5 sm:hidden">{pkg.desc}</p>
+                      <p className="font-mono text-[9px] tracking-[0.25em] uppercase text-muted/30 mb-2">
+                        {i === 0 ? 'Starter' : i === 1 ? 'Most popular' : 'Full service'}
+                      </p>
+                      <h3 className={`text-lg font-bold ${pkg.featured ? 'text-zeus' : 'text-foreground'}`}>
+                        {pkg.name}
+                      </h3>
                     </div>
+                    {pkg.featured && (
+                      <div className="w-2 h-2 rounded-full bg-zeus animate-pulse mt-1" />
+                    )}
                   </div>
-                  <div className="sm:col-span-2 flex items-center">
-                    <p className="text-2xl font-bold tracking-tight text-foreground">
-                      {pkg.price}{pkg.period && <span className="text-sm font-normal text-muted">{pkg.period}</span>}
-                    </p>
+
+                  <div className="relative mb-6">
+                    <div className="flex items-end gap-1">
+                      <span className={`text-5xl sm:text-6xl font-bold tracking-[-0.04em] leading-none ${pkg.featured ? 'text-zeus' : 'text-foreground'}`}>
+                        {pkg.price}
+                      </span>
+                      {pkg.period && (
+                        <span className="text-sm text-muted mb-2">{pkg.period}</span>
+                      )}
+                    </div>
+                    <p className="text-sm text-muted/50 mt-3 leading-relaxed">{pkg.desc}</p>
                   </div>
-                  <div className="sm:col-span-4 flex items-center">
-                    <p className="text-xs text-muted/40 leading-relaxed">{pkg.includes}</p>
+
+                  <div className={`h-px mb-6 ${pkg.featured ? 'bg-zeus/20' : 'bg-white/[0.06]'}`} />
+
+                  <div className="relative flex-1 space-y-2.5 mb-8">
+                    {pkg.includes.split(', ').map((item, j) => (
+                      <div key={j} className="flex items-start gap-2.5">
+                        <span className={`mt-1.5 w-1 h-1 rounded-full flex-shrink-0 ${pkg.featured ? 'bg-zeus/60' : 'bg-white/20'}`} />
+                        <span className="text-xs text-muted/50 leading-relaxed">{item}</span>
+                      </div>
+                    ))}
                   </div>
-                  <div className="sm:col-span-3 flex items-center justify-start sm:justify-end">
-                    <Link
-                      href="https://calendly.com/julius-systems"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      data-cursor="link"
-                      className={`text-sm font-medium transition-all duration-300 ${
-                        pkg.featured
-                          ? 'text-zeus hover:text-foreground'
-                          : 'text-muted/30 group-hover:text-foreground'
-                      }`}
-                    >
-                      Book a call &rarr;
-                    </Link>
-                  </div>
+
+                  <Link
+                    href="https://calendly.com/julius-systems"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`relative inline-flex items-center justify-center gap-2 w-full py-3 rounded-xl text-sm font-medium transition-all duration-500 ${
+                      pkg.featured
+                        ? 'bg-zeus text-white hover:shadow-[0_0_30px_rgba(99,102,241,0.3)]'
+                        : 'border border-white/[0.08] text-muted/60 hover:text-foreground hover:border-white/[0.20]'
+                    }`}
+                  >
+                    Book a call <span>&rarr;</span>
+                  </Link>
                 </div>
               </Reveal>
             ))}
