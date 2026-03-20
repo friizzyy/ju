@@ -35,10 +35,9 @@ export default function StudioPage() {
 
               <ClipReveal direction="up">
                 <h1 className="text-5xl sm:text-7xl lg:text-8xl font-bold tracking-[-0.05em] leading-[0.85]">
-                  Websites<br />
-                  that<br />
-                  <span className="text-outline-accent">perform</span>
-                  <span className="text-accent">.</span>
+                  No templates<span className="text-accent">.</span><br />
+                  No shortcuts<span className="text-accent">.</span><br />
+                  <span className="text-outline-accent">Just code.</span>
                 </h1>
               </ClipReveal>
 
@@ -204,6 +203,29 @@ export default function StudioPage() {
             <p className="text-xs text-muted/20 mt-8 font-mono">
               All tiers include hosting setup, responsive design, and hand-off documentation.
             </p>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* Bridge to Systems */}
+      <section className="py-16 px-6">
+        <div className="max-w-5xl mx-auto">
+          <Reveal>
+            <Link
+              href="/systems"
+              data-cursor="link"
+              className="group block p-8 sm:p-12 rounded-2xl border border-zeus/[0.08] hover:border-zeus/[0.15] bg-zeus/[0.02] hover:bg-zeus/[0.04] transition-all duration-500"
+            >
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
+                <div>
+                  <p className="font-mono text-[10px] tracking-[0.25em] uppercase text-zeus/30 mb-3">JU. Systems</p>
+                  <h3 className="text-xl sm:text-2xl font-bold text-foreground group-hover:text-zeus transition-colors duration-300">
+                    Already have the site? Now automate what runs behind it.
+                  </h3>
+                </div>
+                <svg width="24" height="24" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-zeus/30 group-hover:text-zeus group-hover:translate-x-1 transition-all duration-300 shrink-0"><path d="M4 12L12 4M12 4H5M12 4v7" /></svg>
+              </div>
+            </Link>
           </Reveal>
         </div>
       </section>

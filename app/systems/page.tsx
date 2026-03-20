@@ -55,7 +55,7 @@ export default function SystemsPage() {
                       target="_blank"
                       rel="noopener noreferrer"
                       data-cursor="link"
-                      className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-zeus text-background text-sm font-semibold hover:shadow-[0_0_40px_rgba(255,215,0,0.2)] transition-all duration-500"
+                      className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-zeus text-background text-sm font-semibold hover:shadow-[0_0_40px_rgba(99,102,241,0.2)] transition-all duration-500"
                     >
                       Book a discovery call
                     </Link>
@@ -71,16 +71,16 @@ export default function SystemsPage() {
                 <div className="relative p-10 sm:p-14 rounded-3xl border border-zeus/[0.08] bg-zeus/[0.02]">
                   {/* Decorative grid */}
                   <div className="absolute inset-0 rounded-3xl overflow-hidden opacity-[0.03]" style={{
-                    backgroundImage: `linear-gradient(rgba(255,215,0,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(255,215,0,0.3) 1px, transparent 1px)`,
+                    backgroundImage: `linear-gradient(rgba(99,102,241,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(99,102,241,0.3) 1px, transparent 1px)`,
                     backgroundSize: '40px 40px',
                   }} />
 
                   <div className="relative grid grid-cols-2 gap-10">
                     {[
-                      { value: 9, suffix: '', label: 'Active agents', color: '#FFD700' },
-                      { value: 24, suffix: '/7', label: 'Uptime', color: '#FFD700' },
-                      { value: 52, suffix: '', label: 'Upgrades/yr', color: '#FFD700' },
-                      { value: 0, suffix: '', label: 'Off-the-shelf tools', color: '#FFD700', display: '0' },
+                      { value: 9, suffix: '', label: 'Active agents', color: '#6366F1' },
+                      { value: 24, suffix: '/7', label: 'Uptime', color: '#6366F1' },
+                      { value: 52, suffix: '', label: 'Upgrades/yr', color: '#6366F1' },
+                      { value: 0, suffix: '', label: 'Off-the-shelf tools', color: '#6366F1', display: '0' },
                     ].map(s => (
                       <div key={s.label} className="text-center">
                         <p className="text-4xl sm:text-5xl font-bold tracking-[-0.04em]" style={{ color: s.color }}>
@@ -285,6 +285,29 @@ export default function SystemsPage() {
         </div>
       </section>
 
+      {/* Bridge to Studio */}
+      <section className="py-16 px-6">
+        <div className="max-w-5xl mx-auto">
+          <Reveal>
+            <Link
+              href="/studio"
+              data-cursor="link"
+              className="group block p-8 sm:p-12 rounded-2xl border border-accent/[0.08] hover:border-accent/[0.15] bg-accent/[0.02] hover:bg-accent/[0.04] transition-all duration-500"
+            >
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
+                <div>
+                  <p className="font-mono text-[10px] tracking-[0.25em] uppercase text-accent/30 mb-3">JU. Studio</p>
+                  <h3 className="text-xl sm:text-2xl font-bold text-foreground group-hover:text-accent transition-colors duration-300">
+                    Need the site first? JU. Studio builds it from scratch.
+                  </h3>
+                </div>
+                <svg width="24" height="24" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-accent/30 group-hover:text-accent group-hover:translate-x-1 transition-all duration-300 shrink-0"><path d="M4 12L12 4M12 4H5M12 4v7" /></svg>
+              </div>
+            </Link>
+          </Reveal>
+        </div>
+      </section>
+
       {/* Agent marquee */}
       <section className="py-24 relative overflow-hidden">
         <Marquee speed={50} pauseOnHover>
@@ -323,7 +346,7 @@ export default function SystemsPage() {
                 target="_blank"
                 rel="noopener noreferrer"
                 data-cursor="link"
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-zeus text-background font-semibold text-sm hover:shadow-[0_0_50px_rgba(255,215,0,0.2)] transition-all duration-500"
+                className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-zeus text-background font-semibold text-sm hover:shadow-[0_0_50px_rgba(99,102,241,0.2)] transition-all duration-500"
               >
                 Book a Discovery Call
               </Link>

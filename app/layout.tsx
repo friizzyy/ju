@@ -1,16 +1,12 @@
 import type { Metadata } from 'next'
-import { Inter, JetBrains_Mono } from 'next/font/google'
+import { GeistSans } from 'geist/font/sans'
+import { JetBrains_Mono } from 'next/font/google'
 import Navigation from '@/components/Navigation'
 import CustomCursor from '@/components/CustomCursor'
 import ScrollProgress from '@/components/ScrollProgress'
+import PageTransition from '@/components/PageTransition'
 import AmbientBackground from '@/components/AmbientBackground'
 import './globals.css'
-
-const inter = Inter({
-  subsets: ['latin'],
-  variable: '--font-inter',
-  display: 'swap',
-})
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ['latin'],
@@ -49,13 +45,15 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable}`}>
+    <html lang="en" className={`${GeistSans.variable} ${jetbrainsMono.variable}`}>
       <body className="bg-background text-foreground font-sans antialiased">
         <AmbientBackground />
         <CustomCursor />
         <ScrollProgress />
         <Navigation />
-        <main className="relative z-10">{children}</main>
+        <main className="relative z-10">
+          <PageTransition>{children}</PageTransition>
+        </main>
         <div className="grain" aria-hidden="true" />
       </body>
     </html>

@@ -12,7 +12,7 @@ export const agents: Agent[] = [
     name: 'Zeus',
     domain: 'Command',
     description: 'Central coordinator. Routes decisions and orchestrates all other agents.',
-    color: '#FFD700',
+    color: '#6366F1',
   },
   {
     id: 'hermes',

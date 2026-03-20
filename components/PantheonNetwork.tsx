@@ -3,7 +3,7 @@
 import { useEffect, useRef, useCallback } from 'react'
 
 const NODES = [
-  { name: 'Zeus',       domain: 'Command',       color: '#FFD700', x:  0.00, y: -0.04, scale: 1.5 },
+  { name: 'Zeus',       domain: 'Command',       color: '#6366F1', x:  0.00, y: -0.04, scale: 1.5 },
   { name: 'Athena',     domain: 'Intelligence',   color: '#00D4FF', x: -0.40, y: -0.36, scale: 1.0 },
   { name: 'Hermes',     domain: 'Outreach',       color: '#38BDF8', x:  0.42, y: -0.40, scale: 1.0 },
   { name: 'Ares',       domain: 'Execution',      color: '#06B6D4', x: -0.56, y:  0.10, scale: 1.0 },

@@ -7,11 +7,11 @@
   --color-muted: #7D8590;
   --color-accent: #00D4FF;
   --color-accent-glow: rgba(0, 212, 255, 0.15);
-  --color-zeus: #FFD700;
+  --color-zeus: #6366F1;
   --color-glass: rgba(255, 255, 255, 0.02);
   --color-glass-border: rgba(255, 255, 255, 0.06);
 
-  --font-sans: var(--font-inter), system-ui, -apple-system, sans-serif;
+  --font-sans: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
   --font-mono: var(--font-jetbrains-mono), "Fira Code", monospace;
 
   --animate-float: float 8s ease-in-out infinite;
@@ -109,7 +109,7 @@ body {
 
 .glow-divider-gold {
   height: 1px;
-  background: linear-gradient(90deg, transparent 0%, rgba(255,215,0,0.12) 30%, rgba(255,215,0,0.2) 50%, rgba(255,215,0,0.12) 70%, transparent 100%);
+  background: linear-gradient(90deg, transparent 0%, rgba(99,102,241,0.12) 30%, rgba(99,102,241,0.2) 50%, rgba(99,102,241,0.12) 70%, transparent 100%);
 }
 
 /* ── Ambient orbs ── */

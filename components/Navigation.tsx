@@ -6,10 +6,10 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useState, useEffect } from 'react'
 
 const links = [
-  { href: '/studio', label: 'Studio' },
-  { href: '/systems', label: 'Systems' },
-  { href: '/about', label: 'About' },
-  { href: '/contact', label: 'Contact' },
+  { href: '/studio', label: 'Studio', activeColor: 'text-accent' },
+  { href: '/systems', label: 'Systems', activeColor: 'text-zeus' },
+  { href: '/about', label: 'About', activeColor: 'text-foreground' },
+  { href: '/contact', label: 'Contact', activeColor: 'text-foreground' },
 ]
 
 export default function Navigation() {
@@ -57,7 +57,7 @@ export default function Navigation() {
             href={link.href}
             className="relative px-3.5 py-2 text-[13px] transition-colors duration-300 group"
           >
-            <span className={isActive ? 'text-foreground' : 'text-muted/70 group-hover:text-foreground'}>
+            <span className={isActive ? link.activeColor : 'text-muted/70 group-hover:text-foreground'}>
               {link.label}
             </span>
             {isActive && (

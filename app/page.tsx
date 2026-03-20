@@ -22,13 +22,13 @@ export default function Home() {
           <TextReveal
             text="JU."
             tag="h1"
-            className="text-[24vw] sm:text-[18vw] md:text-[14vw] font-bold tracking-[-0.06em] leading-[0.85] text-foreground"
+            className="text-[32vw] sm:text-[24vw] md:text-[18vw] font-bold tracking-[-0.06em] leading-[0.85] text-foreground mix-blend-overlay opacity-40"
             stagger={0.15}
           />
 
           <Reveal delay={0.6}>
             <p className="mt-3 text-sm sm:text-base text-muted/50 font-light tracking-[0.05em]">
-              Websites & AI systems that work while you sleep.
+              We build the site. Then we build the system behind it.
             </p>
           </Reveal>
 
@@ -64,7 +64,7 @@ export default function Home() {
           <div className="w-px h-10 bg-gradient-to-b from-transparent to-white/15 animate-pulse" />
         </div>
 
-        <div className="absolute bottom-6 right-6 sm:bottom-8 sm:right-8 font-mono text-[10px] tracking-[0.2em] text-white/[0.08] uppercase pointer-events-none">
+        <div className="absolute bottom-6 right-6 sm:bottom-8 sm:right-8 font-mono text-[10px] tracking-[0.2em] text-white/[0.12] uppercase pointer-events-none">
           {agents.length} agents &middot; click anywhere
         </div>
 
@@ -204,16 +204,17 @@ export default function Home() {
       <section className="py-20 px-6 border-y border-white/[0.03] relative">
         <div className="max-w-5xl mx-auto grid grid-cols-2 sm:grid-cols-4 gap-8">
           {[
-            { value: 9, suffix: '', label: 'Autonomous agents' },
-            { value: 6, suffix: '+', label: 'Sites shipped' },
-            { value: 24, suffix: '/7', label: 'System uptime' },
-            { value: 48, suffix: 'hr', label: 'Audit delivery' },
+            { value: 9, suffix: '', label: 'Autonomous agents', context: 'Running 24/7 across both businesses' },
+            { value: 6, suffix: '+', label: 'Sites shipped', context: 'All custom. None templated.' },
+            { value: 24, suffix: '/7', label: 'System uptime', context: 'Pipelines never sleep' },
+            { value: 48, suffix: 'hr', label: 'Audit delivery', context: 'From discovery call to written report' },
           ].map(stat => (
             <div key={stat.label} className="text-center">
               <p className="text-4xl sm:text-5xl font-bold tracking-[-0.04em] text-foreground">
                 <Counter value={stat.value} suffix={stat.suffix} />
               </p>
               <p className="text-xs text-muted/40 mt-2 font-mono tracking-wide uppercase">{stat.label}</p>
+              <p className="text-[10px] text-muted/20 mt-1 font-mono">{stat.context}</p>
             </div>
           ))}
         </div>
