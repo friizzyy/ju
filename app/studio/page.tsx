@@ -6,6 +6,7 @@ import ClipReveal from '@/components/ClipReveal'
 import MagneticButton from '@/components/MagneticButton'
 import ParallaxSection from '@/components/ParallaxSection'
 import ProjectShowcase from '@/components/ProjectShowcase'
+import PricingCards, { type PricingPlan } from '@/components/PricingCards'
 import { projects } from '@/data/projects'
 
 export const metadata: Metadata = {
@@ -13,11 +14,11 @@ export const metadata: Metadata = {
   description: 'Custom websites built in Next.js. No templates. Starting at $750.',
 }
 
-const tiers = [
-  { name: 'Landing Page', price: '$750', desc: 'One page. One purpose. Built to convert.', includes: 'Custom design, mobile responsive, SEO-ready, 1 revision round' },
-  { name: 'Multi-Page', price: '$1,500', desc: '3-5 pages. Room to breathe.', includes: 'Up to 5 pages, contact form, basic SEO, 2 revision rounds' },
-  { name: 'Full Site', price: '$3,000', desc: 'The full build.', includes: 'Up to 10 pages, design system, CMS, advanced SEO, analytics, 3 revision rounds', featured: true },
-  { name: 'Premium', price: '$4,000', desc: 'For businesses that want the best.', includes: 'Unlimited pages, e-commerce or booking, structured data, conversion tracking, 30 days post-launch' },
+const studioPricing: PricingPlan[] = [
+  { title: 'Landing Page', price: '$750', period: 'one-time', label: 'Starter', description: 'One page. One purpose. Built to convert.', features: ['Custom design', 'Mobile responsive', 'SEO-ready', '1 revision round', 'Hosting setup'], cta: 'Get started', ctaHref: 'https://calendly.com/julius-systems', accentColor: '#8B5CF6', glowRgb: '139,92,246' },
+  { title: 'Multi-Page', price: '$1,500', period: 'one-time', label: 'Foundation', description: '3-5 pages. Room to breathe and grow.', features: ['Up to 5 pages', 'Contact form', 'Basic SEO', '2 revision rounds', 'Hosting setup', 'Hand-off docs'], cta: 'Get started', ctaHref: 'https://calendly.com/julius-systems', accentColor: '#8B5CF6', glowRgb: '139,92,246' },
+  { title: 'Full Site', price: '$3,000', period: 'one-time', label: 'Most popular', featured: true, description: 'The full build. Nothing held back.', features: ['Up to 10 pages', 'Design system', 'CMS integration', 'Advanced SEO', 'Analytics setup', '3 revision rounds', 'Hand-off docs'], cta: 'Get started', ctaHref: 'https://calendly.com/julius-systems', accentColor: '#8B5CF6', glowRgb: '139,92,246' },
+  { title: 'Premium', price: '$4,000', period: 'one-time', label: 'Enterprise', description: 'For businesses that want the best.', features: ['Unlimited pages', 'E-commerce or booking', 'Structured data', 'Conversion tracking', '30-day post-launch support'], cta: 'Get started', ctaHref: 'https://calendly.com/julius-systems', accentColor: '#8B5CF6', glowRgb: '139,92,246' },
 ]
 
 export default function StudioPage() {
@@ -160,71 +161,7 @@ export default function StudioPage() {
             </div>
           </ClipReveal>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 lg:gap-5 items-start">
-            {tiers.map((tier, i) => {
-              const tierLabel = i === 0 ? 'Basic' : i === 1 ? 'Growth' : i === 2 ? 'Most popular' : 'Premium'
-              return (
-                <Reveal key={tier.name} delay={i * 0.08}>
-                  <div className={`group relative flex flex-col h-full rounded-2xl p-6 border transition-all duration-700 cursor-pointer ${
-                    tier.featured
-                      ? 'border-studio/30 bg-studio/[0.04] hover:border-studio/60 hover:bg-studio/[0.07] translate-y-0 hover:-translate-y-1'
-                      : 'border-white/[0.06] bg-white/[0.02] hover:border-white/[0.12] hover:bg-white/[0.03]'
-                  }`}>
-                    {tier.featured && (
-                      <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"
-                        style={{ background: 'radial-gradient(ellipse at top, rgba(139,92,246,0.08) 0%, transparent 70%)' }}
-                      />
-                    )}
-
-                    <div className="relative flex items-start justify-between mb-6">
-                      <div>
-                        <p className="font-mono text-[9px] tracking-[0.25em] uppercase text-muted/30 mb-2">
-                          {tierLabel}
-                        </p>
-                        <h3 className={`text-base font-bold ${tier.featured ? 'text-studio' : 'text-foreground'}`}>
-                          {tier.name}
-                        </h3>
-                      </div>
-                      {tier.featured && (
-                        <div className="w-2 h-2 rounded-full bg-studio animate-pulse mt-1" />
-                      )}
-                    </div>
-
-                    <div className="relative mb-5">
-                      <span className={`text-4xl sm:text-5xl font-bold tracking-[-0.04em] leading-none ${tier.featured ? 'text-studio' : 'text-foreground'}`}>
-                        {tier.price}
-                      </span>
-                      <p className="text-sm text-muted/50 mt-3 leading-relaxed">{tier.desc}</p>
-                    </div>
-
-                    <div className={`h-px mb-5 ${tier.featured ? 'bg-studio/20' : 'bg-white/[0.06]'}`} />
-
-                    <div className="relative flex-1 space-y-2 mb-6">
-                      {tier.includes.split(', ').map((item, j) => (
-                        <div key={j} className="flex items-start gap-2">
-                          <span className={`mt-1.5 w-1 h-1 rounded-full flex-shrink-0 ${tier.featured ? 'bg-studio/60' : 'bg-white/20'}`} />
-                          <span className="text-[11px] text-muted/50 leading-relaxed">{item}</span>
-                        </div>
-                      ))}
-                    </div>
-
-                    <Link
-                      href="https://calendly.com/julius-systems"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={`relative inline-flex items-center justify-center gap-2 w-full py-3 rounded-xl text-sm font-medium transition-all duration-500 ${
-                        tier.featured
-                          ? 'bg-studio text-white hover:shadow-[0_0_30px_rgba(139,92,246,0.3)]'
-                          : 'border border-white/[0.08] text-muted/60 hover:text-foreground hover:border-white/[0.20]'
-                      }`}
-                    >
-                      Get started <span>&rarr;</span>
-                    </Link>
-                  </div>
-                </Reveal>
-              )
-            })}
-          </div>
+          <PricingCards plans={studioPricing} columns={4} />
 
           <Reveal delay={0.3}>
             <p className="text-xs text-muted/20 mt-8 font-mono">
