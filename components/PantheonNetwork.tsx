@@ -3,15 +3,15 @@
 import { useEffect, useRef, useCallback } from 'react'
 
 const NODES = [
-  { name: 'Zeus',       domain: 'Command',       color: '#6366F1', x:  0.00, y: -0.04, scale: 1.5 },
-  { name: 'Athena',     domain: 'Intelligence',   color: '#00D4FF', x: -0.40, y: -0.36, scale: 1.0 },
-  { name: 'Hermes',     domain: 'Outreach',       color: '#38BDF8', x:  0.42, y: -0.40, scale: 1.0 },
-  { name: 'Ares',       domain: 'Execution',      color: '#06B6D4', x: -0.56, y:  0.10, scale: 1.0 },
-  { name: 'Hephaestus', domain: 'Builder',        color: '#0891B2', x:  0.58, y:  0.06, scale: 1.0 },
-  { name: 'Prometheus', domain: 'Learning',       color: '#22D3EE', x: -0.30, y:  0.42, scale: 1.0 },
-  { name: 'Apollo',     domain: 'Creative',       color: '#67E8F9', x:  0.34, y:  0.38, scale: 1.0 },
-  { name: 'Iris',       domain: 'Communication',  color: '#7DD3FC', x: -0.08, y:  0.54, scale: 1.0 },
-  { name: 'Dionysus',   domain: 'Engagement',     color: '#A5F3FC', x:  0.22, y:  0.60, scale: 1.0 },
+  { name: 'Zeus',       domain: 'Command',       color: '#6366F1', x:  0.00, y: -0.72, scale: 1.5 },
+  { name: 'Athena',     domain: 'Intelligence',   color: '#00D4FF', x: -0.75, y: -0.42, scale: 1.0 },
+  { name: 'Hermes',     domain: 'Outreach',       color: '#38BDF8', x:  0.75, y: -0.42, scale: 1.0 },
+  { name: 'Ares',       domain: 'Execution',      color: '#06B6D4', x: -0.85, y:  0.08, scale: 1.0 },
+  { name: 'Hephaestus', domain: 'Builder',        color: '#0891B2', x:  0.85, y:  0.08, scale: 1.0 },
+  { name: 'Prometheus', domain: 'Learning',       color: '#22D3EE', x: -0.62, y:  0.62, scale: 1.0 },
+  { name: 'Apollo',     domain: 'Creative',       color: '#67E8F9', x:  0.62, y:  0.62, scale: 1.0 },
+  { name: 'Iris',       domain: 'Communication',  color: '#7DD3FC', x: -0.18, y:  0.82, scale: 1.0 },
+  { name: 'Dionysus',   domain: 'Engagement',     color: '#A5F3FC', x:  0.18, y:  0.82, scale: 1.0 },
 ]
 
 const EDGES: [number, number][] = [
@@ -106,7 +106,7 @@ export default function PantheonNetwork({ className = '', interactive = true }: 
 
       const t = reduced ? 0 : time * 0.001
       const mob = w < 640
-      const sc = Math.min(w, h) * (mob ? 0.34 : 0.42)
+      const sc = Math.min(w, h) * (mob ? 0.44 : 0.54)
       const cx = w / 2, cy = h / 2
       const mx = mouse.current.x, my = mouse.current.y
 
@@ -222,9 +222,15 @@ export default function PantheonNetwork({ className = '', interactive = true }: 
             if (pp < 0 || pp > 1) continue
             const px = a.px + (b.px - a.px) * pp
             const py = a.py + (b.py - a.py) * pp
+            const distToCenter = Math.sqrt((px - cx) * (px - cx) + (py - cy) * (py - cy))
+            const protectedZone = Math.min(w, h) * 0.18
+            const fadeZone = Math.min(w, h) * 0.32
+            const proximityFade = distToCenter < protectedZone ? 0 :
+              distToCenter < fadeZone ? (distToCenter - protectedZone) / (fadeZone - protectedZone) : 1
+            if (proximityFade === 0) continue
             const fade = 1 - tr / 6
             const rr = (mob ? 3 : 5) * fade + 1
-            const al = fade * 0.6
+            const al = fade * 0.6 * proximityFade
             const g = c.createRadialGradient(px, py, 0, px, py, rr)
             g.addColorStop(0, `rgba(0,212,255,${al})`)
             g.addColorStop(1, `rgba(0,212,255,0)`)

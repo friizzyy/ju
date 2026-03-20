@@ -19,12 +19,15 @@ export default function Home() {
         <PantheonNetwork />
 
         <div className="relative z-10 text-center px-6 pointer-events-none">
-          <TextReveal
-            text="JU."
-            tag="h1"
-            className="text-[32vw] sm:text-[24vw] md:text-[18vw] font-bold tracking-[-0.06em] leading-[0.85] text-foreground mix-blend-overlay opacity-30"
-            stagger={0.15}
-          />
+          <div className="relative">
+            <div className="absolute inset-0 -z-10 blur-[80px] bg-accent/[0.06] rounded-full scale-150" />
+            <TextReveal
+              text="JU."
+              tag="h1"
+              className="text-[32vw] sm:text-[24vw] md:text-[18vw] font-bold tracking-[-0.06em] leading-[0.85] text-foreground"
+              stagger={0.15}
+            />
+          </div>
 
           <Reveal delay={0.6}>
             <p className="mt-3 text-sm sm:text-base text-muted/50 font-light tracking-[0.05em]">
