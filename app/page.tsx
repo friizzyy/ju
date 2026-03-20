@@ -88,6 +88,7 @@ export default function Home() {
       {/* ═══ SELECTED WORK — Immersive title list with cursor-follow images ═══ */}
       <section className="py-32 sm:py-44 px-6 relative">
         <div className="max-w-6xl mx-auto">
+          <div className="w-full h-px bg-gradient-to-r from-transparent via-white/[0.06] to-transparent mb-24" />
           <div className="flex items-end justify-between mb-16">
             <div>
               <Reveal>
@@ -95,7 +96,7 @@ export default function Home() {
               </Reveal>
               <ClipReveal direction="up">
                 <h2 className="text-4xl sm:text-6xl lg:text-7xl font-bold tracking-[-0.04em] leading-[0.9]">
-                  Selected<br />work<span className="text-accent">.</span>
+                  Selected<br /><span className="text-outline">work</span><span className="text-accent">.</span>
                 </h2>
               </ClipReveal>
             </div>

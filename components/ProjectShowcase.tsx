@@ -96,7 +96,7 @@ export default function ProjectShowcase({ projects }: Props) {
             rel="noopener noreferrer"
             data-cursor="project"
             data-cursor-label="View"
-            className="group relative block py-8 sm:py-10"
+            className="group relative block py-10 sm:py-14 border-l-2 border-transparent hover:border-accent/20 pl-0 hover:pl-4 transition-all duration-500"
             onMouseEnter={(e) => onEnter(i, e)}
             onMouseLeave={onLeave}
           >
@@ -105,13 +105,16 @@ export default function ProjectShowcase({ projects }: Props) {
                 <span className="font-mono text-[11px] text-muted/20 tracking-wider w-8 shrink-0">
                   0{i + 1}
                 </span>
-                <h3 className="text-2xl sm:text-4xl lg:text-5xl font-bold tracking-[-0.03em] text-foreground/80 group-hover:text-foreground transition-colors duration-500 truncate">
-                  {project.title}
-                </h3>
+                <div className="min-w-0">
+                  <h3 className="text-xl sm:text-3xl lg:text-4xl font-bold tracking-[-0.03em] text-foreground/60 group-hover:text-foreground transition-colors duration-500 truncate">
+                    {project.title}
+                  </h3>
+                  <p className="text-xs text-muted/30 mt-1 max-w-sm leading-relaxed hidden lg:block">{project.description}</p>
+                </div>
               </div>
 
               <div className="flex items-center gap-6 shrink-0">
-                <span className="hidden sm:block font-mono text-[10px] tracking-[0.15em] uppercase text-muted/20 group-hover:text-muted/40 transition-colors">
+                <span className="hidden sm:block font-mono text-[10px] tracking-[0.15em] uppercase text-muted/40 group-hover:text-muted/60 transition-colors">
                   {project.tag}
                 </span>
 
