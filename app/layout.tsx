@@ -4,7 +4,6 @@ import { JetBrains_Mono } from 'next/font/google'
 import Navigation from '@/components/Navigation'
 import ScrollToTop from '@/components/ScrollToTop'
 import CustomCursor from '@/components/CustomCursor'
-import ScrollProgress from '@/components/ScrollProgress'
 import PageTransition from '@/components/PageTransition'
 import AmbientBackground from '@/components/AmbientBackground'
 import Footer from '@/components/Footer'
@@ -57,7 +56,6 @@ export default function RootLayout({
       <body className="bg-background text-foreground font-sans antialiased">
         <AmbientBackground />
         <CustomCursor />
-        <ScrollProgress />
         <ScrollToTop />
         <Navigation />
         <main className="relative z-10 pb-20 sm:pb-0 pt-16 sm:pt-0">
