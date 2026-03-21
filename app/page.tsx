@@ -239,7 +239,7 @@ export default function Home() {
       <section className="py-12 sm:py-32 lg:py-44 px-6 relative">
         <div className="max-w-5xl mx-auto relative z-10">
           <ClipReveal direction="center">
-            <div className="text-center mb-20">
+            <div className="text-center mb-12">
               <p className="text-outline-accent text-4xl sm:text-8xl lg:text-9xl font-bold tracking-[-0.05em] leading-none select-none" aria-hidden="true">
                 PANTHEON
               </p>
@@ -261,7 +261,7 @@ export default function Home() {
 
       {/* ═══ CTA ═══ */}
       <section className="py-12 sm:py-32 lg:py-44 px-6 relative">
-        <div className="glow-divider max-w-lg mx-auto mb-20" />
+        <div className="glow-divider max-w-lg mx-auto mb-14" />
         <div className="max-w-2xl mx-auto text-center">
           <ClipReveal direction="up">
             <h2 className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-[-0.04em] leading-[1.05] text-center whitespace-nowrap">

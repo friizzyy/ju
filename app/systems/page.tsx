@@ -55,9 +55,10 @@ export default function SystemsPage() {
                       target="_blank"
                       rel="noopener noreferrer"
                       data-cursor="link"
-                      className="inline-flex items-center gap-2 px-5 sm:px-7 py-3 sm:py-3.5 rounded-full bg-zeus text-background text-sm font-semibold transition-all duration-500"
+                      className="group inline-flex items-center gap-3 px-6 sm:px-8 py-3 sm:py-3.5 rounded-full border border-zeus/30 text-zeus text-sm font-semibold hover:bg-zeus/10 hover:border-zeus/50 transition-all duration-500"
                     >
                       Book a discovery call
+                      <span className="inline-block group-hover:translate-x-0.5 transition-transform duration-300">&rarr;</span>
                     </Link>
                   </MagneticButton>
                 </div>
@@ -156,7 +157,7 @@ export default function SystemsPage() {
 
       {/* Process:Unique staggered layout */}
       <section id="process" className="py-12 sm:py-32 lg:py-44 px-6 relative">
-        <div className="glow-divider-gold max-w-3xl mx-auto mb-28" />
+        <div className="glow-divider-gold max-w-3xl mx-auto mb-16" />
 
         <div className="max-w-4xl mx-auto">
           <ClipReveal direction="up">
