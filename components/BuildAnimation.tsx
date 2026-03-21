@@ -213,8 +213,7 @@ export default function BuildAnimation() {
                 </svg>
               </motion.div>
 
-              {/* Background glow */}
-              <div className="absolute -inset-10 -z-10 blur-[60px] opacity-20 rounded-full" style={{ background: 'radial-gradient(ellipse, #8B5CF6 0%, transparent 70%)' }} />
+
 
             </div>
           </div>

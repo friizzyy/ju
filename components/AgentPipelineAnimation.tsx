@@ -45,11 +45,6 @@ export default function AgentPipelineAnimation() {
   return (
     <div className="relative w-full h-full flex items-center justify-center overflow-hidden select-none">
 
-      {/* Background glow — always visible */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full blur-[100px] opacity-10" style={{ background: '#6366F1' }} />
-      </div>
-
       {mounted && (
         <div className="relative w-full" style={{ maxWidth: 'min(420px, 92vw)' }}>
 
