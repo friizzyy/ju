@@ -4,7 +4,7 @@ import Reveal from '@/components/Reveal'
 import ClipReveal from '@/components/ClipReveal'
 import MagneticButton from '@/components/MagneticButton'
 import ParallaxSection from '@/components/ParallaxSection'
-import SFSkylineAnimation from '@/components/SFSkylineAnimation'
+import SplitBrainAnimation from '@/components/SplitBrainAnimation'
 
 export const metadata: Metadata = {
   title: 'About',
@@ -33,7 +33,7 @@ export default function AboutPage() {
 
           {/* Skyline animation */}
           <Reveal delay={0.5}>
-            <SFSkylineAnimation />
+            <SplitBrainAnimation />
           </Reveal>
 
           {/* Stat strip */}
