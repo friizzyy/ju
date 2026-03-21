@@ -31,16 +31,16 @@ export default function ContactPage() {
       {/* Contact methods */}
       <section className="py-16 sm:py-24 px-6">
         <div className="max-w-5xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 lg:items-stretch">
             {/* Primary:book a call */}
-            <div className="lg:col-span-7">
-              <ClipReveal direction="left">
+            <div className="lg:col-span-7 flex flex-col">
+              <ClipReveal direction="left" className="flex flex-col flex-1">
                 <a
                   href="https://calendly.com/julius-systems"
                   target="_blank"
                   rel="noopener noreferrer"
                   data-cursor="link"
-                  className="group block p-6 sm:p-14 rounded-3xl border border-accent/[0.1] hover:border-accent/[0.2] bg-accent/[0.02] hover:bg-accent/[0.04] transition-all duration-500 h-full"
+                  className="group flex flex-col flex-1 p-6 sm:p-14 rounded-3xl border border-accent/[0.1] hover:border-accent/[0.2] bg-accent/[0.02] hover:bg-accent/[0.04] transition-all duration-500"
                 >
                   <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-accent/30 mb-8">Recommended</p>
 
