@@ -80,11 +80,11 @@ export default function ContactPage() {
               <ClipReveal direction="right" delay={0.2} className="flex flex-col flex-1">
                 <div className="flex flex-col flex-1 p-6 sm:p-10 rounded-2xl border border-white/[0.04]">
                   <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-muted/25 mb-6">Location</p>
-                  <h3 className="text-lg font-bold text-foreground mb-2">San Francisco, CA</h3>
+                  <h3 className="text-lg font-bold text-foreground mb-2">San Francisco & Grass Valley, CA</h3>
                   <p className="text-sm text-muted/50 leading-relaxed">
-                    Working with clients locally and across the country.
+                    I split time between my place in SF and a ranch in Grass Valley. If you&apos;re anywhere between the Bay and the foothills, I can meet you there.
                   </p>
-                  <p className="text-xs text-muted/30 mt-2 leading-relaxed">Available for in-person meetings in the Bay Area.</p>
+                  <p className="text-xs text-muted/30 mt-3 leading-relaxed">Working with clients locally and across the country.</p>
                 </div>
               </ClipReveal>
             </div>
@@ -99,7 +99,7 @@ export default function ContactPage() {
             {[
               { q: "How fast?", a: "Sites ship in 2 weeks. Audits delivered in 48 hours." },
               { q: "Do you subcontract?", a: "No. You talk to me, I build it. One person, start to finish." },
-              { q: "Where are you based?", a: "San Francisco, CA. Available for in-person meetings in the Bay Area." },
+              { q: "Where are you based?", a: "Split between San Francisco and a ranch in Grass Valley. I can meet anywhere in between." },
             ].map((item) => (
               <Reveal key={item.q}>
                 <div className="bg-background/80 p-8 sm:p-10 hover:bg-white/[0.02] transition-colors duration-500">

@@ -8,7 +8,7 @@ import SplitBrainAnimation from '@/components/SplitBrainAnimation'
 
 export const metadata: Metadata = {
   title: 'About',
-  description: 'Julius Williams builds custom websites and AI systems from San Francisco, CA.',
+  description: 'Julius Williams builds custom websites and AI systems. Based between San Francisco and Grass Valley, CA.',
 }
 
 export default function AboutPage() {
@@ -43,7 +43,7 @@ export default function AboutPage() {
                 { label: "SINCE", value: "2024" },
                 { label: "STACK", value: "Next.js · React · Python · Claude" },
                 { label: "MODEL", value: "Solo. No subcontractors." },
-                { label: "BASED", value: "San Francisco, CA" },
+                { label: "BASED", value: "SF / Grass Valley, CA" },
               ].map(item => (
                 <div key={item.label} className="flex items-center gap-3">
                   <span className="font-mono text-[9px] text-white/20 tracking-widest">{item.label}</span>
@@ -85,7 +85,7 @@ export default function AboutPage() {
                     { label: "Stack", value: "Next.js, React, Python, Claude" },
                     { label: "Model", value: "Solo. No subcontractors." },
                     { label: "Since", value: "2024" },
-                    { label: "Based", value: "San Francisco, CA" },
+                    { label: "Based", value: "SF / Grass Valley, CA" },
                   ].map(item => (
                     <div key={item.label} className="flex items-center gap-6">
                       <span className="font-mono text-[10px] text-white/20 tracking-widest w-14">{item.label}</span>
