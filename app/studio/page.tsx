@@ -57,12 +57,12 @@ export default function StudioPage() {
                       target="_blank"
                       rel="noopener noreferrer"
                       data-cursor="link"
-                      className="inline-flex items-center gap-2 px-5 sm:px-7 py-3 sm:py-3.5 rounded-full bg-studio text-white text-sm font-semibold hover:shadow-[0_0_40px_rgba(139,92,246,0.2)] transition-all duration-500"
+                      className="group inline-flex items-center gap-3 px-6 sm:px-8 py-3 sm:py-3.5 rounded-full border border-studio/30 text-studio text-sm font-semibold hover:bg-studio/10 hover:border-studio/50 transition-all duration-500"
                     >
                       Start a project
+                      <span className="inline-block group-hover:translate-x-0.5 transition-transform duration-300">&rarr;</span>
                     </Link>
                   </MagneticButton>
-                  <span className="text-xs text-white/20 font-mono hidden sm:block">$750 — $4,000</span>
                 </div>
               </Reveal>
             </div>
