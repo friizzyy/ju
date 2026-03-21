@@ -58,7 +58,7 @@ export default function RootLayout({
         <CustomCursor />
         <ScrollProgress />
         <Navigation />
-        <main className="relative z-10 pb-20 sm:pb-0">
+        <main className="relative z-10 pb-20 sm:pb-0 pt-16 sm:pt-0">
           <PageTransition>{children}</PageTransition>
         </main>
         <Footer />

@@ -79,7 +79,7 @@ export default function SystemsPage() {
       </section>
 
       {/* The Problem:Editorial asymmetric */}
-      <section className="py-16 sm:py-32 lg:py-44 px-6">
+      <section className="py-12 sm:py-32 lg:py-44 px-6">
         <div className="max-w-5xl mx-auto">
           <ParallaxSection speed={0.1}>
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-20 items-start">
@@ -116,9 +116,9 @@ export default function SystemsPage() {
         <div className="max-w-5xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-white/[0.04] rounded-2xl overflow-hidden">
             <ClipReveal direction="left">
-              <div className="bg-rose-950/[0.04] p-8 sm:p-12 h-full border border-rose-900/[0.06]">
+              <div className="bg-rose-950/[0.04] p-5 sm:p-12 h-full border border-rose-900/[0.06]">
                 <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-muted/20 mb-8">Before</p>
-                <ul className="space-y-5">
+                <ul className="space-y-3 sm:space-y-5">
                   {[
                     'Manual lead follow-up taking 8+ hrs/week',
                     'Client onboarding spread across 5 tools',
@@ -136,9 +136,9 @@ export default function SystemsPage() {
             </ClipReveal>
 
             <ClipReveal direction="right" delay={0.15}>
-              <div className="bg-emerald-950/[0.04] p-8 sm:p-12 h-full border border-emerald-900/[0.06]">
+              <div className="bg-emerald-950/[0.04] p-5 sm:p-12 h-full border border-emerald-900/[0.06]">
                 <p className="font-mono text-[10px] tracking-[0.2em] uppercase text-zeus/40 mb-8">After</p>
-                <ul className="space-y-5">
+                <ul className="space-y-3 sm:space-y-5">
                   {[
                     'Leads contacted within 5 minutes, 24/7',
                     'Client onboarding: one trigger, fully automated',
@@ -159,7 +159,7 @@ export default function SystemsPage() {
       </section>
 
       {/* Process:Unique staggered layout */}
-      <section className="py-16 sm:py-32 lg:py-44 px-6 relative">
+      <section className="py-12 sm:py-32 lg:py-44 px-6 relative">
         <div className="glow-divider-gold max-w-3xl mx-auto mb-28" />
 
         <div className="max-w-4xl mx-auto">
@@ -177,9 +177,9 @@ export default function SystemsPage() {
               { num: '03', title: 'Build & deploy', time: '2–4 weeks', desc: 'Custom AI agents deployed into your existing tools. Slack, email, CRM, whatever you use. Running within weeks.', detail: 'Not recommendations. Actual automation.' },
             ].map((step, i) => (
               <Reveal key={i} delay={i * 0.15}>
-                <div className="group grid grid-cols-12 gap-6 items-start py-16 border-b border-white/[0.04] hover:border-zeus/20 transition-colors duration-700 last:border-0">
+                <div className="group grid grid-cols-12 gap-6 items-start py-8 sm:py-16 border-b border-white/[0.04] hover:border-zeus/20 transition-colors duration-700 last:border-0">
                   <div className="col-span-2 sm:col-span-1">
-                    <span className="text-[4rem] sm:text-[5rem] font-bold tracking-[-0.06em] leading-none text-white/[0.06] group-hover:text-zeus/20 transition-colors duration-700 select-none">
+                    <span className="text-[3rem] sm:text-[5rem] font-bold tracking-[-0.06em] leading-none text-white/[0.06] group-hover:text-zeus/20 transition-colors duration-700 select-none">
                       {step.num}
                     </span>
                   </div>
@@ -208,7 +208,7 @@ export default function SystemsPage() {
       </section>
 
       {/* Packages */}
-      <section className="py-16 sm:py-32 lg:py-44 px-6 relative">
+      <section className="py-12 sm:py-32 lg:py-44 px-6 relative">
         <div className="max-w-5xl mx-auto">
           <ClipReveal direction="up">
             <div className="mb-20">
@@ -256,7 +256,7 @@ export default function SystemsPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 sm:py-32 lg:py-40 px-6">
+      <section className="py-12 sm:py-32 lg:py-40 px-6">
         <div className="glow-divider-gold max-w-sm mx-auto mb-20" />
         <div className="max-w-2xl mx-auto text-center">
           <ClipReveal direction="up">

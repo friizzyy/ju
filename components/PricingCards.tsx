@@ -139,7 +139,7 @@ const PricingCards: React.FC<{ plans: PricingPlan[]; columns?: 3 | 4 }> = ({ pla
       {/* Mobile: horizontal scroll */}
       <div className="sm:hidden -mx-6 px-6 overflow-x-auto no-scrollbar">
         <motion.div
-          className="flex gap-4 pb-4 pt-8"
+          className="flex gap-3 pb-4 pt-8"
           style={{ width: 'max-content' }}
           initial="hidden"
           whileInView="visible"
@@ -147,7 +147,7 @@ const PricingCards: React.FC<{ plans: PricingPlan[]; columns?: 3 | 4 }> = ({ pla
           variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.1, delayChildren: 0.1 } } }}
         >
           {plans.map((plan) => (
-            <PricingCard key={plan.title} plan={plan} className="w-[280px] flex-shrink-0" />
+            <PricingCard key={plan.title} plan={plan} className="w-[260px] flex-shrink-0 [&>div:last-child]:p-5" />
           ))}
         </motion.div>
       </div>

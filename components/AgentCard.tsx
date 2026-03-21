@@ -16,7 +16,7 @@ export default function AgentCard({ agent }: { agent: Agent }) {
     <div
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className="bg-background/80 p-6 transition-all duration-500 group h-full"
+      className="bg-background/80 p-4 sm:p-6 transition-all duration-500 group h-full"
       style={{
         backgroundColor: hovered ? 'rgba(255,255,255,0.02)' : undefined,
         borderWidth: 1,

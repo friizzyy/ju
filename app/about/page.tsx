@@ -30,7 +30,7 @@ export default function AboutPage() {
             </div>
 
             {/* Right: Bio summary */}
-            <div className="lg:col-span-5 lg:pl-12 lg:border-l lg:border-white/[0.04]">
+            <div className="lg:col-span-5 lg:pl-12 lg:border-l lg:border-white/[0.04] pt-6 sm:pt-0">
               <Reveal delay={0.4}>
                 <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-muted/25 mb-6">About</p>
               </Reveal>
@@ -67,7 +67,7 @@ export default function AboutPage() {
       </section>
 
       {/* Story */}
-      <section className="py-16 sm:py-32 lg:py-44 px-6">
+      <section className="py-12 sm:py-32 lg:py-44 px-6">
         <div className="max-w-5xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
             <div className="lg:col-span-4">
@@ -96,7 +96,7 @@ export default function AboutPage() {
       </section>
 
       {/* Philosophy */}
-      <section className="py-16 sm:py-32 lg:py-44 px-6 relative">
+      <section className="py-12 sm:py-32 lg:py-44 px-6 relative">
         <div className="glow-divider max-w-4xl mx-auto mb-28" />
 
         <div className="max-w-5xl mx-auto">
@@ -133,7 +133,7 @@ export default function AboutPage() {
       </section>
 
       {/* Pantheon */}
-      <section className="py-16 sm:py-32 lg:py-44 px-6 relative overflow-hidden">
+      <section className="py-12 sm:py-32 lg:py-44 px-6 relative overflow-hidden">
         <div className="max-w-5xl mx-auto relative z-10">
           <ClipReveal direction="center">
             <div className="text-center mb-16">
@@ -163,7 +163,7 @@ export default function AboutPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 sm:py-32 lg:py-40 px-6">
+      <section className="py-12 sm:py-32 lg:py-40 px-6">
         <div className="glow-divider max-w-sm mx-auto mb-20" />
         <div className="max-w-2xl mx-auto text-center">
           <ClipReveal direction="up">

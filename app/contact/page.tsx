@@ -16,7 +16,7 @@ export default function ContactPage() {
       <section className="min-h-[80vh] flex items-center justify-center relative overflow-hidden px-6">
         <div className="relative z-10 text-center max-w-4xl">
           <ClipReveal direction="up">
-            <h1 className="text-6xl sm:text-8xl lg:text-[11rem] font-bold tracking-[-0.06em] leading-[0.90]">
+            <h1 className="text-4xl sm:text-8xl lg:text-[11rem] font-bold tracking-[-0.06em] leading-[0.90]">
               Let&apos;s<br />talk<span className="text-accent">.</span>
             </h1>
           </ClipReveal>
@@ -41,7 +41,7 @@ export default function ContactPage() {
                   target="_blank"
                   rel="noopener noreferrer"
                   data-cursor="link"
-                  className="group block p-8 sm:p-14 rounded-3xl border border-accent/[0.1] hover:border-accent/[0.2] bg-accent/[0.02] hover:bg-accent/[0.04] transition-all duration-500 h-full"
+                  className="group block p-6 sm:p-14 rounded-3xl border border-accent/[0.1] hover:border-accent/[0.2] bg-accent/[0.02] hover:bg-accent/[0.04] transition-all duration-500 h-full"
                 >
                   <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-accent/30 mb-8">Recommended</p>
 
@@ -94,7 +94,7 @@ export default function ContactPage() {
       </section>
 
       {/* Service split */}
-      <section className="py-16 sm:py-32 lg:py-40 px-6 relative">
+      <section className="py-12 sm:py-32 lg:py-40 px-6 relative">
         <div className="glow-divider max-w-4xl mx-auto mb-20" />
 
         <div className="max-w-4xl mx-auto">

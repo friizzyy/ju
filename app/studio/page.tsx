@@ -25,7 +25,7 @@ export default function StudioPage() {
   return (
     <>
       {/* Hero:Split layout with featured project image reveal */}
-      <section className="min-h-screen flex items-center relative overflow-hidden px-6">
+      <section className="min-h-[100svh] flex items-start sm:items-center pt-24 sm:pt-0 relative overflow-hidden px-6">
         <div className="max-w-7xl mx-auto w-full relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-end">
             {/* Left: Typography */}
@@ -78,7 +78,7 @@ export default function StudioPage() {
       </section>
 
       {/* Portfolio:Immersive title-based showcase */}
-      <section className="py-16 sm:py-32 lg:py-44 px-6 relative">
+      <section className="py-12 sm:py-32 lg:py-44 px-6 relative">
         <div className="max-w-6xl mx-auto">
           <Reveal>
             <div className="flex items-center gap-6 mb-4">
@@ -93,7 +93,7 @@ export default function StudioPage() {
       </section>
 
       {/* How I build:Convictions, not feature bullets */}
-      <section className="py-16 sm:py-32 lg:py-44 px-6 relative overflow-hidden">
+      <section className="py-12 sm:py-32 lg:py-44 px-6 relative overflow-hidden">
         <div className="max-w-5xl mx-auto">
           <ParallaxSection speed={0.1}>
             <ClipReveal direction="left">
@@ -111,7 +111,7 @@ export default function StudioPage() {
               { title: 'Yours to own', body: 'Clean code, CMS if you need it, full documentation. Any developer can pick it up after I\'m done.', num: '03' },
             ].map((item, i) => (
               <Reveal key={i} delay={i * 0.1}>
-                <div className="group grid grid-cols-1 lg:grid-cols-12 gap-6 py-12 border-b border-white/[0.04] hover:border-studio/10 transition-colors duration-700">
+                <div className="group grid grid-cols-1 lg:grid-cols-12 gap-6 py-8 sm:py-12 border-b border-white/[0.04] hover:border-studio/10 transition-colors duration-700">
                   <div className="lg:col-span-1">
                     <span className="font-mono text-[11px] text-muted/15 group-hover:text-studio/30 transition-colors duration-500">{item.num}</span>
                   </div>
@@ -129,7 +129,7 @@ export default function StudioPage() {
       </section>
 
       {/* Pricing:Dramatic layout */}
-      <section className="py-16 sm:py-32 lg:py-44 px-6 relative">
+      <section className="py-12 sm:py-32 lg:py-44 px-6 relative">
         <div className="max-w-5xl mx-auto">
           <ClipReveal direction="up">
             <div className="mb-20">
@@ -172,7 +172,7 @@ export default function StudioPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 sm:py-32 lg:py-40 px-6">
+      <section className="py-12 sm:py-32 lg:py-40 px-6">
         <div className="glow-divider max-w-sm mx-auto mb-20" />
         <div className="max-w-2xl mx-auto text-center">
           <ClipReveal direction="up">

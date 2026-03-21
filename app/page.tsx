@@ -49,7 +49,7 @@ export default function Home() {
   return (
     <>
       {/* ═══ HERO ═══ */}
-      <section className="relative h-screen flex flex-col items-center justify-center overflow-hidden">
+      <section className="relative min-h-[100svh] flex flex-col items-center justify-center overflow-hidden">
         <PantheonNetwork />
 
         <div className="relative z-10 text-center px-6 pointer-events-none">
@@ -70,7 +70,7 @@ export default function Home() {
           </Reveal>
 
           <Reveal delay={0.9}>
-            <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 pointer-events-auto">
+            <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 pointer-events-auto">
               <MagneticButton>
                 <Link
                   href="/studio"
@@ -97,7 +97,7 @@ export default function Home() {
           </Reveal>
         </div>
 
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 pointer-events-none">
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden sm:flex flex-col items-center gap-2 pointer-events-none">
           <div className="w-px h-10 bg-gradient-to-b from-transparent to-white/15 animate-pulse" />
         </div>
 
@@ -143,7 +143,7 @@ export default function Home() {
                   style={{ background: `radial-gradient(ellipse at top, rgba(${service.rgb}, 0.07) 0%, transparent 60%)` }}
                 />
 
-                <div className="relative flex flex-col h-full p-6 sm:p-10">
+                <div className="relative flex flex-col h-full p-5 sm:p-10">
                   <div className="flex items-center justify-between mb-10">
                     <p
                       className="font-mono text-[9px] tracking-[0.3em] uppercase transition-colors duration-500"
@@ -180,7 +180,7 @@ export default function Home() {
                     ))}
                   </div>
 
-                  <div className="flex items-center justify-between pt-6 border-t" style={{ borderColor: `rgba(${service.rgb}, 0.10)` }}>
+                  <div className="flex items-center justify-between pt-4 sm:pt-6 border-t" style={{ borderColor: `rgba(${service.rgb}, 0.10)` }}>
                     <div>
                       <p className="font-mono text-[9px] tracking-[0.2em] uppercase text-white/20 mb-1">Investment</p>
                       <p
@@ -213,7 +213,7 @@ export default function Home() {
 
       {/* ═══ STATS ═══ */}
       <section className="py-20 px-6 border-y border-white/[0.03] relative">
-        <div className="max-w-5xl mx-auto grid grid-cols-2 sm:grid-cols-4 gap-8">
+        <div className="max-w-5xl mx-auto grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-8">
           {[
             { value: 9, suffix: '', label: 'Autonomous agents', context: 'Running 24/7 across both businesses' },
             { value: 6, suffix: '+', label: 'Sites shipped', context: 'All custom. None templated.' },
@@ -234,7 +234,7 @@ export default function Home() {
       <SectionDivider />
 
       {/* ═══ THE PANTHEON ═══ */}
-      <section className="py-16 sm:py-32 lg:py-44 px-6 relative">
+      <section className="py-12 sm:py-32 lg:py-44 px-6 relative">
         <div className="max-w-5xl mx-auto relative z-10">
           <ClipReveal direction="center">
             <div className="text-center mb-20">
@@ -258,7 +258,7 @@ export default function Home() {
       </section>
 
       {/* ═══ CTA ═══ */}
-      <section className="py-16 sm:py-32 lg:py-44 px-6 relative">
+      <section className="py-12 sm:py-32 lg:py-44 px-6 relative">
         <div className="glow-divider max-w-lg mx-auto mb-20" />
         <div className="max-w-2xl mx-auto text-center">
           <ClipReveal direction="up">
