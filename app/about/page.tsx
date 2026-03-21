@@ -22,7 +22,7 @@ export default function AboutPage() {
             {/* Left: Name */}
             <div className="lg:col-span-7">
               <ClipReveal direction="up">
-                <h1 className="text-7xl sm:text-9xl lg:text-[12rem] font-bold tracking-[-0.06em] leading-[0.90]">
+                <h1 className="text-5xl sm:text-9xl lg:text-[12rem] font-bold tracking-[-0.06em] leading-[0.90]">
                   Julius<br />
                   Williams<span className="text-accent">.</span>
                 </h1>
@@ -67,13 +67,13 @@ export default function AboutPage() {
       </section>
 
       {/* Story */}
-      <section className="py-32 sm:py-44 px-6">
+      <section className="py-16 sm:py-32 lg:py-44 px-6">
         <div className="max-w-5xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
             <div className="lg:col-span-4">
               <ParallaxSection speed={0.15}>
                 <ClipReveal direction="left">
-                  <p className="text-[6rem] sm:text-[8rem] font-bold tracking-[-0.06em] leading-[0.85] text-outline select-none" aria-hidden="true">
+                  <p className="text-[4rem] sm:text-[8rem] font-bold tracking-[-0.06em] leading-[0.85] text-outline select-none" aria-hidden="true">
                     The<br />story
                   </p>
                 </ClipReveal>
@@ -96,7 +96,7 @@ export default function AboutPage() {
       </section>
 
       {/* Philosophy */}
-      <section className="py-32 sm:py-44 px-6 relative">
+      <section className="py-16 sm:py-32 lg:py-44 px-6 relative">
         <div className="glow-divider max-w-4xl mx-auto mb-28" />
 
         <div className="max-w-5xl mx-auto">
@@ -133,7 +133,7 @@ export default function AboutPage() {
       </section>
 
       {/* Pantheon */}
-      <section className="py-32 sm:py-44 px-6 relative overflow-hidden">
+      <section className="py-16 sm:py-32 lg:py-44 px-6 relative overflow-hidden">
         <div className="max-w-5xl mx-auto relative z-10">
           <ClipReveal direction="center">
             <div className="text-center mb-16">
@@ -163,7 +163,7 @@ export default function AboutPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-32 sm:py-40 px-6">
+      <section className="py-16 sm:py-32 lg:py-40 px-6">
         <div className="glow-divider max-w-sm mx-auto mb-20" />
         <div className="max-w-2xl mx-auto text-center">
           <ClipReveal direction="up">

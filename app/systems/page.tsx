@@ -35,7 +35,7 @@ export default function SystemsPage() {
               </Reveal>
 
               <ClipReveal direction="up">
-                <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold tracking-[-0.04em] leading-[0.9]">
+                <h1 className="text-3xl sm:text-6xl lg:text-7xl font-bold tracking-[-0.04em] leading-[0.9]">
                   You&apos;re losing<br />
                   <span className="text-zeus">hours</span> to work<br />
                   <span className="text-muted/15">a $50 agent</span>{' '}
@@ -70,7 +70,7 @@ export default function SystemsPage() {
 
             {/* Right: Agent pipeline animation */}
             <ClipReveal direction="right" delay={0.3}>
-              <div className="relative overflow-hidden rounded-2xl" style={{ minHeight: '500px' }}>
+              <div className="relative h-[380px] sm:h-[500px] overflow-hidden rounded-2xl">
                 <AgentPipelineAnimation />
               </div>
             </ClipReveal>
@@ -79,13 +79,13 @@ export default function SystemsPage() {
       </section>
 
       {/* The Problem:Editorial asymmetric */}
-      <section className="py-32 sm:py-44 px-6">
+      <section className="py-16 sm:py-32 lg:py-44 px-6">
         <div className="max-w-5xl mx-auto">
           <ParallaxSection speed={0.1}>
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-20 items-start">
               <div className="lg:col-span-5">
                 <ClipReveal direction="left">
-                  <p className="text-[8rem] sm:text-[10rem] font-bold tracking-[-0.06em] leading-[0.85] text-outline select-none" aria-hidden="true">
+                  <p className="text-[5rem] sm:text-[10rem] font-bold tracking-[-0.06em] leading-[0.85] text-outline select-none" aria-hidden="true">
                     The<br />gap
                   </p>
                 </ClipReveal>
@@ -159,12 +159,12 @@ export default function SystemsPage() {
       </section>
 
       {/* Process:Unique staggered layout */}
-      <section className="py-32 sm:py-44 px-6 relative">
+      <section className="py-16 sm:py-32 lg:py-44 px-6 relative">
         <div className="glow-divider-gold max-w-3xl mx-auto mb-28" />
 
         <div className="max-w-4xl mx-auto">
           <ClipReveal direction="up">
-            <h2 className="text-5xl sm:text-7xl font-bold tracking-[-0.04em] leading-[0.9] mb-4">
+            <h2 className="text-4xl sm:text-7xl font-bold tracking-[-0.04em] leading-[0.9] mb-4">
               Three steps<span className="text-zeus">.</span>
             </h2>
             <p className="text-muted/25 text-2xl sm:text-4xl font-bold tracking-[-0.03em]">No more.</p>
@@ -208,7 +208,7 @@ export default function SystemsPage() {
       </section>
 
       {/* Packages */}
-      <section className="py-32 sm:py-44 px-6 relative">
+      <section className="py-16 sm:py-32 lg:py-44 px-6 relative">
         <div className="max-w-5xl mx-auto">
           <ClipReveal direction="up">
             <div className="mb-20">
@@ -256,7 +256,7 @@ export default function SystemsPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-32 sm:py-40 px-6">
+      <section className="py-16 sm:py-32 lg:py-40 px-6">
         <div className="glow-divider-gold max-w-sm mx-auto mb-20" />
         <div className="max-w-2xl mx-auto text-center">
           <ClipReveal direction="up">

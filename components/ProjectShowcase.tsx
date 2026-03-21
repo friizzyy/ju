@@ -96,7 +96,7 @@ export default function ProjectShowcase({ projects }: Props) {
             rel="noopener noreferrer"
             data-cursor="project"
             data-cursor-label="View"
-            className="group relative block py-10 sm:py-14 border-l-2 border-transparent hover:border-accent/20 pl-0 hover:pl-4 transition-all duration-500"
+            className="group relative block py-10 sm:py-14 min-h-[64px] border-l-2 border-transparent hover:border-accent/20 pl-0 hover:pl-4 transition-all duration-500"
             onMouseEnter={(e) => onEnter(i, e)}
             onMouseLeave={onLeave}
           >
@@ -106,7 +106,7 @@ export default function ProjectShowcase({ projects }: Props) {
                   0{i + 1}
                 </span>
                 <div className="min-w-0">
-                  <h3 className="text-xl sm:text-3xl lg:text-4xl font-bold tracking-[-0.03em] text-foreground/60 group-hover:text-foreground transition-colors duration-500 truncate">
+                  <h3 className="text-lg sm:text-3xl lg:text-4xl font-bold tracking-[-0.03em] text-foreground/60 group-hover:text-foreground transition-colors duration-500 truncate">
                     {project.title}
                   </h3>
                   <p className="text-xs text-muted/55 mt-1 max-w-sm leading-relaxed hidden lg:block">{project.description}</p>

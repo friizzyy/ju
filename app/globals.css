@@ -168,6 +168,13 @@ body::before {
   transform-origin: left;
 }
 
+/* ── Mobile utilities ── */
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom, 16px);
+}
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
 /* ── Reduced motion ── */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {

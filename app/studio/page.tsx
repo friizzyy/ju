@@ -35,7 +35,7 @@ export default function StudioPage() {
               </Reveal>
 
               <ClipReveal direction="up">
-                <h1 className="text-5xl sm:text-7xl lg:text-8xl font-bold tracking-[-0.05em] leading-[0.92]">
+                <h1 className="text-4xl sm:text-7xl lg:text-8xl font-bold tracking-[-0.05em] leading-[0.92]">
                   No templates<span className="text-studio">.</span><br />
                   No shortcuts<span className="text-studio">.</span><br />
                   <span className="text-outline-studio">Just code.</span>
@@ -50,7 +50,7 @@ export default function StudioPage() {
               </Reveal>
 
               <Reveal delay={0.7}>
-                <div className="mt-10 flex items-center gap-6">
+                <div className="mt-10 flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
                   <MagneticButton>
                     <Link
                       href="https://calendly.com/julius-systems"
@@ -69,7 +69,7 @@ export default function StudioPage() {
 
             {/* Right: Build animation */}
             <ClipReveal direction="right" delay={0.3}>
-              <div className="relative h-[520px]">
+              <div className="relative h-[320px] sm:h-[520px]">
                 <BuildAnimation />
               </div>
             </ClipReveal>
@@ -78,7 +78,7 @@ export default function StudioPage() {
       </section>
 
       {/* Portfolio:Immersive title-based showcase */}
-      <section className="py-32 sm:py-44 px-6 relative">
+      <section className="py-16 sm:py-32 lg:py-44 px-6 relative">
         <div className="max-w-6xl mx-auto">
           <Reveal>
             <div className="flex items-center gap-6 mb-4">
@@ -93,7 +93,7 @@ export default function StudioPage() {
       </section>
 
       {/* How I build:Convictions, not feature bullets */}
-      <section className="py-32 sm:py-44 px-6 relative overflow-hidden">
+      <section className="py-16 sm:py-32 lg:py-44 px-6 relative overflow-hidden">
         <div className="max-w-5xl mx-auto">
           <ParallaxSection speed={0.1}>
             <ClipReveal direction="left">
@@ -129,7 +129,7 @@ export default function StudioPage() {
       </section>
 
       {/* Pricing:Dramatic layout */}
-      <section className="py-32 sm:py-44 px-6 relative">
+      <section className="py-16 sm:py-32 lg:py-44 px-6 relative">
         <div className="max-w-5xl mx-auto">
           <ClipReveal direction="up">
             <div className="mb-20">
@@ -172,7 +172,7 @@ export default function StudioPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-32 sm:py-40 px-6">
+      <section className="py-16 sm:py-32 lg:py-40 px-6">
         <div className="glow-divider max-w-sm mx-auto mb-20" />
         <div className="max-w-2xl mx-auto text-center">
           <ClipReveal direction="up">

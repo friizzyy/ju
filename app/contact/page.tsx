@@ -41,7 +41,7 @@ export default function ContactPage() {
                   target="_blank"
                   rel="noopener noreferrer"
                   data-cursor="link"
-                  className="group block p-10 sm:p-14 rounded-3xl border border-accent/[0.1] hover:border-accent/[0.2] bg-accent/[0.02] hover:bg-accent/[0.04] transition-all duration-500 h-full"
+                  className="group block p-8 sm:p-14 rounded-3xl border border-accent/[0.1] hover:border-accent/[0.2] bg-accent/[0.02] hover:bg-accent/[0.04] transition-all duration-500 h-full"
                 >
                   <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-accent/30 mb-8">Recommended</p>
 
@@ -67,7 +67,7 @@ export default function ContactPage() {
                 <a
                   href="mailto:julius@buildwithju.com"
                   data-cursor="link"
-                  className="group block p-8 sm:p-10 rounded-2xl border border-white/[0.04] hover:border-white/[0.1] hover:bg-white/[0.01] transition-all duration-500 flex-1"
+                  className="group block p-6 sm:p-10 rounded-2xl border border-white/[0.04] hover:border-white/[0.1] hover:bg-white/[0.01] transition-all duration-500 flex-1"
                 >
                   <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-muted/25 mb-6">Email</p>
                   <h3 className="text-lg font-bold text-foreground mb-2 group-hover:text-accent transition-colors duration-300">julius@buildwithju.com</h3>
@@ -79,7 +79,7 @@ export default function ContactPage() {
               </ClipReveal>
 
               <ClipReveal direction="right" delay={0.2}>
-                <div className="p-8 sm:p-10 rounded-2xl border border-white/[0.04]">
+                <div className="p-6 sm:p-10 rounded-2xl border border-white/[0.04]">
                   <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-muted/25 mb-6">Location</p>
                   <h3 className="text-lg font-bold text-foreground mb-2">San Francisco, CA</h3>
                   <p className="text-sm text-muted/50 leading-relaxed">
@@ -94,7 +94,7 @@ export default function ContactPage() {
       </section>
 
       {/* Service split */}
-      <section className="py-32 sm:py-40 px-6 relative">
+      <section className="py-16 sm:py-32 lg:py-40 px-6 relative">
         <div className="glow-divider max-w-4xl mx-auto mb-20" />
 
         <div className="max-w-4xl mx-auto">

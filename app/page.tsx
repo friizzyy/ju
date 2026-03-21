@@ -58,19 +58,19 @@ export default function Home() {
             <TextReveal
               text="JU."
               tag="h1"
-              className="text-[32vw] sm:text-[24vw] md:text-[18vw] font-bold tracking-[-0.06em] leading-[0.92] text-foreground"
+              className="text-[28vw] sm:text-[24vw] md:text-[18vw] font-bold tracking-[-0.06em] leading-[0.92] text-foreground"
               stagger={0.15}
             />
           </div>
 
           <Reveal delay={0.6}>
-            <p className="mt-3 text-xs sm:text-sm md:text-base text-muted/50 font-light tracking-[0.05em] whitespace-nowrap">
+            <p className="mt-3 text-xs sm:text-sm md:text-base text-muted/50 font-light tracking-[0.05em] sm:whitespace-nowrap">
               We build the site. Then we build the system behind it.
             </p>
           </Reveal>
 
           <Reveal delay={0.9}>
-            <div className="mt-10 flex items-center justify-center gap-6 pointer-events-auto">
+            <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 pointer-events-auto">
               <MagneticButton>
                 <Link
                   href="/studio"
@@ -101,7 +101,7 @@ export default function Home() {
           <div className="w-px h-10 bg-gradient-to-b from-transparent to-white/15 animate-pulse" />
         </div>
 
-        <div className="absolute bottom-6 right-6 sm:bottom-8 sm:right-8 font-mono text-[10px] tracking-[0.2em] text-white/[0.12] uppercase pointer-events-none">
+        <div className="hidden sm:block absolute bottom-6 right-6 sm:bottom-8 sm:right-8 font-mono text-[10px] tracking-[0.2em] text-white/[0.12] uppercase pointer-events-none">
           {agents.length} agents &middot; click anywhere
         </div>
 
@@ -143,7 +143,7 @@ export default function Home() {
                   style={{ background: `radial-gradient(ellipse at top, rgba(${service.rgb}, 0.07) 0%, transparent 60%)` }}
                 />
 
-                <div className="relative flex flex-col h-full p-8 sm:p-10">
+                <div className="relative flex flex-col h-full p-6 sm:p-10">
                   <div className="flex items-center justify-between mb-10">
                     <p
                       className="font-mono text-[9px] tracking-[0.3em] uppercase transition-colors duration-500"
@@ -166,7 +166,7 @@ export default function Home() {
                     {service.description}
                   </p>
 
-                  <div className="space-y-2.5 flex-1 mb-10">
+                  <div className="space-y-2 sm:space-y-2.5 flex-1 mb-10">
                     {service.features.map((feature, fi) => (
                       <div key={fi} className="flex items-center gap-3">
                         <span
@@ -221,7 +221,7 @@ export default function Home() {
             { value: 48, suffix: 'hr', label: 'Audit delivery', context: 'From discovery call to written report' },
           ].map(stat => (
             <div key={stat.label} className="text-center">
-              <p className="text-4xl sm:text-5xl font-bold tracking-[-0.04em] text-foreground">
+              <p className="text-3xl sm:text-5xl font-bold tracking-[-0.04em] text-foreground">
                 <Counter value={stat.value} suffix={stat.suffix} />
               </p>
               <p className="text-xs text-muted/40 mt-2 font-mono tracking-wide uppercase">{stat.label}</p>
@@ -234,11 +234,11 @@ export default function Home() {
       <SectionDivider />
 
       {/* ═══ THE PANTHEON ═══ */}
-      <section className="py-32 sm:py-44 px-6 relative">
+      <section className="py-16 sm:py-32 lg:py-44 px-6 relative">
         <div className="max-w-5xl mx-auto relative z-10">
           <ClipReveal direction="center">
             <div className="text-center mb-20">
-              <p className="text-outline-accent text-6xl sm:text-8xl lg:text-9xl font-bold tracking-[-0.05em] leading-none select-none" aria-hidden="true">
+              <p className="text-outline-accent text-4xl sm:text-8xl lg:text-9xl font-bold tracking-[-0.05em] leading-none select-none" aria-hidden="true">
                 PANTHEON
               </p>
               <p className="text-muted/50 text-sm max-w-lg mx-auto text-center mt-4 mb-16 leading-relaxed">
@@ -258,7 +258,7 @@ export default function Home() {
       </section>
 
       {/* ═══ CTA ═══ */}
-      <section className="py-32 sm:py-44 px-6 relative">
+      <section className="py-16 sm:py-32 lg:py-44 px-6 relative">
         <div className="glow-divider max-w-lg mx-auto mb-20" />
         <div className="max-w-2xl mx-auto text-center">
           <ClipReveal direction="up">

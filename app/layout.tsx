@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { GeistSans } from 'geist/font/sans'
 import { JetBrains_Mono } from 'next/font/google'
 import Navigation from '@/components/Navigation'
@@ -14,6 +14,12 @@ const jetbrainsMono = JetBrains_Mono({
   variable: '--font-jetbrains-mono',
   display: 'swap',
 })
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  viewportFit: 'cover',
+}
 
 export const metadata: Metadata = {
   title: {
@@ -52,7 +58,7 @@ export default function RootLayout({
         <CustomCursor />
         <ScrollProgress />
         <Navigation />
-        <main className="relative z-10">
+        <main className="relative z-10 pb-20 sm:pb-0">
           <PageTransition>{children}</PageTransition>
         </main>
         <Footer />
