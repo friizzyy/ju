@@ -36,7 +36,7 @@ export default function ContactPage() {
             <div className="lg:col-span-7 flex flex-col">
               <ClipReveal direction="left" className="flex flex-col flex-1">
                 <a
-                  href="https://calendly.com/julius-systems"
+                  href="https://calendly.com/julius-buildwithju/30min"
                   target="_blank"
                   rel="noopener noreferrer"
                   data-cursor="link"
@@ -53,7 +53,7 @@ export default function ContactPage() {
                   </p>
 
                   <span className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-accent text-background text-sm font-semibold group-hover:shadow-[0_0_30px_rgba(0,212,255,0.2)] transition-all duration-300">
-                    calendly.com/julius-systems
+                    calendly.com/julius-buildwithju/30min
                     <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 12L12 4M12 4H5M12 4v7" /></svg>
                   </span>
                 </a>

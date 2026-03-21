@@ -15,10 +15,10 @@ export const metadata: Metadata = {
 }
 
 const studioPricing: PricingPlan[] = [
-  { title: 'Landing Page', price: '$750', period: 'one-time', label: 'Starter', description: 'One page. One purpose. Built to convert.', features: ['Custom design', 'Mobile responsive', 'SEO-ready', '1 revision round', 'Hosting setup'], cta: 'Get started', ctaHref: 'https://calendly.com/julius-systems', accentColor: '#8B5CF6', glowRgb: '139,92,246' },
-  { title: 'Multi-Page', price: '$1,500', period: 'one-time', label: 'Foundation', description: '3-5 pages. Room to breathe and grow.', features: ['Up to 5 pages', 'Contact form', 'Basic SEO', '2 revision rounds', 'Hosting setup', 'Hand-off docs'], cta: 'Get started', ctaHref: 'https://calendly.com/julius-systems', accentColor: '#8B5CF6', glowRgb: '139,92,246' },
-  { title: 'Full Site', price: '$3,000', period: 'one-time', label: 'Most popular', featured: true, description: 'The full build. Nothing held back.', features: ['Up to 10 pages', 'Design system', 'CMS integration', 'Advanced SEO', 'Analytics setup', '3 revision rounds', 'Hand-off docs'], cta: 'Get started', ctaHref: 'https://calendly.com/julius-systems', accentColor: '#8B5CF6', glowRgb: '139,92,246' },
-  { title: 'Premium', price: '$4,000', period: 'one-time', label: 'Enterprise', description: 'For businesses that want the best.', features: ['Unlimited pages', 'E-commerce or booking', 'Structured data', 'Conversion tracking', '30-day post-launch support'], cta: 'Get started', ctaHref: 'https://calendly.com/julius-systems', accentColor: '#8B5CF6', glowRgb: '139,92,246' },
+  { title: 'Landing Page', price: '$750', period: 'one-time', label: 'Starter', description: 'One page. One purpose. Built to convert.', features: ['Custom design', 'Mobile responsive', 'SEO-ready', '1 revision round', 'Hosting setup'], cta: 'Get started', ctaHref: 'https://calendly.com/julius-buildwithju/studio-quick-look', accentColor: '#8B5CF6', glowRgb: '139,92,246' },
+  { title: 'Multi-Page', price: '$1,500', period: 'one-time', label: 'Foundation', description: '3-5 pages. Room to breathe and grow.', features: ['Up to 5 pages', 'Contact form', 'Basic SEO', '2 revision rounds', 'Hosting setup', 'Hand-off docs'], cta: 'Get started', ctaHref: 'https://calendly.com/julius-buildwithju/studio-quick-look', accentColor: '#8B5CF6', glowRgb: '139,92,246' },
+  { title: 'Full Site', price: '$3,000', period: 'one-time', label: 'Most popular', featured: true, description: 'The full build. Nothing held back.', features: ['Up to 10 pages', 'Design system', 'CMS integration', 'Advanced SEO', 'Analytics setup', '3 revision rounds', 'Hand-off docs'], cta: 'Get started', ctaHref: 'https://calendly.com/julius-buildwithju/studio-quick-look', accentColor: '#8B5CF6', glowRgb: '139,92,246' },
+  { title: 'Premium', price: '$4,000', period: 'one-time', label: 'Enterprise', description: 'For businesses that want the best.', features: ['Unlimited pages', 'E-commerce or booking', 'Structured data', 'Conversion tracking', '30-day post-launch support'], cta: 'Get started', ctaHref: 'https://calendly.com/julius-buildwithju/studio-quick-look', accentColor: '#8B5CF6', glowRgb: '139,92,246' },
 ]
 
 export default function StudioPage() {
@@ -53,7 +53,7 @@ export default function StudioPage() {
                 <div className="flex items-center gap-3 mt-4 sm:mt-10">
                   <MagneticButton>
                     <Link
-                      href="https://calendly.com/julius-systems"
+                      href="https://calendly.com/julius-buildwithju/studio-quick-look"
                       target="_blank"
                       rel="noopener noreferrer"
                       data-cursor="link"
@@ -193,7 +193,7 @@ export default function StudioPage() {
           <Reveal delay={0.5}>
             <MagneticButton>
               <Link
-                href="https://calendly.com/julius-systems"
+                href="https://calendly.com/julius-buildwithju/studio-quick-look"
                 target="_blank"
                 rel="noopener noreferrer"
                 data-cursor="link"

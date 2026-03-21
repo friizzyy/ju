@@ -86,7 +86,7 @@ export default function Home() {
 
               <MagneticButton>
                 <Link
-                  href="https://calendly.com/julius-systems"
+                  href="https://calendly.com/julius-buildwithju/30min"
                   target="_blank"
                   rel="noopener noreferrer"
                   data-cursor="link"
@@ -280,7 +280,7 @@ export default function Home() {
           <Reveal delay={0.5}>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <MagneticButton>
-                <a href="https://calendly.com/julius-systems" target="_blank" rel="noopener noreferrer" data-cursor="link" className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-accent text-background font-semibold text-sm hover:shadow-[0_0_50px_rgba(0,212,255,0.25)] transition-all duration-500">
+                <a href="https://calendly.com/julius-buildwithju/30min" target="_blank" rel="noopener noreferrer" data-cursor="link" className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-accent text-background font-semibold text-sm hover:shadow-[0_0_50px_rgba(0,212,255,0.25)] transition-all duration-500">
                   Book a Call
                 </a>
               </MagneticButton>

@@ -179,7 +179,7 @@ export default function AboutPage() {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <MagneticButton>
                 <Link
-                  href="https://calendly.com/julius-systems"
+                  href="https://calendly.com/julius-buildwithju/30min"
                   target="_blank"
                   rel="noopener noreferrer"
                   data-cursor="link"

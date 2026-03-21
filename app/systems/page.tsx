@@ -13,9 +13,9 @@ export const metadata: Metadata = {
 }
 
 const systemsPricing: PricingPlan[] = [
-  { title: 'Snapshot Audit', price: '$997', period: 'one-time', label: 'Entry point', description: "45 minutes. A full report on what's costing you money.", features: ['45-min discovery call', 'Written audit report', '3-5 opportunities', 'ROI projections', 'Prioritized roadmap', '48hr delivery'], cta: 'Book a call', ctaHref: 'https://calendly.com/julius-systems', accentColor: '#6366F1', glowRgb: '99,102,241' },
-  { title: 'Deep Audit', price: '$2,500', period: 'one-time', label: 'Most popular', featured: true, description: 'Every workflow. Every gap. Every fix.', features: ['Everything in Snapshot', 'Full workflow mapping', 'Tool & vendor audit', 'Custom agent specs', 'Implementation timeline', '60-min strategy session'], cta: 'Book a call', ctaHref: 'https://calendly.com/julius-systems', accentColor: '#6366F1', glowRgb: '99,102,241' },
-  { title: 'Embedded', price: '$5K', period: '/month', label: 'Full service', description: 'I build it, deploy it, run it.', features: ['Everything in Deep Audit', 'Custom agent development', 'Full deployment', 'Weekly optimization', 'Direct Slack access', 'Monthly strategy call'], cta: 'Book a call', ctaHref: 'https://calendly.com/julius-systems', accentColor: '#6366F1', glowRgb: '99,102,241' },
+  { title: 'Snapshot Audit', price: '$997', period: 'one-time', label: 'Entry point', description: "45 minutes. A full report on what's costing you money.", features: ['45-min discovery call', 'Written audit report', '3-5 opportunities', 'ROI projections', 'Prioritized roadmap', '48hr delivery'], cta: 'Book a call', ctaHref: 'https://calendly.com/julius-buildwithju/systems-audit-45-min', accentColor: '#6366F1', glowRgb: '99,102,241' },
+  { title: 'Deep Audit', price: '$2,500', period: 'one-time', label: 'Most popular', featured: true, description: 'Every workflow. Every gap. Every fix.', features: ['Everything in Snapshot', 'Full workflow mapping', 'Tool & vendor audit', 'Custom agent specs', 'Implementation timeline', '60-min strategy session'], cta: 'Book a call', ctaHref: 'https://calendly.com/julius-buildwithju/systems-audit-45-min', accentColor: '#6366F1', glowRgb: '99,102,241' },
+  { title: 'Embedded', price: '$5K', period: '/month', label: 'Full service', description: 'I build it, deploy it, run it.', features: ['Everything in Deep Audit', 'Custom agent development', 'Full deployment', 'Weekly optimization', 'Direct Slack access', 'Monthly strategy call'], cta: 'Book a call', ctaHref: 'https://calendly.com/julius-buildwithju/systems-audit-45-min', accentColor: '#6366F1', glowRgb: '99,102,241' },
 ]
 
 export default function SystemsPage() {
@@ -51,7 +51,7 @@ export default function SystemsPage() {
                 <div className="flex items-center gap-3 mt-4 sm:mt-10">
                   <MagneticButton>
                     <Link
-                      href="https://calendly.com/julius-systems"
+                      href="https://calendly.com/julius-buildwithju/systems-audit-45-min"
                       target="_blank"
                       rel="noopener noreferrer"
                       data-cursor="link"
@@ -254,7 +254,7 @@ export default function SystemsPage() {
           <Reveal delay={0.5}>
             <MagneticButton>
               <Link
-                href="https://calendly.com/julius-systems"
+                href="https://calendly.com/julius-buildwithju/systems-audit-45-min"
                 target="_blank"
                 rel="noopener noreferrer"
                 data-cursor="link"

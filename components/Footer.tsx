@@ -16,7 +16,7 @@ export default function Footer() {
               {[
                 { label: 'Portfolio', href: '/studio#portfolio' },
                 { label: 'Pricing', href: '/studio#pricing' },
-                { label: 'Start a project', href: 'https://calendly.com/julius-systems' },
+                { label: 'Start a project', href: 'https://calendly.com/julius-buildwithju/30min' },
               ].map(item => (
                 <div key={item.label}>
                   <Link href={item.href} className="text-sm text-muted/40 hover:text-foreground transition-colors duration-300">{item.label}</Link>
@@ -30,7 +30,7 @@ export default function Footer() {
               {[
                 { label: 'How it works', href: '/systems#process' },
                 { label: 'Packages', href: '/systems#packages' },
-                { label: 'Book a call', href: 'https://calendly.com/julius-systems' },
+                { label: 'Book a call', href: 'https://calendly.com/julius-buildwithju/30min' },
               ].map(item => (
                 <div key={item.label}>
                   <Link href={item.href} className="text-sm text-muted/40 hover:text-foreground transition-colors duration-300">{item.label}</Link>
