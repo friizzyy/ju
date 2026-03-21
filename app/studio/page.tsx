@@ -25,7 +25,7 @@ export default function StudioPage() {
   return (
     <>
       {/* Hero:Split layout with featured project image reveal */}
-      <section className="min-h-[100svh] flex items-center relative overflow-hidden px-5 sm:px-6 pt-16 sm:pt-0">
+      <section className="min-h-[100svh] flex items-center relative overflow-x-hidden px-5 sm:px-6 pt-16 sm:pt-0">
         <div className="max-w-7xl mx-auto w-full relative z-10">
           {/* Mobile: stacked compact. Desktop: side by side */}
           <div className="flex flex-col sm:grid sm:grid-cols-2 gap-6 lg:gap-20 items-center">
