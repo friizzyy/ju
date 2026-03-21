@@ -100,8 +100,8 @@ export default function AboutPage() {
       </section>
 
       {/* Philosophy */}
-      <section className="py-12 sm:py-32 lg:py-44 px-6 relative">
-        <div className="glow-divider max-w-4xl mx-auto mb-28" />
+      <section className="py-12 sm:py-20 lg:py-28 px-6 relative">
+        <div className="glow-divider max-w-4xl mx-auto mb-16" />
 
         <div className="max-w-5xl mx-auto">
           <ClipReveal direction="up">
@@ -137,10 +137,10 @@ export default function AboutPage() {
       </section>
 
       {/* Numbers */}
-      <section className="py-12 sm:py-32 lg:py-44 px-6 relative">
+      <section className="py-12 sm:py-20 px-6 relative">
         <div className="max-w-5xl mx-auto">
           <ClipReveal direction="up">
-            <h2 className="text-4xl sm:text-6xl font-bold tracking-[-0.04em] leading-[0.9] pb-2 mb-20">
+            <h2 className="text-4xl sm:text-6xl font-bold tracking-[-0.04em] leading-[0.9] pb-2 mb-10">
               By the<br />numbers<span className="text-accent">.</span>
             </h2>
           </ClipReveal>
@@ -148,7 +148,7 @@ export default function AboutPage() {
             {[
               { value: "6+", label: "Sites shipped", sub: "All custom. Zero templates." },
               { value: "9", label: "AI agents running", sub: "24/7 across both businesses" },
-              { value: "$0", label: "Templates used", sub: "Every build from scratch" },
+              { value: "100%", label: "Custom code", sub: "Every build from scratch" },
               { value: "2wk", label: "Average delivery", sub: "From deposit to launch" },
             ].map((stat) => (
               <Reveal key={stat.label}>

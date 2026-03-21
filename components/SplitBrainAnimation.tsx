@@ -158,19 +158,28 @@ export default function SplitBrainAnimation() {
         }
       }
 
-      // Shimmer lines (skeleton loader)
+      // Shimmer lines (skeleton loader) — animated width
       if (p > 0.5) {
         const shimAlpha = Math.min(1, (p - 0.5) / 0.3)
         const shimmerLines = [0.38, 0.44, 0.50, 0.56, 0.68, 0.72]
-        for (const sy of shimmerLines) {
+        for (let i = 0; i < shimmerLines.length; i++) {
+          const sy = shimmerLines[i]
           const lineY = mockY + mockH * sy
-          const lineW = mockW * (0.3 + Math.random() * 0.01) // tiny jitter cached by frame
+          const lineW = mockW * (0.2 + 0.15 * Math.abs(Math.sin(elapsed * 0.0008 + i * 0.8)))
           ctx.strokeStyle = `rgba(139,92,246,${0.06 * shimAlpha})`
           ctx.lineWidth = 1
           ctx.beginPath()
           ctx.moveTo(mockX + 12, lineY)
           ctx.lineTo(mockX + 12 + lineW, lineY)
           ctx.stroke()
+        }
+        // Typewriter cursor at end of first shimmer line
+        if (p >= 1) {
+          const twLineY = mockY + mockH * shimmerLines[0]
+          const twLineW = mockW * (0.2 + 0.15 * Math.abs(Math.sin(elapsed * 0.0008)))
+          const twAlpha = Math.abs(Math.sin(elapsed * 0.004))
+          ctx.fillStyle = `rgba(139,92,246,${0.4 * twAlpha})`
+          ctx.fillRect(mockX + 12 + twLineW + 2, twLineY - 5, 1.5, 10)
         }
       }
 
@@ -217,6 +226,51 @@ export default function SplitBrainAnimation() {
         ctx.beginPath()
         ctx.arc(pnx, pny, pulseR, 0, Math.PI * 2)
         ctx.fill()
+      }
+
+      // ====== Left-side ongoing animations (after draw-in) ======
+      if (p >= 1) {
+        // A — Blinking cursor in hero block
+        const cursorAlpha = Math.abs(Math.sin(elapsed * 0.003))
+        ctx.fillStyle = `rgba(139,92,246,${0.5 * cursorAlpha})`
+        ctx.fillRect(mockX + 16, mockY + 48, 2, 14)
+
+        // B — Selection box cycling between blocks
+        if (elapsed > 2000) {
+          const cycleTime = 3000
+          const selElapsed = elapsed - 2000
+          const phase = (selElapsed % cycleTime) / cycleTime
+          // 3 targets: hero, left col, right col
+          const heroRect = { x: mockX + 8, y: mockY + 32, w: mockW - 16, h: mockH * 0.3 }
+          const colW = (mockW - 24) * 0.48
+          const colY = mockY + 40 + mockH * 0.3
+          const colH = mockH * 0.2
+          const leftCol = { x: mockX + 8, y: colY, w: colW, h: colH }
+          const rightCol = { x: mockX + 16 + colW, y: colY, w: colW, h: colH }
+          const targets = [heroRect, leftCol, rightCol]
+
+          const segLen = 1 / 3
+          const segIdx = Math.min(2, Math.floor(phase / segLen))
+          const segP = (phase - segIdx * segLen) / segLen
+          const tgt = targets[segIdx]
+
+          // Grow from 0 to full width in first 0.5 of segment, hold, then fade
+          const growP = Math.min(1, segP / 0.5)
+          const fadeP = segP > 0.7 ? 1 - (segP - 0.7) / 0.3 : 1
+
+          ctx.save()
+          ctx.setLineDash([3, 3])
+          ctx.strokeStyle = `rgba(139,92,246,${0.3 * fadeP})`
+          ctx.lineWidth = 1
+          ctx.strokeRect(tgt.x, tgt.y, tgt.w * growP, tgt.h)
+          ctx.setLineDash([])
+          ctx.restore()
+        }
+
+        // D — Hero block breathing highlight
+        const breathAlpha = 0.02 + 0.015 * Math.sin(elapsed * 0.001)
+        ctx.fillStyle = `rgba(139,92,246,${breathAlpha})`
+        ctx.fillRect(mockX + 8, mockY + 32, mockW - 16, mockH * 0.3)
       }
 
       ctx.restore()
@@ -320,19 +374,6 @@ export default function SplitBrainAnimation() {
       ctx.lineTo(halfW, H)
       ctx.stroke()
 
-      // "Julius Williams." written vertically along the center line
-      if (p > 0.6) {
-        const nameAlpha = Math.min(1, (p - 0.6) / 0.4)
-        ctx.save()
-        ctx.translate(halfW + 1, H / 2)
-        ctx.rotate(Math.PI / 2)
-        ctx.font = 'bold 9px monospace'
-        ctx.fillStyle = `rgba(255,255,255,${0.12 * nameAlpha})`
-        ctx.textAlign = 'center'
-        ctx.textBaseline = 'top'
-        ctx.fillText('Julius Williams.', 0, 0)
-        ctx.restore()
-      }
 
       animId = requestAnimationFrame(animate)
     }
