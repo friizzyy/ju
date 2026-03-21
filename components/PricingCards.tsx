@@ -45,7 +45,7 @@ const AnimatedPrice: React.FC<{ price: string; color: string }> = ({ price, colo
 const PricingCards: React.FC<{ plans: PricingPlan[]; columns?: 3 | 4 }> = ({ plans, columns = 3 }) => {
   return (
     <motion.div
-      className={`grid grid-cols-1 sm:grid-cols-2 ${columns === 4 ? 'lg:grid-cols-4' : 'lg:grid-cols-3'} gap-4 lg:gap-5 items-end`}
+      className={`grid grid-cols-1 sm:grid-cols-2 ${columns === 4 ? 'lg:grid-cols-4' : 'lg:grid-cols-3'} gap-4 lg:gap-5 items-end pt-8`}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "-60px" }}
@@ -58,7 +58,7 @@ const PricingCards: React.FC<{ plans: PricingPlan[]; columns?: 3 | 4 }> = ({ pla
             hidden: { opacity: 0, y: 28, scale: 0.97 },
             visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] } }
           }}
-          className={`relative flex flex-col rounded-2xl border transition-all duration-700 group cursor-default ${plan.featured ? 'lg:-translate-y-4' : ''}`}
+          className={`relative flex flex-col rounded-2xl border transition-all duration-700 group cursor-default overflow-visible ${plan.featured ? 'lg:-translate-y-4' : ''}`}
           style={{
             background: plan.featured ? `rgba(${plan.glowRgb}, 0.04)` : 'rgba(255,255,255,0.02)',
             borderColor: plan.featured ? `rgba(${plan.glowRgb}, 0.30)` : 'rgba(255,255,255,0.06)',
@@ -79,7 +79,7 @@ const PricingCards: React.FC<{ plans: PricingPlan[]; columns?: 3 | 4 }> = ({ pla
               initial={{ opacity: 0, scale: 0.7, y: -8 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               transition={{ delay: 0.5, type: 'spring', stiffness: 400, damping: 22 }}
-              className="absolute -top-3.5 left-1/2 -translate-x-1/2 z-10"
+              className="absolute -top-4 left-1/2 -translate-x-1/2 z-10"
             >
               <div
                 className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-[10px] font-semibold tracking-wider uppercase"
@@ -103,12 +103,12 @@ const PricingCards: React.FC<{ plans: PricingPlan[]; columns?: 3 | 4 }> = ({ pla
             </div>
 
             {plan.period && (
-              <p className="font-mono text-[10px] text-white/20 tracking-widest mb-5">{plan.period}</p>
+              <p className="font-mono text-[10px] text-white/35 tracking-widest mb-5">{plan.period}</p>
             )}
 
             <div className="mb-6">
               <h3 className="text-sm font-bold text-white/80 mb-2 group-hover:text-white transition-colors duration-500">{plan.title}</h3>
-              <p className="text-xs text-white/30 leading-relaxed">{plan.description}</p>
+              <p className="text-xs text-white/50 leading-relaxed">{plan.description}</p>
             </div>
 
             <div className="h-px mb-6 transition-colors duration-700" style={{ background: `rgba(${plan.glowRgb}, ${plan.featured ? 0.18 : 0.07})` }} />
@@ -124,7 +124,7 @@ const PricingCards: React.FC<{ plans: PricingPlan[]; columns?: 3 | 4 }> = ({ pla
                   viewport={{ once: true }}
                 >
                   <span className="mt-[5px] w-1.5 h-1.5 rounded-full flex-shrink-0 transition-colors duration-500" style={{ background: plan.featured ? plan.accentColor : 'rgba(255,255,255,0.18)' }} />
-                  <span className="text-xs text-white/40 leading-relaxed group-hover:text-white/50 transition-colors duration-500">{feature}</span>
+                  <span className="text-xs text-white/55 leading-relaxed group-hover:text-white/65 transition-colors duration-500">{feature}</span>
                 </motion.div>
               ))}
             </div>

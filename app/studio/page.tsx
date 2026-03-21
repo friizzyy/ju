@@ -1,12 +1,12 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import Image from 'next/image'
 import Reveal from '@/components/Reveal'
 import ClipReveal from '@/components/ClipReveal'
 import MagneticButton from '@/components/MagneticButton'
 import ParallaxSection from '@/components/ParallaxSection'
 import ProjectShowcase from '@/components/ProjectShowcase'
 import PricingCards, { type PricingPlan } from '@/components/PricingCards'
+import BuildAnimation from '@/components/BuildAnimation'
 import { projects } from '@/data/projects'
 
 export const metadata: Metadata = {
@@ -24,8 +24,8 @@ const studioPricing: PricingPlan[] = [
 export default function StudioPage() {
   return (
     <>
-      {/* Hero — Split layout with featured project image reveal */}
-      <section className="min-h-screen flex items-end relative overflow-hidden pt-32 pb-20 px-6">
+      {/* Hero:Split layout with featured project image reveal */}
+      <section className="min-h-screen flex items-center relative overflow-hidden px-6">
         <div className="max-w-7xl mx-auto w-full relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-end">
             {/* Left: Typography */}
@@ -62,42 +62,22 @@ export default function StudioPage() {
                       Start a project
                     </Link>
                   </MagneticButton>
-                  <span className="text-xs text-muted/30 font-mono">$750 &ndash; $4,000</span>
+                  <span className="text-xs text-muted/30 font-mono">$750-$4,000</span>
                 </div>
               </Reveal>
             </div>
 
-            {/* Right: Featured project — clip-path reveal */}
+            {/* Right: Build animation */}
             <ClipReveal direction="right" delay={0.3}>
-              <a
-                href={projects[0].url}
-                target="_blank"
-                rel="noopener noreferrer"
-                data-cursor="project"
-                data-cursor-label="View"
-                className="group block relative rounded-2xl overflow-hidden border border-white/[0.06] hover:border-white/[0.12] transition-all duration-700"
-              >
-                <div className="aspect-[4/3] overflow-hidden">
-                  <Image
-                    src={projects[0].image}
-                    alt={projects[0].title}
-                    width={800}
-                    height={600}
-                    className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-1000 ease-out"
-                    priority
-                  />
-                </div>
-                <div className="absolute bottom-0 inset-x-0 p-6 bg-gradient-to-t from-background/90 via-background/40 to-transparent">
-                  <p className="font-mono text-[9px] tracking-[0.2em] uppercase text-studio/40">{projects[0].tag}</p>
-                  <p className="text-base font-bold text-foreground mt-1">{projects[0].title}</p>
-                </div>
-              </a>
+              <div className="relative h-[520px]">
+                <BuildAnimation />
+              </div>
             </ClipReveal>
           </div>
         </div>
       </section>
 
-      {/* Portfolio — Immersive title-based showcase */}
+      {/* Portfolio:Immersive title-based showcase */}
       <section className="py-32 sm:py-44 px-6 relative">
         <div className="max-w-6xl mx-auto">
           <Reveal>
@@ -112,7 +92,7 @@ export default function StudioPage() {
         </div>
       </section>
 
-      {/* How I build — Convictions, not feature bullets */}
+      {/* How I build:Convictions, not feature bullets */}
       <section className="py-32 sm:py-44 px-6 relative overflow-hidden">
         <div className="max-w-5xl mx-auto">
           <ParallaxSection speed={0.1}>
@@ -127,7 +107,7 @@ export default function StudioPage() {
           <div className="space-y-0">
             {[
               { title: 'Custom code only', body: 'Every component built for your brand. If it exists somewhere as a template, I don\'t use it.', num: '01' },
-              { title: 'Fast as a baseline', body: '90+ PageSpeed isn\'t a goal. It\'s the floor. Static generation, image optimization, zero bloat — built in from the start.', num: '02' },
+              { title: 'Fast as a baseline', body: '90+ PageSpeed isn\'t a goal. It\'s the floor. Static generation, image optimization, zero bloat. Built in from the start.', num: '02' },
               { title: 'Yours to own', body: 'Clean code, CMS if you need it, full documentation. Any developer can pick it up after I\'m done.', num: '03' },
             ].map((item, i) => (
               <Reveal key={i} delay={i * 0.1}>
@@ -148,7 +128,7 @@ export default function StudioPage() {
         </div>
       </section>
 
-      {/* Pricing — Dramatic layout */}
+      {/* Pricing:Dramatic layout */}
       <section className="py-32 sm:py-44 px-6 relative">
         <div className="max-w-5xl mx-auto">
           <ClipReveal direction="up">
@@ -164,7 +144,7 @@ export default function StudioPage() {
           <PricingCards plans={studioPricing} columns={4} />
 
           <Reveal delay={0.3}>
-            <p className="text-xs text-muted/20 mt-8 font-mono">
+            <p className="text-xs text-muted/40 mt-8 font-mono">
               All tiers include hosting setup, responsive design, and hand-off documentation.
             </p>
           </Reveal>

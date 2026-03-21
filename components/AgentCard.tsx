@@ -31,7 +31,7 @@ export default function AgentCard({ agent }: { agent: Agent }) {
         </div>
         <span className="font-semibold text-sm text-foreground/90 group-hover:text-foreground transition-colors">{agent.name}</span>
       </div>
-      <p className="text-xs text-muted/30 leading-relaxed group-hover:text-muted/60 transition-colors duration-500">{agent.description}</p>
+      <p className="text-xs text-muted/55 leading-relaxed group-hover:text-muted/70 transition-colors duration-500">{agent.description}</p>
       <p className="font-mono text-[9px] tracking-[0.15em] uppercase text-muted/20 mt-3">{agent.domain}</p>
     </div>
   )

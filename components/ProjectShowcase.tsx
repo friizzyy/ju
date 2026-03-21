@@ -109,12 +109,12 @@ export default function ProjectShowcase({ projects }: Props) {
                   <h3 className="text-xl sm:text-3xl lg:text-4xl font-bold tracking-[-0.03em] text-foreground/60 group-hover:text-foreground transition-colors duration-500 truncate">
                     {project.title}
                   </h3>
-                  <p className="text-xs text-muted/30 mt-1 max-w-sm leading-relaxed hidden lg:block">{project.description}</p>
+                  <p className="text-xs text-muted/55 mt-1 max-w-sm leading-relaxed hidden lg:block">{project.description}</p>
                 </div>
               </div>
 
               <div className="flex items-center gap-6 shrink-0">
-                <span className="hidden sm:block font-mono text-[10px] tracking-[0.15em] uppercase text-muted/40 group-hover:text-muted/60 transition-colors">
+                <span className="hidden sm:block font-mono text-[10px] tracking-[0.15em] uppercase text-muted/60 group-hover:text-muted/75 transition-colors">
                   {project.tag}
                 </span>
 

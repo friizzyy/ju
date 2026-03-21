@@ -51,7 +51,7 @@ export default function PantheonNetwork({ className = '', interactive = true }: 
     const dpr = Math.min(window.devicePixelRatio || 1, 2)
     let w = 0, h = 0
 
-    // ── Nebula clouds — large color blobs that drift ──
+    // ── Nebula clouds:large color blobs that drift ──
     const nebulae = [
       { x: 0.3, y: 0.25, r: 350, color: [0, 60, 120],    speed: 0.08, phase: 0 },
       { x: 0.7, y: 0.35, r: 280, color: [0, 140, 180],    speed: 0.06, phase: 2 },
@@ -60,7 +60,7 @@ export default function PantheonNetwork({ className = '', interactive = true }: 
       { x: 0.5, y: 0.5,  r: 400, color: [0, 100, 140],     speed: 0.04, phase: 3 },
     ]
 
-    // ── Stars — 3 depth layers ──
+    // ── Stars:3 depth layers ──
     const stars = Array.from({ length: 350 }, () => {
       const layer = Math.random() < 0.2 ? 2 : Math.random() < 0.5 ? 1 : 0
       return {
@@ -145,7 +145,7 @@ export default function PantheonNetwork({ className = '', interactive = true }: 
         }
       }
 
-      // ━━ Mouse glow — soft light following cursor ━━
+      // ━━ Mouse glow:soft light following cursor ━━
       if (mx > 0 && !mob) {
         const mgr = 220
         const mg = c.createRadialGradient(mx, my, 0, mx, my, mgr)
@@ -265,7 +265,7 @@ export default function PantheonNetwork({ className = '', interactive = true }: 
         c.beginPath(); c.arc(s.px, s.py, midR, 0, Math.PI*2)
         c.fillStyle = mg; c.fill()
 
-        // ── Ring — expands on hover ──
+        // ── Ring:expands on hover ──
         const ringR = (mob ? 8 : 13) * n.scale * (1 + s.hover * 0.3)
         c.beginPath(); c.arc(s.px, s.py, ringR, 0, Math.PI*2)
         c.strokeStyle = `rgba(${r},${g},${b},${0.35 + s.hover * 0.4})`
@@ -338,8 +338,20 @@ export default function PantheonNetwork({ className = '', interactive = true }: 
 
     resize()
     window.addEventListener('resize', resize)
-    raf.current = requestAnimationFrame(draw)
-    return () => { window.removeEventListener('resize', resize); cancelAnimationFrame(raf.current) }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          raf.current = requestAnimationFrame(draw)
+        } else {
+          cancelAnimationFrame(raf.current)
+        }
+      },
+      { threshold: 0.01 }
+    )
+    observer.observe(cvs)
+
+    return () => { window.removeEventListener('resize', resize); cancelAnimationFrame(raf.current); observer.disconnect() }
   }, [interactive])
 
   useEffect(() => {
@@ -354,5 +366,5 @@ export default function PantheonNetwork({ className = '', interactive = true }: 
     return () => { window.removeEventListener('mousemove', onMove); window.removeEventListener('mouseleave', onLeave) }
   }, [interactive])
 
-  return <canvas ref={canvasRef} onClick={onClick} className={`absolute inset-0 ${className}`} />
+  return <canvas ref={canvasRef} onClick={onClick} className={`absolute inset-0 ${className}`} style={{ willChange: 'transform' }} />
 }

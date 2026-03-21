@@ -19,7 +19,7 @@ const clipPaths = {
 
 export default function ClipReveal({ children, className = '', direction = 'up', delay = 0 }: Props) {
   const ref = useRef<HTMLDivElement>(null)
-  const inView = useInView(ref, { once: true, margin: '-100px' })
+  const inView = useInView(ref, { once: true, margin: '-50px' })
 
   return (
     <motion.div

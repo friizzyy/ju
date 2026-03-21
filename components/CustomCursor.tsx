@@ -29,8 +29,8 @@ export default function CustomCursor() {
     }
 
     function animate() {
-      pos.current.x = lerp(pos.current.x, target.current.x, 0.15)
-      pos.current.y = lerp(pos.current.y, target.current.y, 0.15)
+      pos.current.x += (target.current.x - pos.current.x) * 0.35
+      pos.current.y += (target.current.y - pos.current.y) * 0.35
 
       if (dot.current) {
         dot.current.style.transform = `translate(${pos.current.x}px, ${pos.current.y}px) translate(-50%, -50%)`

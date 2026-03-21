@@ -1,4 +1,7 @@
+"use client"
+
 import Link from 'next/link'
+import { motion } from 'framer-motion'
 import PantheonNetwork from '@/components/PantheonNetwork'
 import Reveal from '@/components/Reveal'
 import TextReveal from '@/components/TextReveal'
@@ -6,15 +9,46 @@ import Marquee from '@/components/Marquee'
 import MagneticButton from '@/components/MagneticButton'
 import Counter from '@/components/Counter'
 import ClipReveal from '@/components/ClipReveal'
-import ProjectShowcase from '@/components/ProjectShowcase'
-import { projects } from '@/data/projects'
 import { agents } from '@/data/agents'
 import AgentCard from '@/components/AgentCard'
+
+const SectionDivider = () => (
+  <div className="max-w-6xl mx-auto px-6">
+    <div className="h-px w-full" style={{ background: 'linear-gradient(to right, transparent, rgba(255,255,255,0.06), transparent)' }} />
+  </div>
+)
+
+const services = [
+  {
+    num: '01',
+    tag: 'Websites',
+    nameAccent: 'Studio',
+    color: '#8B5CF6',
+    rgb: '139,92,246',
+    description: 'Custom Next.js sites for businesses serious about how they show up online. No templates. No builders. Flat-rate from $750.',
+    features: ['Custom React & Next.js', 'Mobile-first by default', '90+ PageSpeed baseline', 'CMS & hand-off docs'],
+    price: '$750-$4,000',
+    link: '/studio',
+    linkLabel: 'View portfolio',
+  },
+  {
+    num: '02',
+    tag: 'AI Automation',
+    nameAccent: 'Systems',
+    color: '#6366F1',
+    rgb: '99,102,241',
+    description: "AI audit and automation for businesses still running on manual processes. We find what's costing you. Then we fix it.",
+    features: ['AI audit & gap analysis', 'Custom agent development', 'Deployed in your tools', 'Weekly optimization'],
+    price: '$997-$5K/mo',
+    link: '/systems',
+    linkLabel: 'Learn more',
+  },
+]
 
 export default function Home() {
   return (
     <>
-      {/* ═══ HERO — PantheonNetwork with simple overlay ═══ */}
+      {/* ═══ HERO ═══ */}
       <section className="relative h-screen flex flex-col items-center justify-center overflow-hidden">
         <PantheonNetwork />
 
@@ -71,11 +105,11 @@ export default function Home() {
           {agents.length} agents &middot; click anywhere
         </div>
 
-        <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-b from-transparent to-background pointer-events-none" />
+        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent to-background pointer-events-none" />
       </section>
 
       {/* ═══ MARQUEE ═══ */}
-      <section className="py-5 border-y border-white/[0.03]">
+      <section className="mt-16 sm:mt-24 py-8 border-y border-white/[0.03]">
         <Marquee speed={30} className="text-muted/40">
           {['Custom Websites', 'AI Automation', 'Next.js', 'Autonomous Agents', 'Audit & Strategy', 'Grass Valley CA', 'Systems That Ship'].map(t => (
             <span key={t} className="mx-8 sm:mx-12 text-[13px] font-mono tracking-[0.15em] uppercase whitespace-nowrap flex items-center gap-4">
@@ -85,80 +119,97 @@ export default function Home() {
         </Marquee>
       </section>
 
-      {/* ═══ SELECTED WORK — Immersive title list with cursor-follow images ═══ */}
-      <section className="py-32 sm:py-44 px-6 relative">
-        <div className="max-w-6xl mx-auto">
-          <div className="w-full h-px bg-gradient-to-r from-transparent via-white/[0.06] to-transparent mb-24" />
-          <div className="flex items-end justify-between mb-16">
-            <div>
-              <Reveal>
-                <p className="font-mono text-[10px] tracking-[0.25em] uppercase text-accent/30 mb-4">Portfolio</p>
-              </Reveal>
-              <ClipReveal direction="up">
-                <h2 className="text-4xl sm:text-6xl lg:text-7xl font-bold tracking-[-0.04em] leading-[0.9]">
-                  Selected<br /><span className="text-outline">work</span><span className="text-accent">.</span>
-                </h2>
-              </ClipReveal>
-            </div>
-            <Reveal delay={0.3}>
-              <Link href="/studio" data-cursor="link" className="hidden sm:block hover-line text-sm text-muted/40 hover:text-foreground transition-colors">
-                All projects &rarr;
-              </Link>
+      <SectionDivider />
+
+      {/* ═══ SERVICES ═══ */}
+      <section className="py-20 sm:py-28 px-6 relative">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-5">
+          {services.map((service, i) => (
+            <Reveal key={service.num} delay={i * 0.15}>
+              <motion.div
+                className="group relative flex flex-col rounded-2xl border overflow-hidden cursor-default transition-colors duration-700 h-full"
+                style={{
+                  background: `rgba(${service.rgb}, 0.03)`,
+                  borderColor: `rgba(${service.rgb}, 0.12)`,
+                }}
+                whileHover={{
+                  y: -6,
+                  borderColor: `rgba(${service.rgb}, 0.35)`,
+                  transition: { duration: 0.35, ease: [0.22, 1, 0.36, 1] },
+                }}
+              >
+                <div
+                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none rounded-2xl"
+                  style={{ background: `radial-gradient(ellipse at top, rgba(${service.rgb}, 0.07) 0%, transparent 60%)` }}
+                />
+
+                <div className="relative flex flex-col h-full p-8 sm:p-10">
+                  <div className="flex items-center justify-between mb-10">
+                    <p
+                      className="font-mono text-[9px] tracking-[0.3em] uppercase transition-colors duration-500"
+                      style={{ color: `rgba(${service.rgb}, 0.5)` }}
+                    >
+                      {service.num}: {service.tag}
+                    </p>
+                    <div
+                      className="w-2 h-2 rounded-full opacity-40 group-hover:opacity-100 transition-opacity duration-500"
+                      style={{ background: service.color }}
+                    />
+                  </div>
+
+                  <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-[-0.04em] leading-[0.9] mb-5">
+                    JU<span style={{ color: service.color }}>.</span>{' '}
+                    {service.nameAccent}
+                  </h2>
+
+                  <p className="text-white/55 text-sm leading-relaxed max-w-sm mb-8">
+                    {service.description}
+                  </p>
+
+                  <div className="space-y-2.5 flex-1 mb-10">
+                    {service.features.map((feature, fi) => (
+                      <div key={fi} className="flex items-center gap-3">
+                        <span
+                          className="w-3 h-px flex-shrink-0 transition-colors duration-500 group-hover:w-4"
+                          style={{ background: `rgba(${service.rgb}, 0.4)` }}
+                        />
+                        <span className="text-sm text-white/50 group-hover:text-white/65 transition-colors duration-500">
+                          {feature}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="flex items-center justify-between pt-6 border-t" style={{ borderColor: `rgba(${service.rgb}, 0.10)` }}>
+                    <div>
+                      <p className="font-mono text-[9px] tracking-[0.2em] uppercase text-white/20 mb-1">Investment</p>
+                      <p
+                        className="font-bold text-lg tracking-tight transition-colors duration-500"
+                        style={{ color: `rgba(${service.rgb}, 0.7)` }}
+                      >
+                        {service.price}
+                      </p>
+                    </div>
+                    <Link
+                      href={service.link}
+                      className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-500 opacity-0 group-hover:opacity-100 translate-y-1 group-hover:translate-y-0"
+                      style={{
+                        background: `rgba(${service.rgb}, 0.12)`,
+                        border: `1px solid rgba(${service.rgb}, 0.25)`,
+                        color: service.color,
+                      }}
+                    >
+                      {service.linkLabel} <span>&rarr;</span>
+                    </Link>
+                  </div>
+                </div>
+              </motion.div>
             </Reveal>
-          </div>
-
-          <ProjectShowcase projects={projects} />
+          ))}
         </div>
       </section>
 
-      {/* ═══ SERVICES — Two horizontal bands ═══ */}
-      <section className="py-32 sm:py-44 px-6 relative overflow-hidden">
-        <div className="max-w-6xl mx-auto space-y-0">
-          {/* Row 1 — Studio */}
-          <Reveal>
-            <div className="group relative border-l-2 border-studio/20 hover:border-studio/60 transition-colors duration-700 pl-8 py-16">
-              <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
-                <div className="lg:col-span-2">
-                  <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-studio/40 mb-4">01 — Websites</p>
-                  <h2 className="text-4xl sm:text-6xl font-bold tracking-[-0.04em] leading-[0.9] mb-6">JU<span className="text-studio">.</span> Studio</h2>
-                  <p className="text-muted text-base leading-relaxed max-w-lg mb-8">Custom Next.js sites for businesses serious about how they show up online. No templates. No builders. Flat-rate from $750.</p>
-                  <Link href="/studio" data-cursor="link" className="inline-flex items-center gap-2 text-sm text-studio hover:text-foreground transition-colors group-hover:gap-3 duration-300">View portfolio <span>&rarr;</span></Link>
-                </div>
-                <div className="space-y-3">
-                  {['Custom React & Next.js', 'Mobile-first by default', '90+ PageSpeed baseline', 'CMS & hand-off docs'].map(item => (
-                    <div key={item} className="flex items-center gap-3 text-sm text-muted/50">
-                      <span className="w-3 h-px bg-studio/30" />{item}
-                    </div>
-                  ))}
-                  <div className="pt-4 font-mono text-[11px] text-muted/25">$750 — $4,000</div>
-                </div>
-              </div>
-            </div>
-          </Reveal>
-
-          {/* Row 2 — Systems */}
-          <Reveal delay={0.1}>
-            <div className="group relative border-l-2 border-zeus/20 hover:border-zeus/60 transition-colors duration-700 pl-8 py-16">
-              <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
-                <div className="lg:col-span-2">
-                  <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-zeus/40 mb-4">02 — AI Automation</p>
-                  <h2 className="text-4xl sm:text-6xl font-bold tracking-[-0.04em] leading-[0.9] mb-6">JU<span className="text-zeus">.</span> Systems</h2>
-                  <p className="text-muted text-base leading-relaxed max-w-lg mb-8">AI audit and automation for businesses still running on manual processes. We find what&apos;s costing you. Then we fix it.</p>
-                  <Link href="/systems" data-cursor="link" className="inline-flex items-center gap-2 text-sm text-zeus hover:text-foreground transition-colors group-hover:gap-3 duration-300">Learn about audits <span>&rarr;</span></Link>
-                </div>
-                <div className="space-y-3">
-                  {['AI audit & gap analysis', 'Custom agent development', 'Deployed in your tools', 'Weekly optimization'].map(item => (
-                    <div key={item} className="flex items-center gap-3 text-sm text-muted/50">
-                      <span className="w-3 h-px bg-zeus/30" />{item}
-                    </div>
-                  ))}
-                  <div className="pt-4 font-mono text-[11px] text-muted/25">$997 — $5K/mo</div>
-                </div>
-              </div>
-            </div>
-          </Reveal>
-        </div>
-      </section>
+      <SectionDivider />
 
       {/* ═══ STATS ═══ */}
       <section className="py-20 px-6 border-y border-white/[0.03] relative">
@@ -180,6 +231,8 @@ export default function Home() {
         </div>
       </section>
 
+      <SectionDivider />
+
       {/* ═══ THE PANTHEON ═══ */}
       <section className="py-32 sm:py-44 px-6 relative">
         <div className="max-w-5xl mx-auto relative z-10">
@@ -188,8 +241,8 @@ export default function Home() {
               <p className="text-outline-accent text-6xl sm:text-8xl lg:text-9xl font-bold tracking-[-0.05em] leading-none select-none" aria-hidden="true">
                 PANTHEON
               </p>
-              <p className="text-muted/50 text-sm sm:text-base max-w-xl mx-auto mt-6 leading-relaxed">
-                {agents.length} autonomous AI agents manage the entire pipeline. Self-improving every week.
+              <p className="text-muted/50 text-sm max-w-lg mx-auto text-center mt-4 mb-16 leading-relaxed">
+                9 autonomous AI agents run JU. around the clock. Lead sourcing, outreach, proposals, delivery. Everything except the actual building.
               </p>
             </div>
           </ClipReveal>
@@ -209,9 +262,14 @@ export default function Home() {
         <div className="glow-divider max-w-lg mx-auto mb-20" />
         <div className="max-w-2xl mx-auto text-center">
           <ClipReveal direction="up">
-            <h2 className="text-4xl sm:text-6xl lg:text-7xl font-bold tracking-[-0.04em] leading-[0.9]">
-              Your site ships<br />in <span className="text-accent">2 weeks</span><span className="text-foreground/20">.</span><br />
-              <span className="text-muted/30">Your automation in 4.</span>
+            <h2 className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-[-0.04em] leading-[1.05] text-center whitespace-nowrap">
+              Your site ships<br />
+              in <span className="text-accent">2 weeks</span>
+              <span className="text-foreground/15">.</span>
+              <br />
+              <span className="text-muted/25 text-2xl sm:text-4xl lg:text-5xl font-bold">
+                Your automation in 4.
+              </span>
             </h2>
           </ClipReveal>
           <Reveal delay={0.3}>

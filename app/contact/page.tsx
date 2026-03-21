@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <>
-      {/* Hero — Centered dramatic with oversized period */}
+      {/* Hero:Centered dramatic with oversized period */}
       <section className="min-h-[80vh] flex items-center justify-center relative overflow-hidden px-6">
         <div className="relative z-10 text-center max-w-4xl">
           <ClipReveal direction="up">
@@ -33,7 +33,7 @@ export default function ContactPage() {
       <section className="py-16 sm:py-24 px-6">
         <div className="max-w-5xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
-            {/* Primary — book a call */}
+            {/* Primary:book a call */}
             <div className="lg:col-span-7">
               <ClipReveal direction="left">
                 <a
@@ -61,7 +61,7 @@ export default function ContactPage() {
               </ClipReveal>
             </div>
 
-            {/* Secondary — email + location */}
+            {/* Secondary:email + location */}
             <div className="lg:col-span-5 flex flex-col gap-6">
               <ClipReveal direction="right" delay={0.1}>
                 <a

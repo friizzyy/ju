@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <>
-      {/* Hero — Horizontal split: name left, role right */}
+      {/* Hero */}
       <section className="min-h-screen flex items-center relative overflow-hidden px-6">
         <div className="max-w-7xl mx-auto w-full relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-0 items-center">
@@ -35,21 +35,38 @@ export default function AboutPage() {
                 <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-muted/25 mb-6">About</p>
               </Reveal>
               <Reveal delay={0.5}>
-                <p className="text-muted text-base sm:text-lg leading-relaxed mb-6">
-                  One person. Two businesses. Everything built from scratch and running while you&apos;re reading this.
+                <p className="text-white/70 text-base sm:text-lg leading-relaxed mb-4">
+                  One person. Two businesses. Everything built from scratch.
+                </p>
+                <p className="text-white/40 text-sm leading-relaxed mb-8">
+                  Websites through Studio. AI systems through Systems. Both running while you sleep.
                 </p>
               </Reveal>
               <Reveal delay={0.6}>
                 <p className="font-mono text-[11px] text-muted/30 tracking-wider">
                   Grass Valley, CA
                 </p>
+                <div className="mt-8 space-y-2">
+                  <div className="flex items-center gap-3">
+                    <span className="font-mono text-[10px] text-white/20 tracking-widest w-20">SINCE</span>
+                    <span className="text-sm font-bold text-white/60">2024</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <span className="font-mono text-[10px] text-white/20 tracking-widest w-20">STACK</span>
+                    <span className="text-sm font-bold text-white/60">Next.js, React, Python, OpenClaw</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <span className="font-mono text-[10px] text-white/20 tracking-widest w-20">MODEL</span>
+                    <span className="text-sm font-bold text-white/60">Solo. No subcontractors.</span>
+                  </div>
+                </div>
               </Reveal>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Story — Deep editorial */}
+      {/* Story */}
       <section className="py-32 sm:py-44 px-6">
         <div className="max-w-5xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
@@ -64,25 +81,13 @@ export default function AboutPage() {
             </div>
             <div className="lg:col-span-8">
               <Reveal delay={0.1}>
-                <p className="text-foreground/80 text-base sm:text-lg leading-[1.9] mb-8">
-                  I started JU. because most businesses don&apos;t need another SaaS
-                  subscription or a team of consultants. They need someone who
-                  understands their problem, builds the fix, and ships it.
+                <p className="text-white/70 text-base sm:text-lg leading-[1.9] mb-8">
+                  I started JU. because most businesses need someone who understands the problem, builds the fix, and ships it. Not a team of consultants. Not another SaaS tool. Just a person who builds things that work.
                 </p>
               </Reveal>
               <Reveal delay={0.2}>
-                <p className="text-foreground/80 text-base sm:text-lg leading-[1.9] mb-8">
-                  Two services. Websites through <Link href="/studio" data-cursor="link" className="hover-line text-studio">JU. Studio</Link>.
-                  AI automation through <Link href="/systems" data-cursor="link" className="hover-line text-zeus">JU. Systems</Link>.
-                  Both built from scratch. Both designed to keep working after
-                  I&apos;m done building.
-                </p>
-              </Reveal>
-              <Reveal delay={0.3}>
-                <p className="text-foreground/80 text-base sm:text-lg leading-[1.9]">
-                  I don&apos;t subcontract. The person you talk to is the person who
-                  builds. The AI system handles the operational overhead so I can
-                  focus entirely on the work.
+                <p className="text-white/70 text-base sm:text-lg leading-[1.9]">
+                  I don&apos;t subcontract. The person you talk to is the person who builds. The AI system handles the operational overhead so I can focus on the work.
                 </p>
               </Reveal>
             </div>
@@ -90,7 +95,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Philosophy — Numbered rules with dramatic hover states */}
+      {/* Philosophy */}
       <section className="py-32 sm:py-44 px-6 relative">
         <div className="glow-divider max-w-4xl mx-auto mb-28" />
 
@@ -98,7 +103,7 @@ export default function AboutPage() {
           <ClipReveal direction="up">
             <h2 className="text-4xl sm:text-6xl font-bold tracking-[-0.04em] leading-[0.9] mb-24">
               Systems<span className="text-studio">,</span><br />
-              <span className="text-muted/20">not deliverables.</span>
+              <span className="text-muted/40">not deliverables.</span>
             </h2>
           </ClipReveal>
 
@@ -118,7 +123,7 @@ export default function AboutPage() {
                     <h3 className="text-lg sm:text-xl font-bold text-foreground group-hover:text-studio transition-colors duration-500">{item.title}</h3>
                   </div>
                   <div className="lg:col-span-7">
-                    <p className="text-sm text-muted/50 leading-relaxed max-w-lg group-hover:text-muted/70 transition-colors duration-500">{item.body}</p>
+                    <p className="text-sm text-muted/65 leading-relaxed max-w-lg group-hover:text-muted/80 transition-colors duration-500">{item.body}</p>
                   </div>
                 </div>
               </Reveal>
@@ -127,12 +132,12 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Pantheon — Double marquee */}
+      {/* Pantheon */}
       <section className="py-32 sm:py-44 px-6 relative overflow-hidden">
         <div className="max-w-5xl mx-auto relative z-10">
           <ClipReveal direction="center">
             <div className="text-center mb-16">
-              <p className="text-outline text-5xl sm:text-7xl lg:text-8xl font-bold tracking-[-0.05em] leading-none select-none" aria-hidden="true">
+              <p className="text-outline text-4xl sm:text-6xl lg:text-7xl font-bold tracking-[-0.05em] leading-none select-none" aria-hidden="true">
                 PANTHEON
               </p>
               <p className="text-muted text-sm mt-6 max-w-lg mx-auto leading-relaxed">
@@ -154,19 +159,6 @@ export default function AboutPage() {
               </div>
             ))}
           </Marquee>
-
-          <Marquee speed={45} reverse className="py-4 mt-2">
-            {agents.map(agent => (
-              <div key={agent.id} className="flex items-center gap-3 mx-6 px-5 py-3 rounded-full bg-white/[0.02] border border-white/[0.04] hover:border-white/[0.08] transition-colors whitespace-nowrap">
-                <div className="relative">
-                  <div className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: agent.color }} />
-                  <div className="absolute inset-0 rounded-full animate-pulse-glow" style={{ backgroundColor: agent.color, filter: 'blur(4px)' }} />
-                </div>
-                <span className="text-sm font-medium text-foreground/80">{agent.name}</span>
-                <span className="font-mono text-[9px] tracking-wider uppercase text-muted/30">{agent.domain}</span>
-              </div>
-            ))}
-          </Marquee>
         </div>
       </section>
 
@@ -176,11 +168,11 @@ export default function AboutPage() {
         <div className="max-w-2xl mx-auto text-center">
           <ClipReveal direction="up">
             <h2 className="text-4xl sm:text-6xl lg:text-7xl font-bold tracking-[-0.04em] leading-[0.9]">
-              Let&apos;s build<br />something<span className="text-accent">.</span>
+              Got something<br />that needs<br />building<span className="text-accent">?</span>
             </h2>
           </ClipReveal>
           <Reveal delay={0.3}>
-            <p className="text-muted text-sm mt-6 mb-12">If you have a project that needs to ship, I want to hear about it.</p>
+            <p className="text-white/50 text-sm mt-6 mb-12">No long timelines. No strategy decks. Just a real conversation.</p>
           </Reveal>
           <Reveal delay={0.5}>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">

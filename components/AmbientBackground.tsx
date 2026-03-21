@@ -7,7 +7,7 @@ interface Props {
   particleCount?: number
 }
 
-export default function AmbientBackground({ color = [0, 180, 220], particleCount = 80 }: Props) {
+export default function AmbientBackground({ color = [0, 180, 220], particleCount = 40 }: Props) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const mouse = useRef({ x: -9999, y: -9999 })
   const raf = useRef(0)
@@ -98,8 +98,20 @@ export default function AmbientBackground({ color = [0, 180, 220], particleCount
 
     resize()
     window.addEventListener('resize', resize)
-    raf.current = requestAnimationFrame(draw)
-    return () => { window.removeEventListener('resize', resize); cancelAnimationFrame(raf.current) }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          raf.current = requestAnimationFrame(draw)
+        } else {
+          cancelAnimationFrame(raf.current)
+        }
+      },
+      { threshold: 0.01 }
+    )
+    observer.observe(cvs)
+
+    return () => { window.removeEventListener('resize', resize); cancelAnimationFrame(raf.current); observer.disconnect() }
   }, [color, particleCount])
 
   useEffect(() => {
@@ -117,7 +129,7 @@ export default function AmbientBackground({ color = [0, 180, 220], particleCount
     <canvas
       ref={canvasRef}
       className="fixed inset-0 w-full h-full pointer-events-none"
-      style={{ zIndex: 0 }}
+      style={{ zIndex: 0, willChange: 'transform' }}
     />
   )
 }
