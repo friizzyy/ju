@@ -33,7 +33,7 @@ export default function SystemsPage() {
               </Reveal>
 
               <ClipReveal direction="up">
-                <h1 className="text-3xl sm:text-6xl lg:text-7xl font-bold tracking-[-0.04em] leading-[0.92] pb-2">
+                <h1 className="text-3xl sm:text-6xl lg:text-7xl font-bold tracking-[-0.04em] leading-[0.95] pb-3">
                   You&apos;re losing<br />
                   <span className="text-zeus">hours</span> to work<br />
                   <span className="text-muted/15">a $50 agent</span>{' '}
@@ -81,7 +81,7 @@ export default function SystemsPage() {
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-20 items-start">
               <div className="lg:col-span-5">
                 <ClipReveal direction="left">
-                  <p className="text-[5rem] sm:text-[10rem] font-bold tracking-[-0.06em] leading-[0.85] text-outline select-none" aria-hidden="true">
+                  <p className="text-[5rem] sm:text-[10rem] font-bold tracking-[-0.06em] leading-[0.9] pb-4 text-outline select-none" aria-hidden="true">
                     The<br />gap
                   </p>
                 </ClipReveal>
@@ -155,12 +155,12 @@ export default function SystemsPage() {
       </section>
 
       {/* Process:Unique staggered layout */}
-      <section className="py-12 sm:py-32 lg:py-44 px-6 relative">
+      <section id="process" className="py-12 sm:py-32 lg:py-44 px-6 relative">
         <div className="glow-divider-gold max-w-3xl mx-auto mb-28" />
 
         <div className="max-w-4xl mx-auto">
           <ClipReveal direction="up">
-            <h2 className="text-4xl sm:text-7xl font-bold tracking-[-0.04em] leading-[0.9] mb-4">
+            <h2 className="text-4xl sm:text-7xl font-bold tracking-[-0.04em] leading-[0.9] pb-2 mb-4">
               Three steps<span className="text-zeus">.</span>
             </h2>
             <p className="text-muted/25 text-2xl sm:text-4xl font-bold tracking-[-0.03em]">No more.</p>
@@ -204,12 +204,12 @@ export default function SystemsPage() {
       </section>
 
       {/* Packages */}
-      <section className="py-12 sm:py-32 lg:py-44 px-6 relative">
+      <section id="packages" className="py-12 sm:py-32 lg:py-44 px-6 relative">
         <div className="max-w-5xl mx-auto">
           <ClipReveal direction="up">
             <div className="mb-20">
               <p className="font-mono text-[10px] tracking-[0.25em] uppercase text-zeus/30 mb-6">Investment</p>
-              <h2 className="text-4xl sm:text-6xl font-bold tracking-[-0.04em] leading-[0.9]">
+              <h2 className="text-4xl sm:text-6xl font-bold tracking-[-0.04em] leading-[0.9] pb-2">
                 Pick your<br />entry point<span className="text-zeus">.</span>
               </h2>
             </div>
@@ -240,7 +240,7 @@ export default function SystemsPage() {
         <div className="glow-divider-gold max-w-sm mx-auto mb-20" />
         <div className="max-w-2xl mx-auto text-center">
           <ClipReveal direction="up">
-            <h2 className="text-4xl sm:text-6xl lg:text-7xl font-bold tracking-[-0.04em] leading-[0.9]">
+            <h2 className="text-4xl sm:text-6xl lg:text-7xl font-bold tracking-[-0.04em] leading-[0.9] pb-2">
               Stop guessing<span className="text-zeus">.</span><br />
               <span className="text-muted/20">Start seeing.</span>
             </h2>

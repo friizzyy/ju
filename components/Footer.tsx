@@ -13,16 +13,28 @@ export default function Footer() {
           <div>
             <p className="font-mono text-[9px] tracking-[0.25em] uppercase text-studio/40 mb-4">JU. Studio</p>
             <div className="space-y-2">
-              {['Portfolio', 'Pricing', 'Start a project'].map(item => (
-                <div key={item}><Link href="/studio" className="text-sm text-muted/40 hover:text-foreground transition-colors duration-300">{item}</Link></div>
+              {[
+                { label: 'Portfolio', href: '/studio#portfolio' },
+                { label: 'Pricing', href: '/studio#pricing' },
+                { label: 'Start a project', href: 'https://calendly.com/julius-systems' },
+              ].map(item => (
+                <div key={item.label}>
+                  <Link href={item.href} className="text-sm text-muted/40 hover:text-foreground transition-colors duration-300">{item.label}</Link>
+                </div>
               ))}
             </div>
           </div>
           <div>
             <p className="font-mono text-[9px] tracking-[0.25em] uppercase text-zeus/40 mb-4">JU. Systems</p>
             <div className="space-y-2">
-              {['How it works', 'Packages', 'Book a call'].map(item => (
-                <div key={item}><Link href="/systems" className="text-sm text-muted/40 hover:text-foreground transition-colors duration-300">{item}</Link></div>
+              {[
+                { label: 'How it works', href: '/systems#process' },
+                { label: 'Packages', href: '/systems#packages' },
+                { label: 'Book a call', href: 'https://calendly.com/julius-systems' },
+              ].map(item => (
+                <div key={item.label}>
+                  <Link href={item.href} className="text-sm text-muted/40 hover:text-foreground transition-colors duration-300">{item.label}</Link>
+                </div>
               ))}
             </div>
           </div>

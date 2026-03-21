@@ -60,7 +60,7 @@ export default function Home() {
             <TextReveal
               text="JU."
               tag="h1"
-              className="text-[22vw] sm:text-[24vw] md:text-[18vw] font-bold tracking-[-0.06em] leading-[0.92] text-foreground"
+              className="text-[22vw] sm:text-[24vw] md:text-[18vw] font-bold tracking-[-0.06em] leading-[0.92] pb-3 text-foreground"
               stagger={0.15}
             />
           </div>
@@ -159,7 +159,7 @@ export default function Home() {
                     />
                   </div>
 
-                  <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-[-0.04em] leading-[0.9] mb-5">
+                  <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-[-0.04em] leading-[0.9] pb-2 mb-5">
                     JU<span style={{ color: service.color }}>.</span>{' '}
                     {service.nameAccent}
                   </h2>

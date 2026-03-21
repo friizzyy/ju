@@ -36,7 +36,7 @@ export default function StudioPage() {
               </Reveal>
 
               <ClipReveal direction="up">
-                <h1 className="text-3xl sm:text-7xl lg:text-8xl font-bold tracking-[-0.05em] leading-[0.92] pb-2">
+                <h1 className="text-3xl sm:text-7xl lg:text-8xl font-bold tracking-[-0.05em] leading-[0.95] pb-3">
                   No templates<span className="text-studio">.</span><br />
                   No shortcuts<span className="text-studio">.</span><br />
                   <span className="text-outline-studio">Just code.</span>
@@ -82,7 +82,7 @@ export default function StudioPage() {
         <div className="max-w-5xl mx-auto">
           <ParallaxSection speed={0.1}>
             <ClipReveal direction="left">
-              <h2 className="text-5xl sm:text-7xl lg:text-8xl font-bold tracking-[-0.05em] leading-[0.92] mb-16">
+              <h2 className="text-5xl sm:text-7xl lg:text-8xl font-bold tracking-[-0.05em] leading-[0.95] pb-3 mb-16">
                 Not like<br />other<br />
                 <span className="text-outline">agencies</span><span className="text-studio">.</span>
               </h2>
@@ -114,12 +114,12 @@ export default function StudioPage() {
       </section>
 
       {/* Pricing:Dramatic layout */}
-      <section className="py-12 sm:py-32 lg:py-44 px-6 relative">
+      <section id="pricing" className="py-12 sm:py-32 lg:py-44 px-6 relative">
         <div className="max-w-5xl mx-auto">
           <ClipReveal direction="up">
             <div className="mb-20">
               <p className="font-mono text-[10px] tracking-[0.25em] uppercase text-studio/30 mb-6">Investment</p>
-              <h2 className="text-4xl sm:text-6xl font-bold tracking-[-0.04em] leading-[0.9]">
+              <h2 className="text-4xl sm:text-6xl font-bold tracking-[-0.04em] leading-[0.9] pb-2">
                 Flat rate<span className="text-studio">.</span><br />
                 <span className="text-muted/30">No surprises.</span>
               </h2>
@@ -137,10 +137,10 @@ export default function StudioPage() {
       </section>
 
       {/* Portfolio:Immersive title-based showcase */}
-      <section className="py-12 sm:py-32 lg:py-44 px-6 relative">
+      <section id="portfolio" className="py-12 sm:py-32 lg:py-44 px-6 relative">
         <div className="max-w-6xl mx-auto">
           <ClipReveal direction="up">
-            <h2 className="text-4xl sm:text-6xl font-bold tracking-[-0.04em] leading-[0.9] mb-8">
+            <h2 className="text-4xl sm:text-6xl font-bold tracking-[-0.04em] leading-[0.9] pb-2 mb-8">
               The work<span className="text-studio">.</span>
             </h2>
           </ClipReveal>

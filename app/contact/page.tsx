@@ -15,7 +15,7 @@ export default function ContactPage() {
       <section className="min-h-[80vh] flex items-center justify-center relative overflow-hidden px-6">
         <div className="relative z-10 text-center max-w-4xl">
           <ClipReveal direction="up">
-            <h1 className="text-4xl sm:text-8xl lg:text-[11rem] font-bold tracking-[-0.06em] leading-[0.90]">
+            <h1 className="text-4xl sm:text-8xl lg:text-[11rem] font-bold tracking-[-0.06em] leading-[0.95] pb-4">
               Let&apos;s<br />talk<span className="text-accent">.</span>
             </h1>
           </ClipReveal>
@@ -62,11 +62,11 @@ export default function ContactPage() {
 
             {/* Secondary:email + location */}
             <div className="lg:col-span-5 flex flex-col gap-6">
-              <ClipReveal direction="right" delay={0.1}>
+              <ClipReveal direction="right" delay={0.1} className="flex flex-col flex-1">
                 <a
                   href="mailto:julius@buildwithju.com"
                   data-cursor="link"
-                  className="group block p-6 sm:p-10 rounded-2xl border border-white/[0.04] hover:border-white/[0.1] hover:bg-white/[0.01] transition-all duration-500 flex-1"
+                  className="group flex flex-col flex-1 p-6 sm:p-10 rounded-2xl border border-white/[0.04] hover:border-white/[0.1] hover:bg-white/[0.01] transition-all duration-500"
                 >
                   <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-muted/25 mb-6">Email</p>
                   <h3 className="text-lg font-bold text-foreground mb-2 group-hover:text-accent transition-colors duration-300">julius@buildwithju.com</h3>
@@ -77,8 +77,8 @@ export default function ContactPage() {
                 </a>
               </ClipReveal>
 
-              <ClipReveal direction="right" delay={0.2}>
-                <div className="p-6 sm:p-10 rounded-2xl border border-white/[0.04]">
+              <ClipReveal direction="right" delay={0.2} className="flex flex-col flex-1">
+                <div className="flex flex-col flex-1 p-6 sm:p-10 rounded-2xl border border-white/[0.04]">
                   <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-muted/25 mb-6">Location</p>
                   <h3 className="text-lg font-bold text-foreground mb-2">San Francisco, CA</h3>
                   <p className="text-sm text-muted/50 leading-relaxed">
