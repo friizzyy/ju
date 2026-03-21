@@ -35,7 +35,7 @@ export default function StudioPage() {
               </Reveal>
 
               <ClipReveal direction="up">
-                <h1 className="text-5xl sm:text-7xl lg:text-8xl font-bold tracking-[-0.05em] leading-[0.85]">
+                <h1 className="text-5xl sm:text-7xl lg:text-8xl font-bold tracking-[-0.05em] leading-[0.92]">
                   No templates<span className="text-studio">.</span><br />
                   No shortcuts<span className="text-studio">.</span><br />
                   <span className="text-outline-studio">Just code.</span>
@@ -97,7 +97,7 @@ export default function StudioPage() {
         <div className="max-w-5xl mx-auto">
           <ParallaxSection speed={0.1}>
             <ClipReveal direction="left">
-              <h2 className="text-5xl sm:text-7xl lg:text-8xl font-bold tracking-[-0.05em] leading-[0.85] mb-24">
+              <h2 className="text-5xl sm:text-7xl lg:text-8xl font-bold tracking-[-0.05em] leading-[0.92] mb-24">
                 Not like<br />other<br />
                 <span className="text-outline">agencies</span><span className="text-studio">.</span>
               </h2>

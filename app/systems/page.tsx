@@ -85,7 +85,7 @@ export default function SystemsPage() {
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-20 items-start">
               <div className="lg:col-span-5">
                 <ClipReveal direction="left">
-                  <p className="text-[8rem] sm:text-[10rem] font-bold tracking-[-0.06em] leading-[0.75] text-outline select-none" aria-hidden="true">
+                  <p className="text-[8rem] sm:text-[10rem] font-bold tracking-[-0.06em] leading-[0.85] text-outline select-none" aria-hidden="true">
                     The<br />gap
                   </p>
                 </ClipReveal>

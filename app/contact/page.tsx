@@ -16,7 +16,7 @@ export default function ContactPage() {
       <section className="min-h-[80vh] flex items-center justify-center relative overflow-hidden px-6">
         <div className="relative z-10 text-center max-w-4xl">
           <ClipReveal direction="up">
-            <h1 className="text-6xl sm:text-8xl lg:text-[11rem] font-bold tracking-[-0.06em] leading-[0.82]">
+            <h1 className="text-6xl sm:text-8xl lg:text-[11rem] font-bold tracking-[-0.06em] leading-[0.90]">
               Let&apos;s<br />talk<span className="text-accent">.</span>
             </h1>
           </ClipReveal>
@@ -81,11 +81,11 @@ export default function ContactPage() {
               <ClipReveal direction="right" delay={0.2}>
                 <div className="p-8 sm:p-10 rounded-2xl border border-white/[0.04]">
                   <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-muted/25 mb-6">Location</p>
-                  <h3 className="text-lg font-bold text-foreground mb-2">Grass Valley, CA</h3>
+                  <h3 className="text-lg font-bold text-foreground mb-2">San Francisco, CA</h3>
                   <p className="text-sm text-muted/50 leading-relaxed">
                     Working with clients locally and across the country.
                   </p>
-                  <p className="text-xs text-muted/30 mt-2 leading-relaxed">Available for in-person meetings across Nevada County.</p>
+                  <p className="text-xs text-muted/30 mt-2 leading-relaxed">Available for in-person meetings in the Bay Area.</p>
                 </div>
               </ClipReveal>
             </div>

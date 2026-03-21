@@ -59,6 +59,11 @@ body {
   overflow-x: hidden;
 }
 
+/* Prevent descender clipping on large headings */
+h1, h2, h3 {
+  overflow: visible;
+}
+
 ::selection {
   background: var(--color-accent-glow);
   color: var(--color-foreground);

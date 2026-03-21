@@ -58,7 +58,7 @@ export default function Home() {
             <TextReveal
               text="JU."
               tag="h1"
-              className="text-[32vw] sm:text-[24vw] md:text-[18vw] font-bold tracking-[-0.06em] leading-[0.85] text-foreground"
+              className="text-[32vw] sm:text-[24vw] md:text-[18vw] font-bold tracking-[-0.06em] leading-[0.92] text-foreground"
               stagger={0.15}
             />
           </div>
@@ -111,7 +111,7 @@ export default function Home() {
       {/* ═══ MARQUEE ═══ */}
       <section className="mt-16 sm:mt-24 py-8 border-y border-white/[0.03]">
         <Marquee speed={30} className="text-muted/40">
-          {['Custom Websites', 'AI Automation', 'Next.js', 'Autonomous Agents', 'Audit & Strategy', 'Grass Valley CA', 'Systems That Ship'].map(t => (
+          {['Custom Websites', 'AI Automation', 'Next.js', 'Autonomous Agents', 'Audit & Strategy', 'San Francisco CA', 'Systems That Ship'].map(t => (
             <span key={t} className="mx-8 sm:mx-12 text-[13px] font-mono tracking-[0.15em] uppercase whitespace-nowrap flex items-center gap-4">
               {t} <span className="w-1 h-1 rounded-full bg-accent/50" />
             </span>

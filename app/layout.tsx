@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     template: '%s | JU.',
   },
   description:
-    'Julius Williams builds custom websites and AI systems for businesses that want to stop guessing and start operating. Based in Grass Valley, CA.',
+    'Julius Williams builds custom websites and AI systems for businesses that want to stop guessing and start operating. Based in San Francisco, CA.',
   metadataBase: new URL('https://buildwithju.com'),
   openGraph: {
     type: 'website',

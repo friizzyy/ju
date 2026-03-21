@@ -9,7 +9,7 @@ import { agents } from '@/data/agents'
 
 export const metadata: Metadata = {
   title: 'About',
-  description: 'Julius Williams builds custom websites and AI systems from Grass Valley, CA.',
+  description: 'Julius Williams builds custom websites and AI systems from San Francisco, CA.',
 }
 
 export default function AboutPage() {
@@ -22,7 +22,7 @@ export default function AboutPage() {
             {/* Left: Name */}
             <div className="lg:col-span-7">
               <ClipReveal direction="up">
-                <h1 className="text-7xl sm:text-9xl lg:text-[12rem] font-bold tracking-[-0.06em] leading-[0.82]">
+                <h1 className="text-7xl sm:text-9xl lg:text-[12rem] font-bold tracking-[-0.06em] leading-[0.90]">
                   Julius<br />
                   Williams<span className="text-accent">.</span>
                 </h1>
@@ -44,7 +44,7 @@ export default function AboutPage() {
               </Reveal>
               <Reveal delay={0.6}>
                 <p className="font-mono text-[11px] text-muted/30 tracking-wider">
-                  Grass Valley, CA
+                  San Francisco, CA
                 </p>
                 <div className="mt-8 space-y-2">
                   <div className="flex items-center gap-3">
@@ -73,7 +73,7 @@ export default function AboutPage() {
             <div className="lg:col-span-4">
               <ParallaxSection speed={0.15}>
                 <ClipReveal direction="left">
-                  <p className="text-[6rem] sm:text-[8rem] font-bold tracking-[-0.06em] leading-[0.75] text-outline select-none" aria-hidden="true">
+                  <p className="text-[6rem] sm:text-[8rem] font-bold tracking-[-0.06em] leading-[0.85] text-outline select-none" aria-hidden="true">
                     The<br />story
                   </p>
                 </ClipReveal>
