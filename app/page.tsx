@@ -58,7 +58,7 @@ export default function Home() {
             <TextReveal
               text="JU."
               tag="h1"
-              className="text-[28vw] sm:text-[24vw] md:text-[18vw] font-bold tracking-[-0.06em] leading-[0.92] text-foreground"
+              className="text-[22vw] sm:text-[24vw] md:text-[18vw] font-bold tracking-[-0.06em] leading-[0.92] text-foreground"
               stagger={0.15}
             />
           </div>

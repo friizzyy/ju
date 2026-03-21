@@ -25,17 +25,18 @@ export default function StudioPage() {
   return (
     <>
       {/* Hero:Split layout with featured project image reveal */}
-      <section className="min-h-[100svh] flex items-start sm:items-center pt-24 sm:pt-0 relative overflow-hidden px-6">
+      <section className="min-h-[100svh] flex items-center relative overflow-hidden px-5 sm:px-6 pt-16 sm:pt-0">
         <div className="max-w-7xl mx-auto w-full relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-end">
-            {/* Left: Typography */}
+          {/* Mobile: stacked compact. Desktop: side by side */}
+          <div className="flex flex-col sm:grid sm:grid-cols-2 gap-6 lg:gap-20 items-center">
+            {/* Text — always first */}
             <div>
               <Reveal>
-                <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-studio/30 mb-8">JU. Studio</p>
+                <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-studio/30 mb-4 sm:mb-8">JU. Studio</p>
               </Reveal>
 
               <ClipReveal direction="up">
-                <h1 className="text-4xl sm:text-7xl lg:text-8xl font-bold tracking-[-0.05em] leading-[0.92]">
+                <h1 className="text-3xl sm:text-7xl lg:text-8xl font-bold tracking-[-0.05em] leading-[0.92] pb-2">
                   No templates<span className="text-studio">.</span><br />
                   No shortcuts<span className="text-studio">.</span><br />
                   <span className="text-outline-studio">Just code.</span>
@@ -43,33 +44,32 @@ export default function StudioPage() {
               </ClipReveal>
 
               <Reveal delay={0.5}>
-                <p className="text-muted text-base sm:text-lg max-w-md leading-relaxed mt-10">
-                  Custom sites in Next.js and React. No page builders.
-                  No WordPress. Flat-rate, starting at $750.
+                <p className="text-white/55 text-sm leading-relaxed max-w-sm mt-4 sm:mt-10 mb-6 sm:mb-0">
+                  Custom Next.js sites. No templates. No builders. Flat-rate.
                 </p>
               </Reveal>
 
               <Reveal delay={0.7}>
-                <div className="mt-10 flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
+                <div className="flex items-center gap-3 mt-4 sm:mt-10">
                   <MagneticButton>
                     <Link
                       href="https://calendly.com/julius-systems"
                       target="_blank"
                       rel="noopener noreferrer"
                       data-cursor="link"
-                      className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-studio text-white text-sm font-semibold hover:shadow-[0_0_40px_rgba(139,92,246,0.2)] transition-all duration-500"
+                      className="inline-flex items-center gap-2 px-5 sm:px-7 py-3 sm:py-3.5 rounded-full bg-studio text-white text-sm font-semibold hover:shadow-[0_0_40px_rgba(139,92,246,0.2)] transition-all duration-500"
                     >
                       Start a project
                     </Link>
                   </MagneticButton>
-                  <span className="text-xs text-muted/30 font-mono">$750-$4,000</span>
+                  <span className="text-xs text-white/20 font-mono hidden sm:block">$750 — $4,000</span>
                 </div>
               </Reveal>
             </div>
 
-            {/* Right: Build animation */}
+            {/* Animation — smaller on mobile */}
             <ClipReveal direction="right" delay={0.3}>
-              <div className="relative h-[320px] sm:h-[520px]">
+              <div className="relative h-[200px] sm:h-[520px] w-full">
                 <BuildAnimation />
               </div>
             </ClipReveal>

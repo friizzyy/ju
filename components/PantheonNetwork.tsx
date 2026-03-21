@@ -47,7 +47,8 @@ export default function PantheonNetwork({ className = '', interactive = true }: 
     const ctx = cvs.getContext('2d')
     if (!ctx) return
 
-    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    // Removed reduced motion check — was freezing animation on iOS Low Power Mode
+    const reduced = false
     const dpr = Math.min(window.devicePixelRatio || 1, 2)
     let w = 0, h = 0
 
@@ -99,14 +100,30 @@ export default function PantheonNetwork({ className = '', interactive = true }: 
       cvs!.style.width = w + 'px'; cvs!.style.height = h + 'px'
     }
 
+    let animating = false
+
+    function startDraw() {
+      if (!animating) {
+        animating = true
+        raf.current = requestAnimationFrame(draw)
+      }
+    }
+
+    function stopDraw() {
+      animating = false
+      cancelAnimationFrame(raf.current)
+    }
+
     function draw(time: number) {
+      if (!animating) return
+
       const c = ctx!
       c.setTransform(dpr, 0, 0, dpr, 0, 0)
       c.clearRect(0, 0, w, h)
 
       const t = reduced ? 0 : time * 0.001
       const mob = w < 640
-      const sc = Math.min(w, h) * (mob ? 0.44 : 0.54)
+      const sc = Math.min(w, h) * (mob ? 0.46 : 0.54)
       const cx = w / 2, cy = h / 2
       const mx = mouse.current.x, my = mouse.current.y
 
@@ -342,16 +359,23 @@ export default function PantheonNetwork({ className = '', interactive = true }: 
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          raf.current = requestAnimationFrame(draw)
+          startDraw()
         } else {
-          cancelAnimationFrame(raf.current)
+          stopDraw()
         }
       },
       { threshold: 0.01 }
     )
     observer.observe(cvs)
 
-    return () => { window.removeEventListener('resize', resize); cancelAnimationFrame(raf.current); observer.disconnect() }
+    // Start immediately
+    startDraw()
+
+    return () => {
+      window.removeEventListener('resize', resize)
+      stopDraw()
+      observer.disconnect()
+    }
   }, [interactive])
 
   useEffect(() => {
@@ -361,9 +385,23 @@ export default function PantheonNetwork({ className = '', interactive = true }: 
       if (r) mouse.current = { x: e.clientX - r.left, y: e.clientY - r.top }
     }
     const onLeave = () => { mouse.current = { x: -9999, y: -9999 } }
+    const onTouch = (e: TouchEvent) => {
+      const r = canvasRef.current?.getBoundingClientRect()
+      if (r && e.touches[0]) {
+        mouse.current = { x: e.touches[0].clientX - r.left, y: e.touches[0].clientY - r.top }
+      }
+    }
+    const onTouchEnd = () => { mouse.current = { x: -9999, y: -9999 } }
     window.addEventListener('mousemove', onMove)
     window.addEventListener('mouseleave', onLeave)
-    return () => { window.removeEventListener('mousemove', onMove); window.removeEventListener('mouseleave', onLeave) }
+    window.addEventListener('touchmove', onTouch, { passive: true })
+    window.addEventListener('touchend', onTouchEnd)
+    return () => {
+      window.removeEventListener('mousemove', onMove)
+      window.removeEventListener('mouseleave', onLeave)
+      window.removeEventListener('touchmove', onTouch)
+      window.removeEventListener('touchend', onTouchEnd)
+    }
   }, [interactive])
 
   return <canvas ref={canvasRef} onClick={onClick} className={`absolute inset-0 ${className}`} style={{ willChange: 'transform' }} />

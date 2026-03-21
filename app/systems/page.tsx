@@ -24,18 +24,18 @@ export default function SystemsPage() {
   return (
     <>
       {/* Hero:Full viewport, counter-driven visual */}
-      <section className="min-h-screen flex items-center relative overflow-hidden px-6">
+      <section className="min-h-[100svh] flex items-center relative overflow-hidden px-5 sm:px-6 pt-16 sm:pt-0">
         <div className="max-w-7xl mx-auto w-full relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+          <div className="flex flex-col sm:grid sm:grid-cols-2 gap-6 lg:gap-24 items-center">
             {/* Left: Content */}
-            <div className="relative z-10">
+            <div>
               <Reveal>
-                <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-zeus/30 mb-6">JU. Systems</p>
-                <div className="w-8 h-px bg-zeus/30 mb-8" />
+                <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-zeus/30 mb-4 sm:mb-6">JU. Systems</p>
+                <div className="w-8 h-px bg-zeus/30 mb-4 sm:mb-8" />
               </Reveal>
 
               <ClipReveal direction="up">
-                <h1 className="text-3xl sm:text-6xl lg:text-7xl font-bold tracking-[-0.04em] leading-[0.9]">
+                <h1 className="text-3xl sm:text-6xl lg:text-7xl font-bold tracking-[-0.04em] leading-[0.92] pb-2">
                   You&apos;re losing<br />
                   <span className="text-zeus">hours</span> to work<br />
                   <span className="text-muted/15">a $50 agent</span>{' '}
@@ -44,33 +44,31 @@ export default function SystemsPage() {
               </ClipReveal>
 
               <Reveal delay={0.5}>
-                <p className="text-muted/60 text-base max-w-xs leading-relaxed mt-8">
+                <p className="text-white/55 text-sm leading-relaxed max-w-xs mt-4 sm:mt-8 mb-6 sm:mb-0">
                   We find the gaps. We build the fix.
                 </p>
               </Reveal>
 
               <Reveal delay={0.7}>
-                <div>
+                <div className="flex items-center gap-3 mt-4 sm:mt-10">
                   <MagneticButton>
                     <Link
                       href="https://calendly.com/julius-systems"
                       target="_blank"
                       rel="noopener noreferrer"
                       data-cursor="link"
-                      className="inline-flex items-center gap-3 mt-10 px-7 py-3.5 rounded-full bg-zeus text-background text-sm font-semibold hover:shadow-[0_0_40px_rgba(99,102,241,0.25)] transition-all duration-500"
+                      className="inline-flex items-center gap-2 px-5 sm:px-7 py-3 sm:py-3.5 rounded-full bg-zeus text-background text-sm font-semibold transition-all duration-500"
                     >
                       Book a discovery call
-                      <span className="text-[10px] font-mono opacity-60">&rarr;</span>
                     </Link>
                   </MagneticButton>
-                  <p className="text-xs text-muted/30 font-mono mt-4 tracking-wider">AUDITS START AT $997</p>
                 </div>
               </Reveal>
             </div>
 
-            {/* Right: Agent pipeline animation */}
+            {/* Right: Agent pipeline animation — shorter on mobile */}
             <ClipReveal direction="right" delay={0.3}>
-              <div className="relative h-[380px] sm:h-[500px] overflow-hidden rounded-2xl">
+              <div className="relative h-[220px] sm:h-[500px] w-full overflow-hidden rounded-2xl">
                 <AgentPipelineAnimation />
               </div>
             </ClipReveal>
