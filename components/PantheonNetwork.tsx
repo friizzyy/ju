@@ -240,8 +240,9 @@ export default function PantheonNetwork({ className = '', interactive = true }: 
             const px = a.px + (b.px - a.px) * pp
             const py = a.py + (b.py - a.py) * pp
             const distToCenter = Math.sqrt((px - cx) * (px - cx) + (py - cy) * (py - cy))
-            const protectedZone = Math.min(w, h) * 0.18
-            const fadeZone = Math.min(w, h) * 0.32
+            const isMobile = w < 640
+            const protectedZone = Math.min(w, h) * (isMobile ? 0.28 : 0.18)
+            const fadeZone = Math.min(w, h) * (isMobile ? 0.45 : 0.32)
             const proximityFade = distToCenter < protectedZone ? 0 :
               distToCenter < fadeZone ? (distToCenter - protectedZone) / (fadeZone - protectedZone) : 1
             if (proximityFade === 0) continue

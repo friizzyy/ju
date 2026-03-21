@@ -24,9 +24,9 @@ export default function SystemsPage() {
   return (
     <>
       {/* Hero:Full viewport, counter-driven visual */}
-      <section className="min-h-[100svh] flex items-center relative overflow-hidden px-5 sm:px-6 pt-16 sm:pt-0">
+      <section className="min-h-[100svh] flex items-center relative overflow-hidden px-5 sm:px-6 pt-14 sm:pt-0">
         <div className="max-w-7xl mx-auto w-full relative z-10">
-          <div className="flex flex-col sm:grid sm:grid-cols-2 gap-6 lg:gap-24 items-center">
+          <div className="flex flex-col sm:grid sm:grid-cols-2 gap-3 sm:gap-6 lg:gap-24 items-center">
             {/* Left: Content */}
             <div>
               <Reveal>
@@ -68,7 +68,7 @@ export default function SystemsPage() {
 
             {/* Right: Agent pipeline animation — shorter on mobile */}
             <ClipReveal direction="right" delay={0.3}>
-              <div className="relative h-[220px] sm:h-[500px] w-full overflow-hidden rounded-2xl">
+              <div className="relative h-[180px] sm:h-[500px] w-full overflow-hidden rounded-2xl">
                 <AgentPipelineAnimation />
               </div>
             </ClipReveal>

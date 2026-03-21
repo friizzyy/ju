@@ -54,6 +54,8 @@ export default function Home() {
 
         <div className="relative z-10 text-center px-6 pointer-events-none">
           <div className="relative">
+            <div className="absolute inset-0 sm:hidden pointer-events-none -mx-8 rounded-3xl"
+              style={{ background: 'radial-gradient(ellipse at center, rgba(8,11,16,0.85) 0%, rgba(8,11,16,0.5) 45%, transparent 70%)', backdropFilter: 'blur(2px)' }} />
             <div className="absolute inset-0 -z-10 blur-[80px] bg-accent/[0.06] rounded-full scale-150" />
             <TextReveal
               text="JU."
@@ -64,7 +66,7 @@ export default function Home() {
           </div>
 
           <Reveal delay={0.6}>
-            <p className="mt-3 text-xs sm:text-sm md:text-base text-muted/50 font-light tracking-[0.05em] sm:whitespace-nowrap">
+            <p className="mt-3 text-xs sm:text-sm md:text-base text-white/65 sm:text-muted/50 font-light tracking-[0.05em] sm:whitespace-nowrap">
               We build the site. Then we build the system behind it.
             </p>
           </Reveal>

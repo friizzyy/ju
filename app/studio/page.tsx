@@ -69,8 +69,10 @@ export default function StudioPage() {
 
             {/* Animation — smaller on mobile */}
             <ClipReveal direction="right" delay={0.3}>
-              <div className="relative h-[200px] sm:h-[520px] w-full">
-                <BuildAnimation />
+              <div className="relative w-full overflow-hidden rounded-xl sm:rounded-none" style={{ height: '220px' }}>
+                <div className="absolute inset-0 sm:relative sm:h-[520px]">
+                  <BuildAnimation />
+                </div>
               </div>
             </ClipReveal>
           </div>

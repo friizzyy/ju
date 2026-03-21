@@ -25,7 +25,7 @@ export default function BuildAnimation() {
   const reached = (p: number) => phase >= p
 
   return (
-    <div className="relative w-full h-full min-h-[520px] overflow-hidden select-none">
+    <div className="relative w-full overflow-hidden select-none" style={{ height: '100%', minHeight: 'inherit' }}>
 
       {CODE_TOKENS.map((token, i) => (
         <motion.div
@@ -40,7 +40,7 @@ export default function BuildAnimation() {
       ))}
 
       <div className="absolute inset-0 flex items-center justify-center">
-        <div className="relative w-[340px] sm:w-[420px]">
+        <div className="relative w-[280px] sm:w-[420px]">
 
           <motion.div
             initial={{ opacity: 0, scale: 0.94 }}
