@@ -4,7 +4,7 @@ import Reveal from '@/components/Reveal'
 import ClipReveal from '@/components/ClipReveal'
 import MagneticButton from '@/components/MagneticButton'
 import ParallaxSection from '@/components/ParallaxSection'
-import SystemActivityAnimation from '@/components/SystemActivityAnimation'
+import SFSkylineAnimation from '@/components/SFSkylineAnimation'
 
 export const metadata: Metadata = {
   title: 'About',
@@ -15,30 +15,30 @@ export default function AboutPage() {
   return (
     <>
       {/* Hero */}
-      <section className="min-h-[100svh] flex flex-col justify-center relative px-5 sm:px-6 pt-20 pb-12 sm:pt-0 sm:pb-0">
+      <section className="min-h-[100svh] flex flex-col justify-center relative px-5 sm:px-6 pt-20 pb-12 sm:pt-24 sm:pb-16">
         <div className="max-w-6xl mx-auto w-full">
           {/* Name */}
           <ClipReveal direction="up">
-            <h1 className="text-[13vw] sm:text-[10vw] lg:text-[8vw] font-bold tracking-[-0.06em] leading-[0.95] pb-4 mb-6">
+            <h1 className="text-[13vw] sm:text-[10vw] lg:text-[8vw] font-bold tracking-[-0.06em] leading-[0.95] pb-3 mb-4 sm:mb-6">
               Julius<br />Williams<span className="text-accent">.</span>
             </h1>
           </ClipReveal>
 
           {/* One-liner */}
           <Reveal delay={0.3}>
-            <p className="text-white/40 text-sm sm:text-base font-light tracking-[0.02em] mb-10 sm:mb-14">
-              One person. Two businesses. Everything built from scratch.
+            <p className="text-white/35 text-sm sm:text-base font-light tracking-[0.02em] mb-8 sm:mb-12">
+              One person. Two disciplines. Everything built from scratch.
             </p>
           </Reveal>
 
-          {/* Live system animation */}
+          {/* Skyline animation */}
           <Reveal delay={0.5}>
-            <SystemActivityAnimation />
+            <SFSkylineAnimation />
           </Reveal>
 
-          {/* Horizontal stat strip */}
+          {/* Stat strip */}
           <Reveal delay={0.7}>
-            <div className="flex flex-wrap gap-x-10 gap-y-3 mt-8 sm:mt-10">
+            <div className="flex flex-wrap gap-x-8 sm:gap-x-12 gap-y-3 mt-6 sm:mt-8 pt-6 border-t border-white/[0.04]">
               {[
                 { label: "SINCE", value: "2024" },
                 { label: "STACK", value: "Next.js · React · Python · Claude" },
