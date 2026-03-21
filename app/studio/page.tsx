@@ -77,23 +77,8 @@ export default function StudioPage() {
         </div>
       </section>
 
-      {/* Portfolio:Immersive title-based showcase */}
-      <section className="py-12 sm:py-32 lg:py-44 px-6 relative">
-        <div className="max-w-6xl mx-auto">
-          <Reveal>
-            <div className="flex items-center gap-6 mb-4">
-              <div className="h-px flex-1 bg-white/[0.04]" />
-              <p className="font-mono text-[10px] tracking-[0.25em] uppercase text-muted/25">All projects</p>
-              <div className="h-px flex-1 bg-white/[0.04]" />
-            </div>
-          </Reveal>
-
-          <ProjectShowcase projects={projects} />
-        </div>
-      </section>
-
       {/* How I build:Convictions, not feature bullets */}
-      <section className="py-12 sm:py-32 lg:py-44 px-6 relative overflow-hidden">
+      <section className="py-12 sm:py-32 lg:py-44 px-6 relative">
         <div className="max-w-5xl mx-auto">
           <ParallaxSection speed={0.1}>
             <ClipReveal direction="left">
@@ -148,6 +133,21 @@ export default function StudioPage() {
               All tiers include hosting setup, responsive design, and hand-off documentation.
             </p>
           </Reveal>
+        </div>
+      </section>
+
+      {/* Portfolio:Immersive title-based showcase */}
+      <section className="py-12 sm:py-32 lg:py-44 px-6 relative">
+        <div className="max-w-6xl mx-auto">
+          <Reveal>
+            <div className="flex items-center gap-6 mb-4">
+              <div className="h-px flex-1 bg-white/[0.04]" />
+              <p className="font-mono text-[10px] tracking-[0.25em] uppercase text-muted/25">All projects</p>
+              <div className="h-px flex-1 bg-white/[0.04]" />
+            </div>
+          </Reveal>
+
+          <ProjectShowcase projects={projects} />
         </div>
       </section>
 
