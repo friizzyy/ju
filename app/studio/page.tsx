@@ -82,7 +82,7 @@ export default function StudioPage() {
         <div className="max-w-5xl mx-auto">
           <ParallaxSection speed={0.1}>
             <ClipReveal direction="left">
-              <h2 className="text-5xl sm:text-7xl lg:text-8xl font-bold tracking-[-0.05em] leading-[0.92] mb-24">
+              <h2 className="text-5xl sm:text-7xl lg:text-8xl font-bold tracking-[-0.05em] leading-[0.92] mb-16">
                 Not like<br />other<br />
                 <span className="text-outline">agencies</span><span className="text-studio">.</span>
               </h2>
@@ -139,6 +139,12 @@ export default function StudioPage() {
       {/* Portfolio:Immersive title-based showcase */}
       <section className="py-12 sm:py-32 lg:py-44 px-6 relative">
         <div className="max-w-6xl mx-auto">
+          <ClipReveal direction="up">
+            <h2 className="text-4xl sm:text-6xl font-bold tracking-[-0.04em] leading-[0.9] mb-8">
+              The work<span className="text-studio">.</span>
+            </h2>
+          </ClipReveal>
+
           <Reveal>
             <div className="flex items-center gap-6 mb-4">
               <div className="h-px flex-1 bg-white/[0.04]" />
@@ -152,10 +158,10 @@ export default function StudioPage() {
       </section>
 
       {/* Bridge to Systems */}
-      <section className="py-16 px-6">
+      <section className="py-12 sm:py-20 px-6">
         <div className="max-w-5xl mx-auto">
           <Reveal>
-            <div className="my-24 p-10 rounded-2xl border border-white/[0.04] hover:border-zeus/[0.10] transition-colors duration-700 group">
+            <div className="p-10 rounded-2xl border border-white/[0.04] hover:border-zeus/[0.10] transition-colors duration-700 group">
               <div className="grid sm:grid-cols-12 gap-8 items-center">
                 <div className="sm:col-span-8">
                   <p className="font-mono text-[10px] tracking-[0.25em] uppercase text-zeus/30 mb-3">Already have the site?</p>
@@ -177,7 +183,8 @@ export default function StudioPage() {
         <div className="max-w-2xl mx-auto text-center">
           <ClipReveal direction="up">
             <h2 className="text-4xl sm:text-6xl lg:text-7xl font-bold tracking-[-0.04em] leading-[0.9]">
-              Ready to<br />build<span className="text-studio">?</span>
+              Your site ships<br />
+              in <span className="text-studio">2 weeks.</span>
             </h2>
           </ClipReveal>
           <Reveal delay={0.3}>

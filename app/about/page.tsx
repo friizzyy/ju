@@ -3,9 +3,7 @@ import Link from 'next/link'
 import Reveal from '@/components/Reveal'
 import ClipReveal from '@/components/ClipReveal'
 import MagneticButton from '@/components/MagneticButton'
-import Marquee from '@/components/Marquee'
 import ParallaxSection from '@/components/ParallaxSection'
-import { agents } from '@/data/agents'
 
 export const metadata: Metadata = {
   title: 'About',
@@ -86,9 +84,24 @@ export default function AboutPage() {
                 </p>
               </Reveal>
               <Reveal delay={0.2}>
-                <p className="text-white/70 text-base sm:text-lg leading-[1.9]">
+                <p className="text-white/70 text-base sm:text-lg leading-[1.9] mb-8">
                   I don&apos;t subcontract. The person you talk to is the person who builds. The AI system handles the operational overhead so I can focus on the work.
                 </p>
+              </Reveal>
+              <Reveal delay={0.3}>
+                <div className="mt-4 space-y-3 border-t border-white/[0.04] pt-8">
+                  {[
+                    { label: "Stack", value: "Next.js, React, Python, Claude" },
+                    { label: "Model", value: "Solo. No subcontractors." },
+                    { label: "Since", value: "2024" },
+                    { label: "Based", value: "San Francisco, CA" },
+                  ].map(item => (
+                    <div key={item.label} className="flex items-center gap-6">
+                      <span className="font-mono text-[10px] text-white/20 tracking-widest w-14">{item.label}</span>
+                      <span className="text-sm text-white/60">{item.value}</span>
+                    </div>
+                  ))}
+                </div>
               </Reveal>
             </div>
           </div>
@@ -115,7 +128,7 @@ export default function AboutPage() {
               { title: 'Results over process', body: 'I don\'t sell discovery phases or strategy decks. I sell working websites and working AI agents. If it doesn\'t ship, it doesn\'t count.' },
             ].map((item, i) => (
               <Reveal key={i} delay={i * 0.08}>
-                <div className="group grid grid-cols-1 lg:grid-cols-12 gap-6 py-16 border-b border-white/[0.04] hover:border-studio/10 transition-colors duration-700">
+                <div className="group grid grid-cols-1 lg:grid-cols-12 gap-6 py-8 sm:py-12 border-b border-white/[0.04] hover:border-studio/10 transition-colors duration-700">
                   <div className="lg:col-span-1">
                     <span className="font-mono text-[11px] text-muted/15 group-hover:text-studio/40 transition-colors duration-500">0{i + 1}</span>
                   </div>
@@ -132,33 +145,30 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Pantheon */}
-      <section className="py-12 sm:py-32 lg:py-44 px-6 relative overflow-hidden">
-        <div className="max-w-5xl mx-auto relative z-10">
-          <ClipReveal direction="center">
-            <div className="text-center mb-16">
-              <p className="text-outline text-4xl sm:text-6xl lg:text-7xl font-bold tracking-[-0.05em] leading-none select-none" aria-hidden="true">
-                PANTHEON
-              </p>
-              <p className="text-muted text-sm mt-6 max-w-lg mx-auto leading-relaxed">
-                The AI operating system behind JU. {agents.length} autonomous agents handle
-                everything from lead sourcing to project delivery.
-              </p>
-            </div>
+      {/* Numbers */}
+      <section className="py-12 sm:py-32 lg:py-44 px-6 relative">
+        <div className="max-w-5xl mx-auto">
+          <ClipReveal direction="up">
+            <h2 className="text-4xl sm:text-6xl font-bold tracking-[-0.04em] leading-[0.9] mb-20">
+              By the<br />numbers<span className="text-accent">.</span>
+            </h2>
           </ClipReveal>
-
-          <Marquee speed={50} pauseOnHover className="py-4">
-            {agents.map(agent => (
-              <div key={agent.id} className="flex items-center gap-3 mx-6 px-5 py-3 rounded-full bg-white/[0.02] border border-white/[0.04] hover:border-white/[0.08] transition-colors whitespace-nowrap">
-                <div className="relative">
-                  <div className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: agent.color }} />
-                  <div className="absolute inset-0 rounded-full animate-pulse-glow" style={{ backgroundColor: agent.color, filter: 'blur(4px)' }} />
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-white/[0.04] rounded-2xl overflow-hidden">
+            {[
+              { value: "6+", label: "Sites shipped", sub: "All custom. Zero templates." },
+              { value: "9", label: "AI agents running", sub: "24/7 across both businesses" },
+              { value: "$0", label: "Templates used", sub: "Every build from scratch" },
+              { value: "2wk", label: "Average delivery", sub: "From deposit to launch" },
+            ].map((stat) => (
+              <Reveal key={stat.label}>
+                <div className="bg-background/80 p-6 sm:p-10 hover:bg-white/[0.02] transition-colors duration-500 group">
+                  <p className="text-3xl sm:text-5xl font-bold tracking-[-0.04em] text-foreground mb-2">{stat.value}</p>
+                  <p className="text-xs font-mono text-muted/40 uppercase tracking-[0.15em] mb-1">{stat.label}</p>
+                  <p className="text-xs text-muted/25 leading-relaxed">{stat.sub}</p>
                 </div>
-                <span className="text-sm font-medium text-foreground/80">{agent.name}</span>
-                <span className="font-mono text-[9px] tracking-wider uppercase text-muted/30">{agent.domain}</span>
-              </div>
+              </Reveal>
             ))}
-          </Marquee>
+          </div>
         </div>
       </section>
 
@@ -182,7 +192,7 @@ export default function AboutPage() {
                   target="_blank"
                   rel="noopener noreferrer"
                   data-cursor="link"
-                  className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-foreground text-background font-semibold text-sm hover:bg-accent transition-colors duration-300"
+                  className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-accent text-background font-semibold text-sm hover:shadow-[0_0_40px_rgba(0,212,255,0.2)] transition-all duration-300"
                 >
                   Book a Call
                 </Link>

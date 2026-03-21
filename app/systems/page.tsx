@@ -3,11 +3,9 @@ import Link from 'next/link'
 import Reveal from '@/components/Reveal'
 import ClipReveal from '@/components/ClipReveal'
 import MagneticButton from '@/components/MagneticButton'
-import Marquee from '@/components/Marquee'
 import ParallaxSection from '@/components/ParallaxSection'
 import PricingCards, { type PricingPlan } from '@/components/PricingCards'
 import AgentPipelineAnimation from '@/components/AgentPipelineAnimation'
-import { agents } from '@/data/agents'
 
 export const metadata: Metadata = {
   title: 'JU. Systems',
@@ -222,7 +220,7 @@ export default function SystemsPage() {
       </section>
 
       {/* Bridge to Studio */}
-      <div className="px-6 pb-8">
+      <section className="py-12 sm:py-20 px-6">
         <div className="max-w-4xl mx-auto p-10 rounded-2xl border border-white/[0.04] hover:border-studio/[0.10] transition-colors duration-700 group">
           <div className="grid sm:grid-cols-12 gap-8 items-center">
             <div className="sm:col-span-8">
@@ -235,22 +233,6 @@ export default function SystemsPage() {
             </div>
           </div>
         </div>
-      </div>
-
-      {/* Agent marquee */}
-      <section className="py-24 relative overflow-hidden">
-        <Marquee speed={50} pauseOnHover>
-          {agents.map(agent => (
-            <div key={agent.id} className="flex items-center gap-3 mx-5 px-5 py-3 rounded-full bg-white/[0.02] border border-white/[0.04] hover:border-white/[0.08] transition-colors whitespace-nowrap">
-              <div className="relative">
-                <div className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: agent.color }} />
-                <div className="absolute inset-0 rounded-full animate-pulse-glow" style={{ backgroundColor: agent.color, filter: 'blur(4px)' }} />
-              </div>
-              <span className="text-sm font-medium text-foreground/80">{agent.name}</span>
-              <span className="font-mono text-[9px] tracking-wider uppercase text-muted/25">{agent.domain}</span>
-            </div>
-          ))}
-        </Marquee>
       </section>
 
       {/* CTA */}

@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import Link from 'next/link'
 import Reveal from '@/components/Reveal'
 import ClipReveal from '@/components/ClipReveal'
 import MagneticButton from '@/components/MagneticButton'
@@ -93,37 +92,22 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Service split */}
-      <section className="py-12 sm:py-32 lg:py-40 px-6 relative">
-        <div className="glow-divider max-w-4xl mx-auto mb-20" />
-
+      {/* Trust strip */}
+      <section className="py-12 sm:py-20 px-6">
         <div className="max-w-4xl mx-auto">
-          <Reveal>
-            <p className="text-center text-muted/30 text-sm mb-16">Not sure which service you need?</p>
-          </Reveal>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-white/[0.04] rounded-2xl overflow-hidden">
-            <ClipReveal direction="left">
-              <Link href="/studio" data-cursor="link" className="group block p-10 bg-background hover:bg-white/[0.01] transition-colors duration-500">
-                <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-accent/30 mb-4">Need a website?</p>
-                <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-accent transition-colors">JU. Studio</h3>
-                <p className="text-sm text-muted/50 mb-8">Custom sites in Next.js. Starting at $750.</p>
-                <span className="hover-line text-sm font-medium text-accent">
-                  See portfolio &rarr;
-                </span>
-              </Link>
-            </ClipReveal>
-
-            <ClipReveal direction="right" delay={0.1}>
-              <Link href="/systems" data-cursor="link" className="group block p-10 bg-background hover:bg-white/[0.01] transition-colors duration-500">
-                <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-zeus/30 mb-4">Need AI systems?</p>
-                <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-zeus transition-colors">JU. Systems</h3>
-                <p className="text-sm text-muted/50 mb-8">Audits and automation. Find the gaps. Build the fix.</p>
-                <span className="hover-line text-sm font-medium text-zeus">
-                  Learn more &rarr;
-                </span>
-              </Link>
-            </ClipReveal>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-px bg-white/[0.04] rounded-2xl overflow-hidden">
+            {[
+              { q: "How fast?", a: "Sites ship in 2 weeks. Audits delivered in 48 hours." },
+              { q: "Do you subcontract?", a: "No. You talk to me, I build it. One person, start to finish." },
+              { q: "Where are you based?", a: "San Francisco, CA. Available for in-person in the Bay Area." },
+            ].map((item) => (
+              <Reveal key={item.q}>
+                <div className="bg-background/80 p-8 sm:p-10 hover:bg-white/[0.02] transition-colors duration-500">
+                  <p className="text-sm font-bold text-foreground mb-2">{item.q}</p>
+                  <p className="text-sm text-muted/50 leading-relaxed">{item.a}</p>
+                </div>
+              </Reveal>
+            ))}
           </div>
         </div>
       </section>

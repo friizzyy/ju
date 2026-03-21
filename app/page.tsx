@@ -111,7 +111,7 @@ export default function Home() {
       </section>
 
       {/* ═══ MARQUEE ═══ */}
-      <section className="mt-16 sm:mt-24 py-8 border-y border-white/[0.03]">
+      <section className="py-8 border-y border-white/[0.03]">
         <Marquee speed={30} className="text-muted/40">
           {['Custom Websites', 'AI Automation', 'Next.js', 'Autonomous Agents', 'Audit & Strategy', 'San Francisco CA', 'Systems That Ship'].map(t => (
             <span key={t} className="mx-8 sm:mx-12 text-[13px] font-mono tracking-[0.15em] uppercase whitespace-nowrap flex items-center gap-4">
@@ -214,7 +214,7 @@ export default function Home() {
       <SectionDivider />
 
       {/* ═══ STATS ═══ */}
-      <section className="py-20 px-6 border-y border-white/[0.03] relative">
+      <section className="py-20 px-6 relative">
         <div className="max-w-5xl mx-auto grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-8">
           {[
             { value: 9, suffix: '', label: 'Autonomous agents', context: 'Running 24/7 across both businesses' },
@@ -227,7 +227,7 @@ export default function Home() {
                 <Counter value={stat.value} suffix={stat.suffix} />
               </p>
               <p className="text-xs text-muted/40 mt-2 font-mono tracking-wide uppercase">{stat.label}</p>
-              <p className="text-[10px] text-muted/20 mt-1.5 font-mono leading-relaxed">{stat.context}</p>
+              <p className="text-[10px] text-muted/30 mt-1.5 font-mono leading-relaxed">{stat.context}</p>
             </div>
           ))}
         </div>
