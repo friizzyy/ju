@@ -99,7 +99,7 @@ export default function ContactPage() {
             {[
               { q: "How fast?", a: "Sites ship in 2 weeks. Audits delivered in 48 hours." },
               { q: "Do you subcontract?", a: "No. You talk to me, I build it. One person, start to finish." },
-              { q: "Where are you based?", a: "San Francisco, CA. Available for in-person in the Bay Area." },
+              { q: "Where are you based?", a: "San Francisco, CA. Available for in-person meetings in the Bay Area." },
             ].map((item) => (
               <Reveal key={item.q}>
                 <div className="bg-background/80 p-8 sm:p-10 hover:bg-white/[0.02] transition-colors duration-500">
