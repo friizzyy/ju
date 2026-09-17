@@ -74,3 +74,36 @@
   .systemsPanel { gap: 22px; }
   .closingSection { padding-block: 48px 56px; }
 }
+
+/* The compact bridge has its own readable workspace rather than a scaled diagram. */
+.compactPitch, .mobileWorkspace, .mobileLink { display: none; }
+.systemsContent h2 > .desktopPitch { color: inherit; }
+.pitchDot { color: #8da7d2; }
+@media (max-width: 1023px) {
+  .systemsPanel { padding: 32px 0 0; border: 0; border-top: 1px solid #b2c3df1c; border-radius: 0; background: none; box-shadow: none; gap: 30px; }
+  .systemsPanel::before, .workflow, .desktopPitch { display: none; }
+  .compactPitch, .mobileWorkspace { display: block; }
+  .systemsContent h2 > .compactPitch { color: #f0f4fc; }
+  .systemsContent h2 { max-width: none; font-size: clamp(31px, 4.6vw, 42px); line-height: 1.14; }
+  .serviceLabel { margin-bottom: 18px; font-size: 15px; }
+  .serviceNote { display: none; }
+  .systemsCopy { max-width: 36ch; margin: 18px 0 22px; color: #aebbd0; }
+  .systemsLink { justify-content: space-between; gap: 22px; min-height: 48px; padding: 0; border: 0; background: none; font-size: 13px; }
+  .systemsLink > span { display: grid; place-items: center; width: 36px; height: 36px; border: 1px solid #8ca7d14d; border-radius: 50%; }
+  .systemsLink:hover { background: none; }
+  .systemsLink:hover > span { background: #8ca7d11a; }
+  .mobileWorkspace { min-width: 0; }
+}
+@media (max-width: 760px) {
+  .systemsPanel { grid-template-columns: minmax(0, 1fr); gap: 0; padding-top: 30px; }
+  .systemsContent { display: contents; }
+  .serviceLabel { order: 0; margin-bottom: 16px; }
+  .systemsContent h2 { order: 1; font-size: clamp(30px, 7.8vw, 40px); }
+  .systemsCopy { order: 2; max-width: 45ch; margin: 16px 0 24px; font-size: 14px; line-height: 1.7; }
+  .mobileWorkspace { order: 3; }
+  .systemsLink { order: 4; width: 100%; margin-top: 14px; }
+  .desktopLink { display: none; }
+  .mobileLink { display: inline-flex; }
+}
+@media (max-width: 639px) { .systemsSection { padding-inline: 20px; } }
+@media (max-width: 350px) { .systemsSection { padding-inline: 18px; } }

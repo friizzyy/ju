@@ -64,36 +64,72 @@
 .noScript { display: grid; gap: 12px; margin-top: 20px; color: #d6c1f1; }
 .noScript a { text-decoration: underline; }
 @media (max-width: 1100px) and (min-width: 1024px) { .projectHeading { flex-direction: column; gap: 14px; } .visit { margin-top: 0; } }
+.projectThumbnail, .mobilePaging { display: none; }
 @media (max-width: 1023px) {
-  .section { padding-top: 44px; }
-  .intro { margin-bottom: 28px; gap: 20px; }
-  .gallery { display: flex; flex-direction: column; gap: 25px; }
-  .preview { width: 100%; }
-  .index { width: 100%; }
-  .indexLabel { padding: 0 0 12px; }
-  .projectList { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 22px; }
-  .projectButton { min-height: 65px; grid-template-columns: 18px minmax(0, 1fr) 12px; gap: 7px; padding-block: 12px; }
-  .projectButton:nth-last-child(2) { border-bottom: 1px solid #252a34; }
-  .projectName { font-size: 13px; }
-  .caption { padding-block: 20px; }
+  .section { padding-top: 44px; padding-bottom: 38px; }
+  .intro { margin-bottom: 24px; align-items: flex-end; }
+  .mobilePaging { display: flex; flex: 0 0 auto; gap: 6px; }
+  .mobilePaging button { display: grid; place-items: center; width: 44px; height: 44px; border: 1px solid #b99bf830; border-radius: 50%; background: #b99bf807; color: #cdbce8; font-size: 18px; cursor: pointer; touch-action: manipulation; }
+  .mobilePaging button:hover { background: #b99bf81a; }
+  .gallery { display: grid; grid-template-columns: minmax(0, 1fr); gap: 0; }
+  .preview { display: contents; }
+  .previewIntro { order: 0; margin-bottom: 18px; font-size: 14px; }
+  .frame { order: 1; border-radius: 16px; touch-action: pan-y pinch-zoom; }
+  .index { order: 2; width: 100%; min-width: 0; margin-top: 16px; }
+  .indexLabel { display: none; }
+  .projectList { display: flex; gap: 12px; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x proximity; scrollbar-width: none; padding: 5px 24px 5px 4px; margin-inline: -4px -24px; }
+  .projectList::-webkit-scrollbar { display: none; }
+  .projectButton { display: flex; flex-direction: column; align-items: stretch; gap: 9px; flex: 0 0 clamp(88px, 15vw, 126px); min-width: 0; min-height: 0; padding: 0; border: 0; background: none; scroll-snap-align: start; }
+  .projectButton:last-child { border: 0; }
+  .projectThumbnail { position: relative; display: block; width: 100%; aspect-ratio: 16 / 9; border: 2px solid transparent; border-radius: 8px; background: #1a1d25; overflow: hidden; opacity: .55; transition: opacity 160ms ease, border-color 160ms ease; }
+  .projectThumbnail img { object-fit: contain; object-position: top; }
+  .thumbnailFallback { display: none; padding: 5px; color: #e2daef; font-size: 8px; line-height: 1.2; text-align: left; }
+  .projectThumbnail[data-image-failed='true'] .thumbnailFallback { display: block; }
+  .projectName { display: none; }
+  .projectNumber, .selectedMark { display: none; }
+  .projectButton[aria-pressed='true'], .projectButton:hover { background: none; }
+  .projectButton[aria-pressed='true'] .projectThumbnail { opacity: 1; border-color: #b99bf8; }
+  .projectButton:hover .projectThumbnail { opacity: 1; }
+  .caption { order: 4; padding: 25px 0 20px; }
+  .projectDetails { display: grid; }
+  .projectHeading { display: contents; }
+  .projectHeading > div { order: 0; }
+  .category { gap: 6px 14px; margin-bottom: 10px; font-size: 9px; }
+  .projectDetails h3 { max-width: 28ch; font-size: 30px; line-height: 1.14; }
+  .description { order: 1; margin-top: 12px; max-width: 65ch; font-size: 14px; line-height: 1.7; }
+  .visit { order: 2; justify-self: start; gap: 14px; margin-top: 12px; padding: 0; min-height: 44px; border: 0; background: none; font-size: 12px; }
+  .visit > span { display: grid; place-items: center; width: 30px; height: 30px; border: 1px solid #b99bf840; border-radius: 50%; transition: background 160ms ease; }
+  .visit:hover { background: none; }
+  .visit:hover > span { background: #b99bf81a; }
+  .galleryFooter { display: none; }
+  .paging { gap: 6px; }
+  .paging button { border-color: #b99bf826; background: #b99bf807; }
   .coverType strong { font-size: clamp(32px, 6.5vw, 54px); }
   .askarr .coverType strong { font-size: clamp(48px, 10vw, 78px); }
-  .outro { padding-block: 36px; }
+  .outro { display: none; }
 }
-@media (max-width: 520px) {
-  .intro { display: block; }
-  .projectHeading { flex-direction: column; gap: 15px; }
-  .visit { margin-top: 0; }
-  .description { font-size: 14px; }
-  .projectList { column-gap: 14px; }
-  .projectButton { grid-template-columns: 17px minmax(0, 1fr); }
-  .selectedMark { display: none; }
-  .projectButton[aria-pressed='true'] { box-shadow: inset -2px 0 #aa81f5; }
-  .frameBar { padding-inline: 10px; font-size: 7px; }
-  .galleryFooter { font-size: 7px; gap: 8px; }
-  .paging { gap: 2px; }
-  .coverType > span { font-size: 7px; }
+@media (max-width: 639px) {
+  .section { padding-inline: 20px; padding-top: 36px; }
+  .heading h2 { font-size: clamp(40px, 11.8vw, 52px); }
+  .heading sup { display: none; }
+  .eyebrow { margin-bottom: 12px; font-size: 9px; }
+  .previewIntro { font-size: 12px; text-wrap: pretty; }
+  .frameBar { min-height: 32px; padding-inline: 12px; font-size: 7px; }
+  .projectList { margin-right: -20px; padding-right: 20px; }
+  .projectDetails h3 { font-size: 28px; }
+  .category { display: grid; }
+  .location { font-size: 11px; line-height: 1.6; }
+  .galleryFooter > span { max-width: 14ch; line-height: 1.6; }
+  .caption { padding-top: 22px; }
 }
-@media (max-width: 350px) { .section { padding-inline: 18px; } .projectList { grid-template-columns: 1fr; } .projectButton { min-height: 48px; } .projectButton:nth-last-child(2) { border-bottom: 0; } .heading h2 { font-size: 50px; } }
-@media (prefers-reduced-motion: reduce) { .imageTransition { animation: none; } .projectButton, .visit { transition: none; } }
+@media (max-width: 350px) {
+  .section { padding-inline: 18px; }
+  .projectList { margin-right: -18px; padding-right: 18px; }
+  .heading h2 { font-size: 40px; }
+  .intro { gap: 10px; }
+  .projectDetails h3 { font-size: 26px; }
+  .galleryFooter { gap: 8px; }
+  .paging { gap: 3px; }
+}
+@media (prefers-reduced-motion: reduce) { .imageTransition { animation: none; } .projectButton, .projectThumbnail, .visit, .visit > span { transition: none; } }
 @media (forced-colors: active) { .frame, .projectButton, .visit, .galleryFooter { border-color: CanvasText; } .projectButton[aria-pressed='true'] { outline: 2px solid Highlight; outline-offset: -2px; } .projectButton[aria-pressed='true'] .selectedMark { color: Highlight; } }

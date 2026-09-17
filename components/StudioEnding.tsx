@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import StudioSystemsPreview from './StudioSystemsPreview'
 import s from '@/app/studio/StudioFlow.module.css'
 
 function WorkflowIllustration() {
@@ -59,11 +60,13 @@ export default function StudioEnding() {
           <div className={s.systemsPanel}>
             <div className={s.systemsContent}>
               <p className={s.serviceLabel}>JU<span>.</span> Systems <span className={s.serviceNote}>BEYOND THE WEBSITE</span></p>
-              <h2 id="studio-systems-title">Automate the admin behind your website<span>.</span></h2>
-              <p className={s.systemsCopy}>Organize inquiries, update records and prepare follow-ups. JU. Systems starts with an audit, then builds AI agents for the workflows worth automating.</p>
-              <Link href="/systems" className={s.systemsLink}>Explore JU. Systems <span aria-hidden="true">↗</span></Link>
+              <h2 id="studio-systems-title"><span className={s.desktopPitch}>Automate the admin behind your website<span className={s.pitchDot}>.</span></span><span className={s.compactPitch}>Your website is<br />just the beginning<span className={s.pitchDot}>.</span></span></h2>
+              <p className={s.systemsCopy}><span className={s.desktopPitch}>Organize inquiries, update records and prepare follow-ups. JU. Systems starts with an audit, then builds AI agents for the workflows worth automating.</span><span className={s.compactPitch}>Custom tools and AI agents for the work that happens after someone hits send.</span></p>
+              <Link href="/systems" className={`${s.systemsLink} ${s.desktopLink}`}>Explore JU. Systems <span aria-hidden="true">↗</span></Link>
             </div>
             <WorkflowIllustration />
+            <div className={s.mobileWorkspace}><StudioSystemsPreview /></div>
+            <Link href="/systems" className={`${s.systemsLink} ${s.mobileLink}`}>Explore JU. Systems <span aria-hidden="true">↗</span></Link>
           </div>
         </div>
       </section>
