@@ -15,18 +15,23 @@ const compactDescriptions: Record<SystemsWorkflow['id'], string> = {
   personal: 'An assistant for travel, planning and everyday tasks that remembers your preferences.',
 }
 
-function BuildDetails({ workflow, prefix, staticPreview }: { workflow: SystemsWorkflow; prefix: string; staticPreview: boolean }) {
-  const [expanded, setExpanded] = useState(false)
-  return <div className={styles.buildDetails} data-expanded={staticPreview || expanded}>
-    <span className={styles.buildLabel}>What I build</span>
-    {!staticPreview && <button className={styles.buildToggle} type="button" aria-expanded={expanded} aria-controls={`${prefix}-builds-${workflow.id}`} onClick={() => setExpanded(value => !value)}>
-      What I build for you <span aria-hidden="true">+</span>
-    </button>}
-    <div id={`${prefix}-builds-${workflow.id}`} className={styles.buildDisclosure}><div className={styles.buildDetailsContent}>
-      <p className={styles.extendedDescription}>{workflow.description}</p>
-      <ul role="list">{workflow.builds.map(build => <li key={build}><span aria-hidden="true">↗</span>{build}</li>)}</ul>
-      <p className={styles.buildAudience}><span>Built for</span>{workflow.audience}</p>
-    </div></div>
+const buildDescriptions: Record<SystemsWorkflow['id'], readonly string[]> = {
+  sales: ['Find relevant leads and prepare replies with the right context.', 'Turn an agreed scope into proposals, forms and clear next steps.', 'Keep files, updates and appointments in one place.'],
+  operations: ['Assign work, balance schedules and give each task an owner.', 'Collect the right files and route them to the right person.', 'See workloads, delays and decisions that need attention.'],
+  commerce: ['Track stock and prepare reorder recommendations.', 'Keep customers informed as orders move through fulfillment.', 'Bring purchasing and sales information into one view.'],
+  social: ['Plan posts and move approved content into your channels.', 'Adapt one idea for each format while keeping your voice.', 'Organize conversations, answer common questions and flag replies.'],
+  knowledge: ['Search company documents and get answers with sources.', 'Prepare relevant replies and hand complex questions to your team.', 'Keep processes and guidance easy to find and maintain.'],
+  personal: ['Research stays, routes and plans around your preferences.', 'Remember useful details, interests and past choices.', 'Organize tasks and follow through on reminders.'],
+}
+
+function BuildDetails({ workflow }: { workflow: SystemsWorkflow }) {
+  return <div className={styles.buildDetails}>
+    <h4 className={styles.buildLabel}>What I build<span className={styles.mobileBuildLabel}> for you</span></h4>
+    <ul role="list">{workflow.builds.map((build, index) => <li key={build}>
+      <span className={styles.buildArrow} aria-hidden="true">↗</span>
+      <div><span>{build}</span><p className={styles.buildDescription}>{buildDescriptions[workflow.id][index]}</p></div>
+    </li>)}</ul>
+    <p className={styles.buildAudience}><span>Built for</span>{workflow.audience}</p>
   </div>
 }
 
@@ -37,8 +42,10 @@ function WorkflowDetail({ workflow, prefix = 'workflow', staticPreview = false }
       <p className={styles.fullDescription}>{workflow.description}</p>
       <p className={styles.compactDescription}>{compactDescriptions[workflow.id]}</p>
     </div>
-    <SystemsWorkflowScene workflow={workflow} prefix={prefix} staticPreview={staticPreview}/>
-    <BuildDetails workflow={workflow} prefix={prefix} staticPreview={staticPreview}/>
+    <div className={styles.workflowCard}>
+      <BuildDetails workflow={workflow}/>
+      <SystemsWorkflowScene workflow={workflow} prefix={prefix} staticPreview={staticPreview}/>
+    </div>
   </>
 }
 

@@ -13,6 +13,15 @@ const requests = {
   personal: { text: 'Help me plan a city break. Use the things I like, keep the route practical and leave enough room to enjoy it.', context: [['From', 'A conversation with you'], ['Connect', 'Preferences, research, calendar'], ['Keep me involved', 'My choices and bookings']] },
 } as const
 
+const mobileBriefs = {
+  sales: { title: 'Follow up on an inquiry.', text: 'Add the brief to my CRM, draft a personal reply and help the client book a call.' },
+  operations: { title: 'Get a new job moving.', text: 'Match the job to a team, gather the documents and share a clear handoff.' },
+  commerce: { title: 'Plan the next stock order.', text: 'Review sales and stock, flag what’s running low and prepare a buying plan.' },
+  social: { title: 'Turn one idea into content.', text: 'Turn this launch into drafts for social, email and our community, in our voice.' },
+  knowledge: { title: 'Find the right answer.', text: 'Use our company guides to answer the question and show where the answer came from.' },
+  personal: { title: 'Plan a trip around me.', text: 'Use my preferences to research a city break, with practical routes and time to explore.' },
+} as const
+
 function Check() {
   return <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m3 8 3 3 7-7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
 }
@@ -34,7 +43,7 @@ function SalesResult() {
 function OperationsResult() {
   return <div className={styles.operationsResult}>
     <div className={styles.resultLead}><span className={styles.resultStatus}><Check /> Work coordinated</span><span>Team schedule</span></div>
-    <h4>The right people.<br />The whole picture.</h4>
+    <h4 className={styles.compactResultTitle}>The right people.<br className={styles.resultLineBreak}/> The whole picture.</h4>
     <div className={styles.schedule}>
       {[['09:00', 'Site visit', 'Field team', 'Brief attached'], ['11:30', 'Document review', 'Operations', 'Files collected'], ['14:00', 'Client handoff', 'Account lead', 'Next steps prepared']].map(([time, task, team, detail],i) => <div className={styles.scheduleRow} key={task}><time>{time}</time><div className={styles.scheduleLine}><i /></div><div><strong>{task}</strong><span>{team}</span><div className={styles.scheduleTrack}><i style={{ width: `${[78,56,90][i]}%` }} /></div><small>{detail}</small></div></div>)}
     </div>
@@ -71,7 +80,7 @@ function SocialResult() {
 function KnowledgeResult() {
   return <div className={styles.knowledgeResult}>
     <div className={styles.resultLead}><span className={styles.resultStatus}><Check /> Sources connected</span><span>Team knowledge</span></div>
-    <div className={styles.knowledgeQuestion}><span>Your team asks</span><h4>How do we onboard<br />a new client?</h4></div>
+    <div className={styles.knowledgeQuestion}><span>Your team asks</span><h4 className={styles.compactResultTitle}>How do we onboard<br className={styles.resultLineBreak}/> a new client?</h4></div>
     <div className={styles.knowledgeAnswer}><span className={styles.answerMark}>JU<span>.</span></span><div><p>Start with a clear handoff.</p><ol><li>Confirm the agreed scope and key contacts.</li><li>Collect the project brief and required files.</li><li>Open the client portal and share the next steps.</li></ol><div className={styles.sourceReference}><span>↗</span><div><strong>Client onboarding guide</strong><span>Answer grounded in your documents</span></div></div></div></div>
     <div className={styles.resultFoot}><span><Check /> Context kept with the answer</span><strong>Human handoff when needed</strong></div>
   </div>
@@ -80,30 +89,58 @@ function KnowledgeResult() {
 function PersonalResult() {
   return <div className={styles.personalResult}>
     <div className={styles.resultLead}><span className={styles.resultStatus}><Check /> Preferences considered</span><span>Your personal desk</span></div>
-    <h4>A day that leaves<br />room for you.</h4>
+    <h4 className={styles.compactResultTitle}>A day that leaves<br className={styles.resultLineBreak}/> room for you.</h4>
     <div className={styles.dayPlan}>{[['A slow start','A good coffee near your stay.','A short walk'],['A little discovery','A neighborhood picked around your interests.','Time to explore'],['An easy evening','Dinner nearby, with the rest left open.','No rushing back']].map(([title,body,note],i)=><div key={title}><span className={styles.routeMark}>{i===0?'◉':'○'}</span><div><strong>{title}</strong><p>{body}</p><span>{note}</span></div></div>)}</div>
     <div className={styles.resultFoot}><span><Check /> Your feedback shapes the next plan</span><strong>Your choices, remembered</strong></div>
   </div>
 }
 
+function WorkflowResult({ id }: { id: SystemsWorkflow['id'] }) {
+  if (id === 'sales') return <SalesResult />
+  if (id === 'operations') return <OperationsResult />
+  if (id === 'commerce') return <CommerceResult />
+  if (id === 'social') return <SocialResult />
+  if (id === 'knowledge') return <KnowledgeResult />
+  return <PersonalResult />
+}
+
 export default function SystemsWorkflowScene({ workflow, prefix = 'workflow', staticPreview = false }: { workflow: SystemsWorkflow; prefix?: string; staticPreview?: boolean }) {
   const [view, setView] = useState<'request'|'result'>('result')
-  const request=requests[workflow.id]
-  const base=`${prefix}-demo-${workflow.id}`
+  const [exampleExpanded, setExampleExpanded] = useState(false)
+  const request = requests[workflow.id]
+  const brief = mobileBriefs[workflow.id]
+  const base = `${prefix}-demo-${workflow.id}`
   return <div className={styles.scene} role="group" aria-label={`${workflow.label}: illustrative workflow`}>
-    <div className={styles.sceneHeader}><span className={styles.exampleLabel}>Illustrative workflow</span>{!staticPreview && <div className={styles.sceneControls} role="group" aria-label={`${workflow.label} preview view`}>
-      <button type="button" aria-pressed={view==='request'} aria-controls={`${base}-request`} onClick={()=>setView('request')}>Request</button>
-      <button type="button" aria-pressed={view==='result'} aria-controls={`${base}-result`} onClick={()=>setView('result')}>Result</button>
-    </div>}</div>
-    <div className={styles.sceneStates}>
-      {!staticPreview && <div id={`${base}-request`} className={`${styles.sceneState} ${styles.requestState}`} aria-hidden={view!=='request'} inert={view!=='request'}>
-        <span className={styles.requestOverline}>It starts with your workflow.</span>
-        <p className={styles.requestText}>{request.text}</p>
-        <dl className={styles.requestContext}>{request.context.map(([label,value])=><div key={label}><dt>{label}</dt><dd>{value}</dd></div>)}</dl>
-        <p className={styles.requestHint}>Select Result to see what the system prepares.<span aria-hidden="true">↗</span></p>
-      </div>}
-      <div id={`${base}-result`} className={styles.sceneState} aria-hidden={staticPreview?undefined:view!=='result'} inert={staticPreview?undefined:view!=='result'}>
-        {workflow.id==='sales' && <SalesResult/>}{workflow.id==='operations' && <OperationsResult/>}{workflow.id==='commerce' && <CommerceResult/>}{workflow.id==='social' && <SocialResult/>}{workflow.id==='knowledge' && <KnowledgeResult/>}{workflow.id==='personal' && <PersonalResult/>}
+    <div className={styles.mobileExample} data-expanded={staticPreview || exampleExpanded}>
+      {!staticPreview && <button type="button" className={styles.exampleToggle} aria-expanded={exampleExpanded} aria-controls={`${base}-example`} onClick={() => setExampleExpanded(expanded => !expanded)}>
+        See an example <span aria-hidden="true">+</span>
+      </button>}
+      <div id={`${base}-example`} className={styles.exampleDisclosure}><div className={styles.exampleContent}>
+        <div className={styles.exampleRequest}>
+          <span>Example request</span>
+          <h4>{brief.title}</h4>
+          <p>{brief.text}</p>
+          <div className={styles.requestTools}><span>Works with</span><ul aria-label="Connected tools and context">{request.context[1][1].split(', ').map(tool => <li key={tool}>{tool}</li>)}</ul></div>
+        </div>
+        <p className={styles.exampleResultLabel}><span aria-hidden="true">↓</span>What the system prepares</p>
+        <div className={`${styles.sceneState} ${styles.mobileResult}`}><WorkflowResult id={workflow.id}/></div>
+      </div></div>
+    </div>
+    <div className={styles.desktopExample}>
+      <div className={styles.sceneHeader}><span className={styles.exampleLabel}>Illustrative workflow</span>{!staticPreview && <div className={styles.sceneControls} role="group" aria-label={`${workflow.label} preview view`}>
+        <button type="button" aria-pressed={view==='request'} aria-controls={`${base}-request`} onClick={()=>setView('request')}>Request</button>
+        <button type="button" aria-pressed={view==='result'} aria-controls={`${base}-result`} onClick={()=>setView('result')}>Result</button>
+      </div>}</div>
+      <div className={styles.sceneStates}>
+        {!staticPreview && <div id={`${base}-request`} className={`${styles.sceneState} ${styles.requestState}`} aria-hidden={view!=='request'} inert={view!=='request'}>
+          <span className={styles.requestOverline}>It starts with your workflow.</span>
+          <p className={styles.requestText}>{request.text}</p>
+          <dl className={styles.requestContext}>{request.context.map(([label,value])=><div key={label}><dt>{label}</dt><dd>{value}</dd></div>)}</dl>
+          <p className={styles.requestHint}>Select Result to see what the system prepares.<span aria-hidden="true">↗</span></p>
+        </div>}
+        <div id={`${base}-result`} className={styles.sceneState} aria-hidden={staticPreview?undefined:view!=='result'} inert={staticPreview?undefined:view!=='result'}>
+          <WorkflowResult id={workflow.id}/>
+        </div>
       </div>
     </div>
   </div>
