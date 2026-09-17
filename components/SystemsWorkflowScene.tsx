@@ -13,13 +13,13 @@ const requests = {
   personal: { text: 'Help me plan a city break. Use the things I like, keep the route practical and leave enough room to enjoy it.', context: [['From', 'A conversation with you'], ['Connect', 'Preferences, research, calendar'], ['Keep me involved', 'My choices and bookings']] },
 } as const
 
-const mobileBriefs = {
-  sales: { title: 'Follow up on an inquiry.', text: 'Add the brief to my CRM, draft a personal reply and help the client book a call.' },
-  operations: { title: 'Get a new job moving.', text: 'Match the job to a team, gather the documents and share a clear handoff.' },
-  commerce: { title: 'Plan the next stock order.', text: 'Review sales and stock, flag what’s running low and prepare a buying plan.' },
-  social: { title: 'Turn one idea into content.', text: 'Turn this launch into drafts for social, email and our community, in our voice.' },
-  knowledge: { title: 'Find the right answer.', text: 'Use our company guides to answer the question and show where the answer came from.' },
-  personal: { title: 'Plan a trip around me.', text: 'Use my preferences to research a city break, with practical routes and time to explore.' },
+const mobileRequests = {
+  sales: 'New website inquiry: draft a reply and help them book the right call.',
+  operations: 'A new job just came in. Find a team and prepare the handoff.',
+  commerce: 'Review our stock and put together the next supplier order.',
+  social: 'Turn our launch announcement into content for each channel.',
+  knowledge: 'Find our client onboarding process, with a link to the guide.',
+  personal: 'Plan a relaxed city break around the things I like.',
 } as const
 
 function Check() {
@@ -108,7 +108,7 @@ export default function SystemsWorkflowScene({ workflow, prefix = 'workflow', st
   const [view, setView] = useState<'request'|'result'>('result')
   const [exampleExpanded, setExampleExpanded] = useState(false)
   const request = requests[workflow.id]
-  const brief = mobileBriefs[workflow.id]
+  const mobileRequest = mobileRequests[workflow.id]
   const base = `${prefix}-demo-${workflow.id}`
   return <div className={styles.scene} role="group" aria-label={`${workflow.label}: illustrative workflow`}>
     <div className={styles.mobileExample} data-expanded={staticPreview || exampleExpanded}>
@@ -116,14 +116,20 @@ export default function SystemsWorkflowScene({ workflow, prefix = 'workflow', st
         See an example <span aria-hidden="true">+</span>
       </button>}
       <div id={`${base}-example`} className={styles.exampleDisclosure}><div className={styles.exampleContent}>
-        <div className={styles.exampleRequest}>
-          <span>Example request</span>
-          <h4>{brief.title}</h4>
-          <p>{brief.text}</p>
-          <div className={styles.requestTools}><span>Works with</span><ul aria-label="Connected tools and context">{request.context[1][1].split(', ').map(tool => <li key={tool}>{tool}</li>)}</ul></div>
+        <div className={styles.exampleWorkspace}>
+          <div className={styles.exampleToolbar}><span>{workflow.workspace}</span><span>Illustrative example</span></div>
+          <div className={styles.exampleRequest}>
+            <div className={styles.exampleSource}>
+              <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 3.5h12a1.5 1.5 0 0 1 1.5 1.5v8A1.5 1.5 0 0 1 16 14.5H8L3.5 18V5A1.5 1.5 0 0 1 5 3.5M7 7.5h7M7 10.5h4" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+              <span>{request.context[0][1]}</span>
+            </div>
+            <p>{mobileRequest}</p>
+          </div>
+          <div className={styles.exampleOutput}>
+            <p className={styles.exampleResultLabel}><Check/>Prepared output</p>
+            <div className={`${styles.sceneState} ${styles.mobileResult}`}><WorkflowResult id={workflow.id}/></div>
+          </div>
         </div>
-        <p className={styles.exampleResultLabel}><span aria-hidden="true">↓</span>What the system prepares</p>
-        <div className={`${styles.sceneState} ${styles.mobileResult}`}><WorkflowResult id={workflow.id}/></div>
       </div></div>
     </div>
     <div className={styles.desktopExample}>

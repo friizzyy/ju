@@ -444,14 +444,15 @@
   .workflowCard .buildDescription { display: block; margin: 5px 0 0; color: #a6b7cd; font-size: 13px; line-height: 1.65; }
   .workflowCard .buildAudience { padding: 16px 0 0; border-top: 1px solid var(--rule); font-size: 12px; line-height: 1.7; }
   .workflowCard .scene { align-self: stretch; border: 0; border-radius: 0; background: none; }
-  .mobileExample { display: block; padding: 0 18px 18px; }
+  .mobileExample { display: block; }
   .desktopExample { display: none; }
   .exampleToggle {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 100%;
+    width: calc(100% - 36px);
     min-height: 48px;
+    margin: 0 18px 18px;
     padding: 11px 14px;
     gap: 12px;
     border: 1px solid #afc9eb45;
@@ -471,17 +472,18 @@
   .exampleContent { min-height: 0; overflow: hidden; visibility: hidden; transition: visibility 260ms; }
   .mobileExample[data-expanded='true'] .exampleDisclosure { grid-template-rows: 1fr; }
   .mobileExample[data-expanded='true'] .exampleContent { visibility: visible; }
-  .exampleRequest { container-type: inline-size; padding-top: 25px; }
-  .exampleRequest > span { color: #8fa5c2; font-size: 11px; }
-  .exampleRequest h4 { margin: 11px 0 10px; color: #e0e9f5; font-size: clamp(1.125rem, 7.4cqi, 1.6875rem); font-weight: 500; line-height: 1.25; letter-spacing: -.045em; }
-  .exampleRequest > p { margin: 0; color: #b4c3d6; font-size: 14px; line-height: 1.75; }
-  .requestTools { margin-top: 18px; }
-  .requestTools > span { color: #8fa5c2; font-size: 11px; }
-  .requestTools ul { display: flex; flex-wrap: wrap; gap: 7px; padding: 0; margin: 10px 0 0; list-style: none; }
-  .requestTools li { padding: 6px 10px; border: 1px solid #a3bfdf25; border-radius: 6px; background: #a7c1e008; color: #c6d6ea; font-size: 12px; line-height: 1.5; }
-  .exampleResultLabel { display: flex; align-items: center; gap: 10px; margin: 23px 0 0; padding-top: 20px; border-top: 1px solid var(--rule); color: #a7bfdf; font-size: 12px; }
-  .exampleResultLabel > span { color: #c5d8f1; font-size: 18px; }
-  .mobileExample .sceneState { padding: 21px 0 0; }
+  .exampleWorkspace { border-top: 1px solid #a4bbdc25; background: linear-gradient(150deg, #111d2b, #0a121d); }
+  .exampleToolbar { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 12px 18px; border-bottom: 1px solid #a4bbdc1c; background: #b8d0ed05; }
+  .exampleToolbar > span:first-child { color: #bdcee3; font-size: 11px; font-weight: 500; }
+  .exampleToolbar > span:last-child { color: #8398b2; font-size: 9px; }
+  .exampleRequest { padding: 17px 18px 18px; border-bottom: 1px solid #a4bbdc20; background: #a7c7ed08; }
+  .exampleSource { display: flex; align-items: center; gap: 9px; color: #95aecf; font-size: 11px; }
+  .exampleSource > svg { width: 17px; height: 17px; flex: 0 0 17px; }
+  .exampleRequest > p { margin: 10px 0 0; color: #d0dced; font-size: 14px; line-height: 1.65; letter-spacing: -.015em; }
+  .exampleOutput { padding: 19px 18px 20px; }
+  .exampleResultLabel { display: flex; align-items: center; gap: 7px; margin: 0; color: #8faacb; font-size: 10px; }
+  .exampleResultLabel > svg { width: 13px; height: 13px; }
+  .mobileExample .sceneState { padding: 17px 0 0; }
   .mobileResult > div { height: auto; }
   .mobileResult .resultLead { display: none; }
 }
