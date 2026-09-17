@@ -21,10 +21,11 @@
 .studioCopy h2 { margin: 0; font-size: clamp(27px, 3vw, 36px); line-height: 1.16; font-weight: 500; letter-spacing: -.045em; }
 .studioCopy h2 > span { color: #a28abf; }
 .studioDescription { max-width: 49ch; margin: 20px 0; color: #adb0c0; font-size: 14px; line-height: 1.8; }
-.studioLink { display: inline-flex; align-items: center; gap: 24px; min-height: 48px; color: #d1c4e5; font-size: 13px; font-weight: 500; text-decoration: none; }
-.studioLink span { display: grid; place-items: center; width: 36px; height: 36px; border: 1px solid #bba0df40; border-radius: 50%; transition: background 160ms ease; }
-.studioLink:hover span { background: #bba0df1a; }
-.studioLink:focus-visible, .bookingLink:focus-visible { outline: 2px solid #a7c4ec; outline-offset: 5px; border-radius: 6px; }
+.studioPreview { display: grid; gap: 16px; min-width: 0; }
+.studioLink { display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; min-height: 48px; padding: 12px 20px; border: 1px solid rgba(139, 92, 246, .25); border-radius: 999px; background: rgba(139, 92, 246, .1); color: #c4aeff; font-size: 13px; font-weight: 500; text-decoration: none; transition: background-color 240ms ease, border-color 240ms ease; }
+@media (hover: hover) { .studioLink:hover { background: rgba(139, 92, 246, .2); border-color: rgba(139, 92, 246, .55); } }
+.studioLink:focus-visible { outline: 2px solid #c4aeff; outline-offset: 4px; background: rgba(139, 92, 246, .2); border-color: rgba(139, 92, 246, .55); }
+.bookingLink:focus-visible { outline: 2px solid #a7c4ec; outline-offset: 5px; border-radius: 6px; }
 .studioIllustration { min-width: 0; border: 1px solid #b5a1d140; border-radius: 16px; background: linear-gradient(145deg, #272834, #141820); box-shadow: 0 20px 35px #00000024; }
 .browserBar { display: flex; align-items: center; gap: 5px; padding: 12px 15px; border-bottom: 1px solid #b5a1d11a; }
 .browserBar i { width: 4px; height: 4px; border-radius: 50%; background: #a49eb166; }
@@ -63,7 +64,7 @@
   .stepCopy { max-width: 62ch; margin: 12px 0; }
   .stepTime { margin: 0; }
   .studioPanel { grid-template-columns: 1fr; gap: 28px; padding: 28px; }
-  .studioIllustration { width: 100%; max-width: 460px; justify-self: center; }
+  .studioPreview { width: 100%; max-width: 460px; justify-self: center; }
   .studioDescription { max-width: 60ch; }
   .browserPage { padding: 22px; }
   .browserPage p { font-size: 28px; }
@@ -89,6 +90,6 @@
   .browserPage p { font-size: 23px; }
   .browserBar span { font-size: 8px; }
 }
-@media (prefers-reduced-motion: reduce) { .studioLink span, .bookingLink { transition: none; } }
+@media (prefers-reduced-motion: reduce) { .studioLink, .bookingLink { transition: none; } }
 @media (prefers-contrast: more) { .stepCopy, .stepTime, .studioDescription, .invitation, .callNote, .processIntro > p:last-child { color: #d5dfe9; } }
-@media (forced-colors: active) { .studioPanel, .studioIllustration, .studioLink span, .bookingLink, .steps li { border-color: CanvasText; } }
+@media (forced-colors: active) { .studioPanel, .studioIllustration, .studioLink, .bookingLink, .steps li { border-color: CanvasText; } }

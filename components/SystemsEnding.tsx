@@ -22,9 +22,11 @@ export default function SystemsEnding() {
             <p className={s.serviceLabel}>JU<span>.</span> Studio</p>
             <h2 id="systems-studio-title">A better front door<br />for your business<span>.</span></h2>
             <p className={s.studioDescription}>Need a website to match the work behind it? I design and build custom sites that connect with your customers and the systems you use.</p>
-            <Link href="/studio" className={s.studioLink}>Explore JU. Studio <span aria-hidden="true">↗</span></Link>
           </div>
-          <StudioIllustration />
+          <div className={s.studioPreview}>
+            <StudioIllustration />
+            <Link href="/studio" className={s.studioLink}>Explore JU. Studio <span aria-hidden="true">→</span></Link>
+          </div>
         </div>
       </div>
     </section>
