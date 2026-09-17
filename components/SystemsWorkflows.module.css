@@ -304,6 +304,8 @@
   .divider { margin-bottom: 28px; }
   .intro { margin-bottom: 26px; }
   .intro > p { max-width: 54ch; margin-top: 18px; font-size: 14px; line-height: 1.7; }
+  .intro > .fullDescription { display: none; }
+  .intro > .compactDescription { display: block; margin-top: 12px; white-space: nowrap; }
   .surface { border: 0; border-radius: 0; background: none; box-shadow: none; }
   .navigation { padding: 0; margin-bottom: 24px; }
   .selectors { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px; padding-bottom: 10px; }
@@ -370,7 +372,7 @@
   .footer { margin-top: 20px; font-size: 11px; }
 }
 @media (max-width: 759px) {
-  .intro h2 { max-width: 15ch; margin-inline: auto; font-size: clamp(36px, 9vw, 48px); }
+  .intro h2 { max-width: none; margin-inline: auto; font-size: clamp(26px, 8.4vw, 48px); white-space: nowrap; }
   .buildLabel { display: none; }
   .buildToggle { display: flex; align-items: center; justify-content: space-between; width: 100%; min-height: 48px; gap: 20px; padding: 12px 2px; border: 0; background: none; color: #cad9ec; font: 500 13px/1.5 var(--font-geist-sans), sans-serif; text-align: left; cursor: pointer; touch-action: manipulation; }
   .buildToggle > span { display: grid; place-items: center; width: 24px; height: 24px; font-size: 22px; font-weight: 300; color: #91afd4; transition: transform 220ms ease; }

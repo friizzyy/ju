@@ -50,7 +50,7 @@ export default function SystemsWorkflows() {
       <header className={styles.intro}>
         <h2 id="systems-workflows-title">Modernizing <span>workflows.</span></h2>
         <p className={styles.fullDescription}>I build custom software, AI agents and automations around the way you work—from serving customers and running operations to creating content and planning your day.</p>
-        <p className={styles.compactDescription}>Custom software, AI agents and automations that fit the way you work.</p>
+        <p className={styles.compactDescription}>Custom software. AI agents. Automations.</p>
       </header>
       <div className={styles.surface}>
         <div className={styles.navigation}>
