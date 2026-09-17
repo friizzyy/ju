@@ -196,3 +196,25 @@
   border-top-color: rgba(218, 226, 239, .09);
 }
 :global(body:has(#studio-approach)) .wordmark span { color: #8b5cf6; }
+
+/* Contact joins Studio purple and Systems navy on a neutral foundation. */
+:global(body:has(#contact-page)) .footer {
+  background: #0b0d12;
+  border-top-color: rgba(180, 185, 211, .12);
+}
+:global(body:has(#contact-page)) .wordmark span { color: #a19aca; }
+
+/* Continue About's silver-grey palette through its footer on every screen. */
+:global(body:has(#about-hero)) .footer {
+  background: #090d10;
+  border-top-color: rgba(212, 217, 221, .12);
+}
+:global(body:has(#about-hero)) .wordmark { color: #f0f1f3; }
+:global(body:has(#about-hero)) .wordmark span,
+:global(body:has(#about-hero)) .heading { color: #d4d9dd; }
+:global(body:has(#about-hero)) .description,
+:global(body:has(#about-hero)) .link { color: #adb3ba; }
+:global(body:has(#about-hero)) .meta { color: #9ba3ad; }
+:global(body:has(#about-hero)) .link:hover,
+:global(body:has(#about-hero)) .link:focus-visible { color: #f0f1f3; }
+:global(body:has(#about-hero)) .link:focus-visible { outline-color: #e2e7ed; }

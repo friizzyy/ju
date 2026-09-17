@@ -1,0 +1,28 @@
+.field {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  color: #c5cdd3;
+  mask-image: linear-gradient(180deg, transparent, #000 10%, #000 80%, transparent 100%);
+}
+.field svg { position: absolute; width: 100%; height: 100%; inset: 0; overflow: visible; }
+.first { transform: translate(-5%, -6%) rotate(-8deg) scale(1.04); }
+.second { transform: translate(11%, 5%) rotate(180deg) scale(1.15); opacity: .67; }
+.current {
+  stroke-dasharray: .24 .76;
+  stroke-dashoffset: 0;
+  opacity: var(--strength);
+  animation: travel var(--duration) linear var(--delay) infinite;
+  animation-play-state: paused;
+}
+.field[data-running='true'] .current { animation-play-state: running; }
+@keyframes travel { to { stroke-dashoffset: -1; } }
+@media(max-width: 639px) {
+  .field { opacity: .83; }
+  .first { width: 160%; left: -45%; transform: translate(0,-3%) rotate(-19deg); }
+  .second { width: 150%; left: -20%; transform: translate(0,4%) rotate(162deg); }
+}
+@media(prefers-reduced-motion: reduce) {
+  .current { animation: none; stroke-dasharray: none; opacity: .04; }
+}

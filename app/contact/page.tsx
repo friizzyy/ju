@@ -1,116 +1,70 @@
 import type { Metadata } from 'next'
-import Reveal from '@/components/Reveal'
-import ClipReveal from '@/components/ClipReveal'
-import MagneticButton from '@/components/MagneticButton'
+import CopyEmail from '@/components/CopyEmail'
+import s from './Contact.module.css'
 
 export const metadata: Metadata = {
   title: 'Contact',
-  description: 'Get in touch. Book a call or send an email. No intake forms. No chatbots.',
+  description: 'A new website, a smarter workflow, or an idea worth exploring. Book a 30-minute conversation with Julius or email directly.',
 }
 
+const email = 'julius@buildwithju.com'
+const booking = 'https://calendly.com/julius-buildwithju/30min'
+
+function Arrow() {
+  return <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
+}
+
+const questions = [
+  { title: 'Do I need a finished brief?', answer: 'No. Bring what you have: an idea, your current website, or a process that takes too much of your time. We’ll work out what matters and where to start.' },
+  { title: 'Who will I be working with?', answer: 'Me, Julius. I handle the design and the build, and you work directly with me throughout the project.' },
+  { title: 'What happens after the call?', answer: 'We’ll agree on the next step. For a website, that means defining the scope and timeline. For systems, we’ll decide whether an audit is the right place to begin.' },
+  { title: 'Can we meet in person?', answer: 'I split my time between San Francisco and Grass Valley, California, and can meet in between. I also work remotely with clients across the country.' },
+]
+
 export default function ContactPage() {
-  return (
-    <>
-      {/* Hero:Centered dramatic with oversized period */}
-      <section className="min-h-[80vh] flex items-center justify-center relative overflow-hidden px-6">
-        <div className="relative z-10 text-center max-w-4xl">
-          <ClipReveal direction="up">
-            <h1 className="text-4xl sm:text-8xl lg:text-[11rem] font-bold tracking-[-0.06em] leading-[0.95] pb-4">
-              Let&apos;s<br />talk<span className="text-accent">.</span>
-            </h1>
-          </ClipReveal>
-
-          <Reveal delay={0.4}>
-            <p className="text-muted/60 text-base sm:text-lg mt-8 max-w-md mx-auto">
-              No intake forms. No chatbots. Just a conversation about what you need.
-            </p>
-          </Reveal>
+  return <div id="contact-page" className={s.page}>
+    <section className={s.hero} aria-labelledby="contact-title">
+      <div className={s.intro}>
+        <p className={s.eyebrow}><span className={s.studioDot} /> JU. Studio <span className={s.separator}>/</span><span className={s.systemsDot} /> JU. Systems</p>
+        <h1 id="contact-title">Let’s <span className={s.lastWord}><span className={s.outline}>talk</span><span className={s.period}>.</span></span></h1>
+        <p className={s.lead}>A new website. A smarter workflow.<br />Tell me what you have in mind.</p>
+      </div>
+      <div className={s.invitation}>
+        <div className={s.conversation}>
+          <div className={s.panelTop}><span className={s.kicker}>A CONVERSATION WITH JULIUS</span><span className={s.duration}>30 min</span></div>
+          <h2>A good place <br />to start.</h2>
+          <p className={s.description}>You don’t need all the answers. <br />Just something you’d like to make better.</p>
+          <ol className={s.agenda} aria-label="What we’ll talk about">
+            <li><span>01</span>Your idea, your business, your goals.</li>
+            <li><span>02</span>What’s working. What could work better.</li>
+            <li><span>03</span>A clear next step, together.</li>
+          </ol>
         </div>
-      </section>
-
-      {/* Contact methods */}
-      <section className="py-16 sm:py-24 px-6">
-        <div className="max-w-5xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 lg:items-stretch">
-            {/* Primary:book a call */}
-            <div className="lg:col-span-7 flex flex-col">
-              <ClipReveal direction="left" className="flex flex-col flex-1">
-                <a
-                  href="https://calendly.com/julius-buildwithju/30min"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  data-cursor="link"
-                  className="group flex flex-col flex-1 p-6 sm:p-14 rounded-3xl border border-accent/[0.1] hover:border-accent/[0.2] bg-accent/[0.02] hover:bg-accent/[0.04] transition-all duration-500"
-                >
-                  <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-accent/30 mb-8">Recommended</p>
-
-                  <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4 group-hover:text-accent transition-colors duration-300">
-                    Book a call
-                  </h2>
-                  <p className="text-muted text-sm leading-relaxed mb-10 max-w-md">
-                    30 minutes. No pitch. Just a conversation about what you
-                    need and whether I can help. The fastest way to get started.
-                  </p>
-
-                  <span className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-accent text-background text-sm font-semibold group-hover:shadow-[0_0_30px_rgba(0,212,255,0.2)] transition-all duration-300">
-                    calendly.com/julius-buildwithju/30min
-                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 12L12 4M12 4H5M12 4v7" /></svg>
-                  </span>
-                </a>
-              </ClipReveal>
-            </div>
-
-            {/* Secondary:email + location */}
-            <div className="lg:col-span-5 flex flex-col gap-6">
-              <ClipReveal direction="right" delay={0.1} className="flex flex-col flex-1">
-                <a
-                  href="mailto:julius@buildwithju.com"
-                  data-cursor="link"
-                  className="group flex flex-col flex-1 p-6 sm:p-10 rounded-2xl border border-white/[0.04] hover:border-white/[0.1] hover:bg-white/[0.01] transition-all duration-500"
-                >
-                  <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-muted/25 mb-6">Email</p>
-                  <h3 className="text-lg font-bold text-foreground mb-2 group-hover:text-accent transition-colors duration-300">julius@buildwithju.com</h3>
-                  <p className="text-sm text-muted/50 leading-relaxed">
-                    I read every email and respond within 24 hours.
-                  </p>
-                  <p className="font-mono text-[10px] text-muted/25 mt-4 tracking-wider">RESPONDS WITHIN 24 HOURS</p>
-                </a>
-              </ClipReveal>
-
-              <ClipReveal direction="right" delay={0.2} className="flex flex-col flex-1">
-                <div className="flex flex-col flex-1 p-6 sm:p-10 rounded-2xl border border-white/[0.04]">
-                  <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-muted/25 mb-6">Location</p>
-                  <h3 className="text-lg font-bold text-foreground mb-2">San Francisco & Grass Valley, CA</h3>
-                  <p className="text-sm text-muted/50 leading-relaxed">
-                    I split time between my place in SF and a ranch in Grass Valley. If you&apos;re anywhere between the Bay and the foothills, I can meet you there.
-                  </p>
-                  <p className="text-xs text-muted/30 mt-3 leading-relaxed">Working with clients locally and across the country.</p>
-                </div>
-              </ClipReveal>
-            </div>
+        <div className={s.booking}>
+          <div className={s.directLine} aria-hidden="true">
+            <span className={s.you}>You</span><span className={s.connection}><i /><i /><i /></span><span className={s.monogram}>JU<span>.</span></span>
+          </div>
+          <p className={s.bookingTitle}>You and me.<br /><span>Something worth building.</span></p>
+          <p className={s.bookingCopy}>A first conversation about what you need<br className={s.desktopBreak} /> and how I can help.</p>
+          <a href={booking} target="_blank" rel="noopener noreferrer" className={s.bookButton}>Find a time to talk <Arrow /></a>
+          <p className={s.bookingNote}>30-minute discovery call <span aria-hidden="true">·</span> Book on Calendly</p>
+        </div>
+        <div className={s.emailRow}>
+          <div className={s.emailIntro}>
+            <h2>Prefer email?</h2>
+            <p>A few lines are enough to get started.</p>
+          </div>
+          <div className={s.emailActions}>
+            <a className={s.emailLink} href={`mailto:${email}`}>{email}</a>
+            <CopyEmail email={email} />
           </div>
         </div>
-      </section>
-
-      {/* Trust strip */}
-      <section className="py-12 sm:py-20 px-6">
-        <div className="max-w-4xl mx-auto">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-px bg-white/[0.04] rounded-2xl overflow-hidden">
-            {[
-              { q: "How fast?", a: "Website timelines are based on scope and agreed before we start. Snapshot audits take 5 business days; Deep Systems Audits take 10 business days." },
-              { q: "Do you subcontract?", a: "No. You talk to me, I build it. One person, start to finish." },
-              { q: "Where are you based?", a: "Split between San Francisco and a ranch in Grass Valley. I can meet anywhere in between." },
-            ].map((item) => (
-              <Reveal key={item.q}>
-                <div className="bg-background/80 p-8 sm:p-10 hover:bg-white/[0.02] transition-colors duration-500">
-                  <p className="text-sm font-bold text-foreground mb-2">{item.q}</p>
-                  <p className="text-sm text-muted/50 leading-relaxed">{item.a}</p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-    </>
-  )
+      </div>
+      <div className={s.location}><span>Based in California.</span><span>San Francisco <span aria-hidden="true">↔</span> Grass Valley</span><span>Working together, wherever you are.</span></div>
+    </section>
+    <section className={s.questions} aria-labelledby="contact-questions-title">
+      <div className={s.questionsIntro}><p className={s.kicker}>A FEW USEFUL DETAILS</p><h2 id="contact-questions-title">Before we <br /><span>get started.</span></h2><p>No intake forms. No chatbots. <br />A direct line to the person building it.</p></div>
+      <div className={s.answers}>{questions.map(question => <details key={question.title} className={s.answer}><summary>{question.title}<span className={s.plus} aria-hidden="true" /></summary><p>{question.answer}</p></details>)}</div>
+    </section>
+  </div>
 }
