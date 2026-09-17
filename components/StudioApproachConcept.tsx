@@ -47,12 +47,16 @@ export default function StudioApproachConcept({ concept, showPreview = false }: 
             <div className={styles.palette}><i /><i /><i /><span>01 — YOUR PALETTE</span></div>
             <div className={styles.phone}><span className={styles.phoneNotch} /><SiteFace compact /></div>
             <div className={styles.handoff}><span className={styles.handoffIcon}>↗</span><strong>All yours.</strong><span>Source code <b>✓</b></span><span>Documentation <b>✓</b></span><span>A clear handoff <b>✓</b></span></div>
-            <div className={styles.stageCaption}><span>0{selected + 1} / 03</span><span>{principle.note}</span></div>
           </div>
+          <div className={styles.stageCaption} aria-hidden="true"><span>0{selected + 1} / 03</span><span>{principle.note}</span></div>
         <div className={styles.selectors} role="group" aria-label="Explore what goes into your website">{principles.map((item, index) => <button key={item.label} type="button" aria-pressed={selected === index} aria-controls="approach-detail" onClick={() => setSelected(index)}>{item.label}</button>)}</div>
           </div>
           <div className={styles.detailBar}>
-            <div id="approach-detail" className={styles.detail} aria-live="polite"><span className={styles.detailLabel}>0{selected + 1} / {principle.label}</span><h3>{principle.title}</h3><p>{principle.body}</p><p>{principle.extra}</p></div>
+            <div id="approach-detail" className={styles.detail} aria-live="polite">
+              {principles.map((item, index) => <div key={item.label} className={styles.detailPanel} aria-hidden={selected !== index} inert={selected !== index}>
+                <span className={styles.detailLabel}>0{index + 1} / {item.label}</span><h3>{item.title}</h3><p>{item.body}</p><p>{item.extra}</p>
+              </div>)}
+            </div>
           </div>
         </div>
       </> : <>

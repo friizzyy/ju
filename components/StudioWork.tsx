@@ -17,7 +17,7 @@ function ProjectImage({ project }: { project: StudioProject }) {
           src={`/images/studio-work/${project.image}.webp`}
           alt={project.imageAlt || project.title}
           fill
-          sizes="(max-width: 800px) calc(100vw - 48px), (max-width: 1208px) 63vw, 748px"
+          sizes="(max-width: 1023px) calc(100vw - 48px), (max-width: 1208px) 63vw, 748px"
           className={cover ? s.coverImage : s.websiteImage}
           onError={() => setFailed(true)}
         />
@@ -102,9 +102,9 @@ export default function StudioWork() {
             <div className={s.galleryFooter}>
               <span>DESIGNED & BUILT BY JU.</span>
               <div className={s.paging}>
-                <button type="button" onClick={() => setSelected((selected + studioProjects.length - 1) % studioProjects.length)} aria-label="Previous project">←</button>
+                <button type="button" onClick={() => setSelected(current => (current + studioProjects.length - 1) % studioProjects.length)} aria-label="Previous project">←</button>
                 <span aria-hidden="true">{number(selected)}<span> / {String(studioProjects.length).padStart(2, '0')}</span></span>
-                <button type="button" onClick={() => setSelected((selected + 1) % studioProjects.length)} aria-label="Next project">→</button>
+                <button type="button" onClick={() => setSelected(current => (current + 1) % studioProjects.length)} aria-label="Next project">→</button>
               </div>
             </div>
           </div>

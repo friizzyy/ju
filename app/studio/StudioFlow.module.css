@@ -52,3 +52,25 @@
   .systemsPanel, .systemsLink, .bookingLink, .workflow { border-color: CanvasText; }
   .workflow svg { forced-color-adjust: none; }
 }
+
+.compactWorkflow { display: none; }
+@media (min-width: 761px) and (max-width: 1023px) {
+  .systemsPanel { grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 24px; }
+}
+@media (max-width: 1023px) {
+  .workflow .wideWorkflow { display: none; }
+  .compactWorkflow { display: grid; grid-template-columns: 72px minmax(0, 1fr); gap: 22px; align-items: center; max-width: 380px; margin: auto; }
+  .workflowSource { position: relative; }
+  .workflowSource::after { content: ''; position: absolute; left: 100%; top: 44%; width: 22px; height: 1px; background: #536282; }
+  .workflowSource > span { display: block; margin-top: 10px; color: #b8c6dd; text-align: center; font-size: 10px; white-space: nowrap; }
+  .workflowSteps { list-style: none; padding: 0; margin: 0; color: #c4d1e7; font-size: 13px; line-height: 1.5; }
+  .workflowSteps li { position: relative; padding: 12px 0 12px 16px; border-left: 1px solid #536282; }
+  .workflowSteps li::before { content: ''; position: absolute; left: -3px; top: calc(50% - 3px); width: 5px; height: 5px; border-radius: 50%; background: #9cacc8; }
+  .workflow figcaption { margin: 16px auto 0; max-width: 34ch; font-size: 12px; }
+}
+@media (max-width: 639px) {
+  .systemsContent h2 { font-size: clamp(28px, 7.4vw, 38px); }
+  .serviceNote { flex-basis: 100%; margin: 2px 0 0; padding: 0; border: 0; font-size: 9px; }
+  .systemsPanel { gap: 22px; }
+  .closingSection { padding-block: 48px 56px; }
+}

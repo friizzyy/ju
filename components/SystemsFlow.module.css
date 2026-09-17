@@ -1,0 +1,94 @@
+.inner { max-width: 1160px; margin-inline: auto; }
+.process { padding: clamp(64px, 8vw, 112px) 24px; scroll-margin-top: 96px; color: #f0f3f7; }
+.processIntro { text-align: center; }
+.eyebrow { margin: 0 0 18px; color: #91aacd; font: 10px/1.5 var(--font-jetbrains-mono), monospace; letter-spacing: .15em; }
+.processIntro h2, .closing h2 { margin: 0; font-size: clamp(32px, 4.6vw, 56px); font-weight: 600; line-height: 1.12; letter-spacing: -.05em; text-wrap: balance; }
+.processIntro h2 span, .closing h2 span { color: #7298d2; }
+.processIntro > p:last-child { margin: 20px 0 0; color: #aab4c3; font-size: 16px; line-height: 1.7; text-wrap: pretty; }
+.steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px; margin: 52px 0 0; padding: 0; list-style: none; }
+.steps li { display: flex; flex-direction: column; min-width: 0; }
+.stepMarker { display: flex; align-items: center; gap: 18px; margin-bottom: 26px; color: #a8bcd9; font: 12px/1.5 var(--font-jetbrains-mono), monospace; }
+.stepMarker i { height: 1px; flex: 1; background: #8baada30; }
+.steps h3 { margin: 0; font-size: 25px; font-weight: 500; line-height: 1.25; letter-spacing: -.035em; }
+.stepCopy { margin: 16px 0 22px; color: #aab4c3; font-size: 14px; line-height: 1.8; }
+.stepTime { margin: auto 0 0; color: #c3d4ed; font: 10px/1.7 var(--font-jetbrains-mono), monospace; }
+.continuation { background: #0b1017; color: #f0f3f7; }
+.studioSection { padding: 56px 24px 0; scroll-margin-top: 96px; }
+.studioPanel { display: grid; grid-template-columns: 1.1fr 1fr; align-items: center; gap: 52px; padding: 44px 48px; border: 1px solid #b8b0ca26; border-radius: 24px; background: linear-gradient(140deg, #1c1e28, #12151e 65%, #0e121a); overflow: hidden; }
+.studioCopy { min-width: 0; }
+.serviceLabel { margin: 0 0 24px; color: #c4c0d5; font-size: 16px; font-weight: 500; letter-spacing: -.025em; }
+.serviceLabel span { color: #a28abf; }
+.studioCopy h2 { margin: 0; font-size: clamp(27px, 3vw, 36px); line-height: 1.16; font-weight: 500; letter-spacing: -.045em; }
+.studioCopy h2 > span { color: #a28abf; }
+.studioDescription { max-width: 49ch; margin: 20px 0; color: #adb0c0; font-size: 14px; line-height: 1.8; }
+.studioLink { display: inline-flex; align-items: center; gap: 24px; min-height: 48px; color: #d1c4e5; font-size: 13px; font-weight: 500; text-decoration: none; }
+.studioLink span { display: grid; place-items: center; width: 36px; height: 36px; border: 1px solid #bba0df40; border-radius: 50%; transition: background 160ms ease; }
+.studioLink:hover span { background: #bba0df1a; }
+.studioLink:focus-visible, .bookingLink:focus-visible { outline: 2px solid #a7c4ec; outline-offset: 5px; border-radius: 6px; }
+.studioIllustration { min-width: 0; border: 1px solid #b5a1d140; border-radius: 16px; background: linear-gradient(145deg, #272834, #141820); box-shadow: 0 20px 35px #00000024; }
+.browserBar { display: flex; align-items: center; gap: 5px; padding: 12px 15px; border-bottom: 1px solid #b5a1d11a; }
+.browserBar i { width: 4px; height: 4px; border-radius: 50%; background: #a49eb166; }
+.browserBar span { margin-left: 12px; color: #aca9bc; font: 9px/1.5 var(--font-jetbrains-mono), monospace; }
+.browserPage { padding: 22px; }
+.browserNav { display: flex; align-items: center; justify-content: space-between; }
+.browserNav b { color: #dddce4; font-size: 15px; font-weight: 600; letter-spacing: -.06em; }
+.browserNav b span { color: #a28abf; }
+.browserNav > div { display: flex; gap: 10px; }
+.browserNav i { width: 19px; height: 3px; border-radius: 2px; background: #a49eb166; }
+.browserPage p { margin: 24px 0 18px; font-size: clamp(23px, 2.2vw, 30px); line-height: 1.2; font-weight: 500; letter-spacing: -.04em; }
+.browserPage p span { color: #b0a4c3; }
+.browserLine { width: 72%; height: 4px; border-radius: 4px; background: #a49eb133; }
+.browserButton { width: 75px; height: 20px; margin-top: 20px; border: 1px solid #a28abf52; border-radius: 10px; background: #a28abf14; }
+.browserTiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 26px; }
+.browserTiles i { height: 42px; border-radius: 6px; background: #a49eb10d; border: 1px solid #a49eb11a; }
+.closing { padding: clamp(72px, 9vw, 128px) 24px clamp(64px, 8vw, 112px); text-align: center; scroll-margin-top: 96px; }
+.invitation { max-width: 57ch; margin: 24px auto 30px; color: #aab4c3; font-size: 16px; line-height: 1.8; text-wrap: pretty; }
+.bookingLink { display: inline-flex; align-items: center; justify-content: center; gap: 28px; min-height: 52px; padding: 12px 26px; border: 1px solid #8baada59; border-radius: 999px; background: #8baada14; color: #c3d4ed; font-size: 14px; font-weight: 500; text-decoration: none; transition: background 160ms ease, border-color 160ms ease; }
+.bookingLink:hover { background: #8baada26; border-color: #8baada88; }
+.callNote { margin: 16px 0 0; color: #91a2ba; font: 10px/1.5 var(--font-jetbrains-mono), monospace; }
+@media (max-width: 1023px) {
+  .steps { gap: 26px; }
+  .steps h3 { font-size: 22px; }
+  .studioPanel { padding: 32px; gap: 30px; }
+  .studioCopy h2 { font-size: 30px; }
+  .browserPage { padding: 18px; }
+}
+@media (max-width: 760px) {
+  .process { padding-block: 56px; }
+  .steps { grid-template-columns: 1fr; gap: 0; margin-top: 30px; }
+  .steps li { position: relative; padding: 24px 0 24px 46px; border-bottom: 1px solid #8baada24; }
+  .steps li:last-child { padding-bottom: 0; border-bottom: 0; }
+  .stepMarker { position: absolute; top: 27px; left: 0; margin: 0; }
+  .stepMarker i { display: none; }
+  .stepCopy { max-width: 62ch; margin: 12px 0; }
+  .stepTime { margin: 0; }
+  .studioPanel { grid-template-columns: 1fr; gap: 28px; padding: 28px; }
+  .studioIllustration { width: 100%; max-width: 460px; justify-self: center; }
+  .studioDescription { max-width: 60ch; }
+  .browserPage { padding: 22px; }
+  .browserPage p { font-size: 28px; }
+}
+@media (max-width: 639px) {
+  .processIntro > p:last-child, .invitation { font-size: 14px; }
+  .studioSection { padding-top: 32px; }
+  .studioPanel { padding: 24px; gap: 24px; border-radius: 22px; }
+  .serviceLabel { margin-bottom: 18px; font-size: 14px; }
+  .studioCopy h2 { font-size: 29px; }
+  .studioDescription { margin: 16px 0 10px; font-size: 13px; }
+  .browserPage { padding: 18px; }
+  .browserPage p { margin-block: 20px 14px; font-size: 26px; }
+  .browserTiles { margin-top: 20px; }
+  .browserTiles i { height: 32px; }
+  .closing { padding-block: 64px; }
+  .invitation { margin-top: 20px; }
+}
+@media (max-width: 350px) {
+  .process, .studioSection, .closing { padding-inline: 18px; }
+  .studioPanel { padding: 20px; }
+  .studioCopy h2 { font-size: 26px; }
+  .browserPage p { font-size: 23px; }
+  .browserBar span { font-size: 8px; }
+}
+@media (prefers-reduced-motion: reduce) { .studioLink span, .bookingLink { transition: none; } }
+@media (prefers-contrast: more) { .stepCopy, .stepTime, .studioDescription, .invitation, .callNote, .processIntro > p:last-child { color: #d5dfe9; } }
+@media (forced-colors: active) { .studioPanel, .studioIllustration, .studioLink span, .bookingLink, .steps li { border-color: CanvasText; } }

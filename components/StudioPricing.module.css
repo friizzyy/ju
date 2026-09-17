@@ -26,11 +26,14 @@
 .phrase { white-space: nowrap; }
 .dot { color: var(--color-studio, #8b5cf6); }
 .lead { margin: 20px auto 0; font-size: 16px; line-height: 1.7; color: #aab2bf; text-wrap: pretty; }
-.cards { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; align-items: stretch; }
+.cards { min-width: 0; }
+.cards > div { --rail-gutter: 24px; --rail-card-max: 440px; }
+.mobileFeatures, .mobileFallback { display: none; }
 .card {
   display: flex;
   flex-direction: column;
   min-width: 0;
+  height: 100%;
   padding: 24px;
   border: 1px solid rgba(139, 92, 246, .12);
   border-radius: 22px;
@@ -84,10 +87,16 @@
 @media (max-width: 1100px) {
   .card { padding: 22px 20px; }
   .planName { font-size: 20px; }
-  .cards { gap: 12px; }
+
 }
 @media (max-width: 1023px) {
-  .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+  .desktopFeatures { display: none; }
+  .mobileFeatures { display: block; margin: 22px 0 20px; border-top: 1px solid rgba(218, 226, 239, .08); }
+  .mobileFallback { display: block; }
+  .mobileFeatures .features { margin: 0; padding-top: 4px; border: 0; }
+  .mobileFeatures > button { color: #c4aeff; }
+  .mobileFeatures button:focus-visible { outline: 2px solid #c4aeff; outline-offset: 4px; }
+  .cta { margin-top: auto; }
   .card { padding: 28px; }
   .description { min-height: 44px; }
   .planName { font-size: 24px; }
@@ -97,10 +106,10 @@
   .section { padding: 40px 24px 0; }
   .intro { margin-bottom: 32px; }
   .lead { max-width: 38ch; margin-top: 18px; font-size: 14px; }
-  .cards { grid-template-columns: 1fr; gap: 18px; max-width: 440px; margin-inline: auto; }
-  .card { padding: 26px; }
+
+  .card { padding: 22px; }
   .labelRow { margin-bottom: 18px; }
-  .description { min-height: 0; }
+  .description { min-height: 44px; }
   .price { font-size: 44px; }
   .features { margin-bottom: 24px; padding-top: 20px; }
   .included { max-width: 42ch; font-size: 11px; }
@@ -108,7 +117,8 @@
 @media (max-width: 350px) {
   .section { padding-inline: 18px; }
   .intro h2 { font-size: 30px; }
-  .card { padding: 22px; }
+  .card { padding: 20px; }
+  .cards > div { --rail-gutter: 18px; }
 }
 @media (prefers-reduced-motion: reduce) { .section * { transition: none !important; } }
 @media (prefers-contrast: more) { .lead, .label, .description, .price > span, .included { color: #d5dbe4; } }
@@ -133,7 +143,7 @@
 @media (max-width: 639px) {
   .nextSection { flex-direction: column; align-items: center; gap: 18px; padding: 26px 0; }
   .included { text-align: center; }
-  .scopeDrawing { flex-basis: 72px; width: 72px; height: 46px; }
+  .scopeDrawing { flex-basis: 54px; width: 54px; height: 42px; }
 }
 @media (prefers-reduced-motion: reduce) { .workLink span { transition: none; } }
 @media (forced-colors: active) { .scopeDrawing { stroke: CanvasText; } .scopeDrawing rect { fill: Canvas; } .scopeDrawing .drawingFill { fill: Highlight; } .nextSection, .workLink span { border-color: CanvasText; } }

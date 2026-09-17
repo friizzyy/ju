@@ -1,5 +1,7 @@
 import type { PricingPlan } from './PricingCards'
 import styles from './StudioPricing.module.css'
+import MobileCarousel from './MobileCarousel'
+import Disclosure from './Disclosure'
 
 function ScopeDrawing({ index }: { index: number }) {
   return <svg className={styles.scopeDrawing} viewBox="0 0 80 52" fill="none" aria-hidden="true">
@@ -26,6 +28,7 @@ export default function StudioPricing({ plans }: { plans: PricingPlan[] }) {
         </header>
 
         <div className={styles.cards}>
+        <MobileCarousel label="Website packages" desktopGrid desktopColumns={4}>
           {plans.map((plan, index) => (
             <article key={plan.title} className={`${styles.card} ${plan.featured ? styles.featured : ''}`} aria-labelledby={`studio-plan-${index}`}>
               <div className={styles.labelRow}>
@@ -35,7 +38,7 @@ export default function StudioPricing({ plans }: { plans: PricingPlan[] }) {
               <p className={styles.price}>{plan.price}<span>{plan.period}</span></p>
               <h3 id={`studio-plan-${index}`} className={styles.planName}>{plan.title}</h3>
               <p className={styles.description}>{plan.description}</p>
-              <ul className={styles.features} aria-label={`${plan.title} includes`}>
+              <ul className={`${styles.features} ${styles.desktopFeatures}`} aria-label={`${plan.title} includes`}>
                 {plan.features.map(feature => (
                   <li key={feature}>
                     <svg viewBox="0 0 16 16" aria-hidden="true"><path d="m3 8 3 3 7-7" /></svg>
@@ -43,11 +46,18 @@ export default function StudioPricing({ plans }: { plans: PricingPlan[] }) {
                   </li>
                 ))}
               </ul>
+              <Disclosure label="What's included" className={styles.mobileFeatures}>
+                <ul className={styles.features} aria-label={`${plan.title} includes`}>
+                  {plan.features.map(feature => <li key={feature}><svg viewBox="0 0 16 16" aria-hidden="true"><path d="m3 8 3 3 7-7" /></svg><span>{feature}</span></li>)}
+                </ul>
+              </Disclosure>
+              <noscript><ul className={`${styles.features} ${styles.mobileFallback}`} aria-label={`${plan.title} includes`}>{plan.features.map(feature => <li key={feature}>{feature}</li>)}</ul></noscript>
               <a href={plan.ctaHref} target="_blank" rel="noopener noreferrer" className={styles.cta} aria-label={`${plan.cta} with ${plan.title}`}>
                 {plan.cta}<span aria-hidden="true">↗</span>
               </a>
             </article>
           ))}
+        </MobileCarousel>
         </div>
 
         <div className={styles.nextSection}>

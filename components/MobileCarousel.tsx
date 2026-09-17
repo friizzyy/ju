@@ -21,10 +21,12 @@ export default function MobileCarousel({
   children,
   label,
   desktopGrid = false,
+  desktopColumns = 2,
 }: {
   children: ReactNode
   label: string
   desktopGrid?: boolean
+  desktopColumns?: 2 | 3 | 4
 }) {
   const count = Children.count(children)
   const track = useRef<HTMLDivElement>(null)
@@ -43,7 +45,7 @@ export default function MobileCarousel({
         Math.abs(destination(element, best) - element.scrollLeft)
           ? index
           : best,
-      0,
+      Math.min(target.current, Math.max(0, slides.length - 1)),
     )
   }, [])
 
@@ -104,13 +106,14 @@ export default function MobileCarousel({
     const element = track.current
     if (!element) return
     window.clearTimeout(settleTimer.current)
-    // Let native touch/wheel scrolling take over without forcing a snap mid-gesture.
+    // Cancel the old destination so a new gesture owns the movement immediately.
+    element.scrollTo({ left: element.scrollLeft, behavior: 'instant' })
     sync()
   }
 
   return (
     <div
-      className={`${styles.carousel} ${desktopGrid ? styles.desktopGrid : ''}`}
+      className={`${styles.carousel} ${desktopGrid ? styles.desktopGrid : ''} ${desktopColumns === 4 ? styles.fourColumns : desktopColumns === 3 ? styles.threeColumns : ''}`}
       role="region"
       aria-label={label}
     >

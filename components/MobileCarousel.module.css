@@ -24,7 +24,7 @@
   display: none;
 }
 .slide {
-  flex: 0 0 min(560px, calc(100% - var(--rail-peek)));
+  flex: 0 0 min(var(--rail-card-max, 560px), calc(100% - var(--rail-peek)));
   min-width: 0;
   scroll-snap-align: start;
 }
@@ -100,6 +100,13 @@
   }
   .desktopGrid .controls {
     display: none;
+  }
+  .desktopGrid.fourColumns .track {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+  }
+  .desktopGrid.threeColumns .track {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 @media (prefers-reduced-motion: reduce) {

@@ -4,7 +4,7 @@ import s from '@/app/studio/StudioFlow.module.css'
 function WorkflowIllustration() {
   return (
     <figure className={s.workflow}>
-      <svg viewBox="0 0 560 286" fill="none" aria-hidden="true" focusable="false">
+      <svg className={s.wideWorkflow} viewBox="0 0 560 286" fill="none" aria-hidden="true" focusable="false">
         <path d="M174 143H235M307 143H347M347 77V209M347 77H373M347 143H373M347 209H373" stroke="#536282" strokeWidth="1.5" />
         <path d="m226 138 6 5-6 5" stroke="#a9b9da" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
         <circle cx="347" cy="143" r="3.5" fill="#8597bd" />
@@ -33,6 +33,19 @@ function WorkflowIllustration() {
         </g>
         <path d="M415 94H537M415 160H537M415 226H537" stroke="#536282" strokeOpacity=".35" />
       </svg>
+      <div className={s.compactWorkflow} aria-hidden="true">
+        <div className={s.workflowSource}>
+          <svg viewBox="0 0 72 92" fill="none">
+            <rect x="1" y="1" width="70" height="90" rx="8" fill="#171921" stroke="#5d536f" />
+            <path d="M1 17H71" stroke="#5d536f" />
+            <circle cx="10" cy="9" r="1.5" fill="#a9a5bd" /><circle cx="16" cy="9" r="1.5" fill="#a9a5bd" />
+            <path d="M11 30H50M11 37H42M11 48H60M11 54H53" stroke="#a9a5bd" strokeWidth="3" strokeLinecap="round" />
+            <rect x="11" y="67" width="31" height="10" rx="5" fill="#8f7bb2" />
+          </svg>
+          <span>JU. Systems</span>
+        </div>
+        <ol className={s.workflowSteps}><li>Inquiry received</li><li>Details organized</li><li>Follow-up drafted</li></ol>
+      </div>
       <figcaption>Example: an inquiry, organized details, a drafted follow-up.</figcaption>
     </figure>
   )

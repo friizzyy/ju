@@ -2,8 +2,6 @@ import type { Metadata, Viewport } from 'next'
 import { GeistSans } from 'geist/font/sans'
 import { JetBrains_Mono } from 'next/font/google'
 import Navigation from '@/components/Navigation'
-import ScrollToTop from '@/components/ScrollToTop'
-import PageTransition from '@/components/PageTransition'
 import AmbientBackground from '@/components/AmbientBackground'
 import Footer from '@/components/Footer'
 import layoutStyles from './Layout.module.css'
@@ -52,13 +50,12 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${GeistSans.variable} ${jetbrainsMono.variable}`}>
+    <html lang="en" data-scroll-behavior="smooth" className={`${GeistSans.variable} ${jetbrainsMono.variable}`}>
       <body className="bg-background text-foreground font-sans antialiased">
         <AmbientBackground />
-        <ScrollToTop />
         <Navigation />
         <main className={`${layoutStyles.main} relative z-10`}>
-          <PageTransition>{children}</PageTransition>
+          {children}
         </main>
         <Footer />
       </body>
