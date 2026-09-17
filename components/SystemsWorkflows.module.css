@@ -408,6 +408,19 @@
 @media (prefers-reduced-motion: reduce) { .buildDisclosure, .buildDetailsContent, .buildToggle > span { transition: none; } }
 
 @media (max-width: 759px) {
+  .panelHeading { container-type: inline-size; text-align: center; }
+  .panelHeading h3 {
+    max-width: none;
+    font-size: clamp(1.0625rem, 6cqi, 1.8125rem);
+    line-height: 1.25;
+    text-wrap: initial;
+  }
+  .panelHeading p { margin-inline: auto; }
+  .correspondence { container-type: inline-size; }
+  .correspondence h4 {
+    font-size: clamp(1.0625rem, 7cqi, 1.6875rem);
+    line-height: 1.25;
+  }
   .fullDescription { display: none; }
   .compactDescription { display: block; }
   .extendedDescription { display: block; margin: 10px 0 18px; color: #adbace; font-size: 13px; line-height: 1.75; }

@@ -22,7 +22,7 @@ function SalesResult() {
     <div className={styles.resultLead}><span className={styles.resultStatus}><Check /> Brief organized</span><span>Follow-up / draft</span></div>
     <div className={styles.correspondence}>
       <div className={styles.correspondenceTo}><span>To</span><strong>Your next client</strong><span className={styles.recipientMark}>↗</span></div>
-      <h4>Let’s talk about<br />your project.</h4>
+      <h4>Let’s talk about your project.</h4>
       <p>Thanks for sharing what you have in mind. I’ve pulled together the key details so we can start with the right conversation.</p>
       <p>Here’s a time to talk through the scope, priorities and next steps.</p>
       <div className={styles.meetingLine}><span className={styles.meetingIcon}>↗</span><div><strong>A conversation, ready to book</strong><span>Matched to your services and availability</span></div></div>
