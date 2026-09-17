@@ -6,19 +6,39 @@ import SystemsWorkflowScene from './SystemsWorkflowScene'
 import styles from './SystemsWorkflows.module.css'
 
 const navigationLabels = ['Sales & clients', 'Operations', 'Commerce', 'Social media', 'Knowledge', 'Personal']
+const compactDescriptions: Record<SystemsWorkflow['id'], string> = {
+  sales: 'CRMs, proposals and client portals that carry the context from first inquiry to ongoing service.',
+  operations: 'Scheduling, documents and team handoffs in one place, built around how your operation runs.',
+  commerce: 'Connect your orders, stock and suppliers, with clearer buying decisions and customer updates.',
+  social: 'Research, drafts, approvals and publishing, connected in your brand’s voice.',
+  knowledge: 'Search your company’s knowledge, get answers with sources and hand off to a person when needed.',
+  personal: 'An assistant for travel, planning and everyday tasks that remembers your preferences.',
+}
+
+function BuildDetails({ workflow, prefix, staticPreview }: { workflow: SystemsWorkflow; prefix: string; staticPreview: boolean }) {
+  const [expanded, setExpanded] = useState(false)
+  return <div className={styles.buildDetails} data-expanded={staticPreview || expanded}>
+    <span className={styles.buildLabel}>What I build</span>
+    {!staticPreview && <button className={styles.buildToggle} type="button" aria-expanded={expanded} aria-controls={`${prefix}-builds-${workflow.id}`} onClick={() => setExpanded(value => !value)}>
+      What I build for you <span aria-hidden="true">+</span>
+    </button>}
+    <div id={`${prefix}-builds-${workflow.id}`} className={styles.buildDisclosure}><div className={styles.buildDetailsContent}>
+      <p className={styles.extendedDescription}>{workflow.description}</p>
+      <ul role="list">{workflow.builds.map(build => <li key={build}><span aria-hidden="true">↗</span>{build}</li>)}</ul>
+      <p className={styles.buildAudience}><span>Built for</span>{workflow.audience}</p>
+    </div></div>
+  </div>
+}
 
 function WorkflowDetail({ workflow, prefix = 'workflow', staticPreview = false }: { workflow: SystemsWorkflow; prefix?: string; staticPreview?: boolean }) {
   return <>
     <div className={styles.panelHeading}>
       <h3 id={`${prefix}-title-${workflow.id}`}>{workflow.title}</h3>
-      <p>{workflow.description}</p>
+      <p className={styles.fullDescription}>{workflow.description}</p>
+      <p className={styles.compactDescription}>{compactDescriptions[workflow.id]}</p>
     </div>
     <SystemsWorkflowScene workflow={workflow} prefix={prefix} staticPreview={staticPreview}/>
-    <div className={styles.buildDetails}>
-      <span>What I build</span>
-      <ul role="list">{workflow.builds.map(build => <li key={build}><span aria-hidden="true">↗</span>{build}</li>)}</ul>
-      <p><span>Built for</span>{workflow.audience}</p>
-    </div>
+    <BuildDetails workflow={workflow} prefix={prefix} staticPreview={staticPreview}/>
   </>
 }
 
@@ -29,7 +49,8 @@ export default function SystemsWorkflows() {
       <div className={styles.divider} aria-hidden="true"><span /></div>
       <header className={styles.intro}>
         <h2 id="systems-workflows-title">Modernizing <span>workflows.</span></h2>
-        <p>I build custom software, AI agents and automations around the way you work—from serving customers and running operations to creating content and planning your day.</p>
+        <p className={styles.fullDescription}>I build custom software, AI agents and automations around the way you work—from serving customers and running operations to creating content and planning your day.</p>
+        <p className={styles.compactDescription}>Custom software, AI agents and automations that fit the way you work.</p>
       </header>
       <div className={styles.surface}>
         <div className={styles.navigation}>

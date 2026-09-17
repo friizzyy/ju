@@ -35,12 +35,12 @@
 .panelHeading h3 { margin: 0 0 16px; max-width: 20ch; font-size: 29px; font-weight: 500; line-height: 1.15; letter-spacing: -.045em; text-wrap: balance; }
 .panelHeading p { max-width: 70ch; margin: 0; font-size: 14px; line-height: 1.75; color: #adbace; text-wrap: pretty; }
 .buildDetails { grid-area: details; min-width: 0; padding: 25px 23px 27px; border-top: 1px solid var(--rule); }
-.buildDetails > span { color: #95abc7; font-size: 12px; }
+.buildLabel { color: #95abc7; font-size: 12px; }
 .buildDetails ul { display: grid; gap: 11px; margin: 18px 0 25px; padding: 0; list-style: none; }
 .buildDetails li { display: flex; align-items: baseline; gap: 10px; color: #d8e2ef; font-size: 13px; line-height: 1.5; }
 .buildDetails li > span { color: #90add3; }
-.buildDetails > p { max-width: 45ch; margin: 0; color: #9daec4; font-size: 12px; line-height: 1.7; }
-.buildDetails > p > span { display: block; margin-bottom: 6px; color: #8199b8; }
+.buildAudience { max-width: 45ch; margin: 0; color: #9daec4; font-size: 12px; line-height: 1.7; }
+.buildAudience > span { display: block; margin-bottom: 6px; color: #8199b8; }
 .footer { margin: 26px auto 0; text-align: center; font-size: 12px; line-height: 1.7; color: #91a0b4; }
 .footer > span { color: #bccde5; }
 /* Every example is real text laid out in the shared canvas, never a scaled screenshot. */
@@ -194,8 +194,8 @@
   .meetingLine div > span { font-size: 12px; }
   .buildDetails { padding: 28px 32px 32px; }
   .buildDetails ul { grid-template-columns: repeat(3,minmax(0,1fr)); gap: 18px; }
-  .buildDetails > p { max-width: none; }
-  .buildDetails > p > span { display: inline; margin-right: 12px; }
+  .buildAudience { max-width: none; }
+  .buildAudience > span { display: inline; margin-right: 12px; }
   .scheduleRow { grid-template-columns: 46px 16px minmax(0,1fr); gap: 14px; }
   .scheduleRow strong, .dayPlan strong { font-size: 14px; }
   .scheduleRow time, .scheduleRow small, .scheduleRow > div > span { font-size: 11px; }
@@ -224,10 +224,10 @@
   .panelHeading h3 { font-size: 35px; line-height: 1.12; }
   .panelHeading p { font-size: 14px; }
   .buildDetails { display: flex; flex-direction: column; padding: 0 32px 32px; border-top: 0; }
-  .buildDetails > span { padding-top: 23px; border-top: 1px solid var(--rule); }
+  .buildLabel { padding-top: 23px; border-top: 1px solid var(--rule); }
   .buildDetails ul { grid-template-columns: minmax(0,1fr); gap: 12px; margin-bottom: 30px; }
-  .buildDetails > p { margin-top: auto; }
-  .buildDetails > p > span { display: block; }
+  .buildAudience { margin-top: auto; }
+  .buildAudience > span { display: block; }
   .scene { border-top: 0; border-left: 1px solid var(--rule); border-bottom-right-radius: 24px; }
   .sceneState { padding: 27px 32px 29px; }
   .sceneHeader { padding-block: 12px; }
@@ -294,4 +294,126 @@
   .selectors button[aria-pressed='true'], .sceneControls button[aria-pressed='true'] { outline: 2px solid Highlight; outline-offset: -4px; }
   .surface { border-color: CanvasText; }
   .chartLine, .chartGrid, .threshold, .stockChart circle { stroke: CanvasText; }
+}
+
+/* Compact screens show one service at its own height, not the tallest of all six. */
+.buildToggle, .compactDescription, .extendedDescription { display: none; }
+.buildDisclosure, .buildDetailsContent { display: contents; }
+@media (max-width: 999px) {
+  .section { padding-bottom: 38px; }
+  .divider { margin-bottom: 28px; }
+  .intro { margin-bottom: 26px; }
+  .intro > p { max-width: 54ch; margin-top: 18px; font-size: 14px; line-height: 1.7; }
+  .surface { border: 0; border-radius: 0; background: none; box-shadow: none; }
+  .navigation { padding: 0; margin-bottom: 24px; }
+  .selectors { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px; padding-bottom: 10px; }
+  .selectors button { min-height: 44px; padding: 9px 5px; border-radius: 8px; font-size: 12px; touch-action: manipulation; }
+  .selectors button[aria-pressed='true'] { background: #aec6e514; }
+  .selectors button::after { inset-inline: 16px; bottom: 0; height: 1px; }
+  .panels { display: block; }
+  .panel { grid-template-rows: auto auto auto; }
+  .panel[aria-hidden='true'] { display: none; }
+  .panelHeading { padding: 0 0 22px; }
+  .panelHeading h3 { max-width: 25ch; margin-bottom: 12px; font-size: 29px; }
+  .panelHeading p { font-size: 14px; line-height: 1.7; }
+  .scene { align-self: start; border: 1px solid #9fb9da30; border-radius: 20px; background: linear-gradient(135deg, #1b2636, #121b28 55%, #0d131d); overflow: hidden; }
+  .sceneHeader { padding: 7px 18px; gap: 4px 8px; }
+  .exampleLabel { font-size: 10px; }
+  .sceneControls button { font-size: 12px; padding-inline: 10px; touch-action: manipulation; }
+  .sceneState { padding: 20px 18px; }
+  .sceneState h4 { font-size: 27px; }
+  .resultLead { margin-bottom: 18px; font-size: 10px; gap: 6px 12px; }
+  .resultFoot { padding-top: 15px; font-size: 10px; gap: 5px 12px; }
+  .correspondence { padding-bottom: 20px; }
+  .correspondenceTo { margin-bottom: 16px; font-size: 12px; }
+  .correspondence h4 { margin-bottom: 16px; }
+  .correspondence p { font-size: 13px; line-height: 1.7; }
+  .meetingLine { margin-top: 18px; gap: 10px; }
+  .meetingLine strong { font-size: 12px; }
+  .meetingLine div > span { font-size: 10px; }
+  .requestOverline { margin-top: 0; font-size: 11px; }
+  .requestText { margin: 17px 0 22px; font-size: 20px; line-height: 1.45; }
+  .requestContext { gap: 11px; margin-bottom: 18px; }
+  .requestContext > div { grid-template-columns: minmax(0, .85fr) minmax(0, 1.3fr); gap: 12px; padding-bottom: 10px; font-size: 11px; }
+  .requestHint { padding-top: 10px; font-size: 10px; }
+  .operationsResult h4, .personalResult h4 { margin-bottom: 20px; }
+  .scheduleRow { grid-template-columns: 38px 10px minmax(0, 1fr); gap: 10px; }
+  .scheduleRow > div:last-child { padding-bottom: 18px; }
+  .scheduleRow strong, .dayPlan strong { font-size: 13px; }
+  .scheduleRow > div > span { float: none; display: block; font-size: 10px; }
+  .scheduleRow time, .scheduleRow small { font-size: 10px; }
+  .scheduleTrack { margin-top: 8px; }
+  .schedule { padding-bottom: 20px; }
+  .inventoryHeadline { gap: 10px; }
+  .inventoryHeadline > span { font-size: 9px; }
+  .stockChart { margin: 18px 0 12px; }
+  .stockChart svg { height: 82px; }
+  .inventoryRows { padding-bottom: 18px; }
+  .inventoryRows > div { padding-block: 10px; font-size: 11px; }
+  .inventoryRows span { font-size: 10px; }
+  .campaign { grid-template-columns: minmax(0,1fr); gap: 18px; padding-bottom: 18px; }
+  .campaignArtwork { min-height: 174px; padding: 18px; border-radius: 10px; }
+  .campaignArtwork h4 { padding: 24px 0 12px; font-size: 32px; line-height: 1.04; }
+  .channelPlan h4 { margin-bottom: 10px; font-size: 20px; }
+  .channelPlan > div { padding-block: 10px; gap: 9px; }
+  .channelPlan > div > div { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 3px 8px; }
+  .channelPlan strong { font-size: 12px; }
+  .channelPlan > div > div > span { margin: 0; font-size: 10px; }
+  .channelPlan > p { padding-top: 10px; font-size: 11px; }
+  .knowledgeQuestion > span { margin-bottom: 10px; }
+  .knowledgeAnswer { gap: 12px; margin-block: 20px; padding-top: 18px; }
+  .knowledgeAnswer ol { gap: 7px; margin-bottom: 16px; font-size: 12px; }
+  .dayPlan { padding-bottom: 20px; }
+  .dayPlan > div { padding-bottom: 18px; }
+  .dayPlan p { font-size: 12px; }
+  .buildDetails { padding: 0; margin-top: 8px; border-top: 0; }
+  .footer { margin-top: 20px; font-size: 11px; }
+}
+@media (max-width: 759px) {
+  .intro h2 { max-width: 15ch; margin-inline: auto; font-size: clamp(36px, 9vw, 48px); }
+  .buildLabel { display: none; }
+  .buildToggle { display: flex; align-items: center; justify-content: space-between; width: 100%; min-height: 48px; gap: 20px; padding: 12px 2px; border: 0; background: none; color: #cad9ec; font: 500 13px/1.5 var(--font-geist-sans), sans-serif; text-align: left; cursor: pointer; touch-action: manipulation; }
+  .buildToggle > span { display: grid; place-items: center; width: 24px; height: 24px; font-size: 22px; font-weight: 300; color: #91afd4; transition: transform 220ms ease; }
+  .buildToggle[aria-expanded='true'] > span { transform: rotate(45deg); }
+  .buildToggle:focus-visible { outline: 2px solid #bfd6f5; outline-offset: -2px; border-radius: 4px; }
+  .buildDisclosure { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 240ms cubic-bezier(.22,1,.36,1); }
+  .buildDetailsContent { display: block; min-height: 0; overflow: hidden; visibility: hidden; transition: visibility 240ms; }
+  .buildDetails[data-expanded='true'] .buildDisclosure { grid-template-rows: 1fr; }
+  .buildDetails[data-expanded='true'] .buildDetailsContent { visibility: visible; }
+  .buildDetails ul { margin: 12px 0 18px; grid-template-columns: minmax(0, 1fr); gap: 10px; }
+  .buildAudience { padding-bottom: 18px; }
+  .buildAudience > span { display: inline; margin-right: 10px; }
+}
+@media (min-width: 760px) and (max-width: 999px) {
+  .selectors { grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 3px; }
+  .selectors button { font-size: 12px; }
+  .panel { grid-template-areas: 'heading scene' 'details scene'; grid-template-columns: minmax(0, .9fr) minmax(0, 1.15fr); grid-template-rows: auto 1fr; column-gap: 28px; }
+  .panelHeading { padding-bottom: 22px; }
+  .panelHeading h3 { font-size: 30px; }
+  .buildDetails { margin: 0; padding: 20px 0 0; border-top: 1px solid var(--rule); }
+  .buildDetails ul { grid-template-columns: minmax(0, 1fr); gap: 10px; margin: 16px 0 22px; }
+  .buildAudience > span { display: block; margin-right: 0; }
+}
+@media (max-width: 359px) {
+  .selectors button { font-size: 11px; }
+  .panelHeading h3 { font-size: 27px; }
+  .sceneState { padding-inline: 16px; }
+  .sceneHeader { padding-inline: 16px; }
+  .sceneState h4 { font-size: 25px; }
+  .requestText { font-size: 18px; }
+  .campaignArtwork h4 { font-size: 30px; }
+}
+@media (prefers-reduced-motion: reduce) { .buildDisclosure, .buildDetailsContent, .buildToggle > span { transition: none; } }
+
+@media (max-width: 759px) {
+  .fullDescription { display: none; }
+  .compactDescription { display: block; }
+  .extendedDescription { display: block; margin: 10px 0 18px; color: #adbace; font-size: 13px; line-height: 1.75; }
+  .channelPlan { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 12px; }
+  .channelPlan h4 { grid-column: 1 / -1; margin-bottom: 10px; font-size: 18px; }
+  .channelPlan > div { display: block; padding-block: 10px 0; }
+  .channelPlan > div > div { display: block; }
+  .channelPlan strong { font-size: 11px; }
+  .channelPlan > div > div > span { display: block; margin-top: 5px; font-size: 10px; line-height: 1.5; }
+  .channelMark, .channelPlan svg, .channelPlan > p { display: none; }
 }
