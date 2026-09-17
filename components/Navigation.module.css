@@ -1,0 +1,29 @@
+.link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  border-radius: 999px;
+}
+
+.label {
+  position: relative;
+  z-index: 1;
+  color: #9baab9;
+  transition: color 160ms ease;
+}
+
+.link:hover .label,
+.link:focus-visible .label {
+  color: #f0f6fc;
+}
+
+.link:focus-visible {
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .label {
+    transition: none;
+  }
+}

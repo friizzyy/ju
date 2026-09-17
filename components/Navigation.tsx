@@ -3,13 +3,14 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { motion } from 'framer-motion'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
+import styles from './Navigation.module.css'
 
 const links = [
-  { href: '/studio', label: 'Studio', activeColor: 'text-studio' },
-  { href: '/systems', label: 'Systems', activeColor: 'text-zeus' },
-  { href: '/about', label: 'About', activeColor: 'text-foreground' },
-  { href: '/contact', label: 'Contact', activeColor: 'text-foreground' },
+  { href: '/studio', label: 'Studio', activeColor: '#c4aeff' },
+  { href: '/systems', label: 'Systems', activeColor: '#b7beff' },
+  { href: '/about', label: 'About', activeColor: '#f0f6fc' },
+  { href: '/contact', label: 'Contact', activeColor: '#f0f6fc' },
 ]
 
 const MobileNav = () => {
@@ -24,7 +25,7 @@ const MobileNav = () => {
   ]
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50 sm:hidden"
+    <nav aria-label="Primary" data-mobile-navigation className="fixed bottom-0 left-0 right-0 z-50 sm:hidden"
       style={{ paddingBottom: 'env(safe-area-inset-bottom, 0px)' }}>
 
       {/* Outer glow — very subtle, bleeds upward */}
@@ -47,14 +48,16 @@ const MobileNav = () => {
           <div className="absolute top-0 left-6 right-6 h-px"
             style={{ background: 'linear-gradient(to right, transparent, rgba(255,255,255,0.12), transparent)' }} />
 
-          <div className="flex items-center justify-around px-2 py-2.5">
+          <div className="grid grid-cols-5 items-center px-2 py-2.5">
             {tabs.map(({ href, label, accent }) => {
               const active = href === '/' ? pathname === '/' : pathname.startsWith(href)
               const activeColor = accent || 'rgba(255,255,255,0.85)'
+              const labelColor = href === '/studio' ? '#c4aeff' : href === '/systems' ? '#b7beff' : '#e7eef5'
 
               return (
                 <Link key={href} href={href}
-                  className="relative flex flex-col items-center justify-center gap-1.5 px-3 py-1.5 min-w-[48px] rounded-xl transition-all duration-300 active:scale-95"
+                  aria-current={active ? 'page' : undefined}
+                  className="relative flex min-w-0 min-h-[48px] flex-col items-center justify-center gap-1.5 px-1 py-1.5 rounded-xl transition-all duration-300 active:scale-95"
                 >
                   {/* Active background pill */}
                   {active && (
@@ -74,8 +77,8 @@ const MobileNav = () => {
                   )}
 
                   {/* SVG icon */}
-                  <div className="relative z-10 transition-all duration-300"
-                    style={{ color: active ? activeColor : 'rgba(255,255,255,0.28)' }}>
+                  <div className="relative z-10 transition-colors duration-200" aria-hidden="true"
+                    style={{ color: active ? activeColor : '#91a1b2' }}>
                     {href === '/' && (
                       <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
                         <path d="M3 9L10 3l7 6v8.5a.5.5 0 01-.5.5h-4.25V13H7.75v5H3.5a.5.5 0 01-.5-.5V9z"
@@ -122,9 +125,9 @@ const MobileNav = () => {
                   </div>
 
                   {/* Label */}
-                  <span className="relative z-10 text-[9px] font-medium tracking-wide transition-all duration-300"
+                  <span className="relative z-10 text-[10px] font-medium tracking-wide transition-colors duration-200"
                     style={{
-                      color: active ? activeColor : 'rgba(255,255,255,0.2)',
+                      color: active ? labelColor : '#9baab9',
                       fontFamily: 'var(--font-geist-sans, system-ui)',
                     }}>
                     {label}
@@ -135,7 +138,7 @@ const MobileNav = () => {
           </div>
         </div>
       </div>
-    </div>
+    </nav>
   )
 }
 
@@ -143,33 +146,48 @@ export default function Navigation() {
   const pathname = usePathname()
   const [scrolled, setScrolled] = useState(false)
   const [hidden, setHidden] = useState(false)
-  const [lastY, setLastY] = useState(0)
+  const navigation = useRef<HTMLElement>(null)
 
   useEffect(() => {
+    let lastY = window.scrollY
+    let idleTimer: number | undefined
+    const reveal = () => {
+      window.clearTimeout(idleTimer)
+      setHidden(false)
+    }
     const onScroll = () => {
       const y = window.scrollY
       setScrolled(y > 50)
-      setHidden(y > 300 && y > lastY)
-      setLastY(y)
+      setHidden(
+        y > 300 && y > lastY &&
+        !navigation.current?.contains(document.activeElement)
+      )
+      lastY = y
+      window.clearTimeout(idleTimer)
+      idleTimer = window.setTimeout(reveal, 120)
     }
+    setScrolled(lastY > 50)
     window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [lastY])
+    window.addEventListener('scrollend', reveal)
+    return () => {
+      window.clearTimeout(idleTimer)
+      window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('scrollend', reveal)
+    }
+  }, [])
 
   return (
     <>
-      {/* Mobile top wordmark */}
-      <div className="sm:hidden fixed top-0 left-0 right-0 z-50 flex items-center justify-center py-4"
-        style={{ background: 'rgba(8,11,16,0.0)' }}>
-        <Link href="/" className="text-[15px] font-bold tracking-[-0.02em] text-foreground">JU.</Link>
-      </div>
-
       {/* Desktop pill nav */}
       <motion.nav
-        initial={{ y: -100, opacity: 0 }}
-        animate={{ y: hidden ? -100 : 0, opacity: hidden ? 0 : 1 }}
-        transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-        className={`hidden sm:flex fixed top-4 left-1/2 -translate-x-1/2 z-50 items-center gap-0.5 px-1.5 py-1 rounded-full transition-all duration-500 ${
+        ref={navigation}
+        aria-label="Primary"
+        initial={false}
+        animate={{ opacity: hidden ? 0 : 1 }}
+        style={{ pointerEvents: hidden ? 'none' : 'auto' }}
+        onFocusCapture={() => setHidden(false)}
+        transition={{ duration: 0.16, ease: 'easeOut' }}
+        className={`hidden sm:flex fixed top-4 left-1/2 -translate-x-1/2 z-50 items-center gap-0.5 px-1.5 py-1 rounded-full transition-colors duration-200 ${
           scrolled
             ? 'bg-background/80 backdrop-blur-2xl border border-white/[0.06] shadow-[0_8px_32px_rgba(0,0,0,0.4)]'
             : 'bg-transparent'
@@ -177,7 +195,9 @@ export default function Navigation() {
       >
         <Link
           href="/"
-          className="px-4 py-2 text-[15px] font-bold tracking-[-0.02em] text-foreground hover:text-accent transition-colors duration-300"
+          aria-label="JU. home"
+          aria-current={pathname === '/' ? 'page' : undefined}
+          className={`${styles.link} px-4 py-2 text-[15px] font-bold tracking-[-0.02em] text-foreground hover:text-accent transition-colors duration-200`}
         >
           JU.
         </Link>
@@ -190,9 +210,10 @@ export default function Navigation() {
             <Link
               key={link.href}
               href={link.href}
-              className="relative px-3.5 py-2 text-[13px] transition-colors duration-300 group"
+              aria-current={isActive ? 'page' : undefined}
+              className={`${styles.link} relative px-3.5 py-2 text-[13px] group`}
             >
-              <span className={isActive ? link.activeColor : 'text-muted/70 group-hover:text-foreground'}>
+              <span className={styles.label} style={isActive ? { color: link.activeColor } : undefined}>
                 {link.label}
               </span>
               {isActive && (

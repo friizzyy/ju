@@ -97,7 +97,7 @@ export default function ContactPage() {
         <div className="max-w-4xl mx-auto">
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-px bg-white/[0.04] rounded-2xl overflow-hidden">
             {[
-              { q: "How fast?", a: "Sites ship in 2 weeks. Audits delivered in 48 hours." },
+              { q: "How fast?", a: "Website timelines are based on scope and agreed before we start. Snapshot audits take 5 business days; Deep Systems Audits take 10 business days." },
               { q: "Do you subcontract?", a: "No. You talk to me, I build it. One person, start to finish." },
               { q: "Where are you based?", a: "Split between San Francisco and a ranch in Grass Valley. I can meet anywhere in between." },
             ].map((item) => (

@@ -1,0 +1,521 @@
+.hero {
+  --hero-compact: 0;
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: clamp(960px, 100svh, 1040px);
+  padding: 192px 24px max(352px, calc(var(--note-space, 184px) + 168px));
+  isolation: isolate;
+}
+.hero-core {
+  position: relative;
+  z-index: 10;
+  width: min(100%, 640px);
+  text-align: center;
+  pointer-events: none;
+}
+.hero-brand {
+  position: relative;
+}
+.wordmark {
+  margin: 0;
+  padding-bottom: 12px;
+  color: #f0f6fc;
+  font-size: clamp(112px, 18vw, 288px);
+  font-weight: 700;
+  line-height: 0.92;
+  letter-spacing: -0.06em;
+}
+.hero-copy {
+  position: relative;
+}
+.tagline {
+  max-width: 512px;
+  margin: 12px auto 0;
+  color: #a3b1c0;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.65;
+  letter-spacing: 0.025em;
+  text-wrap: pretty;
+}
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 16px 24px;
+  margin-top: 40px;
+  pointer-events: auto;
+}
+.work-link,
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 48px;
+  max-width: 100%;
+  padding: 13px 28px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  font-size: 14px;
+  line-height: 1.5;
+  text-decoration: none;
+  transition:
+    background 180ms ease,
+    box-shadow 180ms ease,
+    border-color 180ms ease;
+}
+.work-link {
+  color: #e7eef5;
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.08);
+  font-weight: 500;
+}
+.project-link {
+  color: #080b10;
+  background: #00bfe6;
+  font-weight: 600;
+}
+.work-link:focus-visible,
+.project-link:focus-visible {
+  outline: 2px solid #b2efff;
+  outline-offset: 5px;
+}
+@media (hover: hover) {
+  .work-link:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.15);
+  }
+  .project-link:hover {
+    background: #00d4ff;
+    box-shadow: 0 0 40px rgba(0, 212, 255, 0.2);
+  }
+}
+.hero-caption {
+  position: absolute;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: fit-content;
+  max-width: 100%;
+  right: max(32px, calc((100% - 1280px) / 2));
+  bottom: 24px;
+  color: #8494a5;
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 11px;
+  line-height: 1.6;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  pointer-events: none;
+}
+.hero-caption span {
+  white-space: nowrap;
+}
+.hero-fade {
+  position: absolute;
+  inset: auto 0 0;
+  height: 64px;
+  background: linear-gradient(transparent, #080b10);
+  pointer-events: none;
+}
+/* Approved live-refined hero styles, scoped to the homepage component. */
+.live-network {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+.live-agents {
+  position: absolute;
+  inset: 0;
+  z-index: 9;
+  pointer-events: none;
+}
+.live-agent {
+  position: absolute;
+  left: calc(50% + var(--nx) * min(calc((100% - 144px) / 1.7), 620px));
+  top: calc(50% + var(--ny) * min(46%, 480px));
+  transform: translate(-50%, -18px);
+  width: 108px;
+  min-height: 79px;
+  padding: 0 4px 10px;
+  border: 0;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: auto;
+  color: var(--agent-color);
+  cursor: pointer;
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  touch-action: manipulation;
+}
+.live-agent-icon {
+  height: 36px;
+  width: 36px;
+  flex-shrink: 0;
+  border: 1px solid color-mix(in srgb, var(--agent-color) 34%, transparent);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: color-mix(in srgb, var(--agent-color) 9%, #080b10);
+  box-shadow: 0 0 22px color-mix(in srgb, var(--agent-color) 12%, transparent);
+  transition:
+    background 0.3s,
+    box-shadow 0.3s,
+    border-color 0.3s,
+    transform 0.3s;
+}
+.live-agent-icon svg {
+  width: 17px;
+  height: 17px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.35;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.live-agent-name {
+  font-size: 12px;
+  line-height: 1.5;
+  font-weight: 600;
+  margin-top: 10px;
+  opacity: 0.85;
+  transition: opacity 0.2s;
+}
+.live-agent-role {
+  color: #91a1b2;
+  font:
+    500 10px/1.6 var(--font-jetbrains-mono),
+    monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.live-agent:hover .live-agent-icon,
+.live-agent[aria-pressed='true'] .live-agent-icon {
+  background: color-mix(in srgb, var(--agent-color) 19%, #080b10);
+  box-shadow: 0 0 30px color-mix(in srgb, var(--agent-color) 23%, transparent);
+  border-color: color-mix(in srgb, var(--agent-color) 75%, transparent);
+  transform: scale(1.08);
+}
+.live-agent:hover .live-agent-name,
+.live-agent[aria-pressed='true'] .live-agent-name {
+  opacity: 1;
+}
+.live-agent:focus-visible,
+.close-note:focus-visible {
+  outline: 2px solid #b2efff;
+  outline-offset: 6px;
+}
+/* The detail floats below the CTA group without changing the hero's alignment. */
+/* Match the Pantheon panel: cool upper-left light fading into a deep navy surface. */
+.agent-note-anchor {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  width: min(400px, calc(100vw - 40px));
+  margin-top: 24px;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+.agent-note {
+  --note-color: #7dd3fc;
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  padding: 21px 24px 23px;
+  text-align: left;
+  border: 1px solid rgba(161, 197, 230, 0.12);
+  border-radius: 25px;
+  background:
+    radial-gradient(ellipse at 0% 0%, rgba(52, 83, 151, 0.14), transparent 62%),
+    linear-gradient(145deg, #0c1420, #080e17 68%);
+  box-shadow:
+    0 4px 10px -5px #0005,
+    0 22px 50px -20px #000b,
+    inset 0 1px 0 rgba(211, 230, 255, 0.035);
+  font-family: var(--font-geist-sans), sans-serif;
+  pointer-events: auto;
+}
+.agent-note[hidden] {
+  display: none;
+}
+.agent-note-content {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr);
+  column-gap: 13px;
+  row-gap: 13px;
+  align-items: center;
+}
+.note-text {
+  display: contents;
+}
+.note-emblem {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid color-mix(in srgb, var(--note-color) 23%, transparent);
+  border-radius: 50%;
+  color: color-mix(in srgb, var(--note-color) 55%, white);
+  background:
+    linear-gradient(145deg, #ffffff0b, transparent),
+    color-mix(in srgb, var(--note-color) 6%, transparent);
+  box-shadow: inset 0 1px 0 #ffffff0d;
+}
+.note-emblem svg {
+  width: 19px;
+  height: 19px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.note-heading {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  margin: 0;
+  padding-right: 20px;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.note-heading strong {
+  font-size: 17px;
+  line-height: 1.3;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: #f5f8fc;
+}
+.note-role {
+  font-size: 12px;
+  line-height: 1.4;
+  font-weight: 450;
+  letter-spacing: 0;
+  color: #c8d4e0;
+}
+.agent-note p {
+  grid-column: 1/-1;
+  font-size: 14px;
+  line-height: 1.6;
+  font-weight: 450;
+  letter-spacing: 0;
+  color: #d6e0eb;
+  margin: 0;
+  text-wrap: pretty;
+}
+.close-note {
+  position: absolute;
+  z-index: 2;
+  right: 5px;
+  top: 5px;
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  background: none;
+  color: #c8d4e0;
+  cursor: pointer;
+  transition:
+    color 0.2s,
+    background 0.2s;
+}
+.close-note:hover {
+  color: #fff;
+  background: #ffffff09;
+}
+.close-note svg {
+  width: 14px;
+  height: 14px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+}
+/* The compact constellation surrounds only the wordmark. Copy and details stay in flow. */
+@media (max-width: 1199px), (max-height: 699px) {
+  .hero {
+    --hero-compact: 1;
+    --orbit-height: clamp(280px, min(90vw, 44svh), 420px);
+    --field-top: 0px;
+    display: block;
+    min-height: 0;
+    padding: var(--field-top) 16px 40px;
+  }
+  .hero-core {
+    display: contents;
+  }
+  .hero-brand {
+    z-index: 10;
+    display: grid;
+    place-items: center;
+    height: var(--orbit-height);
+    pointer-events: none;
+  }
+  .wordmark {
+    font-size: min(clamp(112px, 27vw, 180px), calc(var(--orbit-height) * 0.4));
+  }
+  .hero-copy {
+    z-index: 10;
+    width: min(100%, 560px);
+    margin: 0 auto;
+    text-align: center;
+  }
+  .tagline {
+    margin-top: 12px;
+    font-size: 14px;
+  }
+  .hero-actions {
+    gap: 12px;
+    margin-top: 20px;
+  }
+  .work-link,
+  .project-link {
+    gap: 8px;
+    min-height: 46px;
+    padding: 12px 18px;
+    font-size: 13px;
+  }
+  .live-agents {
+    top: var(--field-top);
+    bottom: auto;
+    right: auto;
+    left: 50%;
+    width: min(100%, 720px);
+    height: var(--orbit-height);
+    transform: translateX(-50%);
+  }
+  .live-agent {
+    left: calc(50% + var(--nx) * min(calc((100% - 72px) / 1.7), 260px));
+    top: calc(50% + var(--ny) * min(44%, 200px));
+    width: 44px;
+    min-height: 44px;
+    transform: translate(-50%, -14px);
+    padding: 0;
+  }
+  .live-agent[data-agent='iris'] {
+    left: calc(50% - max(28px, 0.18 * min(calc((100% - 72px) / 1.7), 260px)));
+  }
+  .live-agent[data-agent='dionysus'] {
+    left: calc(50% + max(28px, 0.18 * min(calc((100% - 72px) / 1.7), 260px)));
+  }
+  .live-agent-icon {
+    width: 28px;
+    height: 28px;
+  }
+  .live-agent-icon svg {
+    width: 14px;
+    height: 14px;
+  }
+  .live-agent-name {
+    display: block;
+    margin-top: 7px;
+    font-size: 10px;
+    line-height: 1.4;
+    white-space: nowrap;
+    color: #b4c4d4;
+    opacity: 1;
+  }
+  .live-agent-role {
+    display: none;
+  }
+  .agent-note-anchor {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: min(400px, 100%);
+    min-height: 0;
+    margin: 20px auto 0;
+    transform: none;
+  }
+  .agent-note-anchor:has(.agent-note[hidden]) {
+    display: none;
+  }
+  .agent-note {
+    padding: 19px 20px 21px;
+    border-radius: 23px;
+  }
+  .hero-caption {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    margin: 28px auto 0;
+    text-align: center;
+  }
+}
+@media (min-width: 640px) and (max-width: 1199px),
+  (min-width: 640px) and (max-height: 699px) {
+  .hero {
+    --field-top: 80px;
+    --orbit-height: clamp(340px, min(62vw, 48svh), 440px);
+    padding-inline: 24px;
+  }
+}
+@media (max-height: 699px) {
+  .hero {
+    --orbit-height: clamp(280px, 46svh, 340px);
+  }
+}
+@media (max-width: 359px) {
+  .hero-actions {
+    gap: 8px;
+  }
+  .work-link,
+  .project-link {
+    width: auto;
+    padding-inline: 14px;
+    font-size: 12px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .live-agent-icon,
+  .live-agent-name,
+  .work-link,
+  .project-link,
+  .close-note {
+    transition: none;
+  }
+}
+
+@media (prefers-contrast: more) {
+  .agent-note {
+    background: #0c1520;
+    border-color: #8d9bab;
+  }
+  .agent-note p,
+  .note-role {
+    color: #f5f8fc;
+  }
+}
+
+@media (max-width: 639px) {
+  .hero {
+    padding-bottom: 28px;
+  }
+  .tagline {
+    max-width: 310px;
+    font-size: 15px;
+    line-height: 1.6;
+    margin-top: 18px;
+  }
+  .hero-actions {
+    margin-top: 24px;
+    gap: 10px;
+  }
+  .hero-caption {
+    font-size: 10px;
+    letter-spacing: 0.09em;
+  }
+}

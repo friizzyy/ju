@@ -1,0 +1,224 @@
+.section {
+  position: relative;
+  padding: 48px 24px;
+  scroll-margin-top: 96px;
+}
+
+.divider {
+  height: 1px;
+  max-width: 512px;
+  margin: 0 auto 56px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(0, 212, 255, 0.15) 30%,
+    rgba(0, 212, 255, 0.25) 50%,
+    rgba(0, 212, 255, 0.15) 70%,
+    transparent 100%
+  );
+}
+
+.container {
+  max-width: 672px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.title {
+  margin: 0;
+  color: #f0f6fc;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+  text-wrap: balance;
+}
+
+.title span {
+  color: #00d4ff;
+}
+
+.invitation {
+  min-width: 0;
+}
+
+.intro {
+  margin: 24px 0 48px;
+  color: #a4b5c5;
+  font-size: 14px;
+  line-height: 1.65;
+  text-wrap: pretty;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.primary,
+.email {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 54px;
+  max-width: 100%;
+  padding: 16px 32px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  font-size: 14px;
+  line-height: 1.5;
+  text-decoration: none;
+}
+
+.emailShort {
+  display: none;
+}
+
+.primary {
+  background: #00d4ff;
+  color: #080b10;
+  font-weight: 600;
+  transition:
+    background 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.primary svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.email {
+  border-color: rgba(255, 255, 255, 0.08);
+  color: #a4b5c5;
+  overflow-wrap: anywhere;
+  transition:
+    color 180ms ease,
+    border-color 180ms ease;
+}
+
+.primary:focus-visible,
+.email:focus-visible {
+  outline: 2px solid #b2efff;
+  outline-offset: 5px;
+}
+
+@media (hover: hover) {
+  .primary:hover {
+    background: #57e0fb;
+    box-shadow: 0 0 50px rgba(0, 212, 255, 0.25);
+  }
+
+  .email:hover {
+    color: #f0f6fc;
+    border-color: rgba(255, 255, 255, 0.15);
+  }
+}
+
+@media (min-width: 640px) {
+  .section {
+    padding: 128px 24px;
+  }
+  .title {
+    font-size: 48px;
+  }
+  .actions {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section {
+    padding: 176px 24px;
+  }
+  .title {
+    font-size: 60px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .primary,
+  .email {
+    transition: none;
+  }
+}
+
+@media (max-width: 639px) {
+  .section {
+    padding: 40px 24px 64px;
+  }
+  .divider {
+    margin-bottom: 40px;
+  }
+  .title {
+    font-size: 44px;
+  }
+  .intro {
+    max-width: 400px;
+    margin: 22px auto 30px;
+    font-size: 14px;
+    line-height: 1.7;
+  }
+  .actions {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+    align-items: stretch;
+    gap: 8px;
+    max-width: 400px;
+    margin-inline: auto;
+  }
+  .primary,
+  .email {
+    min-width: 0;
+    min-height: 50px;
+    padding: 13px 10px;
+    gap: 6px;
+    font-size: 13px;
+  }
+  .primary svg {
+    width: 14px;
+    height: 14px;
+  }
+  .emailFull {
+    display: none;
+  }
+  .emailShort {
+    display: inline;
+  }
+}
+@media (min-width: 640px) and (max-width: 1199px) {
+  .section {
+    padding: 80px 24px;
+  }
+  .title {
+    font-size: 56px;
+  }
+  .intro {
+    max-width: 520px;
+    margin-inline: auto;
+    font-size: 15px;
+  }
+}
+@media (max-width: 359px) {
+  .title {
+    font-size: 38px;
+  }
+  .primary,
+  .email {
+    font-size: 12px;
+  }
+  .primary svg {
+    display: none;
+  }
+}

@@ -1,0 +1,189 @@
+.explorer {
+  display: grid;
+  gap: 24px;
+  min-width: 0;
+}
+.spotlight {
+  position: relative;
+  min-width: 0;
+  padding: 22px;
+  border: 1px solid color-mix(in srgb, var(--agent-color) 24%, #172334);
+  border-radius: 20px;
+  background:
+    radial-gradient(
+      ellipse at 0 0,
+      color-mix(in srgb, var(--agent-color) 14%, transparent),
+      transparent 75%
+    ),
+    linear-gradient(145deg, #101c2a, #090f18);
+  box-shadow: inset 0 1px 0 #d3e6ff08;
+  transition: border-color 180ms ease;
+}
+.identity {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.identity > div {
+  min-width: 0;
+}
+.identity h3 {
+  margin: 0;
+  color: #eff6fc;
+  font-size: 22px;
+  line-height: 1.25;
+  letter-spacing: -0.035em;
+  font-weight: 500;
+}
+.role {
+  margin: 5px 0 0;
+  color: #a0b7ca;
+  font:
+    10px/1.5 var(--font-jetbrains-mono),
+    monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+}
+.emblem,
+.memberEmblem {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  color: var(--agent-color);
+  border-radius: 50%;
+  border: 1px solid color-mix(in srgb, var(--agent-color) 36%, transparent);
+  background: color-mix(in srgb, var(--agent-color) 10%, #0b1420);
+}
+.emblem {
+  width: 48px;
+  height: 48px;
+  box-shadow: 0 0 32px color-mix(in srgb, var(--agent-color) 16%, transparent);
+}
+.emblem svg {
+  width: 23px;
+  height: 23px;
+}
+.emblem svg,
+.memberEmblem svg {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.35;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.description {
+  min-height: 3.3em;
+  margin: 18px 0 0;
+  font-size: 14px;
+  line-height: 1.65;
+  color: #bacbda;
+  text-wrap: pretty;
+}
+.directory {
+  min-width: 0;
+}
+.label {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 0 0 12px;
+  color: #c2d1de;
+  font-size: 11px;
+}
+.label span {
+  color: #7893ab;
+}
+.members {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+.members button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-width: 0;
+  min-height: 78px;
+  padding: 10px 4px;
+  border: 1px solid transparent;
+  border-radius: 14px;
+  color: #b6c9d9;
+  background: transparent;
+  font-size: 11px;
+  line-height: 1.4;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition:
+    color 160ms ease,
+    background-color 160ms ease,
+    border-color 160ms ease;
+}
+.memberEmblem {
+  width: 32px;
+  height: 32px;
+}
+.memberEmblem svg {
+  width: 16px;
+  height: 16px;
+}
+.members button[aria-pressed='true'] {
+  color: #eef7ff;
+  background: color-mix(in srgb, var(--agent-color) 8%, #0c1520);
+  border-color: color-mix(in srgb, var(--agent-color) 26%, transparent);
+}
+.members button:focus-visible {
+  outline-offset: 2px;
+}
+@media (hover: hover) {
+  .members button:hover {
+    background: #ffffff06;
+    color: #eef7ff;
+  }
+}
+@media (min-width: 640px) {
+  .explorer {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+    align-items: stretch;
+    gap: 28px;
+  }
+  .spotlight {
+    padding: 24px 20px;
+    display: flex;
+    align-items: center;
+  }
+  .identity {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+  .emblem {
+    width: 64px;
+    height: 64px;
+  }
+  .emblem svg {
+    width: 30px;
+    height: 30px;
+  }
+  .identity h3 {
+    font-size: 28px;
+  }
+  .description {
+    margin-top: 24px;
+  }
+  .members button {
+    min-height: 88px;
+    font-size: 12px;
+  }
+  .memberEmblem {
+    width: 36px;
+    height: 36px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .spotlight,
+  .members button {
+    transition: none;
+  }
+}

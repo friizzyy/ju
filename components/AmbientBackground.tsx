@@ -18,7 +18,9 @@ export default function AmbientBackground({ color = [0, 180, 220], particleCount
     const ctx = cvs.getContext('2d')
     if (!ctx) return
 
-    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)')
+    let reduced = motionPreference.matches
+    let visible = false
     const dpr = Math.min(window.devicePixelRatio || 1, 2)
     let w = 0, h = 0
 
@@ -44,6 +46,7 @@ export default function AmbientBackground({ color = [0, 180, 220], particleCount
       w = r.width; h = r.height
       cvs!.width = w * dpr; cvs!.height = h * dpr
       cvs!.style.width = '100%'; cvs!.style.height = '100%'
+      restart()
     }
 
     function draw(time: number) {
@@ -66,7 +69,7 @@ export default function AmbientBackground({ color = [0, 180, 220], particleCount
       }
 
       // Mouse glow
-      if (mx > 0) {
+      if (!reduced && mx > 0) {
         const g = c.createRadialGradient(mx, my, 0, mx, my, 180)
         g.addColorStop(0, `rgba(${color[0]},${color[1]},${color[2]},0.04)`)
         g.addColorStop(1, `rgba(${color[0]},${color[1]},${color[2]},0)`)
@@ -76,8 +79,10 @@ export default function AmbientBackground({ color = [0, 180, 220], particleCount
 
       // Particles
       for (const p of particles) {
-        p.x += p.vx
-        p.y += p.vy
+        if (!reduced) {
+          p.x += p.vx
+          p.y += p.vy
+        }
         if (p.x < -0.05) p.x = 1.05
         if (p.x > 1.05) p.x = -0.05
         if (p.y < -0.05) p.y = 1.05
@@ -93,25 +98,43 @@ export default function AmbientBackground({ color = [0, 180, 220], particleCount
         c.fill()
       }
 
-      raf.current = requestAnimationFrame(draw)
+      raf.current = !reduced && visible && !document.hidden
+        ? requestAnimationFrame(draw)
+        : 0
+    }
+
+    function restart() {
+      cancelAnimationFrame(raf.current)
+      raf.current = 0
+      if (visible && !document.hidden) draw(performance.now())
+    }
+
+    const onMotionChange = () => {
+      reduced = motionPreference.matches
+      restart()
     }
 
     resize()
     window.addEventListener('resize', resize)
+    motionPreference.addEventListener('change', onMotionChange)
+    document.addEventListener('visibilitychange', restart)
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          raf.current = requestAnimationFrame(draw)
-        } else {
-          cancelAnimationFrame(raf.current)
-        }
+        visible = entry.isIntersecting
+        restart()
       },
       { threshold: 0.01 }
     )
     observer.observe(cvs)
 
-    return () => { window.removeEventListener('resize', resize); cancelAnimationFrame(raf.current); observer.disconnect() }
+    return () => {
+      window.removeEventListener('resize', resize)
+      motionPreference.removeEventListener('change', onMotionChange)
+      document.removeEventListener('visibilitychange', restart)
+      cancelAnimationFrame(raf.current)
+      observer.disconnect()
+    }
   }, [color, particleCount])
 
   useEffect(() => {
@@ -128,6 +151,7 @@ export default function AmbientBackground({ color = [0, 180, 220], particleCount
   return (
     <canvas
       ref={canvasRef}
+      aria-hidden="true"
       className="fixed inset-0 w-full h-full pointer-events-none"
       style={{ zIndex: 0, willChange: 'transform' }}
     />

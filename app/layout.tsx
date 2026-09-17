@@ -3,10 +3,10 @@ import { GeistSans } from 'geist/font/sans'
 import { JetBrains_Mono } from 'next/font/google'
 import Navigation from '@/components/Navigation'
 import ScrollToTop from '@/components/ScrollToTop'
-import CustomCursor from '@/components/CustomCursor'
 import PageTransition from '@/components/PageTransition'
 import AmbientBackground from '@/components/AmbientBackground'
 import Footer from '@/components/Footer'
+import layoutStyles from './Layout.module.css'
 import './globals.css'
 
 const jetbrainsMono = JetBrains_Mono({
@@ -55,10 +55,9 @@ export default function RootLayout({
     <html lang="en" className={`${GeistSans.variable} ${jetbrainsMono.variable}`}>
       <body className="bg-background text-foreground font-sans antialiased">
         <AmbientBackground />
-        <CustomCursor />
         <ScrollToTop />
         <Navigation />
-        <main className="relative z-10 pb-20 sm:pb-0 pt-16 sm:pt-0">
+        <main className={`${layoutStyles.main} relative z-10`}>
           <PageTransition>{children}</PageTransition>
         </main>
         <Footer />

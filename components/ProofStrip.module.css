@@ -1,0 +1,154 @@
+.section {
+  padding: 72px 24px 64px;
+  scroll-margin-top: 96px;
+}
+
+.strip {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  max-width: 1152px;
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+}
+
+.fact {
+  min-width: 0;
+  padding: 8px 24px;
+  text-align: center;
+}
+
+.fact + .fact {
+  border-left: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.value {
+  margin: 0 0 18px;
+  color: #f0f6fc;
+  font-size: clamp(52px, 5vw, 68px);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.055em;
+  font-variant-numeric: tabular-nums;
+}
+
+.suffix {
+  margin-left: 2px;
+  color: #b1c5d6;
+  font-size: 0.68em;
+  font-weight: 400;
+  vertical-align: 0.08em;
+}
+
+.label {
+  margin: 0;
+  color: #c4d0dc;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0.025em;
+}
+
+.detail {
+  margin: 6px 0 0;
+  color: #9baab9;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  margin-top: 10px;
+  padding: 4px 2px;
+  border-radius: 4px;
+  color: #b7cddd;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.5;
+  text-decoration: none;
+  transition: color 180ms ease;
+}
+
+.link span {
+  color: #76cbdc;
+}
+
+.link:hover,
+.link:focus-visible {
+  color: #eef8ff;
+}
+
+.link:focus-visible {
+  outline: 2px solid #76cbdc;
+  outline-offset: 4px;
+}
+
+@media (min-width: 1024px) {
+  .section {
+    padding-top: 88px;
+  }
+}
+
+@media (max-width: 639px) {
+  .section {
+    padding: 32px 16px 24px;
+  }
+  .strip {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .fact {
+    display: flex;
+    flex-direction: column;
+    padding: 6px 8px;
+  }
+  .value {
+    margin-bottom: 16px;
+    font-size: 44px;
+  }
+  .copy {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+  .label {
+    font-size: 12px;
+    letter-spacing: 0;
+  }
+  .detail {
+    font-size: 11px;
+    line-height: 1.6;
+    margin-top: 8px;
+  }
+  .link {
+    margin-top: auto;
+    padding-top: 12px;
+    font-size: 11px;
+    gap: 5px;
+  }
+}
+@media (min-width: 640px) and (max-width: 1199px) {
+  .section {
+    padding: 40px 24px 24px;
+  }
+}
+@media (max-width: 359px) {
+  .fact {
+    padding-inline: 6px;
+  }
+  .value {
+    font-size: 38px;
+  }
+  .link {
+    gap: 3px;
+    font-size: 10px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .link {
+    transition: none;
+  }
+}

@@ -1,0 +1,235 @@
+.card {
+  min-width: 0;
+  background: rgba(var(--service-rgb), 0.03);
+  border-color: rgba(var(--service-rgb), 0.12);
+  transition:
+    transform 320ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 320ms ease;
+}
+
+.card h2 {
+  overflow-wrap: anywhere;
+  text-wrap: balance;
+}
+
+.title {
+  font-size: clamp(32px, 7.7vw, 48px);
+  line-height: 1.08;
+}
+
+.description {
+  text-wrap: pretty;
+}
+.marquee {
+  color: #91a1b2;
+}
+.mobileHeading,
+.mobileFeatures {
+  display: none;
+}
+@media (max-width: 1023px) {
+  .desktopFeatures {
+    display: none;
+  }
+  .section {
+    padding: 40px 16px 28px;
+  }
+  .mobileHeading {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 8px;
+    margin: 0 4px 16px;
+  }
+  .mobileHeading p {
+    margin: 0;
+    color: #dbe8f2;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+  }
+  .mobileHeading span {
+    color: #8fa3b6;
+    font-size: 10px;
+  }
+  .body {
+    padding: 24px;
+  }
+  .category {
+    margin-bottom: 22px;
+  }
+  .title {
+    font-size: 34px;
+    margin-bottom: 12px;
+    padding-bottom: 0;
+  }
+  .description {
+    margin-bottom: 12px;
+    font-size: 14px;
+    line-height: 1.65;
+  }
+  .mobileFeatures {
+    display: block;
+    margin-top: auto;
+    margin-bottom: 8px;
+  }
+  .featureList {
+    display: grid;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    color: #adbdcd;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+  .featureList li {
+    padding-left: 14px;
+    position: relative;
+  }
+  .featureList li::before {
+    content: '';
+    width: 5px;
+    height: 1px;
+    background: var(--service-ink);
+    position: absolute;
+    left: 0;
+    top: 10px;
+  }
+  .pricing {
+    gap: 16px;
+    padding-top: 16px;
+  }
+  .link {
+    padding-inline: 16px;
+    font-size: 12px;
+  }
+}
+@media (max-width: 1023px) {
+  .card {
+    border-radius: 24px;
+    background:
+      radial-gradient(
+        ellipse at 0 0,
+        rgba(var(--service-rgb), 0.12),
+        transparent 68%
+      ),
+      linear-gradient(145deg, #101522, #0a0f18);
+  }
+  .card:hover {
+    transform: none;
+  }
+  .ribbon {
+    padding-block: 18px;
+  }
+  .ribbon span {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+  }
+}
+@media (min-width: 640px) and (max-width: 1023px) {
+  .section {
+    padding: 48px 24px 40px;
+  }
+  .body {
+    padding: 32px;
+  }
+  .title {
+    font-size: 44px;
+  }
+  .category {
+    margin-bottom: 28px;
+  }
+  .mobileHeading p {
+    font-size: 22px;
+  }
+  .mobileHeading span {
+    font-size: 12px;
+  }
+}
+@media (max-width: 359px) {
+  .body {
+    padding: 18px;
+  }
+  .title {
+    font-size: 30px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .title {
+    font-size: clamp(44px, 4.5vw, 56px);
+  }
+}
+
+.wash {
+  opacity: 0;
+  background: radial-gradient(
+    ellipse at top,
+    rgba(var(--service-rgb), 0.07),
+    transparent 60%
+  );
+  transition: opacity 320ms ease;
+}
+
+.link {
+  max-width: 100%;
+  white-space: normal;
+  min-height: 44px;
+  flex-shrink: 0;
+  color: var(--service-ink);
+  background: rgba(var(--service-rgb), 0.1);
+  border: 1px solid rgba(var(--service-rgb), 0.25);
+  transition:
+    background-color 240ms ease,
+    border-color 240ms ease;
+}
+
+.card:focus-within {
+  border-color: rgba(var(--service-rgb), 0.35);
+}
+
+.card:focus-within .wash {
+  opacity: 1;
+}
+
+.link:focus-visible {
+  background: rgba(var(--service-rgb), 0.2);
+  border-color: rgba(var(--service-rgb), 0.55);
+  outline: 2px solid var(--service-ink);
+  outline-offset: 4px;
+}
+
+@media (hover: hover) {
+  .card:hover {
+    border-color: rgba(var(--service-rgb), 0.35);
+  }
+
+  .card:hover .wash {
+    opacity: 1;
+  }
+
+  .card:hover .link {
+    background: rgba(var(--service-rgb), 0.15);
+  }
+
+  .card .link:hover {
+    background: rgba(var(--service-rgb), 0.2);
+    border-color: rgba(var(--service-rgb), 0.55);
+  }
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .card:hover {
+    transform: translateY(-3px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .wash,
+  .link {
+    transition: none;
+  }
+}

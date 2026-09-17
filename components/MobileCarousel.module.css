@@ -1,0 +1,109 @@
+.carousel {
+  --rail-gap: 12px;
+  --rail-gutter: 16px;
+  --rail-peek: 56px;
+  min-width: 0;
+  margin-right: calc(-1 * var(--rail-gutter));
+}
+.track {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  gap: var(--rail-gap);
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  border-radius: 0;
+}
+.track::after {
+  content: '';
+  flex: 0 0 calc(var(--rail-gutter) - var(--rail-gap));
+}
+.track::-webkit-scrollbar {
+  display: none;
+}
+.slide {
+  flex: 0 0 min(560px, calc(100% - var(--rail-peek)));
+  min-width: 0;
+  scroll-snap-align: start;
+}
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 12px;
+  padding-right: var(--rail-gutter);
+}
+.position {
+  color: #7f91a5;
+  font:
+    11px/1.5 var(--font-jetbrains-mono),
+    monospace;
+  font-variant-numeric: tabular-nums;
+}
+.position span {
+  color: #d7e3ef;
+}
+.buttons {
+  display: flex;
+  gap: 8px;
+}
+.buttons button {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid #ffffff12;
+  border-radius: 50%;
+  background: #ffffff04;
+  color: #d7e3ef;
+  font-size: 18px;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition:
+    background-color 140ms ease,
+    opacity 140ms ease;
+}
+.buttons button:active {
+  background: #ffffff14;
+}
+.buttons button:disabled {
+  opacity: 0.28;
+  cursor: default;
+}
+@media (min-width: 640px) {
+  .carousel {
+    --rail-gap: 20px;
+    --rail-gutter: 24px;
+    --rail-peek: clamp(120px, 20vw, 200px);
+  }
+}
+@media (max-width: 359px) {
+  .carousel {
+    --rail-peek: 36px;
+  }
+}
+@media (min-width: 1024px) {
+  .desktopGrid {
+    margin-right: 0;
+  }
+  .desktopGrid .track {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+    overflow: visible;
+    border-radius: 0;
+  }
+  .desktopGrid .track::after {
+    display: none;
+  }
+  .desktopGrid .controls {
+    display: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .buttons button {
+    transition: none;
+  }
+}

@@ -1,47 +1,71 @@
 import Link from 'next/link'
+import styles from './Footer.module.css'
+
+const groups = [
+  {
+    name: 'JU. Studio',
+    className: styles.studio,
+    links: [
+      { label: 'Portfolio', href: '/studio#portfolio' },
+      { label: 'Pricing', href: '/studio#pricing' },
+      {
+        label: 'Start a project',
+        href: 'https://calendly.com/julius-buildwithju/30min',
+      },
+    ],
+  },
+  {
+    name: 'JU. Systems',
+    className: styles.systems,
+    links: [
+      { label: 'How it works', href: '/systems#process' },
+      { label: 'Packages', href: '/systems#packages' },
+      {
+        label: 'Book a call',
+        href: 'https://calendly.com/julius-buildwithju/30min',
+      },
+    ],
+  },
+]
 
 export default function Footer() {
   return (
-    <footer className="relative px-6 pt-24 pb-24 sm:pb-10 border-t border-white/[0.03] z-10">
-      <div className="max-w-6xl mx-auto">
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-12 mb-16">
-          <div>
-            <p className="text-3xl font-bold tracking-[-0.03em] mb-3">JU.</p>
-            <p className="text-xs text-muted/40 leading-relaxed max-w-[200px]">Custom websites and AI systems. Built to run while you sleep.</p>
-            <p className="font-mono text-[10px] text-muted/20 mt-4 tracking-wider">SAN FRANCISCO, CA</p>
-          </div>
-          <div>
-            <p className="font-mono text-[9px] tracking-[0.25em] uppercase text-studio/40 mb-4">JU. Studio</p>
-            <div className="space-y-2">
-              {[
-                { label: 'Portfolio', href: '/studio#portfolio' },
-                { label: 'Pricing', href: '/studio#pricing' },
-                { label: 'Start a project', href: 'https://calendly.com/julius-buildwithju/30min' },
-              ].map(item => (
-                <div key={item.label}>
-                  <Link href={item.href} className="text-sm text-muted/40 hover:text-foreground transition-colors duration-300">{item.label}</Link>
-                </div>
-              ))}
+    <footer id="site-footer" className={styles.footer}>
+      <div className={styles.container}>
+        <div className={styles.grid}>
+          <div className={styles.brand}>
+            <p className={styles.wordmark}>
+              JU<span>.</span>
+            </p>
+            <p className={styles.description}>
+              Custom websites and AI systems. Built to run while you sleep.
+            </p>
+            <div className={styles.details}>
+              <p className={`${styles.location} ${styles.meta}`}>
+                San Francisco, CA
+              </p>
+              <p className={`${styles.copyright} ${styles.meta}`}>
+                &copy; {new Date().getFullYear()} JU. All rights reserved.
+              </p>
             </div>
           </div>
-          <div>
-            <p className="font-mono text-[9px] tracking-[0.25em] uppercase text-zeus/40 mb-4">JU. Systems</p>
-            <div className="space-y-2">
-              {[
-                { label: 'How it works', href: '/systems#process' },
-                { label: 'Packages', href: '/systems#packages' },
-                { label: 'Book a call', href: 'https://calendly.com/julius-buildwithju/30min' },
-              ].map(item => (
-                <div key={item.label}>
-                  <Link href={item.href} className="text-sm text-muted/40 hover:text-foreground transition-colors duration-300">{item.label}</Link>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-        <div className="flex flex-col sm:flex-row justify-between items-center gap-4 pt-8 border-t border-white/[0.03]">
-          <p className="font-mono text-[10px] text-muted/20 tracking-wider">&copy; {new Date().getFullYear()} JU. ALL RIGHTS RESERVED</p>
-          <a href="mailto:julius@buildwithju.com" className="font-mono text-[10px] text-muted/20 hover:text-foreground transition-colors tracking-wider">JULIUS@BUILDWITHJU.COM</a>
+
+          {groups.map((group) => (
+            <nav key={group.name} aria-label={`${group.name} footer`}>
+              <h2 className={`${styles.heading} ${group.className}`}>
+                {group.name}
+              </h2>
+              <ul className={styles.links}>
+                {group.links.map((item) => (
+                  <li key={item.label}>
+                    <Link href={item.href} className={styles.link}>
+                      {item.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          ))}
         </div>
       </div>
     </footer>

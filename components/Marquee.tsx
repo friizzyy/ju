@@ -1,6 +1,7 @@
 'use client'
 
 import { ReactNode } from 'react'
+import styles from './Marquee.module.css'
 
 interface Props {
   children: ReactNode
@@ -20,12 +21,18 @@ export default function Marquee({
   const dir = reverse ? 'reverse' : 'normal'
   return (
     <div
-      className={`marquee-track overflow-hidden ${pauseOnHover ? 'hover:[--play:paused]' : ''} ${className}`}
+      className={`marquee-track ${styles.track} ${pauseOnHover ? 'hover:[--play:paused]' : ''} ${className}`}
       style={{ '--speed': `${speed}s`, '--dir': dir } as React.CSSProperties}
     >
-      <div className="marquee-inner">
-        {children}
-        {children}
+      <div className={`marquee-inner ${styles.inner}`}>
+        <div className={styles.group}>{children}</div>
+        <div
+          className={`${styles.group} ${styles.copy}`}
+          aria-hidden="true"
+          inert
+        >
+          {children}
+        </div>
       </div>
     </div>
   )

@@ -1,0 +1,122 @@
+.scene {
+  width: 100%;
+  min-width: 0;
+}
+.illustration {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 520 / 470;
+}
+.wideIllustration {
+  display: none;
+  aspect-ratio: 760 / 470;
+}
+@media (min-width: 640px) {
+  .compactIllustration {
+    display: none;
+  }
+  .wideIllustration {
+    display: block;
+  }
+}
+.reveal {
+  transition:
+    opacity 450ms ease var(--delay),
+    transform 550ms cubic-bezier(0.22, 1, 0.36, 1) var(--delay);
+}
+.reveal[data-visible='false'] {
+  opacity: 0;
+  transform: translateY(5px);
+}
+.reveal[data-visible='true'] {
+  opacity: 1;
+  transform: translateY(0);
+}
+.bar {
+  transform-box: fill-box;
+  transform-origin: left center;
+  transition:
+    transform 650ms cubic-bezier(0.22, 1, 0.36, 1) var(--delay),
+    opacity 300ms ease var(--delay);
+}
+.bar[data-visible='false'] {
+  transform: scaleX(0.02);
+  opacity: 0;
+}
+.bar[data-visible='true'] {
+  transform: scaleX(1);
+  opacity: 1;
+}
+.status {
+  color: #b99bf8;
+}
+.status rect {
+  fill: currentColor;
+  fill-opacity: 0.08;
+  stroke: currentColor;
+  stroke-opacity: 0.2;
+}
+.status circle,
+.status text {
+  fill: currentColor;
+}
+.status[data-complete='true'] {
+  color: #77cfa5;
+}
+.cursor {
+  opacity: 0;
+  pointer-events: none;
+}
+.scene[data-playing='true'] .cursor {
+  animation: build-cursor 4.1s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+.scene[data-motion='false'] .reveal,
+.scene[data-motion='false'] .bar {
+  transition: none;
+}
+.scene[data-motion='false'] .cursor {
+  animation: none;
+}
+@keyframes build-cursor {
+  0% {
+    transform: translate(var(--cursor-start-x, 407px), 111px);
+    opacity: 0;
+  }
+  12% {
+    transform: translate(var(--cursor-nav-x, 429px), 112px);
+    opacity: 0.8;
+  }
+  33% {
+    transform: translate(var(--cursor-hero-x, 315px), 184px);
+    opacity: 0.8;
+  }
+  55% {
+    transform: translate(121px, 261px);
+    opacity: 0.8;
+  }
+  77% {
+    transform: translate(var(--cursor-card-x, 302px), 338px);
+    opacity: 0.8;
+  }
+  90% {
+    transform: translate(var(--cursor-footer-x, 430px), 413px);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate(var(--cursor-end-x, 443px), 422px);
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .bar {
+    transition: none;
+  }
+  .cursor {
+    animation: none !important;
+  }
+  .cursor {
+    opacity: 0 !important;
+  }
+}
