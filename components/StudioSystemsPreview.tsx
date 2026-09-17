@@ -7,6 +7,7 @@ export default function StudioSystemsPreview() {
   const [organized, setOrganized] = useState(true)
   return <div className={s.workspace}>
     <div className={s.toolbar}>
+      <span className={s.windowDots} aria-hidden="true"><i /><i /><i /></span>
       <span className={s.workspaceName}><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="3" y="3" width="14" height="14" rx="4" /><path d="M7 7h6M7 10h6M7 13h3" /></svg>Client workspace</span>
       <span className={s.example}>Example</span>
     </div>

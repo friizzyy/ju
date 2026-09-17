@@ -66,7 +66,7 @@ export default function StudioEnding() {
             </div>
             <WorkflowIllustration />
             <div className={s.mobileWorkspace}><StudioSystemsPreview /></div>
-            <Link href="/systems" className={`${s.systemsLink} ${s.mobileLink}`}>Explore JU. Systems <span aria-hidden="true">↗</span></Link>
+            <Link href="/systems" className={`${s.systemsLink} ${s.mobileLink}`}>Explore JU. Systems <span aria-hidden="true">→</span></Link>
           </div>
         </div>
       </section>

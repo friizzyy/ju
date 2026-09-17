@@ -95,15 +95,19 @@
   .mobileWorkspace { min-width: 0; }
 }
 @media (max-width: 760px) {
-  .systemsPanel { grid-template-columns: minmax(0, 1fr); gap: 0; padding-top: 30px; }
+  .systemsPanel { grid-template-columns: minmax(0, 1fr); gap: 0; padding: 24px; border: 1px solid #8baada26; border-radius: 22px; background: linear-gradient(140deg, #1c2431, #121b28 65%, #0e151f); overflow: hidden; }
   .systemsContent { display: contents; }
-  .serviceLabel { order: 0; margin-bottom: 16px; }
-  .systemsContent h2 { order: 1; font-size: clamp(30px, 7.8vw, 40px); }
-  .systemsCopy { order: 2; max-width: 45ch; margin: 16px 0 24px; font-size: 14px; line-height: 1.7; }
-  .mobileWorkspace { order: 3; }
-  .systemsLink { order: 4; width: 100%; margin-top: 14px; }
+  .serviceLabel { order: 0; margin-bottom: 18px; color: #bfcde0; font-size: 14px; }
+  .systemsContent h2 { order: 1; font-size: 29px; line-height: 1.16; letter-spacing: -.045em; text-wrap: initial; }
+  .systemsCopy { order: 2; max-width: 45ch; margin: 16px 0 32px; color: #adb9cb; font-size: 13px; line-height: 1.8; }
+  .mobileWorkspace { order: 3; width: 100%; max-width: 460px; justify-self: center; }
+  .systemsLink { order: 4; width: 100%; max-width: 460px; justify-self: center; justify-content: center; gap: 10px; min-height: 48px; margin-top: 16px; padding: 12px 20px; border: 1px solid #8baada40; border-radius: 999px; background: #8baada1a; color: #c3d4ed; font-size: 13px; font-weight: 500; }
+  .systemsLink > span { display: inline; width: auto; height: auto; border: 0; border-radius: 0; font-size: inherit; }
+  .systemsLink:focus-visible { outline-color: #a7c4ec; }
+  .systemsLink:hover > span { background: none; }
   .desktopLink { display: none; }
   .mobileLink { display: inline-flex; }
 }
 @media (max-width: 639px) { .systemsSection { padding-inline: 20px; } }
-@media (max-width: 350px) { .systemsSection { padding-inline: 18px; } }
+@media (max-width: 760px) and (hover: hover) { .systemsLink:hover { background: #8baada33; border-color: #8baada8c; } }
+@media (max-width: 350px) { .systemsSection { padding-inline: 18px; } .systemsPanel { padding: 20px; } .systemsContent h2 { font-size: 26px; } }
