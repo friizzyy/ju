@@ -1,7 +1,7 @@
 import s from './SystemsFlow.module.css'
 
 const steps = [
-  { title: 'Map the work.', time: '45-minute discovery call', description: 'We walk through your tools, your team and the work that keeps piling up. No presentation needed. Just show me how things run.' },
+  { title: 'Map the work.', time: '30-minute discovery call', description: 'We walk through your tools, your team and the work that keeps piling up. No presentation needed. Just show me how things run.' },
   { title: 'Find the right fixes.', time: '5 or 10 business days', description: 'Your audit identifies the gaps, estimates the impact and puts the priorities in order. Choose a focused Snapshot or a deeper review.' },
   { title: 'Build it into your day.', time: 'Timeline agreed with scope', description: 'I build and test the systems around your existing tools. With an ongoing retainer, I keep them maintained as your business changes.' },
 ]

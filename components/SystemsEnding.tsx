@@ -33,8 +33,8 @@ export default function SystemsEnding() {
         <p className={s.eyebrow}>LET’S TALK ABOUT YOUR WORK</p>
         <h2 id="systems-closing-title">Make room for what’s next<span>.</span></h2>
         <p className={s.invitation}>Tell me what takes too much time, what keeps getting missed, or what you wish your tools could do. We’ll work out the right place to start.</p>
-        <a href="https://calendly.com/julius-buildwithju/systems-audit-45-min" target="_blank" rel="noopener noreferrer" className={s.bookingLink}>Talk with Julius <span aria-hidden="true">↗</span></a>
-        <p className={s.callNote}>45-minute discovery call</p>
+        <a href="https://calendly.com/julius-buildwithju/30min" target="_blank" rel="noopener noreferrer" className={s.bookingLink}>Talk with Julius <span aria-hidden="true">↗</span></a>
+        <p className={s.callNote}>30-minute discovery call</p>
       </div>
     </section>
   </div>
