@@ -84,7 +84,7 @@
 }
 
 .tab svg { width: 21px; height: 21px; flex-shrink: 0; }
-.tab > span { font-size: 10px; line-height: 1.2; font-weight: 500; letter-spacing: .01em; }
+.tab > span { font-size: 11px; line-height: 1.2; font-weight: 500; letter-spacing: .01em; }
 
 .tab[aria-current='page'] {
   color: var(--nav-ink);

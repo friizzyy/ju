@@ -125,4 +125,7 @@
 @media (max-width: 639px) {
   .hero, .questions { padding-inline: 20px; }.hero { padding-top: 44px; }.eyebrow { font-size: 11px; margin-bottom: 22px; gap: 7px; }.separator { margin-inline: 7px; }.intro h1 { font-size: clamp(72px, 18vw, 110px); }.lead { font-size: 14px; margin-top: 18px; }.invitation { margin-top: 30px; border-radius: 24px; }.conversation { padding: 23px 24px; }.conversation h2 { font-size: clamp(30px, 8vw, 38px); margin: 20px 0 12px; }.description { font-size: 13px; }.booking { padding: 25px 24px; }.bookingCopy { font-size: 12px; }.bookButton { max-width: none; }.emailRow { padding: 24px; }.emailIntro h2 { font-size: 13px; }.emailIntro p { font-size: 11px; }.emailLink { font-size: clamp(12px, 3.25vw, 14px); }.location { flex-direction: column; justify-content: center; text-align: center; padding-block: 22px; gap: 5px; }.questions { padding-top: 28px; }.questionsIntro h2 { font-size: clamp(28px, 7.4vw, 34px); }.desktopBreak { display: none; }
 }
+@media (max-width: 359px) {
+  .intro h1 { font-size: clamp(64px, 20vw, 72px); }
+}
 @media (prefers-reduced-motion: reduce) { .page *, .page *::before, .page *::after { animation: none !important; transition: none !important; } }

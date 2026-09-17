@@ -185,3 +185,8 @@ body::before {
   html { scroll-behavior: auto; }
   .marquee-inner { animation: none; }
 }
+
+/* Reserve the floating navigation area when focused controls scroll into view. */
+@media (max-width: 639px) {
+  html { scroll-padding-bottom: calc(112px + env(safe-area-inset-bottom, 0px)); }
+}

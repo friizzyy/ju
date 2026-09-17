@@ -70,8 +70,8 @@
   .desktopBreak { display: none; }
   .disciplines { gap: 15px; font-size: 10px; margin-top: 21px; }
   .glassButton { font-size: 11px; gap: 24px; padding: 16px 22px; min-height: 54px; margin-top: 31px; }
-  .footnote { left: 24px; right: 24px; bottom: 35px; font-size: 9px; }
+  .footnote { left: 24px; right: 24px; bottom: 35px; font-size: 10px; flex-wrap: wrap; gap: 8px 16px; }
   .readingSpace { background: radial-gradient(ellipse 54% 39% at 50% 46%, #111417f2 8%, #111417ab 55%, transparent 100%); }
 }
-@media(max-width: 359px) { .hero { padding-left: 16px; padding-right: 16px; }.title {font-size:41px;}.intro {font-size:12px;}.disciplines {font-size:9px;gap:13px;}.footnote {font-size:8px;} }
+@media(max-width: 359px) { .hero { padding-left: 16px; padding-right: 16px; }.title {font-size:41px;}.intro {font-size:12px;}.disciplines {font-size:9px;gap:13px;}.footnote {left:20px;right:20px;} }
 @media(prefers-reduced-motion:reduce) { .glassButton,.glassButton svg { transition: none; } }
