@@ -34,7 +34,7 @@
 }
 @supports (-webkit-text-stroke: 1px white) {
   .outline {
-    -webkit-text-stroke: 1.5px rgba(240, 246, 252, 0.2);
+    -webkit-text-stroke: 1.5px rgba(240, 246, 252, 0.45);
     -webkit-text-fill-color: transparent;
   }
 }
@@ -100,7 +100,7 @@
 }
 @supports (-webkit-text-stroke: 1px white) {
   .finish {
-    -webkit-text-stroke: 1px rgba(146, 177, 226, 0.45);
+    -webkit-text-stroke: 1px rgba(146, 177, 226, 0.7);
     -webkit-text-fill-color: transparent;
   }
 }
