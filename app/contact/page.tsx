@@ -1,5 +1,7 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import CopyEmail from '@/components/CopyEmail'
+import { BookingDays, LocalTime } from '@/components/BookingLive'
 import s from './Contact.module.css'
 
 export const metadata: Metadata = {
@@ -31,7 +33,7 @@ export default function ContactPage() {
       </div>
       <div className={s.invitation}>
         <div className={s.conversation}>
-          <div className={s.panelTop}><span className={s.kicker}>A CONVERSATION WITH JULIUS</span><span className={s.duration}>30 min</span></div>
+          <p className={s.kicker}>A CONVERSATION WITH JULIUS <span className={s.kickerSep}>·</span> 30 MIN</p>
           <h2>A good place <br />to start.</h2>
           <p className={s.description}>You don’t need all the answers. <br />Just something you’d like to make better.</p>
           <ol className={s.agenda} aria-label="What we’ll talk about">
@@ -41,22 +43,19 @@ export default function ContactPage() {
           </ol>
         </div>
         <div className={s.booking}>
-          <div className={s.directLine} aria-hidden="true">
-            <span className={s.you}>You</span><span className={s.connection}><i /><i /><i /></span><span className={s.monogram}>JU<span>.</span></span>
+          <div className={s.presence}>
+            <Image src="/images/about/julius-williams.png" alt="" width={864} height={1080} sizes="52px" quality={80} className={s.portrait} />
+            <div><p className={s.name}>Julius Williams</p><LocalTime /></div>
           </div>
-          <p className={s.bookingTitle}>You and me.<br /><span>Something worth building.</span></p>
-          <p className={s.bookingCopy}>A first conversation about what you need<br className={s.desktopBreak} /> and how I can help.</p>
-          <a href={booking} target="_blank" rel="noopener noreferrer" className={s.bookButton}>Find a time to talk <Arrow /></a>
-          <p className={s.bookingNote}>30-minute discovery call <span aria-hidden="true">·</span> Book on Calendly</p>
-        </div>
-        <div className={s.emailRow}>
-          <div className={s.emailIntro}>
-            <h2>Prefer email?</h2>
-            <p>A few lines are enough to get started.</p>
-          </div>
-          <div className={s.emailActions}>
-            <a className={s.emailLink} href={`mailto:${email}`}>{email}</a>
-            <CopyEmail email={email} />
+          <p className={s.pickLabel}>Choose a day</p>
+          <BookingDays booking={booking} />
+          <div className={s.actions}>
+            <a href={booking} target="_blank" rel="noopener noreferrer" className={s.bookButton}>See all times <Arrow /></a>
+            <p className={s.or} aria-hidden="true"><span>or</span></p>
+            <div className={s.emailActions}>
+              <a className={s.emailLink} href={`mailto:${email}`}>{email}</a>
+              <CopyEmail email={email} />
+            </div>
           </div>
         </div>
       </div>
