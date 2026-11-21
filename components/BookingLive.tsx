@@ -23,27 +23,53 @@ export function LocalTime() {
   return <span className={s.localTime}><i className={s.liveDot} aria-hidden="true" />{now ? `${time} in California` : time}</span>
 }
 
-/** Next three weekdays (California time), each opening Calendly on that day. */
+type Day = { key: string; weekday: string; day: string; href: string; label: string; count?: number }
+
+function nextWeekdays(booking: string): Day[] {
+  const out: Day[] = []
+  const cursor = new Date()
+  while (out.length < 3) {
+    cursor.setUTCDate(cursor.getUTCDate() + 1)
+    const { y, m, d, weekday } = partsIn(cursor)
+    if (weekday === 'Sat' || weekday === 'Sun') continue
+    const iso = `${y}-${m}-${d}`
+    if (out.some(x => x.key === iso)) continue
+    out.push({ key: iso, weekday, day: String(Number(d)), href: `${booking}?month=${y}-${m}&date=${iso}`, label: `See times on ${weekday} ${Number(d)}` })
+  }
+  return out
+}
+
+/**
+ * The next three days with real openings, from Calendly via /api/availability.
+ * Falls back to the next three weekdays when Calendly is not connected or fails,
+ * and hides the picker when Calendly reports no openings at all.
+ */
 export function BookingDays({ booking }: { booking: string }) {
-  const [days, setDays] = useState<{ key: string; weekday: string; day: string; href: string; label: string }[] | null>(null)
+  const [days, setDays] = useState<Day[] | null>(null)
 
   useEffect(() => {
-    const out: NonNullable<typeof days> = []
-    const cursor = new Date()
-    while (out.length < 3) {
-      cursor.setUTCDate(cursor.getUTCDate() + 1)
-      const { y, m, d, weekday } = partsIn(cursor)
-      if (weekday === 'Sat' || weekday === 'Sun') continue
-      const iso = `${y}-${m}-${d}`
-      if (out.some(x => x.key === iso)) continue
-      out.push({ key: iso, weekday, day: String(Number(d)), href: `${booking}?month=${y}-${m}&date=${iso}`, label: `See times on ${weekday} ${Number(d)}` })
-    }
-    setDays(out)
+    let alive = true
+    fetch('/api/availability')
+      .then(r => r.json())
+      .then((data: { configured: boolean; days?: { date: string; weekday: string; day: string; count: number; href: string }[] }) => {
+        if (!alive) return
+        if (data.configured && data.days) setDays(data.days.map(d => ({ key: d.date, weekday: d.weekday, day: d.day, href: d.href, count: d.count, label: `${d.count} open ${d.count === 1 ? 'time' : 'times'} on ${d.weekday} ${d.day}` })))
+        else setDays(nextWeekdays(booking))
+      })
+      .catch(() => { if (alive) setDays(nextWeekdays(booking)) })
+    return () => { alive = false }
   }, [booking])
 
-  return <div className={s.days}>
-    {days
-      ? days.map((day, i) => <a key={day.key} href={day.href} target="_blank" rel="noopener noreferrer" className={s.day} style={{ animationDelay: `${i * 70}ms` }} aria-label={day.label}><span>{day.weekday}</span><strong>{day.day}</strong></a>)
-      : [0, 1, 2].map(i => <span key={i} className={`${s.day} ${s.dayPlaceholder}`} aria-hidden="true"><span>&nbsp;</span><strong>&nbsp;</strong></span>)}
-  </div>
+  if (days && days.length === 0) return null
+
+  return <>
+    <p className={s.pickLabel}>Choose a day</p>
+    <div className={s.days}>
+      {days
+        ? days.map((day, i) => <a key={day.key} href={day.href} target="_blank" rel="noopener noreferrer" className={s.day} style={{ animationDelay: `${i * 70}ms` }} aria-label={day.label}>
+            <span>{day.weekday}</span><strong>{day.day}</strong>{day.count !== undefined && <em>{day.count} {day.count === 1 ? 'time' : 'times'}</em>}
+          </a>)
+        : [0, 1, 2].map(i => <span key={i} className={`${s.day} ${s.dayPlaceholder}`} aria-hidden="true"><span>&nbsp;</span><strong>&nbsp;</strong></span>)}
+    </div>
+  </>
 }

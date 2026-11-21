@@ -50,11 +50,13 @@
 .localTime { display: flex; align-items: center; gap: 8px; color: #9ea6b8; font-size: 12px; font-variant-numeric: tabular-nums; }
 .liveDot { width: 6px; height: 6px; border-radius: 50%; background: #8fd1a8; box-shadow: 0 0 0 3px #8fd1a81f; }
 .kickerSep { margin-inline: 6px; color: #7d7590; }
+.presence + .actions { margin-top: 30px; }
 .pickLabel { margin: 34px 0 12px; color: #b7b7c5; font-size: 13px; }
 .days { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 12px; }
 .day { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; padding: 14px 16px 15px; border: 1px solid #b4b9d326; border-radius: 14px; background: #c4c2ed08; color: #e6e5f0; animation: dayIn .5s cubic-bezier(.22,.61,.36,1) both; transition: border-color .25s ease, background .25s ease, transform .25s ease; }
 .day > span { color: #9ea6b8; font-size: 11px; letter-spacing: .04em; text-transform: uppercase; }
 .day > strong { font-size: 24px; font-weight: 500; line-height: 1; letter-spacing: -.03em; }
+.day > em { margin-top: 2px; color: #a99fc4; font-size: 11px; font-style: normal; }
 a.day:hover { border-color: #c4aeff66; background: #c4aeff12; transform: translateY(-2px); }
 .dayPlaceholder { animation: none; opacity: .35; }
 @keyframes dayIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }

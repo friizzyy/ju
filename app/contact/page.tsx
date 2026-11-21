@@ -47,7 +47,6 @@ export default function ContactPage() {
             <Image src="/images/about/julius-williams.png" alt="" width={864} height={1080} sizes="52px" quality={80} className={s.portrait} />
             <div><p className={s.name}>Julius Williams</p><LocalTime /></div>
           </div>
-          <p className={s.pickLabel}>Choose a day</p>
           <BookingDays booking={booking} />
           <div className={s.actions}>
             <a href={booking} target="_blank" rel="noopener noreferrer" className={s.bookButton}>See all times <Arrow /></a>
